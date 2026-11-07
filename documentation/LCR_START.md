@@ -1,4 +1,23 @@
-# LCR_START — Inicialização do projeto
+# LCR_START — Inicialização estrutural
+
+**Escopo aprovado (07-11-2026):** o START prepara apenas **pastas, arquivos-base, guardrails, normas, scripts e workflows**. Não seleciona tecnologias, não instala Supabase, Google Auth nem APIs, não cria contas e não ativa publicação.
+
+## Procedimento para o Planner
+1. Humano cria um novo repositório GitHub e passa a URL: `LCR_START https://github.com/owner/repo`.
+2. Com integração GitHub autorizada, o Planner confere a URL e **copia o template sem sobrescrever arquivos existentes**. O texto do comando sozinho não executa integrações.
+3. Estrutura essencial: `.gitignore`, `AGENTS.md`, `.github/workflows/`, `code/src/`, `code/public/assets/`, `code/tests/`, `code/scripts/`, `documentation/`, `documentation/decision-archive/`, `documentation/agents-archive/` e documentos-base.
+4. Conferência local no template: `python code/scripts/lcr_start.py --verify`; nomes: `python code/scripts/lcr_naming.py --check`. O workflow `LCR_START.yml` valida a estrutura do repositório em que estiver instalado.
+5. Se houver o template clonado localmente: `python code/scripts/lcr_start.py --target ../NovoProjeto` copia os arquivos locais e preserva o que já existir. Este script **não escreve em repositórios remotos**.
+
+**Condição de conclusão:** estrutura e documentos criados e verificados. Não presumir deploy, autorização ou integração externa.
+
+## Próxima fase: brainstorming com o Planner
+`LCR_BASIC_OPTIONS` é parte do brainstorming, não uma etapa separada. O Planner analisa opções, pode consultar Research para fundamentação científica e Quality & Security Auditor para riscos elevados; resultados retornam ao Planner e o humano aprova antes de implementar. As regras permanentes estão em `LCR_GUARDRAILS.md`; os nomes em `LCR_NAMING_CONVENTIONS.md`.
+
+---
+## Apêndice — catálogo anterior preservado para consulta durante o brainstorming
+**Atenção:** as listas de serviços, módulos, deploy e operação abaixo são referências para decisões **posteriores**; não são tarefas executadas por `LCR_START`.
+
 
 **Importante:** este arquivo é um protocolo de inicialização, **não é executado automaticamente pelo simples upload**. A automação depende dos workflows, scripts, permissões e de um gatilho de GitHub Actions (`workflow_dispatch` ou evento configurado).
 
