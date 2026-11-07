@@ -79,3 +79,11 @@ Veja `BASIC_COMMANDS.md` e `BASIC_SKILLS.md` para detalhes. Repos de templates p
 
 ## Verificação de nomenclatura (LCR_NAMING)
 Todos os papéis podem solicitá-la. A verificação inspeciona arquivos rastreados no Git, sem renomeá-los; `LCR_NAMING.yml` roda em push/PR, manualmente e de forma agendada. `LCR_START.yml` inclui verificação inicial, e `LCR_DAILY.yml` a executa recorrentemente. A parte de LCR_DAY feita no chat só executa auditoria se houver ferramenta/conexão capaz de fazê-lo.
+
+## Padronização de prompts do Planner — LCR_PROMPT_GENERATOR
+- Durante o brainstorming, após a decisão humana, ao receber um pedido natural como **“faça um prompt para o Builder”**, o Planner reconhece a **intenção de gerar instruções**, não de executar a alteração.
+- Usar **uma skill**: `.agents/skills/lcr-prompt-generator/SKILL.md`, com **exatamente dois modelos** canônicos: `DevelopmentPrompt.md` para desenvolvimento/upgrade e `HotfixPrompt.md` para hotfix compacto ou detalhado (adaptativo, sem terceiro modelo).
+- Destino explicitado prevalece. Na ausência: Codex preferido para implementação estrutural e Builder Aux para correção local. Quando Codex indisponível, Builder pode receber prompt de desenvolvimento após escolha humana.
+- O prompt deve registrar objetivo, destinatário, data/hora até o minuto e fuso **se verificáveis**, arquivos reais conferidos, guardrails, escopo, critérios de aceite, testes e relatório final. Não inventar timestamp ou caminhos.
+- `LCR_DEV` e `LCR_HOTFIX` são atalhos **opcionais**. O pedido natural não depende de sintaxe especial. O arquivo `documentation/CHATGPT_PROJECT_INSTRUCTIONS.md` contém texto para ativar o comportamento em Projetos ChatGPT.
+- Em upgrade e hotfix, a regra é gerar o prompt para o usuário revisar/encaminhar, **sem execução ou envio automático**, salvo ordem separada e ferramentas autorizadas.

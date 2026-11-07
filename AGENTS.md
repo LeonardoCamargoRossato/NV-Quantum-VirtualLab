@@ -13,3 +13,6 @@ Antes de **qualquer** prompt ou alteração, consultar:
 - Sem segredos e conversas brutas privadas em Git público. Não afirmar execução ou integração sem evidência.
 - Aplicar `LCR_NAMING` e os guardrails antes de encerrar entregas.
 - Este arquivo no GitHub **não é carregado automaticamente por todo chat**: consulte-o via conector ou instruções do projeto.
+
+## Prompts para Builder e Codex
+Quando o usuário pedir, em linguagem natural, para **criar um prompt** de desenvolvimento, upgrade ou hotfix, usar a skill `.agents/skills/lcr-prompt-generator/SKILL.md` e **somente** `DevelopmentPrompt.md` ou `HotfixPrompt.md`. Não exigir comando `/`, distinguir pedido de elaboração de pedido de execução, respeitar o destinatário escolhido e não inventar paths ou data/hora.

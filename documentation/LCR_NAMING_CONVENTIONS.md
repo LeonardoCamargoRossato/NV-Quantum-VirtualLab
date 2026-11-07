@@ -43,3 +43,6 @@ python -m unittest discover -s code/tests -p 'test_*.py' -v
 - ISO/IEC 11179-5 para princípios de nomes de metadados (não prescreve a árvore LCR).
 
 As escolhas PascalCase e kebab-case do LCR são **convenções internas**, não uma norma ISO universal.
+
+## Exceção para skills distribuíveis
+`SKILL.md` é um nome técnico **reservado** do formato de skills, preservado independentemente de PascalCase. O diretório especial `.agents/` também é permitido; a pasta da skill segue kebab-case (`lcr-prompt-generator/`). Os modelos `DevelopmentPrompt.md` e `HotfixPrompt.md` usam PascalCase. Referenciar `documentation/prompt-templates/README.md`, que aponta para as fontes canônicas sem duplicar os modelos.

@@ -24,6 +24,9 @@ class NamingConventionTests(unittest.TestCase):
         self.assertEqual(check_path("documentation/LCR_GUARDRAILS.md"), [])
         self.assertEqual(check_path("documentation/decision-archive/ADR-0002-nomenclatura.md"), [])
         self.assertTrue(check_path("code/public/My Images/GoodImage.png"))
+        self.assertEqual(check_path(".agents/skills/lcr-prompt-generator/SKILL.md"), [])
+        self.assertEqual(check_path(".agents/skills/lcr-prompt-generator/templates/DevelopmentPrompt.md"), [])
+        self.assertEqual(check_path(".agents/skills/lcr-prompt-generator/templates/HotfixPrompt.md"), [])
 
     def test_fixed_names_and_generated_records(self):
         for name in ("README.md", "AGENTS.md", "code/public/robots.txt",

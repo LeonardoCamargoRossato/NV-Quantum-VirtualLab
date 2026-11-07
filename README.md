@@ -23,3 +23,10 @@ As automações ficam em `.github/workflows/`. **LCR_BACKUP** permanece inativo 
 - `LCR_BASIC_OPTIONS`: análise de opções **durante** o brainstorming, nunca provisionamento inicial automático.
 
 Em repositório GitHub remoto, o Planner precisa de conexão de escrita e autorização para copiar a estrutura. `LCR_START` não instala serviços, não dispara automaticamente apenas por ser digitado num chat e não publica o site.
+
+## Skill e modelos de prompt
+- [LCR Prompt Generator](.agents/skills/lcr-prompt-generator/SKILL.md)
+- [Índice dos dois templates](documentation/prompt-templates/README.md)
+- [Instruções para Projeto ChatGPT](documentation/CHATGPT_PROJECT_INSTRUCTIONS.md)
+
+Ao solicitar “faça o prompt para o Builder”, o Planner pode selecionar automaticamente o modelo apropriado com acesso a estas instruções. A skill do repositório não é instalada automaticamente na conta ChatGPT.

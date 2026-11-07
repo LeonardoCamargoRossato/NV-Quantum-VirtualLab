@@ -15,6 +15,7 @@ SOURCE_ROOT = Path(__file__).resolve().parents[2]
 ROOT_FILES = ("AGENTS.md", "README.md", ".gitignore")
 STRUCTURAL_PREFIXES = (
     ".github/workflows/",
+    ".agents/skills/",
     "code/scripts/",
     "code/tests/",
     "code/public/",
@@ -66,6 +67,11 @@ def bootstrap(root: Path, target: Path) -> tuple[int, int]:
 def verify(root: Path) -> list[str]:
     needed = [
         ".gitignore", "AGENTS.md",
+        ".agents/skills/lcr-prompt-generator/SKILL.md",
+        ".agents/skills/lcr-prompt-generator/templates/DevelopmentPrompt.md",
+        ".agents/skills/lcr-prompt-generator/templates/HotfixPrompt.md",
+        "documentation/prompt-templates/README.md",
+        "documentation/CHATGPT_PROJECT_INSTRUCTIONS.md",
         "documentation/LCR_START.md", "documentation/LCR_WORKFLOW.md",
         "documentation/LCR_GUARDRAILS.md", "documentation/LCR_NAMING_CONVENTIONS.md",
         "documentation/BASIC_COMMANDS.md", "documentation/BASIC_SKILLS.md",

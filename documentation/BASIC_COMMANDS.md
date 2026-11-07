@@ -5,6 +5,8 @@ Comandos são **convenções** interpretadas pelos chats que recebem estas instr
 | Comando | Comportamento esperado | Saída |
 |---|---|---|
 | `LCR_START <url>` | Criar apenas template estrutural no repositório autorizado e validar guardrails/nomes. | Pastas, arquivos e checklist de verificação |
+| `LCR_DEV` | Solicita ao Planner a geração do prompt de desenvolvimento/upgrade pelo modelo `DevelopmentPrompt.md`; equivalente a frase natural. | Prompt pronto para Codex/Builder |
+| `LCR_HOTFIX` | Solicita prompt corretivo adaptativo pelo modelo único `HotfixPrompt.md`, compacto ou completo conforme complexidade. | Prompt pronto para Codex/Builder |
 | `LCR_BASIC_OPTIONS` | Durante o brainstorming com Planner, comparar opções; chamar Research/Security se necessário; não instalar nada. | Proposta de opções para aprovação |
 | `LCR_NAMING` | Inspecionar nomes dos caminhos versionados no Git, sem renomeação automática. | Relatório de nomes conformes ou violações |
 | `LCR_DAY` | 1ª ocorrência marca início; toda ocorrência seguinte fecha o trecho desde o marcador anterior, registra e torna-se novo marco. | `daily_summary.md`, `raw_data.jsonl`, `data.json` |
@@ -50,3 +52,6 @@ Qualquer agente — Planner, Builder, Research, Drawer, Audio Designer ou Qualit
 
 ## LCR_BASIC_OPTIONS pertence ao brainstorming
 Apresente opções técnicas adequadas ao projeto; se precisar de revisão científica, patentes ou riscos elevados, consulte Research ou Quality & Security e retorne ao Planner. O humano aprova as escolhas. Nenhuma integração externa é consequência automática de `LCR_START`.
+
+## Gerar prompts sem decorar comandos
+“Faça o prompt para o Builder”, “prepare esse upgrade para o Codex” ou “faça um hotfix” ativam, quando o Planner dispõe da skill/instruções, o procedimento `LCR_PROMPT_GENERATOR`. O comando é apenas um atalho opcional. O Planner escolhe um dos **dois** templates em `.agents/skills/lcr-prompt-generator/templates/`, respeita o destinatário humano e confere guardrails e caminhos reais antes de redigir. Redigir não equivale a executar.

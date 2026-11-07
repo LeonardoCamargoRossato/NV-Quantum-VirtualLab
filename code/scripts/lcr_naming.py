@@ -20,7 +20,7 @@ ADR = re.compile(r"^ADR-[0-9]{4}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 SPECIAL = {
     ".gitignore", ".gitkeep", ".gitattributes", ".editorconfig",
     ".env.example", ".npmrc", ".prettierrc", ".prettierignore",
-    "README.md", "AGENTS.md", "LICENSE", "LICENSE.md", "CONTRIBUTING.md",
+    "README.md", "AGENTS.md", "SKILL.md", "LICENSE", "LICENSE.md", "CONTRIBUTING.md",
     "CHANGELOG.md", "CITATION.cff", "Dockerfile", "Makefile",
     "index.html", "robots.txt", "sitemap.xml", "favicon.ico",
     "package.json", "package-lock.json", "pnpm-lock.yaml", "yarn.lock",
@@ -32,7 +32,7 @@ SPECIAL = {
     "daily_summary.md", "raw_data.jsonl", "data.json",
     "summary.md", "github_activity.jsonl", "metadata.json",
 }
-SPECIAL_DIRECTORIES = {".github", ".vscode", ".idea", "__pycache__", ".pytest_cache"}
+SPECIAL_DIRECTORIES = {".github", ".agents", ".vscode", ".idea", "__pycache__", ".pytest_cache"}
 SUFFIXES = (".test", ".spec", ".stories", ".module")
 
 def check_path(raw: str) -> list[str]:

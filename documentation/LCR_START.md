@@ -7,7 +7,8 @@
 2. Com integração GitHub autorizada, o Planner confere a URL e **copia o template sem sobrescrever arquivos existentes**. O texto do comando sozinho não executa integrações.
 3. Estrutura essencial: `.gitignore`, `AGENTS.md`, `.github/workflows/`, `code/src/`, `code/public/assets/`, `code/tests/`, `code/scripts/`, `documentation/`, `documentation/decision-archive/`, `documentation/agents-archive/` e documentos-base.
 4. Conferência local no template: `python code/scripts/lcr_start.py --verify`; nomes: `python code/scripts/lcr_naming.py --check`. O workflow `LCR_START.yml` valida a estrutura do repositório em que estiver instalado.
-5. Se houver o template clonado localmente: `python code/scripts/lcr_start.py --target ../NovoProjeto` copia os arquivos locais e preserva o que já existir. Este script **não escreve em repositórios remotos**.
+5. Incluir no template a skill `.agents/skills/lcr-prompt-generator/SKILL.md` com os **dois** modelos `templates/DevelopmentPrompt.md` e `templates/HotfixPrompt.md`, além do índice `documentation/prompt-templates/README.md`. Esses arquivos são **instruções**; não instalam automaticamente skills na conta do ChatGPT.
+6. Se houver o template clonado localmente: `python code/scripts/lcr_start.py --target ../NovoProjeto` copia os arquivos locais e preserva o que já existir. Este script **não escreve em repositórios remotos**.
 
 **Condição de conclusão:** estrutura e documentos criados e verificados. Não presumir deploy, autorização ou integração externa.
 

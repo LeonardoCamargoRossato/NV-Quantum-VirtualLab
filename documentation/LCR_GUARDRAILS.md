@@ -26,3 +26,6 @@ Normas aplicáveis a Planner, Builder/Codex, Research, Drawer, Audio Designer e 
 - Nome exigido por linguagem, framework, sistema operacional ou protocolo prevalece sobre preferência estilística; registrar a exceção em `LCR_NAMING_CONVENTIONS.md`.
 - Exceção arquitetural relevante: documentar ADR aprovado, sem alterar retroativamente fatos do registro.
 - `AGENTS.md` resume e referencia estas normas; o arquivo Markdown sozinho **não garante** que todo chat ChatGPT o carregue automaticamente. O agente deve acessá-lo no projeto. CI automatiza apenas verificações tecnicamente verificáveis.
+
+## Protocolo permanente de prompts
+Qualquer prompt para o Builder/Codex é elaborado pelo Planner com `LCR_PROMPT_GENERATOR` quando disponível, usando somente **desenvolvimento/upgrade** (`DevelopmentPrompt.md`) ou **hotfix adaptativo** (`HotfixPrompt.md`). O formato deve ser auditável e proporcional ao escopo, respeitar aprovação humana, guardrails, arquivos existentes e nomes oficiais. Nenhuma instrução pode afirmar execução, deploy, revisão ou commit que ainda não ocorreu. O destinatário escolhido pelo usuário prevalece; pedir “faça o prompt” não autoriza executá-lo.
