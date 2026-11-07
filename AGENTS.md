@@ -1,11 +1,15 @@
-# AGENTS — NV Quantum Virtual Lab
+# AGENTS — LCR Workflow
 
-Antes de modificar a aplicação, consultar `documentation/LCR_START.md`, `documentation/LCR_WORKFLOW.md`, `documentation/BASIC_COMMANDS.md` e `documentation/BASIC_SKILLS.md`.
+Antes de **qualquer** prompt ou alteração, consultar:
+1. `documentation/LCR_GUARDRAILS.md` — obrigações e limites.
+2. `documentation/LCR_NAMING_CONVENTIONS.md` — nomes dos artefatos.
+3. `documentation/LCR_WORKFLOW.md` — fluxo, papéis e decisões.
+4. `documentation/LCR_START.md`, `documentation/BASIC_COMMANDS.md`, `documentation/BASIC_SKILLS.md` — operação.
 
-- Código de aplicação: `code/` (quando existir).
-- Workflows CI: `.github/workflows/` na raiz.
-- Documentation: `documentation/`.
-- ADRs: `documentation/decision-archive/`.
-- Não versionar segredos nem registros brutos não revisados de chats.
-- Não alegar que serviços foram integrados sem executar e verificar um teste.
-- Preserve o escopo e solicite aprovação para mudanças destrutivas ou publicações sensíveis.
+- `LCR_START`: cria somente a estrutura; não instala serviços externos nem faz deploy.
+- `LCR_BASIC_OPTIONS`: avaliação **dentro** do brainstorming. Research e Quality & Security são opcionais e retornam ao Planner.
+- Ciclo normal: humano ↔ Planner ↔ Builder/Codex; upgrades e hotfixes possuem processos distintos.
+- Código em `code/`; automações em `.github/workflows/`; normas em `documentation/`; decisões em `documentation/decision-archive/`; registros dos especialistas em `documentation/agents-archive/`.
+- Sem segredos e conversas brutas privadas em Git público. Não afirmar execução ou integração sem evidência.
+- Aplicar `LCR_NAMING` e os guardrails antes de encerrar entregas.
+- Este arquivo no GitHub **não é carregado automaticamente por todo chat**: consulte-o via conector ou instruções do projeto.

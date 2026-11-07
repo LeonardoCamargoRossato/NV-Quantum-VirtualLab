@@ -11,14 +11,14 @@ Padronizar criação, desenvolvimento, revisão, documentação, evolução e ra
 | Planner | Requisitos, escopo, planejamento, arquitetura e prompts para implementações. |
 | Builder | Implementação: Builder Aux (hotfixes) e Codex (mudanças complexas). |
 | Research | Pesquisa bibliográfica, estado da técnica, patentes, fontes e validação de fundamentos. |
-| Drawer | UX/UI, diagramas e recursos visuais. Somente os registros textuais ficam em `documentation/drawer/`; imagens ficam em `code/public/assets/` ou storage externo. |
+| Drawer | UX/UI, diagramas e recursos visuais. Somente os registros textuais ficam em `documentation/agents-archive/drawer/`; imagens ficam em `code/public/assets/` ou storage externo. |
 | Audio Designer (opcional) | Identidade sonora, efeitos, áudio e trilhas originais. Recursos em `code/public/assets/audio/`. |
 | Quality & Security Auditor | Testes, auditoria de segurança, SEO, riscos, conformidade e recomendações. Relatórios independentes sob demanda. |
 
 O **Organizador não é um chat**: é a função de consolidação documental do próprio LCR Workflow. O usuário decide prioridades, autoriza publicações e aprova decisões importantes.
 
 ## Ciclo de trabalho
-Planejamento → `LCR_START` (bootstrap; publicação inicial se o site for público e houver configuração) → desenvolvimento e pesquisa → Quality & Security → evolução. Projetos privados mantêm a publicação como etapa separada, autorizada.
+Criar repositório GitHub → `LCR_START` **apenas estrutural** → brainstorming com Planner → plano aprovado → desenvolvimento iterativo (humano ↔ Planner ↔ Builder/Codex) → upgrade ou hotfix conforme a demanda. Novas dúvidas retornam ao brainstorming. Serviços externos e publicação são opcionais, separados e autorizados.
 
 ## GitHub como fonte principal
 - `.github/workflows/`: automações periódicas e por evento.
@@ -26,7 +26,7 @@ Planejamento → `LCR_START` (bootstrap; publicação inicial se o site for púb
 - `code/public/assets/`: imagens, ícones e áudio; `robots.txt` e `sitemap.xml` ficam em `code/public/`.
 - `code/tests/`: testes executáveis; `code/scripts/`: utilitários.
 - `code/supabase/`: opcional (Auth, SQL, Storage, Edge Functions).
-- `documentation/`: normas, sessões e decisões. Drive é backup, não cópia mestra.
+- `documentation/`: normas; sessões dos agentes em `agents-archive/` e decisões em `decision-archive/`. Drive é backup, não cópia mestra.
 
 ## Registros por chat (LCR_DAY)
 O comando `LCR_DAY` age como marcador: 1ª ocorrência inicia intervalo; 2ª fecha e registra; ocorrências seguintes fecham o intervalo desde o marcador anterior. São produzidos, quando houver conteúdo acessível:
@@ -57,3 +57,25 @@ Não alegar extração integral do ChatGPT, tokens exatos ou horários que não 
 - `LCR_BACKUP.yml`: snapshot + histórico Git para Drive, **desabilitado até configurar credenciais**.
 
 Veja `BASIC_COMMANDS.md` e `BASIC_SKILLS.md` para detalhes. Repos de templates podem replicar estes arquivos; projetos existentes exigem migração e ajuste de caminhos no build/deploy.
+## Brainstorming: fluxo interno, não uma sequência rígida
+1. **Ideia e escopo:** problema, usuário, objetivo, restrições e resultado desejado.
+2. **`LCR_BASIC_OPTIONS` dentro do brainstorming:** apresentar opções de stack, GitHub Pages, Supabase, autenticação, armazenamento, APIs e serviços; avaliar custo, necessidade e manutenção. Não provisionar nada por padrão.
+3. **Precisa de aprofundamento científico/técnico ou patentes?** Se sim, solicitar Research / Technical Reviewer: revisão bibliográfica, cientometria, estado da técnica ou patentes. **Retornar ao Planner.**
+4. **Exige segurança/qualidade além do padrão?** Se sim, solicitar Quality & Security Auditor para riscos, autenticação, privacidade, compliance e testes necessários. **Retornar ao Planner.**
+5. **Decisão humana:** sintetizar opções, prioridades, critérios de aceite e registrar ADR quando houver decisão arquitetural. Encaminhar para Builder/Codex.
+
+**Trilha habitual:** humano ↔ Planner ↔ Builder/Codex. Research, Auditor, Drawer e Audio Designer são consultados conforme a necessidade, não etapas fixas.
+
+### Desenvolvimento macro, upgrade e hotfix
+- **Desenvolvimento/upgrade:** novas funcionalidades, serviços, telas ou mudanças de arquitetura. Planner propõe escopo, caminhos, testes e guardrails; humano aprova; Builder/Codex implementa; revisar e retornar ao Planner.
+- **Hotfix:** correção pontual com reprodução, intervenção mínima, validação de regressão e sem migração arquitetural implícita.
+- **Retorno ao brainstorming:** qualquer nova dúvida significativa pode reabrir avaliação de Basic Options, Research ou Auditoria. Testes e documentação acompanham todas as entregas.
+
+## Documentos normativos e arquivos de registros
+- `LCR_GUARDRAILS.md`: regras permanentes e governança; lido por todos os especialistas.
+- `LCR_NAMING_CONVENTIONS.md`: pastas kebab-case; documentos institucionais UPPER_SNAKE_CASE; maioria dos arquivos personalizados PascalCase; Python snake_case.
+- `agents-archive/`: por sessão, Planner, Builder, Research, Drawer e Audio Designer recebem `daily_summary.md`, `raw_data.jsonl` (após revisão de privacidade) e `data.json`; Auditor mantém relatórios independentes.
+- `decision-archive/`: **Decision Archive (ADR = Architecture Decision Record)**; registra motivos, alternativas, riscos e consequências de decisões relevantes.
+
+## Verificação de nomenclatura (LCR_NAMING)
+Todos os papéis podem solicitá-la. A verificação inspeciona arquivos rastreados no Git, sem renomeá-los; `LCR_NAMING.yml` roda em push/PR, manualmente e de forma agendada. `LCR_START.yml` inclui verificação inicial, e `LCR_DAILY.yml` a executa recorrentemente. A parte de LCR_DAY feita no chat só executa auditoria se houver ferramenta/conexão capaz de fazê-lo.

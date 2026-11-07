@@ -10,3 +10,16 @@ Este repositório contém o **esqueleto documental e de automações** do LCR Wo
 - [Padrão SEO detalhado](documentation/seo/LCR_SEO_STANDARD.md)
 
 As automações ficam em `.github/workflows/`. **LCR_BACKUP** permanece inativo até configurar `LCR_DRIVE_BACKUP_ENABLED` e credenciais. O arquivo `robots.txt` e o `sitemap.xml` são modelos iniciais que exigem URL real antes da publicação.
+## Documentos de governança e histórico
+- [Guardrails permanentes](documentation/LCR_GUARDRAILS.md)
+- [Nomenclatura oficial](documentation/LCR_NAMING_CONVENTIONS.md)
+- [Agents Archive](documentation/agents-archive/README.md)
+- [Decision Archive (ADR)](documentation/decision-archive/README.md)
+
+## Inicialização e verificação
+- `python code/scripts/lcr_start.py --verify`: valida o template estrutural.
+- `python code/scripts/lcr_start.py --target ../NovoProjeto`: copia estrutura local sem sobrescrever arquivos.
+- `python code/scripts/lcr_naming.py --check`: verifica nomenclatura de arquivos rastreados pelo Git.
+- `LCR_BASIC_OPTIONS`: análise de opções **durante** o brainstorming, nunca provisionamento inicial automático.
+
+Em repositório GitHub remoto, o Planner precisa de conexão de escrita e autorização para copiar a estrutura. `LCR_START` não instala serviços, não dispara automaticamente apenas por ser digitado num chat e não publica o site.
