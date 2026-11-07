@@ -1,0 +1,22 @@
+name: LCR Naming — validação recorrente
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '11 10 * * *'
+permissions:
+  contents: read
+jobs:
+  naming:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar nomes do repositório
+        run: python code/scripts/lcr_naming.py --check
+      - name: Testar regras de nomenclatura
+        run: python -m unittest discover -s code/tests -p 'test_*.py' -v

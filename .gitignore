@@ -1,0 +1,26 @@
+# Credenciais e dados privados
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+service-account.json
+# Ambientes e dependências
+node_modules/
+dist/
+build/
+coverage/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+# Sistemas
+.DS_Store
+Thumbs.db
+# Registros brutos de chats não revisados (não publicar automaticamente)
+**/raw_data.jsonl
+# Artefatos locais
+*.log

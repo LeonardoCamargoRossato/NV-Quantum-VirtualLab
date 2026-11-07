@@ -1,0 +1,17 @@
+name: LCR Start — validar estrutura
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Conferir arquivos estruturais
+        run: python code/scripts/lcr_start.py --verify
+      - name: Conferir nomenclatura inicial
+        run: python code/scripts/lcr_naming.py --check
