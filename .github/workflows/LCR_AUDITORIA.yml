@@ -18,3 +18,5 @@ jobs:
           python-version: '3.12'
       - name: Verificar indícios de segredos sem imprimir valores
         run: python code/scripts/lcr_auditoria.py
+      - name: Verificar nomenclatura como parte da qualidade
+        run: python code/scripts/lcr_naming.py --check

@@ -35,6 +35,8 @@ def template_files(root: Path):
         if relative in ROOT_FILES or relative.startswith(STRUCTURAL_PREFIXES):
             if relative.startswith(EXCLUDED_PREFIXES) or f.suffix.lower() in EXCLUDED_SUFFIXES:
                 continue
+            if relative.startswith("documentation/decision-archive/") and relative != "documentation/decision-archive/README.md":
+                continue
             if "/__pycache__/" in relative or relative.endswith(".pyc"):
                 continue
             yield f, relative

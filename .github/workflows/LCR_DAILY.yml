@@ -15,6 +15,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Verificar nomenclatura do repositório
+        id: naming
+        continue-on-error: true
+        run: python code/scripts/lcr_naming.py --check
       - name: Gerar resumo do GitHub (não lê chats privados)
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -27,3 +31,8 @@ jobs:
           if git diff --cached --quiet; then echo 'Sem novos relatórios'; exit 0; fi
           git commit -m 'docs(lcr): atualizar relatório daily do GitHub'
           git push
+      - name: Registrar falha na validação de nomes
+        if: steps.naming.outcome == 'failure'
+        run: |
+          echo 'LCR_NAMING detectou nomes fora do padrão. Consulte o log anterior.'
+          exit 1
