@@ -26,7 +26,7 @@ Comandos são **convenções** interpretadas pelos chats que recebem estas instr
 ### `data.json` — esquema mínimo
 ```json
 {
-  "project": "NV Quantum Virtual Lab",
+  "project": null,
   "agent_role": "planner",
   "date": null,
   "started_at": null,
@@ -41,6 +41,8 @@ Comandos são **convenções** interpretadas pelos chats que recebem estas instr
   "source": "chat_accessible_messages"
 }
 ```
+
+Preencher `project` com o nome real do projeto; jamais assumir NV Quantum Virtual Lab nos templates.
 
 Data/hora e tokens exatos só quando verificados. Ações do GitHub Actions não conseguem ler diretamente o histórico privado do ChatGPT.
 ## Contrato de verificação: LCR_NAMING

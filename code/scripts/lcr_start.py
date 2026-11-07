@@ -96,7 +96,17 @@ def main() -> int:
         print("LCR_START ERRO:", exc, file=sys.stderr)
         return 1
     print(f"LCR_START: {created} arquivos criados, {skipped} preservados em {target}")
-    return 0
+    # Checagem estrutural imediata; não demanda banco de dados nem APIs externas.
+    from lcr_naming import scan
+    files = [p.relative_to(target).as_posix() for p in target.rglob("*")
+             if p.is_file() and ".git" not in p.relative_to(target).parts
+             and "__pycache__" not in p.relative_to(target).parts]
+    result = scan(files)
+    print(f"LCR_NAMING: {result['checked']} arquivos avaliados; "
+          f"{len(result['violations'])} violação(ões).")
+    for item in result["violations"]:
+        print(f" - {item['path']}: {'; '.join(item['problems'])}")
+    return 0 if result["ok"] else 1
 
 if __name__ == "__main__":
     raise SystemExit(main())
