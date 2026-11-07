@@ -1,6 +1,6 @@
 # NV Quantum Virtual Lab — LCR Workflow Bootstrap
 
-Esta versão do repositório contém o **esqueleto documental e de automações** do LCR Workflow. O simulador/aplicação NV ainda precisa ser implementado em `code/src/`; a presença dos workflows **não** significa que o deploy ou integrações externas estejam ativos.
+Este repositório contém o **esqueleto documental e de automações** do LCR Workflow. O simulador/aplicação NV ainda precisa ser implementado em `code/src/`; a presença dos workflows **não** significa que o deploy ou integrações externas estejam ativos.
 
 - [Protocolo LCR](documentation/LCR_WORKFLOW.md)
 - [Inicialização](documentation/LCR_START.md)

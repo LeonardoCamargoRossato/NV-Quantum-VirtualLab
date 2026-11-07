@@ -1,4 +1,4 @@
-# BASIC_COMMANDS — Comandos do LCR Workflow V0.3
+# BASIC_COMMANDS — Comandos do LCR Workflow
 
 Comandos são **convenções** interpretadas pelos chats que recebem estas instruções; eles não representam ações de sistema sem ferramentas conectadas.
 

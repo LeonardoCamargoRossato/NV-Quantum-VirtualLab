@@ -1,4 +1,4 @@
-# LCR Workflow — Protocolo-base V0.3
+# LCR Workflow — Protocolo-base
 
 **Estado:** proposta operacional em implementação; não é metodologia validada cientificamente.
 

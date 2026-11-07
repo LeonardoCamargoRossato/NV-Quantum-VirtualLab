@@ -1,4 +1,4 @@
-# LCR Workflow — SEO automatizado (proposta V0.3)
+# LCR Workflow — SEO automatizado (proposta)
 
 **Estado:** padrão proposto; automação ainda não instalada/validada.  
 **Âmbito:** aplicações com páginas públicas indexáveis; não se aplica automaticamente a interfaces privadas, dashboards autenticados ou ambientes de desenvolvimento.  

@@ -1,4 +1,4 @@
-# BASIC_SKILLS — Biblioteca do LCR Workflow V0.3
+# BASIC_SKILLS — Biblioteca do LCR Workflow
 
 **Skill:** procedimento reutilizável; **comando:** atalho que invoca o procedimento; **agente/chat:** papel especializado que avalia e aplica o procedimento; **ferramenta:** GitHub, Google Drive, CLI, API etc.
 

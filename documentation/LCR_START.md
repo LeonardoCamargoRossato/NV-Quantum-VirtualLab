@@ -1,4 +1,4 @@
-# LCR_START — Inicialização do projeto V0.3
+# LCR_START — Inicialização do projeto
 
 **Importante:** este arquivo é um protocolo de inicialização, **não é executado automaticamente pelo simples upload**. A automação depende dos workflows, scripts, permissões e de um gatilho de GitHub Actions (`workflow_dispatch` ou evento configurado).
 
