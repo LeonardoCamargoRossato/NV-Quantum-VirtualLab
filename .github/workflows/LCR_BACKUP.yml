@@ -1,0 +1,38 @@
+name: LCR Backup — snapshot e histórico Git para Drive
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '9 4 * * *' # diário; só executa se variável de ativação = true
+permissions:
+  contents: read
+jobs:
+  backup:
+    if: ${{ vars.LCR_DRIVE_BACKUP_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verificar configuração
+        env:
+          DRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
+          DRIVE_FOLDER: ${{ vars.LCR_DRIVE_FOLDER_ID }}
+        run: |
+          test -n "$DRIVE_TOKEN" || { echo 'Falta Secret LCR_DRIVE_OAUTH_TOKEN'; exit 1; }
+          test -n "$DRIVE_FOLDER" || { echo 'Falta Variable LCR_DRIVE_FOLDER_ID'; exit 1; }
+      - name: Preparar snapshot e histórico
+        run: |
+          mkdir -p /tmp/lcr-backup
+          git archive --format=zip --output=/tmp/lcr-backup/repository_snapshot.zip HEAD
+          git bundle create /tmp/lcr-backup/repository_history.bundle --all
+      - name: Instalar rclone
+        run: sudo apt-get update -qq && sudo apt-get install -y rclone
+      - name: Copiar arquivos para pasta do Google Drive
+        env:
+          RCLONE_CONFIG_LCRDRIVE_TYPE: drive
+          RCLONE_CONFIG_LCRDRIVE_SCOPE: drive
+          RCLONE_CONFIG_LCRDRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
+          RCLONE_CONFIG_LCRDRIVE_ROOT_FOLDER_ID: ${{ vars.LCR_DRIVE_FOLDER_ID }}
+        run: |
+          rclone copy /tmp/lcr-backup lcrdrive:${{ github.event.repository.name }}/$(date -u +%Y-%m-%d)             --create-empty-src-dirs --checkers 2 --transfers 2
+          rclone lsf lcrdrive:${{ github.event.repository.name }}/$(date -u +%Y-%m-%d)

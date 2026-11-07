@@ -1,0 +1,7 @@
+# LCR Workflow — exemplo inicial. Ajustar antes do deploy público.
+User-agent: *
+Allow: /
+
+# Configure a URL real após a implantação e a geração do sitemap:
+# Sitemap: https://SEU-DOMINIO/SEU-PROJETO/sitemap.xml
+# robots.txt não controla acesso a páginas privadas.

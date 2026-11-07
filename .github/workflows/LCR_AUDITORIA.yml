@@ -1,0 +1,20 @@
+name: LCR Auditoria — verificações preventivas
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '43 11 * * 1'
+permissions:
+  contents: read
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar indícios de segredos sem imprimir valores
+        run: python code/scripts/lcr_auditoria.py

@@ -1,0 +1,29 @@
+name: LCR Daily — atividade registrada no GitHub
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 23 * * *' # 20:17 America/Sao_Paulo no fuso UTC-3
+permissions:
+  contents: write
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gerar resumo do GitHub (não lê chats privados)
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python code/scripts/lcr_daily.py
+      - name: Versionar relatório
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add documentation/reports/daily/
+          if git diff --cached --quiet; then echo 'Sem novos relatórios'; exit 0; fi
+          git commit -m 'docs(lcr): atualizar relatório daily do GitHub'
+          git push
