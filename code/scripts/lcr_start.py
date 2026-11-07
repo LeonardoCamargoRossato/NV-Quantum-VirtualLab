@@ -71,7 +71,7 @@ def verify(root: Path) -> list[str]:
         ".agents/skills/lcr-prompt-generator/templates/DevelopmentPrompt.md",
         ".agents/skills/lcr-prompt-generator/templates/HotfixPrompt.md",
         "documentation/prompt-templates/README.md",
-        "documentation/CHATGPT_PROJECT_INSTRUCTIONS.md",
+        "documentation/LCR_CHATGPT_PROJECT_INSTRUCTIONS.md",
         "documentation/LCR_START.md", "documentation/LCR_WORKFLOW.md",
         "documentation/LCR_GUARDRAILS.md", "documentation/LCR_NAMING_CONVENTIONS.md",
         "documentation/BASIC_COMMANDS.md", "documentation/BASIC_SKILLS.md",
