@@ -32,9 +32,15 @@ Incorporar verificações de SEO à rotina do projeto, sem precisar abrir um cha
 3. Publicar a referência ao sitemap em `robots.txt` quando aplicável.
 4. Se a propriedade já estiver verificada e a credencial estiver configurada, opcionalmente submeter sitemap pela API do Google Search Console.
 
-### Semanal (inicialmente, em vez de diariamente)
-1. Executar auditoria mais ampla de SEO.
-2. Quando a API estiver autorizada, consultar impressões, cliques, CTR, posição e consultas de pesquisa via Search Analytics.
+### Diário (integração à rotina LCR Daily)
+1. Verificar se houve alteração de páginas públicas, deploy ou problemas críticos de SEO.
+2. Validar a disponibilidade do site, a presença do sitemap e arquivos de SEO quando aplicáveis.
+3. Produzir um registro leve e associá-lo ao LCR Daily; sem mudanças, registrar apenas `sem alteração relevante`.
+4. Não executar IA paga diariamente sem necessidade; relatórios devem se basear nos dados realmente coletados.
+
+### Semanal (análise mais ampla)
+1. Executar auditoria aprofundada e revisar recomendações sobre conteúdo e estrutura.
+2. Quando a API estiver autorizada, consultar impressões, cliques, CTR, posição e consultas via Search Analytics.
 3. Registrar achados e recomendações em `documentation/seo/reports/YYYY-MM-DD.md` ou como artefato CI.
 4. Não interpretar ausência de dados como ausência de visitas; Search Console possui atraso e filtros próprios.
 
@@ -50,7 +56,7 @@ O template automatiza a **preparação**, mas não elimina a prova de propriedad
 ## 5. Artefatos e locais propostos
 
 ```text
-.github/workflows/lcr-seo.yml       # gatilhos: push/PR, após deploy, semanal
+.github/workflows/lcr-seo.yml       # gatilhos: push/PR, após deploy, diário, semanal
 code/public/robots.txt              # somente projetos com site público
 code/public/sitemap.xml             # gerado a partir das rotas públicas
 code/scripts/seo/                   # validações e geração automática
