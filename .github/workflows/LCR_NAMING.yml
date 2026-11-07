@@ -20,3 +20,14 @@ jobs:
         run: python code/scripts/lcr_naming.py --check
       - name: Testar regras de nomenclatura
         run: python -m unittest discover -s code/tests -p 'test_*.py' -v
+
+      - name: Criar snapshot fiel do repositorio Git
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: git archive --format=zip --output=repository_snapshot.zip HEAD
+      - name: Disponibilizar pacote para backup
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: LCR_Workflow_Snapshot
+          path: repository_snapshot.zip
+          retention-days: 14

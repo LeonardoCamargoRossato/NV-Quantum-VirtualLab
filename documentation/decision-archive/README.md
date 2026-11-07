@@ -19,3 +19,4 @@ Nome recomendado: `ADR-0001-titulo-curto.md`.
 ```
 
 Decisões relevantes: GitHub como fonte de verdade, Drive como backup, Supabase como opcional, políticas públicas/privadas, modelo de autenticação, regras de divulgação científica. Alterações importantes geram ADR novo vinculado ao anterior.
+**Confirmação:** ADR significa *Architecture Decision Record*. Este arquivo documenta decisões e suas justificativas; não substitui registros de chats, que ficam em `../agents-archive/`.
