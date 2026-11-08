@@ -27,6 +27,13 @@ O propósito é ajudar um físico que está aprendendo eletrônica a reconhecer 
 6. O repo oficial é https://github.com/QuantumVillage/UncutGem — **não confundir V1 com a BOM integrada V2**; versões têm diferenças materiais de placa, componentes e mecânica. O manual do projeto no Drive é estudo acadêmico independente, não documento oficial da Quantum Village.
 7. Existe um fluxo LCR de prompts e ADR; este texto foi estruturado segundo `.agents/skills/lcr-prompt-generator/templates/DevelopmentPrompt.md`. O arquivo de ADR registra apenas decisões, não implementa a aplicação.
 
+## Auditoria prévia de recursos e CI (verificada em 08/11/2026)
+
+- **Imagens do Drawer JÁ presentes no repositório:** pasta \u0060assets/components/illustrative/\u0060 com oito PNGs individuais de resistor axial, resistor SMD, capacitores cerâmico/eletrolítico/SMD, ímãs NdFeB (disco/cubo), power bank USB, e uma prancha original de oito componentes. **Reutilize estes arquivos; não gere substitutos genéricos nem descarte o lote.** Todas essas imagens são **ilustrações geradas por IA**, não fotografias oficiais do hardware.
+- A estrutura LCR preferencial para assets da aplicação é \u0060code/public/assets/\u0060. Antes de migrar/referenciar o lote, verificar se o GitHub Pages realmente disponibiliza os arquivos e **preservar/propor atualização dos links que a planilha já possui**. Se a mudança exigir sobrescrever/renomear conteúdo fora do escopo, documentar e aplicar somente transformação não destrutiva.
+- **CI LCR_NAMING e LCR_AUDITORIA estão falhando em pushes recentes**, em razão de nomenclatura. Diagnóstico reproduzido a partir das regras de \u0060code/scripts/lcr_naming.py\u0060 sobre o Git tree: **10 caminhos fora do padrão** (nove PNGs ilustrativos com nomes kebab-case e \u0060documentation/history/TheJourneyOfBuildingTheLCRWorkflow_EN.md\u0060). O prompt e o ADR-0007 recém-criados **passam** na regra. Normalizar os assets tocados na implementação, mas **não reescrever silenciosamente o documento histórico**; reportar a pendência separadamente, caso persista.
+- Referência de execução com falha preexistente: https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42526523255 (Naming) e https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42526523193 (Auditoria).
+
 ## Escopo APROVADO — telas e experiência mínima
 
 ### A. Navegação limpa
