@@ -24,9 +24,13 @@ jobs:
         env:
           DRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
           DRIVE_FOLDER: ${{ vars.LCR_DRIVE_FOLDER_ID }}
+          CLIENT_ID: ${{ secrets.LCR_DRIVE_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.LCR_DRIVE_CLIENT_SECRET }}
         run: |
           test -n "$DRIVE_TOKEN" || { echo 'Configure Secret LCR_DRIVE_OAUTH_TOKEN'; exit 1; }
           test -n "$DRIVE_FOLDER" || { echo 'Configure Variable LCR_DRIVE_FOLDER_ID'; exit 1; }
+          test -n "$CLIENT_ID" || { echo 'Configure Secret LCR_DRIVE_CLIENT_ID'; exit 1; }
+          test -n "$CLIENT_SECRET" || { echo 'Configure Secret LCR_DRIVE_CLIENT_SECRET'; exit 1; }
       - name: Preparar snapshot datado e histórico completo
         run: |
           mkdir -p /tmp/lcr-backup
@@ -39,6 +43,8 @@ jobs:
           RCLONE_CONFIG_LCRDRIVE_TYPE: drive
           RCLONE_CONFIG_LCRDRIVE_SCOPE: drive
           RCLONE_CONFIG_LCRDRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
+          RCLONE_CONFIG_LCRDRIVE_CLIENT_ID: ${{ secrets.LCR_DRIVE_CLIENT_ID }}
+          RCLONE_CONFIG_LCRDRIVE_CLIENT_SECRET: ${{ secrets.LCR_DRIVE_CLIENT_SECRET }}
           RCLONE_CONFIG_LCRDRIVE_ROOT_FOLDER_ID: ${{ vars.LCR_DRIVE_FOLDER_ID }}
           REPOSITORY_NAME: ${{ github.event.repository.name }}
         run: |

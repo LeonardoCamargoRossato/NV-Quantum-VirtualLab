@@ -9,7 +9,11 @@
 Em **Settings → Secrets and variables → Actions**:
 - Variable `LCR_DRIVE_BACKUP_ENABLED` = `true`.
 - Variable `LCR_DRIVE_FOLDER_ID` = ID da pasta **do projeto específico** no Drive.
-- Repository secret `LCR_DRIVE_OAUTH_TOKEN` = JSON de token OAuth do Google Drive **gerado para o rclone com acesso autorizado** (de preferência escopos mínimos e token de atualização válido). Nunca coloque no Git ou em um prompt público.
+- Repository secret `LCR_DRIVE_OAUTH_TOKEN` = JSON do campo **token** do remote Google Drive no `rclone.conf`, com `refresh_token` e acesso de escrita autorizado. Não é o token do plugin ChatGPT.
+- Repository secret `LCR_DRIVE_CLIENT_ID` = OAuth Client ID da aplicação **Desktop app** criada no Google Cloud para o rclone.
+- Repository secret `LCR_DRIVE_CLIENT_SECRET` = OAuth Client Secret da mesma aplicação.
+- Em 2026, o Client ID compartilhado do rclone está em descontinuação; por isso o workflow exige credenciais OAuth próprias. Tutorial oficial: https://rclone.org/drive/#making-your-own-client-id .
+- No Linux Mint: instale `rclone`, execute `rclone config` e crie um remote do tipo **Google Drive**, usando seu Client ID e Secret, autorizando pelo navegador. Verifique com `rclone lsf NOME_DO_REMOTE:` antes de copiar o conteúdo do campo `token` para o GitHub Secret. Localize o arquivo com `rclone config file` — normalmente `~/.config/rclone/rclone.conf`. **Não compartilhe nem publique seu token, Client Secret ou o arquivo rclone.conf.**
 
 Valide a configuração de escopos e a autorização no Google; os tokens devem pertencer a uma conta com acesso de escrita à pasta de destino. O uso de conexão Google Drive no ChatGPT não substitui esse token.
 
