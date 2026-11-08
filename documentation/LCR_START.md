@@ -62,3 +62,5 @@ Marque os serviços necessários (módulos opcionais não criam dependências qu
 - `LCR_BACKUP`: somente após configuração segura; testar restauração.
 
 O LCR Workflow **não cria automaticamente** propriedades do Search Console ou credenciais OAuth sem as autorizações exigidas pelo provedor.
+## Backup central (novos projetos públicos)
+O `LCR_START` instala o marcador `documentation/LCR_START.md`. O backup central o detecta automaticamente no próximo ciclo; não copiar `LCR_BACKUP.yml` nem credenciais para o novo repositório. Ver `documentation/LCR_CENTRAL_BACKUP.md` no controlador.

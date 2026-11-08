@@ -23,3 +23,6 @@ Valide a configuração de escopos e a autorização no Google; os tokens devem 
 - A ação **não** acessa histórico privado de chats ChatGPT; documentos de sessão só entram após gravação autorizada no GitHub.
 - Antes de declarar "sincronizado", confirmar no Drive a existência do ADR/registro e os logs do job. Falhas devem ser reportadas e posteriormente reconciliadas.
 - **Limite técnico:** o espelhamento via Actions não utiliza o plugin do ChatGPT; depende de segredo/variáveis configurados pelo titular. A existência de `LCR_BACKUP.yml` por si só não ativa nada.
+
+## Substituição pelo backup central
+Para novos projetos **públicos**, não repetir os passos acima; este repositório controlador já tem as credenciais. Só instalar `LCR_START` para que seja descoberto no backup central. Consulte `LCR_CENTRAL_BACKUP.md`.

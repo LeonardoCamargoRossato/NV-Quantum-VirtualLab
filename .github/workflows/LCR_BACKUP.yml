@@ -1,13 +1,11 @@
-name: LCR Backup — snapshot, histórico e espelho documental no Drive
+name: LCR Backup — central e automatico para projetos publicos
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - 'documentation/**'
-      - '.agents/skills/**'
-      - 'AGENTS.md'
       - '.github/workflows/LCR_BACKUP.yml'
+      - 'code/scripts/lcr_central_backup.py'
   schedule:
     - cron: '9 4 * * *'
 permissions:
@@ -18,40 +16,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
-      - name: Verificar autorização do Google Drive
+          python-version: '3.12'
+      - name: Testar regras de elegibilidade
+        run: python -m unittest discover -s code/tests -p 'test_lcr_central_backup.py' -v
+      - name: Verificar credenciais existentes
         env:
           DRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
           DRIVE_FOLDER: ${{ vars.LCR_DRIVE_FOLDER_ID }}
           CLIENT_ID: ${{ secrets.LCR_DRIVE_CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.LCR_DRIVE_CLIENT_SECRET }}
         run: |
-          test -n "$DRIVE_TOKEN" || { echo 'Configure Secret LCR_DRIVE_OAUTH_TOKEN'; exit 1; }
-          test -n "$DRIVE_FOLDER" || { echo 'Configure Variable LCR_DRIVE_FOLDER_ID'; exit 1; }
-          test -n "$CLIENT_ID" || { echo 'Configure Secret LCR_DRIVE_CLIENT_ID'; exit 1; }
-          test -n "$CLIENT_SECRET" || { echo 'Configure Secret LCR_DRIVE_CLIENT_SECRET'; exit 1; }
-      - name: Preparar snapshot datado e histórico completo
-        run: |
-          mkdir -p /tmp/lcr-backup
-          git archive --format=zip --output=/tmp/lcr-backup/repository_snapshot.zip HEAD
-          git bundle create /tmp/lcr-backup/repository_history.bundle --all
-      - name: Instalar rclone
+          test -n "$DRIVE_TOKEN" || exit 1
+          test -n "$DRIVE_FOLDER" || exit 1
+          test -n "$CLIENT_ID" || exit 1
+          test -n "$CLIENT_SECRET" || exit 1
+      - name: Instalar rclone no servidor GitHub
         run: sudo apt-get update -qq && sudo apt-get install -y rclone
-      - name: Espelhar estrutura GitHub sem excluir histórico no Drive
+      - name: Descobrir e espelhar projetos iniciados com LCR_START
         env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           RCLONE_CONFIG_LCRDRIVE_TYPE: drive
           RCLONE_CONFIG_LCRDRIVE_SCOPE: drive
           RCLONE_CONFIG_LCRDRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
           RCLONE_CONFIG_LCRDRIVE_CLIENT_ID: ${{ secrets.LCR_DRIVE_CLIENT_ID }}
           RCLONE_CONFIG_LCRDRIVE_CLIENT_SECRET: ${{ secrets.LCR_DRIVE_CLIENT_SECRET }}
           RCLONE_CONFIG_LCRDRIVE_ROOT_FOLDER_ID: ${{ vars.LCR_DRIVE_FOLDER_ID }}
-          REPOSITORY_NAME: ${{ github.event.repository.name }}
-        run: |
-          rclone copy . "lcrdrive:${REPOSITORY_NAME}/repository" \
-            --exclude '/.git/**' --exclude '**/__pycache__/**' \
-            --checkers 2 --transfers 2
-          rclone copy /tmp/lcr-backup "lcrdrive:${REPOSITORY_NAME}/snapshots/$(date -u +%Y-%m-%d)" \
-            --checkers 2 --transfers 2
-          rclone lsf "lcrdrive:${REPOSITORY_NAME}/repository/documentation/"
-          rclone lsf "lcrdrive:${REPOSITORY_NAME}/snapshots/$(date -u +%Y-%m-%d)/"
+        run: python code/scripts/lcr_central_backup.py

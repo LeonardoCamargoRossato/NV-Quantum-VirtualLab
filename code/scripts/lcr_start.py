@@ -36,6 +36,9 @@ def template_files(root: Path):
         if relative in ROOT_FILES or relative.startswith(STRUCTURAL_PREFIXES):
             if relative.startswith(EXCLUDED_PREFIXES) or f.suffix.lower() in EXCLUDED_SUFFIXES:
                 continue
+            if relative == ".github/workflows/LCR_BACKUP.yml":
+                # Apenas o repositório controlador mantém o backup central.
+                continue
             if relative.startswith("documentation/decision-archive/") and relative not in ("documentation/decision-archive/README.md", "documentation/decision-archive/LCR_ADR_GUARDRAILS.md"):
                 continue
             if "/__pycache__/" in relative or relative.endswith(".pyc"):

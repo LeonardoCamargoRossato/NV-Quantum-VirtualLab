@@ -40,3 +40,6 @@ Todo prompt de desenvolvimento/upgrade recebe avaliação de necessidade de ADR.
 
 ## Persistência automática e backup Drive
 O Planner, ao produzir um **ADR real**, deve tentar registrar no GitHub e espelhar na pasta Drive do **projeto**, usando os conectores habilitados no turno. Isso não ocorre silenciosamente em segundo plano. Para espelhamento sem conversa aberta, configurar `.github/workflows/LCR_BACKUP.yml` conforme [guia de configuração](documentation/LCR_DRIVE_AUTOMATION_SETUP.md).
+
+## Backup central de projetos públicos
+O `LCR_BACKUP.yml` deste repositório atua como controlador e descobre novos projetos públicos com `documentation/LCR_START.md`. Reutiliza OAuth do Drive sem Secrets adicionais. Veja [guia do backup central](documentation/LCR_CENTRAL_BACKUP.md).
