@@ -5,7 +5,7 @@ Comandos são **convenções** interpretadas pelos chats que recebem estas instr
 | Comando | Comportamento esperado | Saída |
 |---|---|---|
 | `LCR_START <url>` | Criar apenas template estrutural no repositório autorizado e validar guardrails/nomes. | Pastas, arquivos e checklist de verificação |
-| `LCR_DEV` | Solicita ao Planner a geração do prompt de desenvolvimento/upgrade pelo modelo `DevelopmentPrompt.md`; equivalente a frase natural. | Prompt pronto para Codex/Builder |
+| `LCR_DEV` | Gera prompt de desenvolvimento/upgrade e avalia ADR automaticamente; se houver nova decisão significativa, gera outro arquivo Markdown. | Prompt (+ ADR se necessário) para revisão |
 | `LCR_HOTFIX` | Solicita prompt corretivo adaptativo pelo modelo único `HotfixPrompt.md`, compacto ou completo conforme complexidade. | Prompt pronto para Codex/Builder |
 | `LCR_BASIC_OPTIONS` | Durante o brainstorming com Planner, comparar opções; chamar Research/Security se necessário; não instalar nada. | Proposta de opções para aprovação |
 | `LCR_NAMING` | Inspecionar nomes dos caminhos versionados no Git, sem renomeação automática. | Relatório de nomes conformes ou violações |
@@ -14,6 +14,7 @@ Comandos são **convenções** interpretadas pelos chats que recebem estas instr
 | `LCR_AUDITORIA` | Solicita verificação de qualidade/segurança; relatório sem expor valores secretos. | Relatório do Auditor |
 | `LCR_SEO` | Solicita inspeção da indexação e documentação SEO. | Diagnóstico SEO |
 | `LCR_BACKUP` | Verifica a configuração e aciona backup autorizado; nunca afirma sucesso sem evidência. | Log/artefato de backup |
+| `LCR_ADR` | Avalia relevância arquitetural e gera ADR quando aplicável, seguindo `LCR_ADR_GUARDRAILS.md`. | ADR proposto/aprovado conforme evidência |
 | `LCR_DECISAO` | Prepara um ADR com contexto, alternativas e decisão pendente de aprovação. | Arquivo em `decision-archive/` |
 
 ## Contrato do LCR_DAY
@@ -55,3 +56,6 @@ Apresente opções técnicas adequadas ao projeto; se precisar de revisão cient
 
 ## Gerar prompts sem decorar comandos
 “Faça o prompt para o Builder”, “prepare esse upgrade para o Codex” ou “faça um hotfix” ativam, quando o Planner dispõe da skill/instruções, o procedimento `LCR_PROMPT_GENERATOR`. O comando é apenas um atalho opcional. O Planner escolhe um dos **dois** templates em `.agents/skills/lcr-prompt-generator/templates/`, respeita o destinatário humano e confere guardrails e caminhos reais antes de redigir. Redigir não equivale a executar.
+
+## Avaliação automática de ADR no LCR_DEV
+Sempre examinar o último ADR relevante e o brainstorming acessível. Não gerar ADR em todo upgrade por padrão. Se houver decisão nova significativa, entregar `DevelopmentPrompt.md` e `ADR-XXXX-titulo-curto.md` como dois documentos. Caso contrário, só o prompt com justificativa de uma linha. A skill `LCR_ADR_GENERATOR` é especializada nesse julgamento; o usuário não precisa chamá-la nominalmente.

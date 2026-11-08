@@ -1,6 +1,6 @@
 ---
 name: lcr-prompt-generator
-description: "Gerar prompts padronizados para Builder Aux ou Codex ao reconhecer pedidos naturais de implementação, desenvolvimento, upgrade ou hotfix no brainstorming do Planner, como 'faça o prompt para o Builder', 'mande para o Codex' ou 'prepare um hotfix'. Usa exatamente dois modelos: DevelopmentPrompt.md e HotfixPrompt.md."
+description: "Gerar prompts para Codex/Builder por linguagem natural com dois modelos (DevelopmentPrompt e HotfixPrompt). Em desenvolvimento/upgrade, avaliar automaticamente se há nova decisão arquitetural significativa e, quando houver, gerar também um ADR separado com lcr-adr-generator."
 ---
 
 # LCR Prompt Generator — Skill do Planner
@@ -23,11 +23,12 @@ Ative por linguagem natural quando o usuário pedir para **criar um prompt** que
 4. Determinar tipo e destinatário; preencher **um e somente um** dos dois templates da pasta `templates/`.
 5. Incluir data e hora até o minuto e fuso **somente quando verificados**. Na ausência de relógio confiável, usar "data/hora não verificada" para o executor preencher. Não fabricar cronologia.
 6. Inserir critérios de aceite proporcionais, verificações e testes. Guardrails são referência à fonte normativa, sem copiar dezenas de linhas desnecessárias.
-7. Gerar **somente o prompt**, pronto para copiar/enviar, e indicar qualquer informação indispensável ainda desconhecida. Não executar alterações nem declarar commit ou deploy feitos ao simplesmente gerar o texto.
-8. Quando aplicável, registrar o prompt ou seu resumo como evidência de sessão via `LCR_DAY`, sem publicar transcrições brutas sensíveis. Mudança arquitetural significativa requer ADR.
+7. **Avaliar necessidade de ADR em todo desenvolvimento/upgrade** antes de finalizar a entrega, preferencialmente acionando `lcr-adr-generator` (skill em `../lcr-adr-generator/SKILL.md`). Consultar a última decisão **relevante** em `documentation/decision-archive/`, o brainstorming efetivamente acessível e as normas em `documentation/decision-archive/LCR_ADR_GUARDRAILS.md`. **Tamanho do prompt não implica ADR.** Se houve decisão arquitetural significativa, gerar o prompt e, em sequência, **um ADR Markdown separado**, segundo `../lcr-adr-generator/templates/AdrTemplate.md`. Se não houve, gerar só o prompt e dizer em uma frase que ADR não foi necessário. Se não houver acesso à segunda skill, seguir os documentos de ADR diretamente, declarando essa limitação; nunca fingir acionamento.
+7b. **Apresentar arquivos de verdade quando ferramentas permitirem:** `DevelopmentPrompt.md` (ou nome específico em PascalCase) e `ADR-XXXX-titulo-curto.md`. Caso a interface não permita criar arquivos, apresentar os dois conteúdos Markdown completos separadamente, sem alegar arquivos anexados. O modelo `HotfixPrompt.md` continua único e normalmente dispensa ADR. **Não executar alterações nem declarar commit/deploy** ao apenas gerar o texto.
+8. Quando aplicável, registrar o prompt ou seu resumo como evidência de sessão via `LCR_DAY`, sem publicar transcrições brutas sensíveis. **Se a decisão já foi explicitamente aprovada no brainstorming, não solicitar novo OK para registrar o ADR**: marcar o ADR como aprovado com origem de aprovação. Sem aprovação comprovável, marcar proposto. Registros são rascunhos até persistência autorizada.
 
 ## Padrão mínimo de auditoria
-Toda saída tem tipo, destino, contexto/projeto, data/hora verificada ou ausência explícita, objetivo, escopo, guardrails/nomes dos documentos normativos, critério de aceite e pedido de relatório dos arquivos alterados. Em modo compacto, essas informações podem aparecer em **poucas linhas**.
+Toda saída tem tipo, destino, contexto/projeto, data/hora verificada ou ausência explícita, objetivo, escopo, guardrails/nomes dos documentos normativos, critério de aceite e pedido de relatório dos arquivos alterados. Em desenvolvimento, também informar a avaliação ADR: quando necessário, segundo arquivo separado; quando não, justificativa curta. Em modo compacto, essas informações podem aparecer em **poucas linhas**.
 
 ## Portabilidade
 Esta pasta é uma **skill distribuível para Codex** (`.agents/skills/`). Para ChatGPT, o arquivo no GitHub não equivale a instalação na conta: criar/carregar skill em ambiente elegível ou usar instruções do Projeto ChatGPT. Modelos incluídos em `templates/` garantem que um ZIP da skill seja autossuficiente.

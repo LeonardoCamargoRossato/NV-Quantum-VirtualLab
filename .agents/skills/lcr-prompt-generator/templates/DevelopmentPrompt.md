@@ -43,3 +43,10 @@
 
 ## Entrega
 Executar a implementação somente no ambiente autorizado. Não afirmar que deploy, integração externa ou teste foi concluído sem evidência.
+
+## Avaliação de ADR — obrigatória no fluxo, mas arquivo condicional
+Antes de entregar o prompt, solicitar avaliação a `lcr-adr-generator`, usando `LCR_ADR_GUARDRAILS.md` e o último ADR **relevante**. O tamanho da mudança **não** obriga ADR.
+- **Nova decisão arquitetural significativa? Sim:** gerar em seguida **outro Markdown** `ADR-XXXX-titulo-curto.md` pelo `AdrTemplate.md`; vincular o ADR no contexto deste prompt. Se a decisão já foi aprovada explicitamente no brainstorming, preservar essa aprovação sem perguntar novamente.
+- **Não:** entregar somente `DevelopmentPrompt.md` e nota breve "ADR avaliado: não necessário — [motivo]".
+- **Contexto insuficiente:** não inventar leitura de outros chats, aprovação nem número de ADR; declarar limitação de acesso.
+- **Importante:** `AdrTemplate.md` é template de registro de decisão, **não** um terceiro modelo de prompt.

@@ -16,3 +16,6 @@ Antes de **qualquer** prompt ou alteração, consultar:
 
 ## Prompts para Builder e Codex
 Quando o usuário pedir, em linguagem natural, para **criar um prompt** de desenvolvimento, upgrade ou hotfix, usar a skill `.agents/skills/lcr-prompt-generator/SKILL.md` e **somente** `DevelopmentPrompt.md` ou `HotfixPrompt.md`. Não exigir comando `/`, distinguir pedido de elaboração de pedido de execução, respeitar o destinatário escolhido e não inventar paths ou data/hora.
+
+## ADR condicional em prompts
+Ao gerar um prompt de desenvolvimento/upgrade, avaliar obrigatoriamente se existe **nova decisão arquitetural significativa**, consultando `documentation/decision-archive/LCR_ADR_GUARDRAILS.md`. Quando houver, usar `.agents/skills/lcr-adr-generator/SKILL.md` e entregar o ADR Markdown **após** o prompt. Sem decisão nova, só o prompt e nota breve. Não exigir novo OK para decisão que o humano já aprovou; não presumir histórico de outros chats.

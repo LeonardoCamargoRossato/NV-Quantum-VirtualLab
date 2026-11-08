@@ -29,3 +29,6 @@ Normas aplicáveis a Planner, Builder/Codex, Research, Drawer, Audio Designer e 
 
 ## Protocolo permanente de prompts
 Qualquer prompt para o Builder/Codex é elaborado pelo Planner com `LCR_PROMPT_GENERATOR` quando disponível, usando somente **desenvolvimento/upgrade** (`DevelopmentPrompt.md`) ou **hotfix adaptativo** (`HotfixPrompt.md`). O formato deve ser auditável e proporcional ao escopo, respeitar aprovação humana, guardrails, arquivos existentes e nomes oficiais. Nenhuma instrução pode afirmar execução, deploy, revisão ou commit que ainda não ocorreu. O destinatário escolhido pelo usuário prevalece; pedir “faça o prompt” não autoriza executá-lo.
+
+## Avaliação obrigatória de ADR em desenvolvimento
+Na geração de cada prompt de desenvolvimento/upgrade, avaliar se há **decisão arquitetural significativa nova**, sem criar ADR automático para mudanças meramente extensas. Aplicar `documentation/decision-archive/LCR_ADR_GUARDRAILS.md` e o template único `AdrTemplate.md`. Se necessário, entregar prompt e ADR como **dois arquivos Markdown** (ou conteúdos separados quando não houver ferramenta de criação). Não duplicar decisões existentes, inventar histórico inacessível ou exigir novamente aprovação humana já explicitamente dada no brainstorming. Hotfix comum não exige ADR; hotfix que implica mudança arquitetural deve ser reclassificado ou discutido.

@@ -68,6 +68,9 @@ def verify(root: Path) -> list[str]:
     needed = [
         ".gitignore", "AGENTS.md",
         ".agents/skills/lcr-prompt-generator/SKILL.md",
+        ".agents/skills/lcr-adr-generator/SKILL.md",
+        ".agents/skills/lcr-adr-generator/templates/AdrTemplate.md",
+        "documentation/decision-archive/LCR_ADR_GUARDRAILS.md",
         ".agents/skills/lcr-prompt-generator/templates/DevelopmentPrompt.md",
         ".agents/skills/lcr-prompt-generator/templates/HotfixPrompt.md",
         "documentation/prompt-templates/README.md",

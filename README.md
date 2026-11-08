@@ -30,3 +30,10 @@ Em repositório GitHub remoto, o Planner precisa de conexão de escrita e autori
 - [Instruções para Projeto ChatGPT](documentation/LCR_CHATGPT_PROJECT_INSTRUCTIONS.md)
 
 Ao solicitar “faça o prompt para o Builder”, o Planner pode selecionar automaticamente o modelo apropriado com acesso a estas instruções. A skill do repositório não é instalada automaticamente na conta ChatGPT.
+
+## Integração ADR + desenvolvimento
+- [LCR ADR Generator — skill](.agents/skills/lcr-adr-generator/SKILL.md)
+- [Modelo de registro ADR](.agents/skills/lcr-adr-generator/templates/AdrTemplate.md)
+- [Guardrails de decisão arquitetural](documentation/decision-archive/LCR_ADR_GUARDRAILS.md)
+
+Todo prompt de desenvolvimento/upgrade recebe avaliação de necessidade de ADR. Somente decisões arquiteturais significativas geram segundo arquivo Markdown; hotfixes comuns não.

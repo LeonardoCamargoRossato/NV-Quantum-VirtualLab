@@ -4,7 +4,8 @@
 
 | Skill proposta | Responsável natural | Aplicação |
 |---|---|---|
-| `LCR_PROMPT_GENERATOR` | Planner | Reconhecer pedidos em linguagem natural e produzir prompt via dois modelos: desenvolvimento/upgrade ou hotfix adaptativo. Artefato em `.agents/skills/lcr-prompt-generator/`. |
+| `LCR_PROMPT_GENERATOR` | Planner | Gerar prompt via dois modelos (desenvolvimento/upgrade ou hotfix adaptativo) e **avaliar automaticamente ADR** em desenvolvimento. Artefato em `.agents/skills/lcr-prompt-generator/`. |
+| `LCR_ADR_GENERATOR` | Planner (+ Research/Auditor se necessário) | Decidir se ADR é relevante; quando sim, documentar alternativas, trade-offs, status, confiança e ações, seguindo Zimmermann. Artefato em `.agents/skills/lcr-adr-generator/`. |
 | `LCR_PROJECT_BOOTSTRAP` | Planner + Builder | Preparar somente a estrutura, documentação e guardrails; escolhas tecnológicas ficam para o brainstorming. |
 | `LCR_NAMING_AUDIT` | Qualquer especialista + GitHub Actions | Checar pastas em kebab-case, Python em snake_case e arquivos personalizados em PascalCase. |
 | `LCR_BASIC_OPTIONS_REVIEW` | Planner + especialistas opcionais | Avaliar alternativas no brainstorming, sem provisionamento automático. |
