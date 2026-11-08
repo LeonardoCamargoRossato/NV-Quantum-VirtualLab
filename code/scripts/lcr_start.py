@@ -76,6 +76,7 @@ def verify(root: Path) -> list[str]:
         "documentation/prompt-templates/README.md",
         "documentation/LCR_CHATGPT_PROJECT_INSTRUCTIONS.md",
         "documentation/LCR_START.md", "documentation/LCR_WORKFLOW.md",
+        "documentation/LCR_DRIVE_AUTOMATION_SETUP.md",
         "documentation/LCR_GUARDRAILS.md", "documentation/LCR_NAMING_CONVENTIONS.md",
         "documentation/BASIC_COMMANDS.md", "documentation/BASIC_SKILLS.md",
         "documentation/decision-archive/README.md",

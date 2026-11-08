@@ -32,3 +32,6 @@ Qualquer prompt para o Builder/Codex é elaborado pelo Planner com `LCR_PROMPT_G
 
 ## Avaliação obrigatória de ADR em desenvolvimento
 Na geração de cada prompt de desenvolvimento/upgrade, avaliar se há **decisão arquitetural significativa nova**, sem criar ADR automático para mudanças meramente extensas. Aplicar `documentation/decision-archive/LCR_ADR_GUARDRAILS.md` e o template único `AdrTemplate.md`. Se necessário, entregar prompt e ADR como **dois arquivos Markdown** (ou conteúdos separados quando não houver ferramenta de criação). Não duplicar decisões existentes, inventar histórico inacessível ou exigir novamente aprovação humana já explicitamente dada no brainstorming. Hotfix comum não exige ADR; hotfix que implica mudança arquitetural deve ser reclassificado ou discutido.
+
+## Registro automático de ADRs e espelhamento
+Em **decisões reais** documentadas pelo Planner, o procedimento padrão é registrar o ADR no GitHub e, na mesma conversa, replicá-lo na pasta correspondente do Drive, após verificar ferramentas e permissões. A instrução para registrar não autoriza implementar código nem publicar dados sensíveis. Na ausência de integração de escrita, fornecer arquivo e estado `pendente`, sem fingir commit ou cópia. O espelhamento GitHub Actions fora do chat depende de credenciais Google específicas, independentemente do plugin do ChatGPT.

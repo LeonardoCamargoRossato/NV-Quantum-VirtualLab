@@ -36,3 +36,10 @@
 
 ## Formato e tamanho
 Documento curto e auditável, sempre proporcional à complexidade. Uma decisão importante por ADR, conectando outros registros quando necessário. Formato oficial único: `AdrTemplate.md`. Nomes finais: `ADR-0001-titulo-curto.md` e numeração baseada no índice verificado.
+
+## Persistência automática da decisão real
+- Depois de criar um ADR de uma decisão real e autorizada, o Planner deve **tentar persistir na mesma conversa**: commit no GitHub em `documentation/decision-archive/`, seguido de cópia/atualização na árvore equivalente do Google Drive do projeto.
+- A solicitação permanente de registro foi aprovada pelo usuário, sem necessidade de novo OK para decisões já aprovadas; respeitar confirmações da plataforma e não publicar segredos ou dados brutos privados.
+- Validar primeiro repositório, último índice, conteúdo, ausência de duplicação, status da decisão e vínculo ao ADR anterior. **Não salvar testes nem exemplos hipotéticos.**
+- Verificar retornos das duas integrações, fornecer links e status separados. Falha no Drive não autoriza declarar backup feito; criar pendência de sincronização. Não confundir Drive do framework com Drive de um projeto de aplicação.
+- A automação ocorre **no turno do agente que tenha acesso aos conectores**. A cópia contínua sem chat só acontece depois de habilitar `.github/workflows/LCR_BACKUP.yml` com suas próprias credenciais.

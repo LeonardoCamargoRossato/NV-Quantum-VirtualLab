@@ -19,3 +19,6 @@ Quando o usuário pedir, em linguagem natural, para **criar um prompt** de desen
 
 ## ADR condicional em prompts
 Ao gerar um prompt de desenvolvimento/upgrade, avaliar obrigatoriamente se existe **nova decisão arquitetural significativa**, consultando `documentation/decision-archive/LCR_ADR_GUARDRAILS.md`. Quando houver, usar `.agents/skills/lcr-adr-generator/SKILL.md` e entregar o ADR Markdown **após** o prompt. Sem decisão nova, só o prompt e nota breve. Não exigir novo OK para decisão que o humano já aprovou; não presumir histórico de outros chats.
+
+## Salvamento operacional do ADR
+Para uma **decisão real** com ADR, usar as integrações GitHub/Drive disponíveis no próprio turno para gravar em `documentation/decision-archive/` e espelhar na pasta do projeto no Drive. Mostrar links e status verificados; não persistir exemplos hipotéticos ou conteúdo privado. Se ferramenta não estiver disponível, indicar pendência e entregar arquivo. A configuração de backups por GitHub Actions é independente dos conectores do ChatGPT.

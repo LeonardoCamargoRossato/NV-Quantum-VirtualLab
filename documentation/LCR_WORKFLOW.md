@@ -90,3 +90,9 @@ Todos os papéis podem solicitá-la. A verificação inspeciona arquivos rastrea
 
 ## Gerador de ADR condicionado ao desenvolvimento
 Ao produzir um prompt de **desenvolvimento/upgrade**, o Planner sempre executa uma avaliação proporcional de relevância arquitetural, conforme `documentation/decision-archive/LCR_ADR_GUARDRAILS.md`. Se necessário, utiliza `lcr-adr-generator` para gerar **dois documentos Markdown consecutivos**: prompt e ADR. Caso não haja decisão nova, só o prompt, informando resumidamente o motivo. Um upgrade extenso não implica ADR por si só. Hotfixes geralmente não geram ADR. O último ADR **relevante**, não necessariamente o mais recente global, e o brainstorming acessível orientam a decisão. Decisão humana já aprovada no contexto não exige aprovação repetida. Sem evidência de aprovação, status `proposto`. O registro não executa a implementação nem confirma publicação.
+
+## Persistência de ADR e logs com ferramentas conectadas
+- **ADR gerado no brainstorming real:** tentar escrita GitHub em `documentation/decision-archive/`, seguida do espelho Drive no projeto correto; devolver URLs e status reais. Não pedir outra confirmação da mesma decisão se já aprovada, salvo exigência do host. Não registrar exemplos ou testes como decisões reais.
+- **LCR_DAY real:** após revisão de sensibilidade, salvar resumos e metadados do agente em `documentation/agents-archive/` e espelhar esses arquivos no Drive, quando os conectores permitirem; nunca publicar raw privado automaticamente.
+- **Backups sem chat:** GitHub Actions `LCR_BACKUP.yml` executa quando habilitado com o Secret de autenticação Google e variables de ativação/destino. O OAuth do plugin ChatGPT **não é herdado pelo GitHub Actions**. O workflow espelha arquivos e preserva snapshots datados; se não configurado, jobs ficam desabilitados.
+- **Verificação:** confirmar links, SHA do commit, caminhos e erros. A geração de prompt/ADR não significa que o Builder executou seu conteúdo.

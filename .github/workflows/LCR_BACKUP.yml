@@ -1,8 +1,15 @@
-name: LCR Backup — snapshot e histórico Git para Drive
+name: LCR Backup — snapshot, histórico e espelho documental no Drive
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'documentation/**'
+      - '.agents/skills/**'
+      - 'AGENTS.md'
+      - '.github/workflows/LCR_BACKUP.yml'
   schedule:
-    - cron: '9 4 * * *' # diário; só executa se variável de ativação = true
+    - cron: '9 4 * * *'
 permissions:
   contents: read
 jobs:
@@ -13,26 +20,32 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Verificar configuração
+      - name: Verificar autorização do Google Drive
         env:
           DRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
           DRIVE_FOLDER: ${{ vars.LCR_DRIVE_FOLDER_ID }}
         run: |
-          test -n "$DRIVE_TOKEN" || { echo 'Falta Secret LCR_DRIVE_OAUTH_TOKEN'; exit 1; }
-          test -n "$DRIVE_FOLDER" || { echo 'Falta Variable LCR_DRIVE_FOLDER_ID'; exit 1; }
-      - name: Preparar snapshot e histórico
+          test -n "$DRIVE_TOKEN" || { echo 'Configure Secret LCR_DRIVE_OAUTH_TOKEN'; exit 1; }
+          test -n "$DRIVE_FOLDER" || { echo 'Configure Variable LCR_DRIVE_FOLDER_ID'; exit 1; }
+      - name: Preparar snapshot datado e histórico completo
         run: |
           mkdir -p /tmp/lcr-backup
           git archive --format=zip --output=/tmp/lcr-backup/repository_snapshot.zip HEAD
           git bundle create /tmp/lcr-backup/repository_history.bundle --all
       - name: Instalar rclone
         run: sudo apt-get update -qq && sudo apt-get install -y rclone
-      - name: Copiar arquivos para pasta do Google Drive
+      - name: Espelhar estrutura GitHub sem excluir histórico no Drive
         env:
           RCLONE_CONFIG_LCRDRIVE_TYPE: drive
           RCLONE_CONFIG_LCRDRIVE_SCOPE: drive
           RCLONE_CONFIG_LCRDRIVE_TOKEN: ${{ secrets.LCR_DRIVE_OAUTH_TOKEN }}
           RCLONE_CONFIG_LCRDRIVE_ROOT_FOLDER_ID: ${{ vars.LCR_DRIVE_FOLDER_ID }}
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
         run: |
-          rclone copy /tmp/lcr-backup lcrdrive:${{ github.event.repository.name }}/$(date -u +%Y-%m-%d)             --create-empty-src-dirs --checkers 2 --transfers 2
-          rclone lsf lcrdrive:${{ github.event.repository.name }}/$(date -u +%Y-%m-%d)
+          rclone copy . "lcrdrive:${REPOSITORY_NAME}/repository" \
+            --exclude '/.git/**' --exclude '**/__pycache__/**' \
+            --checkers 2 --transfers 2
+          rclone copy /tmp/lcr-backup "lcrdrive:${REPOSITORY_NAME}/snapshots/$(date -u +%Y-%m-%d)" \
+            --checkers 2 --transfers 2
+          rclone lsf "lcrdrive:${REPOSITORY_NAME}/repository/documentation/"
+          rclone lsf "lcrdrive:${REPOSITORY_NAME}/snapshots/$(date -u +%Y-%m-%d)/"

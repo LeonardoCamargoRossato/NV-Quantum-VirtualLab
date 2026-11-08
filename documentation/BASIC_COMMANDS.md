@@ -59,3 +59,8 @@ Apresente opções técnicas adequadas ao projeto; se precisar de revisão cient
 
 ## Avaliação automática de ADR no LCR_DEV
 Sempre examinar o último ADR relevante e o brainstorming acessível. Não gerar ADR em todo upgrade por padrão. Se houver decisão nova significativa, entregar `DevelopmentPrompt.md` e `ADR-XXXX-titulo-curto.md` como dois documentos. Caso contrário, só o prompt com justificativa de uma linha. A skill `LCR_ADR_GENERATOR` é especializada nesse julgamento; o usuário não precisa chamá-la nominalmente.
+
+## Persistência de ADR e registros no Drive
+- `LCR_ADR`/desenvolvimento com ADR real: gerar `ADR-XXXX-...`, salvar no GitHub do projeto e espelhar no Drive correspondente na mesma conversa, se as duas ferramentas de escrita estiverem disponíveis; exibir links reais e pendências.
+- `LCR_DAY`: quando o agente encerrar uma sessão real, tentar persistir somente `daily_summary.md` e `data.json` revisados no GitHub e Drive; `raw_data.jsonl` **não** é publicado automaticamente em repo público. O histórico de chat não é lido automaticamente pelo GitHub Actions.
+- `LCR_BACKUP`: modo independente de chat, acionado pelo GitHub Actions após configuração manual de variável, pasta destino e segredo do Google; plugin Drive do ChatGPT sozinho não ativa o workflow.

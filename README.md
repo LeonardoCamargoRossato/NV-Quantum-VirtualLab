@@ -37,3 +37,6 @@ Ao solicitar “faça o prompt para o Builder”, o Planner pode selecionar auto
 - [Guardrails de decisão arquitetural](documentation/decision-archive/LCR_ADR_GUARDRAILS.md)
 
 Todo prompt de desenvolvimento/upgrade recebe avaliação de necessidade de ADR. Somente decisões arquiteturais significativas geram segundo arquivo Markdown; hotfixes comuns não.
+
+## Persistência automática e backup Drive
+O Planner, ao produzir um **ADR real**, deve tentar registrar no GitHub e espelhar na pasta Drive do **projeto**, usando os conectores habilitados no turno. Isso não ocorre silenciosamente em segundo plano. Para espelhamento sem conversa aberta, configurar `.github/workflows/LCR_BACKUP.yml` conforme [guia de configuração](documentation/LCR_DRIVE_AUTOMATION_SETUP.md).
