@@ -1,5 +1,13 @@
 # NV Quantum Virtual Lab — LCR Workflow Bootstrap
 
+## Acesso rápido ao NV Quantum Virtual Lab
+
+1. **Site do Virtual Lab:** em desenvolvimento — endereço público será adicionado depois da primeira publicação. Não existe deploy confirmado no momento.
+2. **Inventário de componentes:** [Uncut Gem — Inventário de Componentes (Google Planilhas)](https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit).
+
+**Prioridade atual da V0:** reprodução visual **2D interativa do Uncut Gem V1** com fotos reais, ficha de componentes, montagem e referências. A **V2** permanece no inventário como documentação para evolução futura; a opção **3D** está adiada, sem compromisso de implementação.
+
+
 Este repositório contém o **esqueleto documental e de automações** do LCR Workflow. O simulador/aplicação NV ainda precisa ser implementado em `code/src/`; a presença dos workflows **não** significa que o deploy ou integrações externas estejam ativos.
 
 - [Protocolo LCR](documentation/LCR_WORKFLOW.md)
