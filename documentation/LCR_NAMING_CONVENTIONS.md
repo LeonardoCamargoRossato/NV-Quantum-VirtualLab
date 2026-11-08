@@ -46,3 +46,6 @@ As escolhas PascalCase e kebab-case do LCR são **convenções internas**, não 
 
 ## Exceção para skills distribuíveis
 `SKILL.md` é um nome técnico **reservado** do formato de skills, preservado independentemente de PascalCase. O diretório especial `.agents/` também é permitido; a pasta da skill segue kebab-case (`lcr-prompt-generator/`). Os modelos `DevelopmentPrompt.md` e `HotfixPrompt.md` usam PascalCase. Referenciar `documentation/prompt-templates/README.md`, que aponta para as fontes canônicas sem duplicar os modelos.
+
+## Exceção para pastas de datas
+Arquivos de sessão e relatórios podem ser organizados por pastas com **datas ISO 8601** (`YYYY-MM-DD`), como `documentation/reports/daily/2026-11-07/` ou `documentation/agents-archive/planner/2026-11-08/`. Essas pastas são uma exceção intencional ao kebab-case; o verificador aceita o padrão numérico de data sem exigir renomear registros existentes.

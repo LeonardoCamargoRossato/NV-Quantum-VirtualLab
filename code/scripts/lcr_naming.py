@@ -32,6 +32,7 @@ SPECIAL = {
     "daily_summary.md", "raw_data.jsonl", "data.json",
     "summary.md", "github_activity.jsonl", "metadata.json",
 }
+DATE_DIRECTORY = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
 SPECIAL_DIRECTORIES = {".github", ".agents", ".vscode", ".idea", "__pycache__", ".pytest_cache"}
 SUFFIXES = (".test", ".spec", ".stories", ".module")
 
@@ -40,7 +41,7 @@ def check_path(raw: str) -> list[str]:
     path = Path(raw)
     issues: list[str] = []
     for part in path.parts[:-1]:
-        if part not in SPECIAL_DIRECTORIES and not KEBAB.fullmatch(part):
+        if part not in SPECIAL_DIRECTORIES and not KEBAB.fullmatch(part) and not DATE_DIRECTORY.fullmatch(part):
             issues.append(f"pasta '{part}' não segue kebab-case")
     name = path.name
     if name in SPECIAL or INSTITUTIONAL.fullmatch(name) or ADR.fullmatch(name):

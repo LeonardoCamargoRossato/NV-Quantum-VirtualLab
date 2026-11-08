@@ -40,6 +40,10 @@ class NamingConventionTests(unittest.TestCase):
                      ".github/workflows/LCR_NAMING.yml"):
             self.assertEqual(check_path(name), [], name)
 
+    def test_iso_date_directories_for_daily(self):
+        self.assertEqual(check_path("documentation/reports/daily/2026-11-07/github_activity.jsonl"), [])
+        self.assertEqual(check_path("documentation/agents-archive/planner/2026-11-08/daily_summary.md"), [])
+
     def test_invalid_names_reported(self):
         result = scan(["code/src/components/SimulationPanel.tsx",
                        "code/src/components/simulationPanel.tsx"])
