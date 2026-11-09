@@ -48,6 +48,7 @@ try {
   await page.getByRole("button", { name: "Tela cheia da fotografia" }).click();
   assert(await page.evaluate(() => Boolean(document.fullscreenElement) || Boolean(document.querySelector(".full-fallback"))));
   await page.keyboard.press("Escape");
+  await page.waitForFunction(() => !document.fullscreenElement && !document.querySelector(".full-fallback"), undefined, {timeout: 8000});
 
   await page.getByRole("button", { name: "Inventário", exact: true }).click();
   await page.getByText("33 de 33 itens", { exact: false }).waitFor();
