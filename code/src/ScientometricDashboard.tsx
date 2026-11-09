@@ -111,6 +111,7 @@ function PrivateSheet({expanded,onClose}:{expanded:boolean;onClose:()=>void}){
 
 function ScientometricFigures({pdfUrl,onSetPage,selectedPage}:{pdfUrl:string|null;onSetPage:(p:number|null)=>void;selectedPage:number|null}){
  const [index,setIndex]=useState(0);
+ const [figureExpanded,setFigureExpanded]=useState(false);
  const [pageInput,setPageInput]=useState(String(DOCUMENT_FIGURES[0].page));
  const [pageByFigure,setPageByFigure]=useState<Record<number,number>>({});
  const item=DOCUMENT_FIGURES[index];
@@ -125,7 +126,13 @@ function ScientometricFigures({pdfUrl,onSetPage,selectedPage}:{pdfUrl:string|nul
    <div className="sciento-figure-navigation"><button type="button" onClick={()=>next(-1)} aria-label="Figura anterior">←</button><strong>Figura {item.number} de {DOCUMENT_FIGURES.length}</strong><button type="button" onClick={()=>next(1)} aria-label="Próxima figura">→</button></div>
    <div className="sciento-figure-image">
      <iframe title={"Figura "+item.number+" no PDF privado, página "+(selectedPage??item.page)} src={pdfUrl?pdfUrl+"#page="+(selectedPage??item.page)+"&view=FitH":SCIENTOMETRIC_PDF_PREVIEW+"#page="+item.page} loading="lazy" referrerPolicy="no-referrer"/>
+     <button type="button" className="sciento-figure-expand" onClick={()=>setFigureExpanded(true)} aria-label={"Ampliar figura "+item.number}>⤢ Ampliar figura</button>
    </div>
+   {figureExpanded&&<div className="sciento-figure-modal" role="dialog" aria-modal="true" aria-label={"Figura "+item.number+" ampliada"}>
+     <div className="sciento-figure-modal-head"><div><strong>Figura {item.number} — {item.title}</strong><span>Artigo V0 · página {item.page} · PDF privado</span></div><button type="button" onClick={()=>setFigureExpanded(false)} aria-label="Fechar figura ampliada">× Fechar</button></div>
+     <iframe title={"Figura "+item.number+" ampliada — PDF página "+item.page} src={pdfUrl?pdfUrl+"#page="+(selectedPage??item.page)+"&view=FitH":SCIENTOMETRIC_PDF_PREVIEW+"#page="+item.page} referrerPolicy="no-referrer"/>
+     <p>{item.description} <Out href={SCIENTOMETRIC_PDF}>Abrir PDF privado na fonte</Out></p>
+   </div>}
    <div className="sciento-figure-caption"><h4>{item.title}</h4><p>{item.description}</p><span>{item.origin} · Página verificada no PDF exportado: {item.page}{selectedPage&&selectedPage!==item.page?" · página selecionada: "+selectedPage:""}</span></div>
    {pdfUrl&&<div className="sciento-page-locator"><label>Página desta figura no PDF carregado<input type="number" min="1" max="300" value={pageInput} onChange={e=>setPageInput(e.target.value)} placeholder="Ex.: 8"/></label><button type="button" onClick={()=>{const n=Number(pageInput);if(Number.isInteger(n)&&n>0&&n<=300){setPageByFigure(old=>({...old,[index]:n}));onSetPage(n)}}}>Localizar no PDF</button></div>}
    <p className="sciento-figure-footnote">Figura extraída do documento fonte em PDF privado: página {item.page}. A prévia do Google Drive exige acesso autorizado e pode ignorar o fragmento de página. Para navegar precisamente pelas figuras, carregue no navegador o PDF privado — seus dados não são enviados ao site.</p>
