@@ -20,10 +20,7 @@
       "image_type": "Imagem ilustrativa controlada (gerada por IA) — entrada micro-USB e pinos VIN/GND/3V3; NÃO é foto real",
       "sheet_sync": "CHECK",
       "image_cell_updated": true,
-      "notes_cell_updated": true,
-      "image_asset_status": "CHECK — imagem ilustrativa aplicada e verificada na planilha; revisão técnica permanece",
-      "image_source_kind": "IA — ilustrativa controlada, não fotografia real",
-      "requires_technical_review": true
+      "notes_cell_updated": true
     },
     {
       "tag": "UG-V1-0013",
@@ -78,7 +75,6 @@
       "status": "CHECK",
       "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C5 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
       "image": "UgV1B002.png",
-      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_id": "pcbfront",
       "source_box_px": [
         609,
@@ -86,11 +82,12 @@
         794,
         1561
       ],
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "approved_asset_sha256": "66ec052a3f2307a8a29691fcb8ec43ae44dec8a504c12205ec4bc2459bf3248f",
       "width": 555,
       "height": 261,
       "bytes": 62297,
+      "approved_asset_sha256": "66ec052a3f2307a8a29691fcb8ec43ae44dec8a504c12205ec4bc2459bf3248f",
       "sheet_sync": "CHECK",
       "image_cell_updated": true,
       "notes_cell_updated": true
@@ -104,7 +101,6 @@
       "status": "CHECK",
       "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C6 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
       "image": "UgV1B003.png",
-      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_id": "pcbfront",
       "source_box_px": [
         609,
@@ -112,11 +108,12 @@
         794,
         1481
       ],
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "approved_asset_sha256": "9b395c1144d091ea468492ebf2e16067cff2223902c31d3c2bfbd2d5ba2270c2",
       "width": 555,
       "height": 261,
       "bytes": 66489,
+      "approved_asset_sha256": "9b395c1144d091ea468492ebf2e16067cff2223902c31d3c2bfbd2d5ba2270c2",
       "sheet_sync": "CHECK",
       "image_cell_updated": true,
       "notes_cell_updated": true
@@ -130,7 +127,6 @@
       "status": "CHECK",
       "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C7 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
       "image": "UgV1B004.png",
-      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_id": "pcbfront",
       "source_box_px": [
         609,
@@ -138,11 +134,12 @@
         794,
         1725
       ],
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "approved_asset_sha256": "5d9207c9da419bd5ece0e2d695058b1c653f3185a98a294bb72c35c63a468587",
       "width": 555,
       "height": 261,
       "bytes": 56772,
+      "approved_asset_sha256": "5d9207c9da419bd5ece0e2d695058b1c653f3185a98a294bb72c35c63a468587",
       "sheet_sync": "CHECK",
       "image_cell_updated": true,
       "notes_cell_updated": true
@@ -156,7 +153,6 @@
       "status": "CHECK",
       "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C8 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
       "image": "UgV1B005.png",
-      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_id": "pcbfront",
       "source_box_px": [
         609,
@@ -164,11 +160,12 @@
         794,
         1644
       ],
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "approved_asset_sha256": "6fa8bc7ba23ee6492922d05ea061a8e7f2790a6bb051bbbbef6e28a40a5591f6",
       "width": 555,
       "height": 267,
       "bytes": 62933,
+      "approved_asset_sha256": "6fa8bc7ba23ee6492922d05ea061a8e7f2790a6bb051bbbbef6e28a40a5591f6",
       "sheet_sync": "CHECK",
       "image_cell_updated": true,
       "notes_cell_updated": true
@@ -182,7 +179,6 @@
       "status": "CHECK",
       "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C9 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
       "image": "UgV1B006.png",
-      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_id": "pcbfront",
       "source_box_px": [
         609,
@@ -190,11 +186,12 @@
         794,
         1400
       ],
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "approved_asset_sha256": "252d62294e411f49af783d7494ea04a6f46837821b43e8f1d883a491379c0e7e",
       "width": 555,
       "height": 444,
       "bytes": 116747,
+      "approved_asset_sha256": "252d62294e411f49af783d7494ea04a6f46837821b43e8f1d883a491379c0e7e",
       "sheet_sync": "CHECK",
       "image_cell_updated": true,
       "notes_cell_updated": true
@@ -208,7 +205,6 @@
       "status": "CHECK",
       "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C10 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
       "image": "UgV1B007.png",
-      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_id": "pcbfront",
       "source_box_px": [
         609,
@@ -216,11 +212,12 @@
         794,
         1871
       ],
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "approved_asset_sha256": "4fc2d1f924f9c5a8333ce3b4404e3b659fb3b4b62ab00f41d5baa2e80bcfcc9e",
       "width": 555,
       "height": 438,
       "bytes": 102981,
+      "approved_asset_sha256": "4fc2d1f924f9c5a8333ce3b4404e3b659fb3b4b62ab00f41d5baa2e80bcfcc9e",
       "sheet_sync": "CHECK",
       "image_cell_updated": true,
       "notes_cell_updated": true
