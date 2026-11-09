@@ -212,3 +212,7 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .lightbox-dialog{width:98vw;height:93dvh}
  .lightbox-heading{align-items:flex-start;flex-direction:column}
 }
+
+/* Miniaturas dos hotspots: apenas recortes da fotografia oficial, sem conteúdo sintético. */
+.hotspot-mini{display:block;position:relative;overflow:hidden;width:128px;margin-top:7px;border:1px solid #D6DDE7;border-radius:5px;background:#EEF0F4}
+.hotspot-tooltip{min-width:150px}
