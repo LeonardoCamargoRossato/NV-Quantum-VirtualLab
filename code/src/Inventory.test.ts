@@ -42,10 +42,10 @@ describe("inventário V1", () => {
   });
   it("rejeita snapshot validado incompleto e não confunde pendente com validado", () => {
     expect(() =>
-      validateSnapshot({ schemaVersion: 2, status: "validated", items: [] }),
+      validateSnapshot({ schemaVersion: 3, status: "validated", items: [] }),
     ).toThrow();
     expect(
-      validateSnapshot({ schemaVersion: 2, status: "pending", items: [] })
+      validateSnapshot({ schemaVersion: 3, status: "pending", items: [] })
         .status,
     ).toBe("pending");
   });
@@ -57,6 +57,10 @@ describe("catálogo canônico", () => {
     const data = validateSnapshot(canonical);
     expect(data.items.filter(i=>i.layer==="A")).toHaveLength(10);
     expect(data.items.filter(i=>i.layer==="B")).toHaveLength(69);
+    expect("legacyItems" in data).toBe(false);
+    expect("legacyOnlyTags" in data).toBe(false);
+    expect(data.items.find(i=>i.tag==="UG-V1-B041")?.name).toBe("Face frontal da PCB");
+    expect(data.items.find(i=>i.tag==="UG-V1-B042")?.name).toBe("Face traseira da PCB");
     const child = data.items.find(i=>i.layer==="B")!;
     expect(filterItems(data.items,child.parent,"","")).toContain(child);
   });
