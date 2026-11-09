@@ -1,13 +1,9 @@
 name: LCR Backup — central e automatico para projetos publicos
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/LCR_BACKUP.yml'
-      - 'code/scripts/lcr_central_backup.py'
   schedule:
-    - cron: '9 4 * * *'
+    # 23:55 America/Sao_Paulo (UTC-3), na noite do dia anterior.
+    - cron: '55 2 * * *'
 permissions:
   contents: read
 jobs:

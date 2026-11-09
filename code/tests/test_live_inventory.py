@@ -25,7 +25,7 @@ class LiveInventoryTest(unittest.TestCase):
             self.assertEqual(set(item.keys()), {
                 "tag", "name", "pcb", "subsystem", "quantity", "model", "function",
                 "location", "price", "imageType", "imageUrl", "source", "datasheet", "notes",
-                "category", "layer", "parent", "parentTag", "legacyTag", "face", "imageFormula"
+                "category", "layer", "parent", "parentTag", "legacyTag", "face", "imageFormula", "imageStatus", "imageClass", "imageNotes", "imageSource"
             })
     def test_hierarchy_and_legacy_views(self):
         data = json.loads(SNAPSHOT.read_text(encoding="utf-8"))

@@ -7,7 +7,7 @@ import {
   type Item,
 } from "./Inventory";
 const item: Item = {
-  category:"componente", layer:"B", parent:"Óptica", parentTag:"UG-V1-S01", legacyTag:"UG-V1-0001", face:"Frente", imageFormula:"",
+  imageStatus:"", imageClass:"", imageNotes:"", imageSource:"", category:"componente", layer:"B", parent:"Óptica", parentTag:"UG-V1-S01", legacyTag:"UG-V1-0001", face:"Frente", imageFormula:"",
   tag: "UG-V1-0001",
   name: "Amplificador",
   pcb: "U1",
@@ -48,5 +48,27 @@ describe("inventário V1", () => {
       validateSnapshot({ schemaVersion: 2, status: "pending", items: [] })
         .status,
     ).toBe("pending");
+  });
+});
+
+import canonical from "../source/InventoryV1.json";
+describe("catálogo canônico", () => {
+  it("valida as duas camadas e busca metadados de hierarquia", () => {
+    const data = validateSnapshot(canonical);
+    expect(data.items.filter(i=>i.layer==="A")).toHaveLength(10);
+    expect(data.items.filter(i=>i.layer==="B")).toHaveLength(69);
+    const child = data.items.find(i=>i.layer==="B")!;
+    expect(filterItems(data.items,child.parent,"","")).toContain(child);
+  });
+  it("rejeita tags duplicadas, hierarquia órfã e imagens executáveis", () => {
+    const duplicate = structuredClone(canonical);
+    duplicate.items[1].tag = duplicate.items[0].tag;
+    expect(()=>validateSnapshot(duplicate)).toThrow();
+    const orphan = structuredClone(canonical);
+    orphan.items.find(i=>i.layer==="B")!.parentTag="UG-V1-S99";
+    expect(()=>validateSnapshot(orphan)).toThrow();
+    const unsafe = structuredClone(canonical);
+    unsafe.items[0].imageUrl="javascript:alert(1)";
+    expect(()=>validateSnapshot(unsafe)).toThrow();
   });
 });

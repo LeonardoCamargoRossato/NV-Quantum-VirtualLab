@@ -64,11 +64,12 @@ def consolidate(path=SOURCE):
         if old:
             for key, value in old.items():
                 if key == 'tag': continue
-                if value and not item[key]:
+                if value and not item[key] and (old['tag'] == item['tag'] or key in ('source', 'datasheet')):
                     item[key] = value
                     fills.append({'tag': item['tag'], 'field': key, 'from': old['tag']})
                 elif value and item[key] != value:
                     differences.append({'tag': item['tag'], 'field': key, 'canonical': item[key], 'legacy': value, 'legacyTag': old['tag']})
+        if item['category'] not in ('subsistema', 'componente'): raise ValueError('Categoria inválida')
         item['layer'] = 'A' if item['category'] == 'subsistema' else 'B'
         result.append(item)
     parents = {i['name']: i['tag'] for i in result if i['layer'] == 'A'}
@@ -80,12 +81,40 @@ def consolidate(path=SOURCE):
             if not validate_url(item[field]): raise ValueError('URL inválida: ' + item['tag'])
     if len(result) != 79 or len({i['tag'] for i in result}) != 79 or sum(i['layer'] == 'A' for i in result) != 10:
         raise ValueError('Exigidos 79 registros únicos, 10 subsistemas e 69 componentes')
+    # Approved image/face evidence from the Builder supplements the workbook,
+    # retained with full provenance instead of a competing runtime catalog.
+    evidence_root = ROOT / 'source/evidence'
+    plans = json.loads((evidence_root / 'LayerBComponentImagePlan.json').read_text(encoding='utf-8'))
+    faces = json.loads((evidence_root / 'LayerBBoardFaceIndex.json').read_text(encoding='utf-8'))
+    images = {i['tag']: i for i in plans['components']}
+    board_faces = {i['tag']: i['face'] for i in faces['items']}
+    for item in result:
+        evidence = images.get(item['tag'], {})
+        item['imageStatus'] = evidence.get('status', '')
+        item['imageClass'] = evidence.get('class', '')
+        item['imageNotes'] = evidence.get('notes', '')
+        item['imageSource'] = evidence.get('source_technical', '')
+        if item['tag'] in board_faces:
+            item['face'] = board_faces[item['tag']]
+        if evidence.get('status') == 'CHECK' and evidence.get('filename'):
+            item['imageUrl'] = 'https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/' + evidence['filename']
+            item['imageType'] = evidence.get('image_type') or item['imageType']
+        elif evidence.get('existing_image_url'):
+            item['imageUrl'] = evidence['existing_image_url']
+            item['imageType'] = evidence.get('existing_image_type') or item['imageType']
+        # Follow the upstream naming migration while preserving original values in the XLSX.
+        for key in ('imageUrl',):
+            url = item[key]
+            if '/assets/components/illustrative/ug-v1-' in url:
+                stem = url.rsplit('/',1)[-1].removesuffix('.png')
+                item[key] = url.rsplit('/',1)[0] + '/' + ''.join(w.title() for w in stem.split('-')) + '.png'
+        if item['imageUrl'] and not validate_url(item['imageUrl']): raise ValueError('Imagem inválida')
     linked = {i['legacyTag'] or i['tag'] for i in result}
     return {'schemaVersion': 2, 'status': 'validated', 'source': 'XLSX autorizado — Uncut Gem V1, árvore canônica e legado preservado',
             'sourceUrl': 'https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=2026110901#gid=2026110901',
             'sourceFile': SOURCE.name, 'sourceSheet': tree_name, 'snapshotAt': '2026-11-09',
             'snapshotDateNote': 'Data de recebimento do arquivo; horário de sincronização online não verificado.',
-            'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'items': result, 'legacyItems': legacy,
+            'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'evidenceSha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(evidence_root.glob('*.json'))}, 'items': result, 'legacyItems': legacy,
             'legacyOnlyTags': [i['tag'] for i in legacy if i['tag'] not in linked],
             'consolidation': {'filledFields': fills, 'differences': differences, 'policy': 'Árvore prevalece; preencher lacunas com legado vinculado; preservar valores divergentes neste relatório.'}}
 

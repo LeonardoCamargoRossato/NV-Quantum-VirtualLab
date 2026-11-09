@@ -97,7 +97,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Resistors_on_tape.jpg — Domínio público",
       "datasheet": "",
       "notes": "Confirmar função/valores pelo esquemático antes da compra."
@@ -113,7 +113,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Resistors_on_tape.jpg — Domínio público",
       "datasheet": "",
       "notes": "Confirmar função/valores pelo esquemático antes da compra."
@@ -129,7 +129,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Resistors_on_tape.jpg — Domínio público",
       "datasheet": "",
       "notes": "Confirmar função/valores pelo esquemático antes da compra."
@@ -145,7 +145,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Photo-SMDcapacitors.jpg — Domínio público",
       "datasheet": "",
       "notes": "Confirmar função/valores pelo esquemático antes da compra."
@@ -161,7 +161,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Photo-SMDcapacitors.jpg — Domínio público",
       "datasheet": "",
       "notes": "Confirmar função/valores pelo esquemático antes da compra."
@@ -177,7 +177,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Photo-SMDcapacitors.jpg — Domínio público",
       "datasheet": "",
       "notes": "Confirmar função/valores pelo esquemático antes da compra."
@@ -193,7 +193,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-eletrolitico-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorEletroliticoIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Photo-SMDcapacitors.jpg — Domínio público",
       "datasheet": "",
       "notes": "Confirmar função/valores pelo esquemático antes da compra."
@@ -497,7 +497,7 @@
       "location": "5V_SUPP1/USB",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-power-bank-usb-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1PowerBankUsbIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:USB_power_bank.jpg — Domínio público",
       "datasheet": "",
       "notes": "Opção ilustrativa: power bank USB 5 V ou fonte de bancada 5 V com limite de corrente/proteção. Confirmar tensão, capacidade e proteção antes do uso; não ligar diretamente ao notebook durante testes iniciais."
@@ -513,7 +513,7 @@
       "location": "Externo, próximo ao prisma",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-ima-neodimio-disco-ilustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ImaNeodimioDiscoIlustrativo.png",
       "source": "https://commons.wikimedia.org/wiki/File:Neodym_Magnete.jpg — Domínio público",
       "datasheet": "",
       "notes": "O guia menciona um ímã pequeno para teste, sem exigir composição específica. Exemplos: disco NdFeB pequeno; cubo NdFeB pequeno; ímã de ferrite pequeno (campo menor em geral). Controlar distância e evitar saturar/deslocar excessivamente a ressonância."

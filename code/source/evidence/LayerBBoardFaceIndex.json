@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "label": "Face da PCB — árvore Uncut Gem V1",
+  "spreadsheetId": "158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU",
+  "sheetGid": 2026110901,
+  "source": "KiCad DiamondGeezer.kicad_pcb / photo of V1 device / inventory",
+  "note": "Frente/Verso represent the position of a part or its reference footprint; Externo à PCB and Interno ao módulo are not separate PCB footprints. C5–C10: F.Cu verified. Image previews are not published or approved.",
+  "items": [
+    {
+      "tag": "UG-V1-S01",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-S02",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-S03",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-S04",
+      "face": "Verso"
+    },
+    {
+      "tag": "UG-V1-S05",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-S06",
+      "face": "Ambas"
+    },
+    {
+      "tag": "UG-V1-S07",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-S08",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-S09",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-S10",
+      "face": "Ambas"
+    },
+    {
+      "tag": "UG-V1-0031",
+      "face": "Externo à PCB"
+    },
+    {
+      "tag": "UG-V1-0013",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B001",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B002",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B003",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B004",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B005",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B006",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B007",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0004",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B008",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B009",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B010",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B011",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B012",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B013",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B014",
+      "face": "Interno ao módulo"
+    },
+    {
+      "tag": "UG-V1-0022",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B015",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B016",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B017",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0018",
+      "face": "Verso"
+    },
+    {
+      "tag": "UG-V1-0017",
+      "face": "Verso"
+    },
+    {
+      "tag": "UG-V1-B018",
+      "face": "Verso"
+    },
+    {
+      "tag": "UG-V1-B019",
+      "face": "Verso"
+    },
+    {
+      "tag": "UG-V1-B020",
+      "face": "Verso"
+    },
+    {
+      "tag": "UG-V1-0019",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B021",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B022",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B023",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B024",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B025",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0020",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0021",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B026",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B027",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0023",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0024",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0027",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0028",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0025",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0026",
+      "face": "Externo à PCB"
+    },
+    {
+      "tag": "UG-V1-0016",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B028",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0005",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0015",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B029",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B030",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B031",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B032",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B033",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B034",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B035",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B036",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B037",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0030",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0014",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B038",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B039",
+      "face": "Interno ao módulo"
+    },
+    {
+      "tag": "UG-V1-B040",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0001",
+      "face": "Ambas"
+    },
+    {
+      "tag": "UG-V1-0033",
+      "face": "Ambas"
+    },
+    {
+      "tag": "UG-V1-0029",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-0032",
+      "face": "Externo à PCB"
+    },
+    {
+      "tag": "UG-V1-B041",
+      "face": "Frente"
+    },
+    {
+      "tag": "UG-V1-B042",
+      "face": "Verso"
+    },
+    {
+      "tag": "UG-V1-B043",
+      "face": "Ambas"
+    },
+    {
+      "tag": "UG-V1-B044",
+      "face": "Ambas"
+    },
+    {
+      "tag": "UG-V1-B045",
+      "face": "Ambas"
+    }
+  ]
+}

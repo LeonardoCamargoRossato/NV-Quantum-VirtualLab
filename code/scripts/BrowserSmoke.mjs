@@ -16,16 +16,45 @@ try {
   await page.goto(process.env.APP_URL || "http://127.0.0.1:5173/NV-Quantum-VirtualLab/", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { name: "Explorar" }).waitFor();
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).waitFor();
-  assert.equal(await page.locator(".side-navigation button").count(), 9);
+  // A primeira visita abre o Laboratório e os itens da Uncut Gem V1.
+  const labGroup = page.getByRole("button",{name:"Laboratório",exact:true});
+  const v1Branch = page.getByRole("button",{name:"Uncut Gem V1",exact:true});
+  const researchGroup = page.getByRole("button",{name:"Estudo e Pesquisa",exact:true});
+  assert.equal(await labGroup.getAttribute("aria-expanded"),"true");
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"true");
+  assert.equal(await researchGroup.getAttribute("aria-expanded"),"false");
+  assert.equal(await page.locator(".side-navigation button:visible").count(),9);
+  // Expandir/recolher independentemente, sem navegar para páginas fictícias.
+  await v1Branch.click();
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"false");
+  await v1Branch.click();
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"true");
+  await labGroup.click();
+  assert.equal(await labGroup.getAttribute("aria-expanded"),"false");
+  await labGroup.click();
+  assert.equal(await labGroup.getAttribute("aria-expanded"),"true");
+  // V2 e modelo 3D são placeholders honestos, com rotas próprias.
+  await page.getByRole("button",{name:/Uncut Gem V2.*Ainda não implementado/}).click();
+  await page.getByRole("heading",{name:"Uncut Gem V2"}).waitFor();
+  await page.getByText("Ainda não identificado · Ainda não implementado").waitFor();
+  const model3d = page.getByRole("button",{name:/NV-Print 3D Stegemann/});
+  assert.equal(await model3d.getAttribute("title"),"Implementações futuras");
+  await model3d.click();
+  await page.getByRole("heading",{name:"NV-Print 3D Stegemann"}).waitFor();
+  await page.getByText("Implementações futuras",{exact:true}).first().waitFor();
+  await page.getByRole("button",{name:"Voltar ao Uncut Gem V1"}).click();
+  await page.getByRole("heading",{name:"Explorar"}).waitFor();
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"true");
+  console.log("PASS: árvore Laboratório / V1 / V2 / NV-Print 3D Stegemann e rotas futuras.");
   assert(await page.locator(".photo-stage>img").evaluate(img => img.complete && img.naturalWidth > 0), "Imagem original precisa carregar");
   // Regressão do hotfix: os 11 recortes estavam no Git, mas faltaram no deploy.
   const expectedEnhancedPngs = [
-    "ug-v1-overview-enhanced.png", "ug-v1-pcb-enhanced.png",
-    "ug-v1-esp32-enhanced.png", "ug-v1-rf-amp-enhanced.png",
-    "ug-v1-laser-enhanced.png", "ug-v1-prism-enhanced.png",
-    "ug-v1-oled-enhanced.png", "ug-v1-rf-cable-enhanced.png",
-    "ug-v1-between-rf-and-esp32-enhanced.png",
-    "ug-v1-above-esp32-enhanced.png", "ug-v1-laser-driver-enhanced.png",
+    "UgV1OverviewEnhanced.png", "UgV1PcbEnhanced.png",
+    "UgV1Esp32Enhanced.png", "UgV1RfAmpEnhanced.png",
+    "UgV1LaserEnhanced.png", "UgV1PrismEnhanced.png",
+    "UgV1OledEnhanced.png", "UgV1RfCableEnhanced.png",
+    "UgV1BetweenRfAndEsp32Enhanced.png",
+    "UgV1AboveEsp32Enhanced.png", "UgV1LaserDriverEnhanced.png",
   ];
   const assetsRoot = new URL("assets/official/v1/enhanced/", page.url());
   for (const fileName of expectedEnhancedPngs) {
@@ -103,6 +132,16 @@ try {
   await page.getByLabel("Face da PCB",{exact:true}).selectOption("Verso");
   assert.equal(await page.locator(".inventory-card").count(),7);
   await page.getByRole("button",{name:"Limpar filtros"}).click();
+  await page.getByRole("searchbox").fill("capacitor");
+  const approved = page.locator('.inventory-card img[src*="UgV1B00"]');
+  await page.waitForFunction(()=>{
+    const images=[...document.querySelectorAll('.inventory-card img[src*="UgV1B00"]')];
+    return images.length===6&&images.every(i=>i.complete&&i.naturalWidth>0);
+  },undefined,{timeout:18000});
+  assert.equal(await approved.count(),6);
+  await page.screenshot({path:join(shots,"UnifiedInventoryCapacitors.png"),fullPage:true});
+  await page.getByRole("button",{name:"Limpar filtros"}).click();
+  await page.screenshot({path:join(shots,"UnifiedInventoryCards.png"),fullPage:true});
   await page.getByRole("button",{name:"☷ Lista"}).click();
   assert.equal(await page.locator(".inventory-table tbody tr").count(),79);
   await page.getByRole("button",{name:"Explorar",exact:true}).click();
@@ -114,7 +153,7 @@ try {
   await page.getByRole("button",{name:/UG-V1-0002.*vista histórica/}).click();
   await page.getByRole("complementary",{name:/Painel de informações: PCB — face frontal/}).waitFor();
   await page.getByRole("button",{name:"Fechar inspetor"}).click();
-  await page.getByRole("searchbox").fill("UG-V1-0028");
+  await page.getByRole("searchbox").fill("UG-V1-B045");
   await page.getByText("1 de 79 itens", { exact: false }).waitFor();
   const expectedDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "CSV · filtrados" }).click();
@@ -147,34 +186,92 @@ try {
 
   await page.getByRole("button", { name: "Guia de montagem" }).click();
   assert.equal(await page.locator(".layer-grid img").count(), 3);
+  await researchGroup.click();
+  assert.equal(await researchGroup.getAttribute("aria-expanded"),"true");
   await page.getByRole("button", { name: "Fundamentos" }).click();
   assert.equal(await page.locator(".fundamental").count(), 6);
-  await page.getByRole("button", { name: "Artigos" }).click();
+  const reviewBranch=page.getByRole("button",{name:"Revisão Bibliográfica",exact:true});
+  await reviewBranch.click();
+  assert.equal(await reviewBranch.getAttribute("aria-expanded"),"true");
+  await page.getByRole("button", { name: "Artigos",exact:true }).click();
   assert.equal(await page.locator(".paper-card").count(), 3);
-  await page.getByRole("button", { name: "Revisão Bibliográfica" }).click();
-  assert(await page.getByText("Acesso sujeito às permissões do proprietário.", { exact:false }).isVisible());
-  await page.getByRole("button", { name: "Referências" }).click();
+  await page.getByRole("button", { name: "Revisão Cientométrica" }).click();
+  await page.getByRole("heading",{name:"Revisão Cientométrica",exact:true}).waitFor();
+  assert.equal(await page.locator(".sciento-kpi").count(),7);
+  assert(await page.getByText("419",{exact:true}).isVisible());
+  assert(await page.getByText("245",{exact:true}).isVisible());
+  assert(await page.getByText("172",{exact:true}).isVisible());
+  assert.equal(await page.locator(".sciento-equation").count(),3);
+  assert.equal(await page.locator(".sciento-figures .sciento-figure-navigation").count(),1);
+  assert.equal(await page.getByRole("button",{name:"Copiar equação de busca"}).count(),3);
+  assert.equal(await page.getByRole("link",{name:/Abrir no Google Planilhas/}).count(),1);
+  assert.equal(await page.getByRole("button",{name:/baixar/i}).count(),0,"Sem botão de download no dashboard");
+  await page.getByRole("button",{name:"Tabela pesquisável"}).click();
+  await page.locator('input[accept=".csv,text/csv"]').setInputFiles({
+    name:"TestePrivado.csv",mimeType:"text/csv",
+    buffer:Buffer.from('Nº,Sua decisão,Título original,Autores,Palavras-chave originais\n1,Manter,Quantum magnetometer,Alice,NV centers\n2,Apoio teórico,Magnetic navigation,Bob,INS\n')
+  });
+  await page.getByText("2 de 2 linhas exibidas.",{exact:false}).waitFor();
+  await page.getByRole("searchbox",{name:/Buscar título/}).fill("Quantum");
+  await page.getByText("1 de 2 linhas exibidas.",{exact:false}).waitFor();
+  await page.getByRole("button",{name:"Expandir",exact:true}).click();
+  assert.equal(await page.locator(".sciento-sheet-panel.expanded").count(),1);
+  await page.getByRole("button",{name:"Fechar ampliação"}).click();
+  assert.equal(await page.locator(".sciento-sheet-panel.expanded").count(),0);
+  await page.getByRole("button",{name:"Figura anterior"}).click();
+  assert(await page.getByText("Figura 4 de 4",{exact:true}).isVisible());
+  await page.getByRole("button",{name:"Próxima figura"}).click();
+  assert(await page.getByText("Figura 1 de 4",{exact:true}).isVisible());
+  assert((await page.locator(".sciento-figures iframe").getAttribute("src")).includes("1pouGbfNMHSnZkp-MIDdNgP34CJXlA7aG"),"Carrossel deve apontar ao PDF cientométrico correto");
+  assert((await page.locator(".sciento-document iframe").getAttribute("src")).includes("1pouGbfNMHSnZkp-MIDdNgP34CJXlA7aG"),"Visualizador deve apontar ao PDF cientométrico correto");
+  await page.getByRole("button",{name:"Ampliar figura 1"}).click();
+  await page.getByRole("dialog",{name:"Figura 1 ampliada"}).waitFor();
+  assert(await page.getByRole("dialog",{name:"Figura 1 ampliada"}).locator("iframe").getAttribute("src"));
+  await page.getByRole("button",{name:"Fechar figura ampliada"}).click();
+  assert.equal(await page.getByRole("dialog",{name:"Figura 1 ampliada"}).count(),0);
+  await page.getByRole("button",{name:"Revisão de Patentes"}).click();
+  await page.getByRole("heading",{name:"Revisão de Patentes"}).waitFor();
+  assert(await page.getByText("EM BREVE · IMPLEMENTAÇÃO FUTURA").isVisible());
+  await page.getByRole("button",{name:"Revisão Cientométrica"}).click();
+  await page.getByRole("heading",{name:"Revisão Cientométrica",exact:true}).waitFor();
+  await page.screenshot({path:join(shots,"NvLabScientometricDashboard.png"),fullPage:true});
+  console.log("PASS: review hierarchy, real aggregates, equations, in-browser CSV search and future patents.");
+  await page.getByRole("button", { name: "Referências Diretas Virtual Lab" }).click();
+  assert(await page.getByRole("button",{name:"Referências Diretas Virtual Lab"}).evaluate(el=>getComputedStyle(el).whiteSpace==="normal"),"A sidebar deve permitir o rótulo em duas linhas");
   assert.equal(await page.locator(".reference-triptych .preview-card").count(), 3);
   await page.getByRole("button", {name:"Inspecionar referência"}).click();
   assert(await page.getByRole("complementary",{name:/Painel de informações: Uncut Gem/}).isVisible());
   await page.getByRole("button",{name:"Fechar inspetor"}).click();
   await page.getByRole("button", {name:"Sobre o Projeto"}).click();
   await page.getByRole("heading",{name:"Sobre o Projeto"}).waitFor();
-  await page.getByRole("button", {name:"Referências"}).click();
+  await page.getByRole("button", {name:"Referências Diretas Virtual Lab"}).click();
 
   await page.screenshot({ path: join(shots,"NvLabV01References.png"), fullPage: true });
 
   await page.setViewportSize({width:390,height:844});
   await page.reload({waitUntil:"domcontentloaded"});
-  await page.getByRole("heading", {name:"Referências"}).waitFor();
-  assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "Sem overflow horizontal no mobile");
+  await page.getByRole("heading", {name:"Referências Diretas Virtual Lab"}).waitFor();
+  assert(await page.getByRole("button",{name:"Referências Diretas Virtual Lab"}).count()===1,"Menu de fontes diretas precisa existir");
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "Sem overflow horizontal no mobile");
   await page.getByRole("button", {name:"Abrir menu lateral"}).click();
-  await page.getByRole("button", {name:"Explorar"}).click();
+  await page.getByRole("button", {name:"Laboratório",exact:true}).click();
+  await page.getByRole("button", {name:"Uncut Gem V1",exact:true}).click();
+  await page.getByRole("button", {name:"Explorar",exact:true}).click();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).waitFor();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).click();
   await page.screenshot({path:join(shots,"NvLabV01MobileInspector.png"),fullPage:true});
+  await page.getByRole("button",{name:"Fechar inspetor"}).click();
+  await page.getByRole("button",{name:"Abrir menu lateral"}).click();
+  await page.getByRole("button",{name:"Inventário",exact:true}).click();
+  await page.getByRole("button",{name:"Limpar filtros"}).click();
+  await page.getByRole("button",{name:"▦ Cards"}).click();
+  assert.equal(await page.locator(".inventory-card").count(),79);
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"Cards mobile sem overflow");
+  await page.screenshot({path:join(shots,"UnifiedInventoryMobile.png"),fullPage:true});
+  await page.getByRole("button",{name:"☷ Lista"}).click();
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"Lista mobile contém rolagem na tabela");
   assert.equal(errors.length,0,"Erros JavaScript: "+errors.join("; "));
-  console.log("PASS: sidebar, inspector reflow, 79 canonical records, CSV, 9 tabs, references, mobile, image crop, zoom and fullscreen.");
+  console.log("PASS: sidebar hierárquica, inspector reflow, 79 registros canônicos, CSV, 9 páginas existentes, 2 rotas futuras, mobile, imagens e fullscreen.");
 } finally {
   await browser.close();
 }

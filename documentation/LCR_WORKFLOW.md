@@ -13,7 +13,7 @@ Padronizar criação, desenvolvimento, revisão, documentação, evolução e ra
 | Research | Pesquisa bibliográfica, estado da técnica, patentes, fontes e validação de fundamentos. |
 | Drawer | UX/UI, diagramas e recursos visuais. Somente os registros textuais ficam em `documentation/agents-archive/drawer/`; imagens ficam em `code/public/assets/` ou storage externo. |
 | Audio Designer (opcional) | Identidade sonora, efeitos, áudio e trilhas originais. Recursos em `code/public/assets/audio/`. |
-| Quality & Security Auditor | Testes, auditoria de segurança, SEO, riscos, conformidade e recomendações. Relatórios independentes sob demanda. |
+| Quality & Security Auditor (geral) | Gate independente de qualidade e conformidade: testes, build, GitHub Actions, naming, segurança básica, SEO e riscos; recomenda especialistas opcionais e emite parecer. |
 
 O **Organizador não é um chat**: é a função de consolidação documental do próprio LCR Workflow. O usuário decide prioridades, autoriza publicações e aprova decisões importantes.
 
@@ -54,7 +54,7 @@ Não alegar extração integral do ChatGPT, tokens exatos ou horários que não 
 - `LCR_DAILY.yml`: relatório GitHub de commits (não lê automaticamente chats).
 - `LCR_SEO.yml`: auditoria de arquivos SEO e rotas quando aplicável.
 - `LCR_AUDITORIA.yml`: verificação preventiva de padrões inseguros, complementar à revisão humana.
-- `LCR_BACKUP.yml`: snapshot + histórico Git para Drive, **desabilitado até configurar credenciais**.
+- `LCR_BACKUP.yml`: uma rodada diária agendada às 23h55 de Brasília, quando habilitado e com credenciais válidas; execução manual excepcional.
 
 Veja `BASIC_COMMANDS.md` e `BASIC_SKILLS.md` para detalhes. Repos de templates podem replicar estes arquivos; projetos existentes exigem migração e ajuste de caminhos no build/deploy.
 ## Brainstorming: fluxo interno, não uma sequência rígida
@@ -92,7 +92,17 @@ Todos os papéis podem solicitá-la. A verificação inspeciona arquivos rastrea
 Ao produzir um prompt de **desenvolvimento/upgrade**, o Planner sempre executa uma avaliação proporcional de relevância arquitetural, conforme `documentation/decision-archive/LCR_ADR_GUARDRAILS.md`. Se necessário, utiliza `lcr-adr-generator` para gerar **dois documentos Markdown consecutivos**: prompt e ADR. Caso não haja decisão nova, só o prompt, informando resumidamente o motivo. Um upgrade extenso não implica ADR por si só. Hotfixes geralmente não geram ADR. O último ADR **relevante**, não necessariamente o mais recente global, e o brainstorming acessível orientam a decisão. Decisão humana já aprovada no contexto não exige aprovação repetida. Sem evidência de aprovação, status `proposto`. O registro não executa a implementação nem confirma publicação.
 
 ## Persistência de ADR e logs com ferramentas conectadas
-- **ADR gerado no brainstorming real:** tentar escrita GitHub em `documentation/decision-archive/`, seguida do espelho Drive no projeto correto; devolver URLs e status reais. Não pedir outra confirmação da mesma decisão se já aprovada, salvo exigência do host. Não registrar exemplos ou testes como decisões reais.
-- **LCR_DAY real:** após revisão de sensibilidade, salvar resumos e metadados do agente em `documentation/agents-archive/` e espelhar esses arquivos no Drive, quando os conectores permitirem; nunca publicar raw privado automaticamente.
+- **ADR gerado no brainstorming real:** registrar no GitHub em `documentation/decision-archive/`; o Drive recebe pelo backup diário e fica pendente até confirmação. Não pedir outra confirmação da mesma decisão se já aprovada, salvo exigência do host. Não registrar exemplos ou testes como decisões reais.
+- **LCR_DAY real:** após revisão de sensibilidade, salvar resumos e metadados do agente em `documentation/agents-archive/`; o Drive será espelhado na agenda diária, sem upload simultâneo; nunca publicar raw privado automaticamente.
 - **Backups sem chat:** GitHub Actions `LCR_BACKUP.yml` executa quando habilitado com o Secret de autenticação Google e variables de ativação/destino. O OAuth do plugin ChatGPT **não é herdado pelo GitHub Actions**. O workflow espelha arquivos e preserva snapshots datados; se não configurado, jobs ficam desabilitados.
 - **Verificação:** confirmar links, SHA do commit, caminhos e erros. A geração de prompt/ADR não significa que o Builder executou seu conteúdo.
+
+## Gate de qualidade e especialistas opcionais (ADR-0008)
+Fluxo aprovado: **Planner → decisão humana → Auditor geral + especialista opcional → parecer consolidado → Codex/Builder → retestes do Auditor → aprovação final humana**.
+
+O Auditor verifica nomenclatura, conformidade, testes, build, GitHub Actions, segurança básica, SEO e documentação em commit **estável**. Pode inspecionar em paralelo ao Builder (somente leitura), mas somente emite parecer final quando a implementação terminar. Codex/Builder executa correções; o Auditor retesta independentemente. Estados: **aprovado, atenção, reprovado, não verificado**; todo achado precisa de evidência.
+
+O Planner recomenda um especialista quando **risco alto OU (especialização alta E complexidade alta)**. **Cybersecurity**: ataques digitais, autenticação, permissões e dependências; **Safety**: danos físicos, ópticos e elétricos; **Scientific/Technical Reviewer**: modelos, unidades, incertezas e método científico. A convocação depende de autorização humana, com ADR quando necessária. Normas externas são referências conforme contexto, **não certificações automáticas**. Skill: `.agents/skills/lcr-audit-generator/SKILL.md`.
+
+## Política de backup ao final do dia (ADR-0009)
+**GitHub é a fonte de verdade e o histórico contínuo. Google Drive recebe uma única rodada automática diária**: 23h55 Brasília (02h55 UTC do dia seguinte), via `LCR_BACKUP.yml`, ou `workflow_dispatch` excepcional autorizado. Não realizar upload por arquivo, ADR, relatório ou push durante o desenvolvimento. O `rclone copy` atualiza incrementalmente o espelho navegável e salva ZIP + `git bundle` por data/commit; **não apagar históricos sem política de retenção aprovada**. Status Drive é **pendente** até verificar job `success`, SHA e snapshot. OAuth do GitHub Actions é independente do plugin Drive deste chat. Em 09/11/2026, a última falha observada foi HTTP 401; não declarar corrigida sem novo teste.

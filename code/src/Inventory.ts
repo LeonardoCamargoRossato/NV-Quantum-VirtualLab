@@ -20,6 +20,10 @@ export const fields = {
   legacyTag: "Tag inventário V1",
   face: "Face da PCB",
   imageFormula: "Imagem — referência original",
+  imageStatus: "Estado da imagem",
+  imageClass: "Classe de evidência da imagem",
+  imageNotes: "Limitações da imagem",
+  imageSource: "Procedência complementar",
 };
 export type Item = Record<keyof typeof fields, string>;
 export type Snapshot = {
