@@ -44,6 +44,31 @@ jobs:
               output.write('publishable=' + str(ready).lower() + '\n')
           print('Inventário validado; publicação permitida.' if ready else 'Publicação pendente: importar 33 registros reais autorizados.')
           PY
+      - name: Verificar recortes fotográficos no pacote que será publicado
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path('code/public/assets/official/v1/enhanced')
+          dest = Path('code/dist/assets/official/v1/enhanced')
+          manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+          expected = [entry['filename'] for entry in manifest['crops']]
+          if len(expected) != 11 or len(set(expected)) != len(expected):
+              raise SystemExit('Manifesto incorreto: são esperados 11 PNGs únicos')
+          errors = []
+          for name in expected:
+              original, deployed = source / name, dest / name
+              if not original.is_file() or not deployed.is_file():
+                  errors.append(f'{name}: ausente no repositório ou no dist')
+              elif original.stat().st_size != deployed.stat().st_size:
+                  errors.append(f'{name}: tamanho divergente')
+              elif deployed.read_bytes()[:8] != b'\\x89PNG\\r\\n\\x1a\\n':
+                  errors.append(f'{name}: cabeçalho PNG inválido')
+          if errors:
+              raise SystemExit('Erro de publicação de imagens:\\n' + '\\n'.join(errors))
+          print(f'CHECK: {len(expected)} PNGs presentes e íntegros em code/dist')
+          PY
       - uses: actions/upload-pages-artifact@v3
         if: steps.inventory.outputs.publishable == 'true' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
