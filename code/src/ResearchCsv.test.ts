@@ -17,7 +17,7 @@ describe("revisão cientométrica — fonte e privacidade",()=>{
   expect(SEARCH_EQUATIONS[1].expression).toContain('"ODMR"');
   expect(SEARCH_EQUATIONS[2].expression).toContain('"GNSS-denied"');
   expect(DOCUMENT_FIGURES).toHaveLength(4);
-  expect(DOCUMENT_FIGURES.every(f=>f.page===null)).toBe(true);
+  expect(DOCUMENT_FIGURES.map(f=>f.page)).toEqual([7,8,9,12]);
  });
  it("lê CSV com multiline, aspas internas e filtro de texto",()=>{
   const csv='Nº,Sua decisão,Título original,Autores\n1,Manter,"NV, quantum",Ana\n2,Em dúvida,"Nota ""especial""",Bob\n3,Manter,"Texto\nmultilinha",Eva\n';
