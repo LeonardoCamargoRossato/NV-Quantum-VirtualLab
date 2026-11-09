@@ -56,7 +56,8 @@ function PrivateSheet({expanded,onClose}:{expanded:boolean;onClose:()=>void}){
    }catch(e){setSheetStatus(e instanceof Error?e.message:"Falha ao ler CSV");}
  }
  async function full(){
-   if(document.fullscreenElement===section.current){await document.exitFullscreen();return;}
+   if(document.fullscreenElement===section.current){await document.exitFullscreen();setFullscreen(false);return;}
+   if(fullscreen){setFullscreen(false);return;}
    setFullscreen(true);
    try{await section.current?.requestFullscreen?.();}
    catch{ /* fallback fixed overlay */ }
@@ -135,13 +136,17 @@ function PrivateDocument({expanded,onClose,pdfUrl,onLoadPdf,selectedPage}:{expan
  const [resetKey,setResetKey]=useState(0);
  useEffect(()=>{const fn=()=>setFullscreen(document.fullscreenElement===ref.current);document.addEventListener("fullscreenchange",fn);return()=>document.removeEventListener("fullscreenchange",fn)},[]);
  async function close(){if(document.fullscreenElement===ref.current)await document.exitFullscreen();setFullscreen(false);onClose();}
- async function full(){setFullscreen(true);try{await ref.current?.requestFullscreen?.()}catch{}}
+ async function full(){
+   if(document.fullscreenElement===ref.current){await document.exitFullscreen();setFullscreen(false);return;}
+   if(fullscreen){setFullscreen(false);return;}
+   setFullscreen(true);try{await ref.current?.requestFullscreen?.()}catch{}
+ }
  return <section ref={ref} className={"sciento-results-card sciento-document"+(expanded||fullscreen?" expanded":"")} aria-label="Visualizador do documento da revisão">
    <div className="sciento-result-head"><span className="overline">DOCUMENTO DA REVISÃO · ACESSO RESTRITO</span><h3>{pdfUrl?"PDF local da revisão":"Artigo científico original (Google Docs)"}</h3>
     <p>{pdfUrl?"PDF selecionado permanece exclusivamente neste navegador.":"O PDF cientométrico original não foi encontrado na pasta do projeto. Esta prévia exibe o Google Doc associado, sem substituí-lo por outro PDF."}</p>
    </div>
    <div className="sciento-document-actions">
-     <button type="button" onClick={()=>{if(expanded||fullscreen)void close();else onClose()}}>{expanded||fullscreen?"Fechar ampliação":"Minimizar"}</button>
+     <button type="button" disabled={!expanded&&!fullscreen} onClick={()=>{void close()}}>Minimizar</button>
      <button type="button" onClick={full}>{fullscreen?"Tela inteira ativa":"Tela inteira"}</button>
      <button type="button" onClick={onClose}>{expanded?"Reduzir":"Ampliar"}</button>
      <input ref={inp} type="file" accept=".pdf,application/pdf" className="sciento-file-input" aria-label="Carregar PDF privado da revisão" onChange={e=>{const f=e.target.files?.[0];if(f)onLoadPdf(f);e.currentTarget.value="";}}/>
