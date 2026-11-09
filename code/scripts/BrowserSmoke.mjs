@@ -14,9 +14,9 @@ const errors = [];
 page.on("pageerror", e => errors.push(e.message));
 try {
   await page.goto(process.env.APP_URL || "http://127.0.0.1:5173/NV-Quantum-VirtualLab/", { waitUntil: "domcontentloaded" });
-  await page.getByRole("heading", { name: "Explorar V1" }).waitFor();
+  await page.getByRole("heading", { name: "Explorar" }).waitFor();
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).waitFor();
-  assert.equal(await page.locator(".side-navigation button").count(), 7);
+  assert.equal(await page.locator(".side-navigation button").count(), 9);
   assert(await page.locator(".photo-stage>img").evaluate(img => img.complete && img.naturalWidth > 0), "Imagem original precisa carregar");
   // Regressão do hotfix: os 11 recortes estavam no Git, mas faltaram no deploy.
   const expectedEnhancedPngs = [
@@ -46,7 +46,7 @@ try {
 
   const panelBefore = await page.locator(".photo-panel").evaluate(el => el.getBoundingClientRect().width);
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).click();
-  await page.getByRole("complementary", { name: /Ficha de componente/ }).waitFor();
+  await page.getByRole("complementary", { name: /Painel de informações/ }).waitFor();
   assert(await page.getByText("Recorte de fotografia oficial", { exact: false }).isVisible());
   assert(await page.locator(".inspector .crop-shell img").evaluate(i => i.complete && i.naturalWidth > 0), "Imagem individual do laser não carregou");
   const panelWithInspector = await page.locator(".photo-panel").evaluate(el => el.getBoundingClientRect().width);
@@ -58,7 +58,7 @@ try {
   assert(await page.locator(".lightbox-dialog .crop-shell img").evaluate(i => i.complete && i.naturalWidth > 0));
   await page.getByRole("button", { name: "Fechar imagem" }).click();
   await page.getByRole("button", { name: "Expandir painel" }).click();
-  assert(await page.locator(".work-area.inspector-big").isVisible());
+  assert(await page.locator(".workspace-layout.wide-inspector").isVisible());
   await page.getByRole("button", { name: "Fechar inspetor" }).click();
   assert(await page.locator(".inspector").count() === 0);
 
@@ -90,7 +90,33 @@ try {
   const expectedDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "CSV · filtrados" }).click();
   assert.equal((await expectedDownload).suggestedFilename(), "UncutGemV1Filtrado.csv");
-  await page.getByRole("button", { name: "Guia de montagem V1" }).click();
+  // Nova experiência: fluxo, inspetor compartilhado, imagens e correlação com PCB.
+  await page.getByRole("button", { name: "Entenda o Fluxo" }).click();
+  await page.getByRole("heading", { name: "Entenda o Fluxo" }).waitFor();
+  assert.equal(await page.locator("[data-flow-step]").count(), 7);
+  assert.equal(await page.locator(".flow-parallel [data-flow-step]").count(), 2);
+  await page.screenshot({path:join(shots,"NvLabFlowDesktop.png"),fullPage:true});
+  await page.locator('[data-flow-step="optico"] .flow-title-button').click();
+  await page.getByRole("complementary", {name:/Painel de informações/}).waitFor();
+  assert(await page.locator(".workspace-layout.has-inspector").count()===1);
+  await page.screenshot({path:join(shots,"NvLabFlowInspector.png"),fullPage:true});
+  await page.locator(".context-inspector").getByRole("button", {name:"Ver na PCB"}).click();
+  await page.getByRole("heading", {name:"Explorar"}).waitFor();
+  assert(await page.getByRole("complementary",{name:/Painel de informações: Laser verde/}).isVisible());
+  assert(await page.locator('.hotspot.is-selected').count()===1,"Laser precisa ficar destacado na PCB");
+
+  await page.getByRole("button", { name: "Entenda o Fluxo" }).click();
+  await page.locator('[data-flow-step="microondas"] .flow-image-open').click();
+  await page.getByRole("dialog", {name:/Etapa 4/}).waitFor();
+  await page.getByRole("button", {name:"Próxima imagem"}).click();
+  assert(await page.getByRole("dialog",{name:/Etapa 5/}).isVisible());
+  await page.getByRole("button", {name:"Imagem anterior"}).click();
+  assert(await page.getByRole("dialog",{name:/Etapa 4/}).isVisible());
+  await page.getByRole("button", {name:"Fechar imagem"}).click();
+  assert.equal(await page.getByRole("dialog").count(),0);
+  console.log("PASS: fluxo com ramos paralelos, inspector compartilhado, galeria e Ver na PCB.");
+
+  await page.getByRole("button", { name: "Guia de montagem" }).click();
   assert.equal(await page.locator(".layer-grid img").count(), 3);
   await page.getByRole("button", { name: "Fundamentos" }).click();
   assert.equal(await page.locator(".fundamental").count(), 6);
@@ -100,6 +126,13 @@ try {
   assert(await page.getByText("Acesso sujeito às permissões do proprietário.", { exact:false }).isVisible());
   await page.getByRole("button", { name: "Referências" }).click();
   assert.equal(await page.locator(".reference-triptych .preview-card").count(), 3);
+  await page.getByRole("button", {name:"Inspecionar referência"}).click();
+  assert(await page.getByRole("complementary",{name:/Painel de informações: Uncut Gem/}).isVisible());
+  await page.getByRole("button",{name:"Fechar inspetor"}).click();
+  await page.getByRole("button", {name:"Sobre o Projeto"}).click();
+  await page.getByRole("heading",{name:"Sobre o Projeto"}).waitFor();
+  await page.getByRole("button", {name:"Referências"}).click();
+
   await page.screenshot({ path: join(shots,"NvLabV01References.png"), fullPage: true });
 
   await page.setViewportSize({width:390,height:844});
@@ -107,12 +140,12 @@ try {
   await page.getByRole("heading", {name:"Referências"}).waitFor();
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "Sem overflow horizontal no mobile");
   await page.getByRole("button", {name:"Abrir menu lateral"}).click();
-  await page.getByRole("button", {name:"Explorar V1"}).click();
+  await page.getByRole("button", {name:"Explorar"}).click();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).waitFor();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).click();
   await page.screenshot({path:join(shots,"NvLabV01MobileInspector.png"),fullPage:true});
   assert.equal(errors.length,0,"Erros JavaScript: "+errors.join("; "));
-  console.log("PASS: sidebar, inspector reflow, 33 real records, CSV, 7 tabs, references, mobile, image crop, zoom and fullscreen.");
+  console.log("PASS: sidebar, inspector reflow, 33 real records, CSV, 9 tabs, references, mobile, image crop, zoom and fullscreen.");
 } finally {
   await browser.close();
 }
