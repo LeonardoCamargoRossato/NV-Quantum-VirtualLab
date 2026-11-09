@@ -5,7 +5,7 @@
   "source_rows": "12–80 inclusive, category componente only",
   "untouched_layer_a": "rows 2–11, category subsistema",
   "producer": "code/scripts/BuildLayerBComponentImages.py",
-  "stage": "images-generated; spreadsheet synchronization performed separately",
+  "stage": "COMPLETE — Layer B image registry and sheet synchronised",
   "items": [
     {
       "tag": "UG-V1-0031",
@@ -17,7 +17,13 @@
       "notes": "Imagem ilustrativa solicitada pelo usuário, representando visualmente a região micro-USB de um ESP32 e os pinos VIN, GND e 3V3. Não demonstra que o circuito real do Uncut Gem V1 tem proteção elétrica, não identifica o conector 5V_SUPP1 (2×3) da placa DiamondGeezer e não permite atribuir duas saídas 5V ao hardware original. Manter REVISÃO técnica até verificar o esquema elétrico/PCB.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/illustrative/v1/components/UgV10031UsbPowerIllustrative.png",
-      "image_type": "Imagem ilustrativa controlada (gerada por IA) — entrada micro-USB e pinos VIN/GND/3V3; NÃO é foto real"
+      "image_type": "Imagem ilustrativa controlada (gerada por IA) — entrada micro-USB e pinos VIN/GND/3V3; NÃO é foto real",
+      "sheet_sync": "CHECK",
+      "image_cell_updated": true,
+      "notes_cell_updated": true,
+      "image_asset_status": "CHECK — imagem ilustrativa aplicada e verificada na planilha; revisão técnica permanece",
+      "image_source_kind": "IA — ilustrativa controlada, não fotografia real",
+      "requires_technical_review": true
     },
     {
       "tag": "UG-V1-0013",
@@ -1445,5 +1451,24 @@
       "height": 969,
       "bytes": 656967
     }
-  ]
+  ],
+  "sheet_sync": {
+    "status": "CHECK",
+    "verified_at": "2026-11-09",
+    "sheet_id": "158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU",
+    "sheet_gid": 2026110901,
+    "range": "A12:Q80",
+    "updated_rows_original_batch": 69,
+    "official_component_images": 61,
+    "controlled_illustration_published": 1,
+    "review_items_after_update": 8,
+    "review_items_with_old_image": 7,
+    "changed_tag": "UG-V1-0031",
+    "changed_row": 12,
+    "untouched_tags": [
+      "UG-V1-0013",
+      "UG-V1-B001"
+    ],
+    "layer_a": "Untouched"
+  }
 }
