@@ -213,23 +213,23 @@
     },
     {
       "filename": "ug-v1-laser-driver-enhanced.png",
-      "title": "Regiao da placa/driver do laser",
-      "x": 8,
-      "y": 31,
-      "w": 33,
-      "h": 29,
+      "title": "Regiao da plaquinha junto ao laser",
+      "x": 12,
+      "y": 19,
+      "w": 14,
+      "h": 11,
       "status": "descriptive",
       "source_box_px": [
-        116,
-        334,
-        596,
-        648
+        174,
+        205,
+        378,
+        324
       ],
       "output_size_px": [
-        960,
-        628
+        408,
+        238
       ],
-      "bytes": 702797
+      "bytes": 114715
     }
   ]
 }
