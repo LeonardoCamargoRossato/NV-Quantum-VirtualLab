@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import an authorized V1 CSV export; never fetch private Sheets or store credentials."""
+"""Historical 33-item CSV import ONLY; never update the active 79-item catalog."""
 from __future__ import annotations
 import argparse
 import csv
@@ -19,7 +19,7 @@ COLUMNS = {
     'URL da imagem': 'imageUrl', 'Fonte técnica': 'source', 'Datasheet': 'datasheet',
     'Pendências / compatibilidade': 'notes',
 }
-SOURCE = 'https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=1346018179#gid=1346018179'
+SOURCE = 'Historical Uncut Gem V1 CSV export; original tab no longer operational'
 
 def validate_url(value: str) -> bool:
     if not value:
@@ -65,6 +65,10 @@ def main() -> None:
     args = parser.parse_args()
     if not args.allow_public_snapshot:
         parser.error('Confirme a autorização de publicação com --allow-public-snapshot')
+    output = args.output.resolve()
+    legacy_dir = (Path(__file__).resolve().parents[1] / 'source/legacy').resolve()
+    if output != legacy_dir / 'InventoryV1Legacy.json':
+        parser.error('Importador histórico só pode escrever em source/legacy/InventoryV1Legacy.json')
     raw = args.csv.read_bytes()
     items = parse_csv(raw.decode('utf-8-sig'))
     snapshot = {'schemaVersion': 1, 'status': 'validated', 'source': 'Google Sheets — Uncut Gem V1 (exportação CSV autorizada)', 'sourceUrl': SOURCE,
