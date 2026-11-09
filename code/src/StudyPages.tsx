@@ -11,15 +11,15 @@ const reviewSheet = "https://docs.google.com/spreadsheets/d/1ID0MHrg_-2Fx37vGR8S
 export function Out({ href, children, className = "" }: {href: string; children: React.ReactNode; className?: string}) {
   return safeUrl(href) ? <a className={className} href={href} target="_blank" rel="noopener noreferrer">{children}<span aria-hidden="true"> ↗</span></a> : null;
 }
-export type Page = "explorar" | "inventario" | "fluxo" | "guia" | "uncut-v2" | "modelo3d" | "fundamentos" | "artigos" | "revisao" | "referencias" | "sobre";
+export type Page = "explorar" | "inventario" | "fluxo" | "guia" | "uncut-v2" | "modelo3d" | "fundamentos" | "artigos" | "revisao" | "patentes" | "referencias" | "sobre";
 export const pageTitles: Record<Page, string> = {
   explorar: "Explorar", inventario: "Inventário", fluxo: "Entenda o Fluxo", guia: "Guia de montagem",
   "uncut-v2": "Uncut Gem V2", modelo3d: "NV-Print 3D Stegemann",
-  fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Bibliográfica", referencias: "Referências Diretas Virtual Lab", sobre: "Sobre o Projeto",
+  fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Cientométrica", patentes: "Revisão de Patentes", referencias: "Referências Diretas Virtual Lab", sobre: "Sobre o Projeto",
 };
 export const navigationGroups: {group:string; pages: {key:Page; icon:string}[]}[] = [
   { group:"LABORATÓRIO", pages:[{key:"explorar",icon:"◉"},{key:"inventario",icon:"▤"},{key:"fluxo",icon:"⇢"},{key:"guia",icon:"⌁"}] },
-  { group:"ESTUDO E PESQUISA", pages:[{key:"referencias",icon:"↗"},{key:"revisao",icon:"≡"},{key:"fundamentos",icon:"◇"},{key:"artigos",icon:"▣"},{key:"sobre",icon:"ⓘ"}] },
+  { group:"ESTUDO E PESQUISA", pages:[{key:"referencias",icon:"↗"},{key:"fundamentos",icon:"◇"},{key:"sobre",icon:"ⓘ"}] },
 ];
 const articles = [
   {title:"Uncut Gem — An Open-Source Hackable Quantum Sensor",authors:"Mark Carney; Victoria Kumaran",year:"2025 / 2026", type:"Preprint livre + capítulo de conferência",url:paper,pdf,doi:"10.1007/978-3-032-13852-1_7",notes:"Hardware aberto de magnetometria com centros NV; a versão Springer é acesso por assinatura."},
