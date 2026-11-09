@@ -11,9 +11,10 @@ const reviewSheet = "https://docs.google.com/spreadsheets/d/1ID0MHrg_-2Fx37vGR8S
 export function Out({ href, children, className = "" }: {href: string; children: React.ReactNode; className?: string}) {
   return safeUrl(href) ? <a className={className} href={href} target="_blank" rel="noopener noreferrer">{children}<span aria-hidden="true"> ↗</span></a> : null;
 }
-export type Page = "explorar" | "inventario" | "fluxo" | "guia" | "fundamentos" | "artigos" | "revisao" | "referencias" | "sobre";
+export type Page = "explorar" | "inventario" | "fluxo" | "guia" | "uncut-v2" | "modelo3d" | "fundamentos" | "artigos" | "revisao" | "referencias" | "sobre";
 export const pageTitles: Record<Page, string> = {
   explorar: "Explorar", inventario: "Inventário", fluxo: "Entenda o Fluxo", guia: "Guia de montagem",
+  "uncut-v2": "Uncut Gem V2", modelo3d: "Modelo 3D — Stegemann (2023)",
   fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Bibliográfica", referencias: "Referências", sobre: "Sobre o Projeto",
 };
 export const navigationGroups: {group:string; pages: {key:Page; icon:string}[]}[] = [
