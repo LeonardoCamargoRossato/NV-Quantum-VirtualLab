@@ -118,12 +118,18 @@ try {
   await page.getByRole("heading",{name:"Pesquisar componentes"}).waitFor();
   await page.getByText("10 de 69 componentes encontrados",{exact:false}).waitFor();
   assert.equal(await page.locator(".v1-tree-card").count(),10);
-  assert.equal(await page.locator(".v1-tree-pending").count(),6,"Os seis recortes C5–C10 ainda dependem de aprovação.");
+  assert.equal(await page.locator(".v1-tree-pending").count(),0,"Os seis recortes C5–C10 foram aprovados.");
+  const approvedCapImages = page.locator('.v1-tree-card .v1-tree-thumb img[src*="UgV1B00"]');
+  await page.waitForFunction(() => {
+    const images = [...document.querySelectorAll('.v1-tree-card .v1-tree-thumb img[src*="UgV1B00"]')];
+    return images.length === 6 && images.every(image => image.complete && image.naturalWidth > 0);
+  }, undefined, {timeout: 18000});
+  assert.equal(await approvedCapImages.count(),6,"Seis imagens oficiais dos footprints devem carregar.");
   await page.getByRole("combobox",{name:"Filtrar face da PCB"}).selectOption("Verso");
   assert.equal(await page.locator(".v1-tree-card").count(),0,"Capacitores C1–C10 são da frente da PCB.");
   await page.getByRole("combobox",{name:"Filtrar face da PCB"}).selectOption("Frente");
   assert.equal(await page.locator(".v1-tree-card").count(),10);
-  await page.screenshot({path:join(shots,"NvLabV01CapacitorsPending.png"),fullPage:true});
+  await page.screenshot({path:join(shots,"NvLabV01CapacitorsApproved.png"),fullPage:true});
   await page.locator(".inventory-filters input[type=search]").fill("UG-V1-0028");
   await page.getByText("1 de 33 itens", { exact: false }).waitFor();
   const expectedDownload = page.waitForEvent("download");

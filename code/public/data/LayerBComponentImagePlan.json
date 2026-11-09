@@ -95,17 +95,30 @@
       "ref": "C5",
       "model": "100 nF",
       "location": "Região de alimentação da PCB",
-      "class": "D",
-      "status": "REVISÃO",
-      "source_id": null,
-      "region": null,
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "filename": null,
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "class": "B",
+      "status": "CHECK",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          609,
+          1474,
+          794,
+          1561
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C5 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
+      "filename": "UgV1B002.png",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "existing_image_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
       "existing_image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad."
+      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.",
+      "approved_asset_sha256": "66ec052a3f2307a8a29691fcb8ec43ae44dec8a504c12205ec4bc2459bf3248f",
+      "approved_source_crop": "DiamondGeezer V1 render da face frontal, referência F.Cu"
     },
     {
       "tag": "UG-V1-B003",
@@ -116,17 +129,30 @@
       "ref": "C6",
       "model": "100 nF",
       "location": "Região de alimentação da PCB",
-      "class": "D",
-      "status": "REVISÃO",
-      "source_id": null,
-      "region": null,
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "filename": null,
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "class": "B",
+      "status": "CHECK",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          609,
+          1394,
+          794,
+          1481
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C6 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
+      "filename": "UgV1B003.png",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "existing_image_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
       "existing_image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad."
+      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.",
+      "approved_asset_sha256": "9b395c1144d091ea468492ebf2e16067cff2223902c31d3c2bfbd2d5ba2270c2",
+      "approved_source_crop": "DiamondGeezer V1 render da face frontal, referência F.Cu"
     },
     {
       "tag": "UG-V1-B004",
@@ -137,17 +163,30 @@
       "ref": "C7",
       "model": "100 nF",
       "location": "Região de alimentação da PCB",
-      "class": "D",
-      "status": "REVISÃO",
-      "source_id": null,
-      "region": null,
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "filename": null,
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "class": "B",
+      "status": "CHECK",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          609,
+          1638,
+          794,
+          1725
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C7 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
+      "filename": "UgV1B004.png",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "existing_image_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
       "existing_image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad."
+      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.",
+      "approved_asset_sha256": "5d9207c9da419bd5ece0e2d695058b1c653f3185a98a294bb72c35c63a468587",
+      "approved_source_crop": "DiamondGeezer V1 render da face frontal, referência F.Cu"
     },
     {
       "tag": "UG-V1-B005",
@@ -158,17 +197,30 @@
       "ref": "C8",
       "model": "100 nF",
       "location": "Região de alimentação da PCB",
-      "class": "D",
-      "status": "REVISÃO",
-      "source_id": null,
-      "region": null,
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "filename": null,
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "class": "B",
+      "status": "CHECK",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          609,
+          1555,
+          794,
+          1644
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C8 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
+      "filename": "UgV1B005.png",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "existing_image_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
       "existing_image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad."
+      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.",
+      "approved_asset_sha256": "6fa8bc7ba23ee6492922d05ea061a8e7f2790a6bb051bbbbef6e28a40a5591f6",
+      "approved_source_crop": "DiamondGeezer V1 render da face frontal, referência F.Cu"
     },
     {
       "tag": "UG-V1-B006",
@@ -179,17 +231,30 @@
       "ref": "C9",
       "model": "10 µF",
       "location": "Região de alimentação da PCB",
-      "class": "D",
-      "status": "REVISÃO",
-      "source_id": null,
-      "region": null,
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "filename": null,
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "class": "B",
+      "status": "CHECK",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          609,
+          1252,
+          794,
+          1400
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C9 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
+      "filename": "UgV1B006.png",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "existing_image_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-eletrolitico-ilustrativo.png",
       "existing_image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad."
+      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.",
+      "approved_asset_sha256": "252d62294e411f49af783d7494ea04a6f46837821b43e8f1d883a491379c0e7e",
+      "approved_source_crop": "DiamondGeezer V1 render da face frontal, referência F.Cu"
     },
     {
       "tag": "UG-V1-B007",
@@ -200,17 +265,30 @@
       "ref": "C10",
       "model": "10 µF",
       "location": "Região de alimentação da PCB",
-      "class": "D",
-      "status": "REVISÃO",
-      "source_id": null,
-      "region": null,
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "filename": null,
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "class": "B",
+      "status": "CHECK",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          609,
+          1725,
+          794,
+          1871
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C10 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "image_type": "Render oficial da PCB — recorte do footprint de capacitor (B)",
+      "filename": "UgV1B007.png",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "existing_image_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-eletrolitico-ilustrativo.png",
       "existing_image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad."
+      "existing_notes": "Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.",
+      "approved_asset_sha256": "4fc2d1f924f9c5a8333ce3b4404e3b659fb3b4b62ab00f41d5baa2e80bcfcc9e",
+      "approved_source_crop": "DiamondGeezer V1 render da face frontal, referência F.Cu"
     },
     {
       "tag": "UG-V1-0004",

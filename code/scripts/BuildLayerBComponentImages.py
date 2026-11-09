@@ -123,6 +123,13 @@ def build(plan, dest, checkpoint_path, preview_only=False):
                 'untouched_layer_a':'rows 2–11, category subsistema',
                 'producer':'code/scripts/BuildLayerBComponentImages.py','stage':'images-generated; spreadsheet synchronization performed separately',
                 'items':[]}
+    previous_checkpoint = {}
+    if not preview_only and checkpoint_path.is_file():
+        previous_checkpoint = json.loads(checkpoint_path.read_text(encoding='utf-8'))
+        for key in ('sheet_sync', 'stage'):
+            if key in previous_checkpoint:
+                checkpoint[key] = previous_checkpoint[key]
+    previous_items = {x['tag']: x for x in previous_checkpoint.get('items', [])}
     for entry in entries:
         row={'tag':entry['tag'],'row':entry['row'],'name':entry['name'],'parent':entry['parent'],
              'classification':entry['class'],'status':entry['status'],'notes':entry['notes']}
@@ -131,20 +138,42 @@ def build(plan, dest, checkpoint_path, preview_only=False):
                 if preview_only:continue
                 raise FileNotFoundError('No exact source for '+entry['tag'])
             source=decoded[entry['source_id']]
-            part,box=crop(source,entry['region'])
-            enhanced=enhance(part)
             file=entry['filename']
             file_path=dest/file
-            enhanced.save(file_path,format='PNG',optimize=True)
-            with Image.open(file_path) as verify: verify.verify()
+            if entry.get('approved_asset_sha256'):
+                # Preserve the byte-identical PNG preview explicitly approved by the project owner.
+                reg=entry.get('region') or {}
+                if entry['source_id'] != 'pcbfront' or tuple(reg.get('source_dimensions',())) != source.size:
+                    raise RuntimeError('Approved PCB asset source dimensions mismatch: '+entry['tag'])
+                box=reg.get('px_original')
+                if not isinstance(box,list) or len(box)!=4 or not (0<=box[0]<box[2]<=source.width and 0<=box[1]<box[3]<=source.height):
+                    raise RuntimeError('Approved PCB crop coordinates invalid: '+entry['tag'])
+                if not file_path.exists() or sha256(file_path)!=entry['approved_asset_sha256']:
+                    raise RuntimeError('Approved PNG missing or changed: '+entry['tag'])
+                with Image.open(file_path) as verification:
+                    size=verification.size
+                    verification.verify()
+            else:
+                part,box=crop(source,entry['region'])
+                enhanced=enhance(part)
+                file_path.parent.mkdir(parents=True,exist_ok=True)
+                enhanced.save(file_path,format='PNG',optimize=True)
+                with Image.open(file_path) as verification: verification.verify()
+                size=enhanced.size
             row.update({'image':file,'source_id':entry['source_id'],'source_box_px':box,
                         'image_type':entry['image_type'], 'source_hash':before[entry['source_id']],
-                        'width':enhanced.width,'height':enhanced.height,'bytes':file_path.stat().st_size})
-            print(f"CHECK {entry['tag']} {file} ({enhanced.width}x{enhanced.height}) class {entry['class']}")
+                        'width':size[0],'height':size[1],'bytes':file_path.stat().st_size})
+            if entry.get('approved_asset_sha256'):
+                row['approved_asset_sha256']=entry['approved_asset_sha256']
+            print(f"CHECK {entry['tag']} {file} ({size[0]}x{size[1]}) class {entry['class']}")
         else:
             row.update({'image':None,'preserved_existing_url':entry['existing_image_url'],
                         'image_type':entry['existing_image_type']})
             print(f"REVISÃO {entry['tag']}: não atribuir recorte sem evidência")
+        previous = previous_items.get(row['tag'], {})
+        for field in ('sheet_sync', 'image_cell_updated', 'notes_cell_updated'):
+            if field in previous:
+                row[field] = previous[field]
         manifest['items'].append(row)
         checkpoint['items'].append(row)
     if preview_only:
@@ -163,7 +192,9 @@ def build(plan, dest, checkpoint_path, preview_only=False):
         'A = recorte físico; B = contexto/render/diagrama oficial, não identificação individual garantida; '
         'C = hospedeiro de função interna, SEM hotspot próprio; D = revisão sem recorte inventado. '
         'A interpolação não restitui inscrições/componentes invisíveis. '
-        'O manifesto discrimina as fontes, caixas de recorte, hashes e ressalvas por TAG.\n',encoding='utf-8')
+        'O manifesto discrimina as fontes, caixas de recorte, hashes e ressalvas por TAG.\n'
+        'C5–C10: imagens aprovadas e preservadas byte a byte da fonte DiamondGeezer F.Cu; '
+        'mostram footprints/pads, não capacitores fisicamente instalados.\n',encoding='utf-8')
     bundle=dest/'UgV1LayerBComponents.zip'
     with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for p in sorted(dest.glob('UgV1*.png'))+[manifest_path,dest/'README.md',checkpoint_path]:

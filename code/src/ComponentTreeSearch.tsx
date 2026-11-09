@@ -83,9 +83,9 @@ export function ComponentTreeSearch({base, onPreview}: {base:string; onPreview:(
                   <img src={url} loading="lazy" alt={"Imagem " + labels[item.class] + " do componente " + item.name} />
                 </button> : <div className="v1-tree-pending"><strong>Imagem em revisão</strong><span>Recorte frontal aguarda aprovação antes de ser publicado.</span></div>}
               </div>
-              <div className="v1-tree-tags"><span>{faces[item.tag] || "A confirmar"}</span><span>{labels[item.class]}</span></div>
+              <div className="v1-tree-tags"><span>{faces[item.tag] || "A confirmar"}</span><span>{pendingCapacitors.has(item.tag) && item.status === "CHECK" ? "Render oficial — footprint" : labels[item.class]}</span>{item.model && <span>{item.model}</span>}</div>
               <p className="v1-tree-card-meta">{item.parent} · <code>{item.tag}</code></p>
-              {awaiting && <p className="v1-tree-warning">Footprint confirmado no KiCad; não comprova capacitor soldado.</p>}
+              {pendingCapacitors.has(item.tag) && <p className="v1-tree-warning">{awaiting ? "Recorte pendente de aprovação." : "Render oficial do footprint de soldagem na face frontal; não comprova capacitor instalado."}</p>}
               {!awaiting && item.status === "REVISÃO" && <p className="v1-tree-warning">Imagem ilustrativa/contextual; identificação física pendente.</p>}
             </article>;
           })}
@@ -93,6 +93,6 @@ export function ComponentTreeSearch({base, onPreview}: {base:string; onPreview:(
         {!filtered.length && <p className="v1-tree-message">Nenhum componente corresponde à busca.</p>}
         {!showMore && filtered.length > 15 && <button className="v1-tree-more" type="button" onClick={()=>setShowMore(true)}>Mostrar todos os {filtered.length} resultados</button>}
       </>}
-    <p className="v1-tree-disclaimer">Os seis recortes C5–C10 ainda estão em fase de aprovação. A localização é baseada no projeto KiCad da revisão V1; não comprova a montagem física dos capacitores.</p>
+    <p className="v1-tree-disclaimer">C5–C10: recortes aprovados do render oficial da PCB DiamondGeezer V1 (face frontal / F.Cu). As imagens mostram pads e serigrafia, não demonstram capacitores fisicamente soldados. O inventário distingue fotos reais, renders e ilustrações.</p>
   </section>;
 }
