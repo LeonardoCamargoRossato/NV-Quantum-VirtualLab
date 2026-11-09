@@ -1,6 +1,6 @@
 # NV Quantum Virtual Lab — Uncut Gem V1
 
-**Site publicado:** [Abrir NV Quantum Virtual Lab — Uncut Gem V1](https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/) — deploy [confirmado pelo GitHub Actions](https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42541273773) em 09/11/2026 UTC. Verificação visual externa ainda depende de teste no navegador.
+**Site V0.1 publicado:** [Abrir NV Quantum Virtual Lab](https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/) · [deploy aprovado](https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42546579254) · [testes de navegador e capturas aprovados](https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42546579261).
 
 **Inventário original:** [Google Sheets — Uncut Gem V1](https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=1346018179#gid=1346018179).
 
