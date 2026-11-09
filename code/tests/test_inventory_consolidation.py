@@ -10,9 +10,13 @@ from consolidate_inventory import consolidate, SOURCE, OUTPUT, read_sheets
 class ConsolidationTests(unittest.TestCase):
     def test_rebuild_matches_committed_catalog_and_original_hash(self):
         self.assertEqual(consolidate(), json.loads(OUTPUT.read_text(encoding='utf-8')))
-        self.assertEqual(hashlib.sha256(SOURCE.read_bytes()).hexdigest(), '3fa0d1c8fe767964b278d91756fdf4679aca897cc3ffb827d24ac65614c463c4')
+        digest = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
+        source_readme = (SOURCE.parent / "README.md").read_text(encoding="utf-8")
+        self.assertIn(digest, source_readme)
+        self.assertEqual(digest, consolidate()["sourceSha256"])
         sheets = read_sheets(SOURCE)
-        self.assertEqual(len(sheets), 5)
+        self.assertEqual(len(sheets), 4)
+        self.assertNotIn("Uncut Gem V1", [name for name, _ in sheets])
         self.assertIn('Uncut Gem V2', [name for name, _ in sheets])
 
     def test_approved_footprints_are_not_replaced_by_old_illustrations(self):
@@ -28,4 +32,20 @@ class ConsolidationTests(unittest.TestCase):
     def test_group_quantities_are_not_assigned_to_individual_children(self):
         data = consolidate()
         fills = data['consolidation']['filledFields']
-        self.assertTrue(all(row['field'] in ('source', 'datasheet') for row in fills if row['tag'] != row['from']))
+        self.assertEqual(fills, [])
+        self.assertEqual(data['consolidation']['differences'], [])
+        self.assertNotIn('legacyItems', data)
+        self.assertNotIn('legacyOnlyTags', data)
+
+    def test_rebuild_without_legacy_tab_and_canonical_board_faces(self):
+        data = consolidate()
+        self.assertEqual(len(data['items']), 79)
+        rows = {i['tag']: i for i in data['items']}
+        self.assertEqual(rows['UG-V1-B041']['name'], 'Face frontal da PCB')
+        self.assertEqual(rows['UG-V1-B042']['name'], 'Face traseira da PCB')
+        self.assertEqual(rows['UG-V1-B041']['face'], 'Frente')
+        self.assertEqual(rows['UG-V1-B042']['face'], 'Verso')
+        from migrate_inventory_workbook import EXPECTED
+        for tag, url in EXPECTED.items():
+            self.assertEqual(rows[tag]['datasheet'], url)
+

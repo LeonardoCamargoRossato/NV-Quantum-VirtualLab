@@ -23,7 +23,7 @@ python code/scripts/lcr_auditoria.py
 
 ## Importar inventário
 
-O inventário atual usa o XLSX original e o catálogo consolidado em `code/source/`, com 10 subsistemas A e 69 componentes B. Consulte [Inventory.md](Inventory.md) e [procedimento de atualização](../code/source/README.md). Não requer Google OAuth para executar o site.
+O inventário atual usa o XLSX operacional de quatro abas e o catálogo consolidado em `code/source/`, com 10 subsistemas A e 69 componentes B. Consulte [Inventory.md](Inventory.md) e [procedimento de atualização](../code/source/README.md). Não requer Google OAuth para executar o site.
 
 Da raiz:
 
@@ -32,7 +32,7 @@ python code/scripts/consolidate_inventory.py
 python code/scripts/consolidate_inventory.py --check
 ```
 
-O importador CSV antigo permanece apenas para o arquivo histórico de 33 registros em `code/source/legacy/InventoryV1Legacy.json`; ele não atualiza o catálogo ativo.
+O importador CSV antigo permanece apenas para o arquivo histórico de 33 registros em `code/source/legacy/InventoryV1Legacy.json`; ele não atualiza o catálogo ativo nem depende de gid da aba antiga. A reconstrução V1 exige 79 registros na árvore e pode ser testada com `python code/scripts/migrate_inventory_workbook.py --verify-only`.
 
 ## Imagens e hotspots
 Fotografia DeviceV1.png e diagramas Layer1/2/3.png copiados sem modificações do projeto QuantumVillage/UncutGem, revisão fdc0fcb28f0962d59b279080658e2c11bf367494. Veja créditos e licença em code/public/assets/official/README.md. Os assets existentes em assets/components/illustrative são IA e permanecem nos caminhos originais para preservar links da planilha; não são usados como fotos reais. Seis hotspots visuais identificáveis sobre a fotografia oficial foram associados às tags da planilha: PCB, ESP32, amplificador RF, laser, conjunto do prisma e OLED. Os percentuais são relativos à fotografia, não ao painel, e acompanham zoom/pan. Itens não localizáveis não recebem marcador.

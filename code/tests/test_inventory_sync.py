@@ -4,9 +4,12 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from sync_uncut_gem_inventory import COLUMNS, parse_csv
+from sync_uncut_gem_inventory import COLUMNS, parse_csv, SOURCE
 
 class InventorySyncTests(unittest.TestCase):
+    def test_importer_is_explicitly_historical(self):
+        self.assertNotIn("1346018179", SOURCE)
+
     def export(self, change=None):
         output = io.StringIO()
         writer = csv.DictWriter(output, fieldnames=list(reversed(COLUMNS)))
