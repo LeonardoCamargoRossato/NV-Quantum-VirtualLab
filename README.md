@@ -4,7 +4,7 @@
 
 **Inventário original:** [Google Sheets — Uncut Gem V1](https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=1346018179#gid=1346018179).
 
-Aplicação React + TypeScript + Vite em `code/`: fotografia oficial V1 com zoom/pan, orientação de montagem, inventário com busca/filtros/ordenação, fichas, lightbox e exportação CSV. Consulte [desenvolvimento, importação e publicação](documentation/UncutGemV1Setup.md).
+**Interface V0.1:** estação de trabalho científico com navegação lateral de sete seções: Explorar V1, Inventário, Guia de montagem V1, Fundamentos, Artigos, Revisão Bibliográfica e Referências. Fotografia real em destaque, zoom/pan, tela cheia com fallback, hotspots verificados e inspetor não-modal com recortes visuais de seis regiões identificadas. Inventário permanece com busca/filtros/ordenação, fichas, lightbox e CSV. Consulte [guia de operação](documentation/UncutGemV1Setup.md) e [upgrade V0.1](documentation/UncutGemV01InterfaceUpgrade.md).
 
 **Inventário real importado:** os 33 registros V1 da planilha mestre foram lidos por integração autorizada, sanitizados e gravados no snapshot público versionado `code/public/data/InventoryV1.json`. A planilha original permanece privada; o site exibe uma cópia estática com data de importação, sem sincronização ao vivo. Seis hotspots localizados na fotografia real usam tags estáveis da planilha. V2, 3D e simulações não estão implementados.
 
@@ -19,7 +19,7 @@ Fotografias e diagramas oficiais preservam créditos/licença; imagens IA existe
 1. **Site do Virtual Lab:** [NV Quantum Virtual Lab](https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/) — publicado na V0 após importação dos 33 componentes.
 2. **Inventário de componentes:** [Uncut Gem — Inventário de Componentes (Google Planilhas)](https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit).
 
-**Prioridade atual da V0:** reprodução visual **2D interativa do Uncut Gem V1** com fotos reais, ficha de componentes, montagem e referências. A **V2** permanece no inventário como documentação para evolução futura; a opção **3D** está adiada, sem compromisso de implementação.
+**Prioridade da V0.1:** reprodução visual **2D interativa do Uncut Gem V1** com fotos reais, ficha de componentes, montagem e referências. A **V2** permanece no inventário como documentação para evolução futura; a opção **3D** está adiada, sem compromisso de implementação.
 
 
 Este repositório foi inicializado com o **esqueleto documental e de automações** do LCR Workflow. A aplicação fotográfica V0 já foi implementada em `code/src/` e publicada pelo workflow Pages; simulações ODMR e backend ainda não fazem parte desta versão.
