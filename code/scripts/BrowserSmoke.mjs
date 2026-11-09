@@ -167,7 +167,7 @@ try {
   await page.getByRole("button", { name: "Artigos",exact:true }).click();
   assert.equal(await page.locator(".paper-card").count(), 3);
   await page.getByRole("button", { name: "Revisão Cientométrica" }).click();
-  await page.getByRole("heading",{name:"Revisão Cientométrica"}).waitFor();
+  await page.getByRole("heading",{name:"Revisão Cientométrica",exact:true}).waitFor();
   assert.equal(await page.locator(".sciento-kpi").count(),7);
   assert(await page.getByText("419",{exact:true}).isVisible());
   assert(await page.getByText("245",{exact:true}).isVisible());
@@ -197,7 +197,7 @@ try {
   await page.getByRole("heading",{name:"Revisão de Patentes"}).waitFor();
   assert(await page.getByText("EM BREVE · IMPLEMENTAÇÃO FUTURA").isVisible());
   await page.getByRole("button",{name:"Revisão Cientométrica"}).click();
-  await page.getByRole("heading",{name:"Revisão Cientométrica"}).waitFor();
+  await page.getByRole("heading",{name:"Revisão Cientométrica",exact:true}).waitFor();
   await page.screenshot({path:join(shots,"NvLabScientometricDashboard.png"),fullPage:true});
   console.log("PASS: review hierarchy, real aggregates, equations, in-browser CSV search and future patents.");
   await page.getByRole("button", { name: "Referências Diretas Virtual Lab" }).click();
