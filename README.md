@@ -1,3 +1,17 @@
+# NV Quantum Virtual Lab — Uncut Gem V1
+
+**Site:** publicação pendente; nenhum endereço público foi validado nesta execução.
+
+**Inventário original:** [Google Sheets — Uncut Gem V1](https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=1346018179#gid=1346018179).
+
+Aplicação React + TypeScript + Vite em `code/`: fotografia oficial V1 com zoom/pan, orientação de montagem, inventário com busca/filtros/ordenação, fichas, lightbox e exportação CSV. Consulte [desenvolvimento, importação e publicação](documentation/UncutGemV1Setup.md).
+
+**Dados reais pendentes:** a planilha privada não pôde ser lida neste ambiente. O site mostra estado de importação pendente, sem inventário fictício e sem hotspots não verificados. O importador exige 33 registros V1 legítimos e autorização para gerar o snapshot público. O workflow Pages constrói/testa, mas bloqueia publicação enquanto faltarem esses dados. V2, 3D e simulações não estão implementados.
+
+Fotografias e diagramas oficiais preservam créditos/licença; imagens IA existentes permanecem nos caminhos originais. O snapshot é uma cópia estática, não sincronização ao vivo. A documentação LCR anterior é preservada abaixo.
+
+---
+
 # NV Quantum Virtual Lab — LCR Workflow Bootstrap
 
 ## Acesso rápido ao NV Quantum Virtual Lab
