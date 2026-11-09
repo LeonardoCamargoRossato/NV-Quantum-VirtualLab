@@ -9,9 +9,9 @@
   "snapshotDateNote": "Data de recebimento do arquivo; horário de sincronização online não verificado.",
   "sourceSha256": "3fa0d1c8fe767964b278d91756fdf4679aca897cc3ffb827d24ac65614c463c4",
   "evidenceSha256": {
-    "ComponentImageCheckpoint.json": "813da774117a425dc548aa9bb74d1122e5e13c29d473b71b9217ed4f4c75f0a5",
+    "ComponentImageCheckpoint.json": "9cb03db22158271bace3aab11df73f6fd294b123b8174cd5dcc3807ad5259aaa",
     "LayerBBoardFaceIndex.json": "deea5a1d18ca6fc5cbfb72eb636b4896746d8f45f0de47a90bdcb8b54b214928",
-    "LayerBComponentImagePlan.json": "27d38e2eb16c431eba1322d7e595b8777b94826df69b1109b9296daca85772b3",
+    "LayerBComponentImagePlan.json": "84cc53919e73daab992ad50feae78f6eda60d56dd17568722f1459f48bec8a39",
     "SubsystemsV1.json": "211f006b9e725dc1562fc6906fb5ed890053db90ffcf72a82a2311e828544d95"
   },
   "items": [
@@ -321,7 +321,7 @@
       "function": "Distribui alimentação 5 V/GND.",
       "location": "PCB V1",
       "price": "",
-      "imageType": "Render oficial PCB — referência contextual (B)",
+      "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
       "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10013.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
@@ -336,8 +336,8 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial da PCB como contexto; ponto 5V_SUPP1 não individualizado sem KiCad.",
-      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
+      "imageNotes": "Conector 5 V — 5V_SUPP1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
       "tag": "UG-V1-B001",
@@ -888,7 +888,7 @@
       "function": "Encaixe do ADF4351; instalado no verso.",
       "location": "PCB V1",
       "price": "",
-      "imageType": "Render oficial PCB — referência contextual (B)",
+      "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
       "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10017.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
@@ -903,8 +903,8 @@
       "parentTag": "UG-V1-S04",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial do verso; header SIGGEN1 não confirmado visualmente no recorte.",
-      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
+      "imageNotes": "Conector gerador RF — SIGGEN1. Recorte exato do render oficial da verso da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png"
     },
     {
       "tag": "UG-V1-B018",
@@ -1428,7 +1428,7 @@
       "function": "Liga BPW34 do prisma à placa; não é o fotodiodo.",
       "location": "PCB V1",
       "price": "",
-      "imageType": "Render oficial PCB — referência contextual (B)",
+      "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
       "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10016.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
@@ -1443,8 +1443,8 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial da PCB; conector PHOTODIODE1 não é o fotodiodo BPW34.",
-      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
+      "imageNotes": "Conector do fotodiodo — PHOTODIODE1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
       "tag": "UG-V1-B028",
@@ -1806,7 +1806,7 @@
       "function": "Conecta display.",
       "location": "PCB V1",
       "price": "",
-      "imageType": "Render oficial PCB — referência contextual (B)",
+      "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
       "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10014.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
@@ -1821,8 +1821,8 @@
       "parentTag": "UG-V1-S09",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial da PCB, contexto do conector OLED J2 sem serigrafia de identificação legível.",
-      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
+      "imageNotes": "Conector OLED — J2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
       "tag": "UG-V1-B038",
@@ -2103,7 +2103,7 @@
       "function": "Áreas para conexão e montagem de componentes.",
       "location": "Superfície da PCB",
       "price": "",
-      "imageType": "Render oficial PCB — referência contextual (B)",
+      "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
       "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B044.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
@@ -2118,8 +2118,8 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial da frente; pads não individualizados por coordenadas KiCad.",
-      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
+      "imageNotes": "Pads / ilhas de solda — exemplo U2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Exemplo representativo de pads; não representa todas as ilhas da placa.",
+      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
       "tag": "UG-V1-B045",
@@ -2130,7 +2130,7 @@
       "function": "Encaixes entre módulos comerciais e placa principal.",
       "location": "Face frontal e verso",
       "price": "",
-      "imageType": "Render oficial PCB — referência contextual (B)",
+      "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
       "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B045.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
@@ -2145,8 +2145,8 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render da PCB como referência de footprints/headers, sem componente isolado.",
-      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
+      "imageNotes": "Soquetes / headers — footprint U1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Footprint de header U1 usado como referência de montagem; não comprova soquete mecânico instalado.",
+      "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     }
   ],
   "legacyItems": [

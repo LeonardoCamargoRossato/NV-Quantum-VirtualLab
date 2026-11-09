@@ -143,8 +143,10 @@ def build(plan, dest, checkpoint_path, preview_only=False):
             if entry.get('approved_asset_sha256'):
                 # Preserve the byte-identical PNG preview explicitly approved by the project owner.
                 reg=entry.get('region') or {}
-                if entry['source_id'] != 'pcbfront' or tuple(reg.get('source_dimensions',())) != source.size:
+                if entry['source_id'] not in ('pcbfront','pcbback') or tuple(reg.get('source_dimensions',())) != source.size:
                     raise RuntimeError('Approved PCB asset source dimensions mismatch: '+entry['tag'])
+                if entry.get('approved_source_sha256') and before[entry['source_id']] != entry['approved_source_sha256']:
+                    raise RuntimeError('Approved crop source hash mismatch: '+entry['tag'])
                 box=reg.get('px_original')
                 if not isinstance(box,list) or len(box)!=4 or not (0<=box[0]<box[2]<=source.width and 0<=box[1]<box[3]<=source.height):
                     raise RuntimeError('Approved PCB crop coordinates invalid: '+entry['tag'])

@@ -35,20 +35,21 @@
       "parent": "Alimentação elétrica",
       "classification": "B",
       "status": "CHECK",
-      "notes": "Render oficial da PCB como contexto; ponto 5V_SUPP1 não individualizado sem KiCad.",
+      "notes": "Conector 5 V — 5V_SUPP1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
       "image": "UgV10013.png",
-      "source_id": "pcbback",
+      "source_id": "pcbfront",
       "source_box_px": [
-        0,
-        0,
-        3022,
-        1952
+        660,
+        1025,
+        850,
+        1250
       ],
-      "image_type": "Render oficial PCB — referência contextual (B)",
-      "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
-      "width": 1500,
-      "height": 969,
-      "bytes": 666736
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
+      "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
+      "width": 190,
+      "height": 225,
+      "bytes": 34703,
+      "approved_asset_sha256": "2c0861e1b3d459f54059a3fa1b2bf0eba4865e8dd5f4dbe4bac8dc2ab1727ccd"
     },
     {
       "tag": "UG-V1-B001",
@@ -521,20 +522,21 @@
       "parent": "Geração de micro-ondas — ADF4351",
       "classification": "B",
       "status": "CHECK",
-      "notes": "Render oficial do verso; header SIGGEN1 não confirmado visualmente no recorte.",
+      "notes": "Conector gerador RF — SIGGEN1. Recorte exato do render oficial da verso da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
       "image": "UgV10017.png",
       "source_id": "pcbback",
       "source_box_px": [
-        0,
-        0,
-        3022,
-        1952
+        1065,
+        1475,
+        1395,
+        1625
       ],
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
-      "width": 1500,
-      "height": 969,
-      "bytes": 666736
+      "width": 330,
+      "height": 150,
+      "bytes": 37220,
+      "approved_asset_sha256": "2b0010e5d5f46c1c20b6e4e22d852fbc9a7adf42581f5006a6df1d01e87e5cdb"
     },
     {
       "tag": "UG-V1-B018",
@@ -961,20 +963,21 @@
       "parent": "Prisma e detecção óptica",
       "classification": "B",
       "status": "CHECK",
-      "notes": "Render oficial da PCB; conector PHOTODIODE1 não é o fotodiodo BPW34.",
+      "notes": "Conector do fotodiodo — PHOTODIODE1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
       "image": "UgV10016.png",
-      "source_id": "pcbback",
+      "source_id": "pcbfront",
       "source_box_px": [
-        0,
-        0,
-        3022,
-        1952
+        1160,
+        855,
+        1585,
+        965
       ],
-      "image_type": "Render oficial PCB — referência contextual (B)",
-      "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
-      "width": 1500,
-      "height": 969,
-      "bytes": 666736
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
+      "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
+      "width": 425,
+      "height": 110,
+      "bytes": 32092,
+      "approved_asset_sha256": "d9cd694cd79be66e55631fdc3080d4d025446821029a30a58eb62bddcea67df8"
     },
     {
       "tag": "UG-V1-B028",
@@ -1269,20 +1272,21 @@
       "parent": "Visualização — OLED",
       "classification": "B",
       "status": "CHECK",
-      "notes": "Render oficial da PCB, contexto do conector OLED J2 sem serigrafia de identificação legível.",
+      "notes": "Conector OLED — J2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
       "image": "UgV10014.png",
-      "source_id": "pcbback",
+      "source_id": "pcbfront",
       "source_box_px": [
-        0,
-        0,
-        3022,
-        1952
+        1920,
+        1280,
+        2225,
+        1405
       ],
-      "image_type": "Render oficial PCB — referência contextual (B)",
-      "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
-      "width": 1500,
-      "height": 969,
-      "bytes": 666736
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
+      "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
+      "width": 305,
+      "height": 125,
+      "bytes": 24486,
+      "approved_asset_sha256": "01a345f8786f41b86d765a9c1235767a5385c622b947c5a99a0fceea078e6753"
     },
     {
       "tag": "UG-V1-B038",
@@ -1501,20 +1505,21 @@
       "parent": "Placa-base e estrutura",
       "classification": "B",
       "status": "CHECK",
-      "notes": "Render oficial da frente; pads não individualizados por coordenadas KiCad.",
+      "notes": "Pads / ilhas de solda — exemplo U2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Exemplo representativo de pads; não representa todas as ilhas da placa.",
       "image": "UgV1B044.png",
       "source_id": "pcbfront",
       "source_box_px": [
-        0,
-        0,
-        3022,
-        1952
+        1150,
+        1020,
+        1385,
+        1255
       ],
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "width": 1500,
-      "height": 969,
-      "bytes": 656967
+      "width": 235,
+      "height": 235,
+      "bytes": 44698,
+      "approved_asset_sha256": "231c3a80289846e09621be8416ccaa8bf140d2ec4567639f8f8447acf3c1be20"
     },
     {
       "tag": "UG-V1-B045",
@@ -1523,20 +1528,21 @@
       "parent": "Placa-base e estrutura",
       "classification": "B",
       "status": "CHECK",
-      "notes": "Render da PCB como referência de footprints/headers, sem componente isolado.",
+      "notes": "Soquetes / headers — footprint U1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Footprint de header U1 usado como referência de montagem; não comprova soquete mecânico instalado.",
       "image": "UgV1B045.png",
       "source_id": "pcbfront",
       "source_box_px": [
-        0,
-        0,
-        3022,
-        1952
+        1580,
+        1420,
+        1910,
+        1635
       ],
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
-      "width": 1500,
-      "height": 969,
-      "bytes": 656967
+      "width": 330,
+      "height": 215,
+      "bytes": 52687,
+      "approved_asset_sha256": "e0f7ec14d55adfab06b829c1417f23262dd8651d5d81071bb736202e4f9fe10e"
     }
   ]
 }

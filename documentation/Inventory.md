@@ -2,7 +2,7 @@
 
 A fonte do inventário está em [`code/source/`](../code/source/README.md): XLSX original e JSON canônico derivado. Documentação explica o modelo sem duplicar a lista de componentes.
 
-A página Inventário apresenta um único catálogo com 79 registros (10 subsistemas A e 69 componentes B), busca em todos os metadados, filtros de camada/subsistema/face/tipo de imagem, ordenação, cards/lista e CSV. Camada C permanece indisponível. A ficha contextual expõe os metadados e a navegação entre subsistemas e componentes, sem hotspots novos não validados.
+A página Inventário apresenta um único catálogo com 79 registros (10 subsistemas A e 69 componentes B), busca em todos os metadados, filtros de camada/subsistema/face/tipo de imagem, ordenação, cards/lista e CSV. Cards têm paginação responsiva de até duas fileiras; filtros e CSV continuam trabalhando sobre todos os resultados filtrados. Camada C permanece indisponível. A ficha contextual expõe os metadados e a navegação entre subsistemas e componentes, sem hotspots novos não validados.
 
 A aba legada de 33 itens é mantida no XLSX e em `legacyItems` para auditoria. A árvore prevalece em divergências; valores legados divergentes e campos complementados são registrados em `consolidation` no JSON. As vistas PCB frontal/traseira são referências históricas vinculadas à PCB, não componentes duplicados no catálogo de 79.
 

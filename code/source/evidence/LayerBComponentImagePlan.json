@@ -48,15 +48,28 @@
       "location": "PCB V1",
       "class": "B",
       "status": "CHECK",
-      "source_id": "pcbback",
-      "region": "all",
-      "notes": "Render oficial da PCB como contexto; ponto 5V_SUPP1 não individualizado sem KiCad.",
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          660,
+          1025,
+          850,
+          1250
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Conector 5 V — 5V_SUPP1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "filename": "UgV10013.png",
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png",
       "existing_image_url": "https://raw.githubusercontent.com/QuantumVillage/UncutGem/main/hardware/PCB/images/DiamondGeezer-2.png",
       "existing_image_type": "Render de placa, não foto do conector",
-      "existing_notes": ""
+      "existing_notes": "",
+      "approved_asset_sha256": "2c0861e1b3d459f54059a3fa1b2bf0eba4865e8dd5f4dbe4bac8dc2ab1727ccd",
+      "approved_source_sha256": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922"
     },
     {
       "tag": "UG-V1-B001",
@@ -666,14 +679,27 @@
       "class": "B",
       "status": "CHECK",
       "source_id": "pcbback",
-      "region": "all",
-      "notes": "Render oficial do verso; header SIGGEN1 não confirmado visualmente no recorte.",
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "region": {
+        "px_original": [
+          1065,
+          1475,
+          1395,
+          1625
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Conector gerador RF — SIGGEN1. Recorte exato do render oficial da verso da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "filename": "UgV10017.png",
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png",
       "existing_image_url": "https://raw.githubusercontent.com/QuantumVillage/UncutGem/main/hardware/PCB/images/DiamondGeezer-2.png",
       "existing_image_type": "Render de placa, não foto do conector",
-      "existing_notes": ""
+      "existing_notes": "",
+      "approved_asset_sha256": "2b0010e5d5f46c1c20b6e4e22d852fbc9a7adf42581f5006a6df1d01e87e5cdb",
+      "approved_source_sha256": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196"
     },
     {
       "tag": "UG-V1-B018",
@@ -1183,15 +1209,28 @@
       "location": "PCB V1",
       "class": "B",
       "status": "CHECK",
-      "source_id": "pcbback",
-      "region": "all",
-      "notes": "Render oficial da PCB; conector PHOTODIODE1 não é o fotodiodo BPW34.",
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          1160,
+          855,
+          1585,
+          965
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Conector do fotodiodo — PHOTODIODE1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "filename": "UgV10016.png",
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png",
       "existing_image_url": "https://raw.githubusercontent.com/QuantumVillage/UncutGem/main/hardware/PCB/images/DiamondGeezer-2.png",
       "existing_image_type": "Render de placa, não foto do conector",
-      "existing_notes": ""
+      "existing_notes": "",
+      "approved_asset_sha256": "d9cd694cd79be66e55631fdc3080d4d025446821029a30a58eb62bddcea67df8",
+      "approved_source_sha256": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922"
     },
     {
       "tag": "UG-V1-B028",
@@ -1561,15 +1600,28 @@
       "location": "PCB V1",
       "class": "B",
       "status": "CHECK",
-      "source_id": "pcbback",
-      "region": "all",
-      "notes": "Render oficial da PCB, contexto do conector OLED J2 sem serigrafia de identificação legível.",
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "source_id": "pcbfront",
+      "region": {
+        "px_original": [
+          1920,
+          1280,
+          2225,
+          1405
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Conector OLED — J2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "filename": "UgV10014.png",
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png",
       "existing_image_url": "https://raw.githubusercontent.com/QuantumVillage/UncutGem/main/hardware/PCB/images/DiamondGeezer-2.png",
       "existing_image_type": "Render de placa, não foto do conector",
-      "existing_notes": ""
+      "existing_notes": "",
+      "approved_asset_sha256": "01a345f8786f41b86d765a9c1235767a5385c622b947c5a99a0fceea078e6753",
+      "approved_source_sha256": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922"
     },
     {
       "tag": "UG-V1-B038",
@@ -1835,14 +1887,27 @@
       "class": "B",
       "status": "CHECK",
       "source_id": "pcbfront",
-      "region": "all",
-      "notes": "Render oficial da frente; pads não individualizados por coordenadas KiCad.",
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "region": {
+        "px_original": [
+          1150,
+          1020,
+          1385,
+          1255
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Pads / ilhas de solda — exemplo U2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Exemplo representativo de pads; não representa todas as ilhas da placa.",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "filename": "UgV1B044.png",
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png",
       "existing_image_url": "https://raw.githubusercontent.com/QuantumVillage/UncutGem/main/hardware/PCB/images/DiamondGeezer-1.png",
       "existing_image_type": "Render oficial da PCB",
-      "existing_notes": "Componente estrutural; identificação geométrica requer arquivo KiCad."
+      "existing_notes": "Componente estrutural; identificação geométrica requer arquivo KiCad.",
+      "approved_asset_sha256": "231c3a80289846e09621be8416ccaa8bf140d2ec4567639f8f8447acf3c1be20",
+      "approved_source_sha256": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922"
     },
     {
       "tag": "UG-V1-B045",
@@ -1856,14 +1921,27 @@
       "class": "B",
       "status": "CHECK",
       "source_id": "pcbfront",
-      "region": "all",
-      "notes": "Render da PCB como referência de footprints/headers, sem componente isolado.",
-      "image_type": "Render oficial PCB — referência contextual (B)",
+      "region": {
+        "px_original": [
+          1580,
+          1420,
+          1910,
+          1635
+        ],
+        "source_dimensions": [
+          3022,
+          1952
+        ]
+      },
+      "notes": "Soquetes / headers — footprint U1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Footprint de header U1 usado como referência de montagem; não comprova soquete mecânico instalado.",
+      "image_type": "Render oficial PCB — footprint / pads de montagem (B)",
       "filename": "UgV1B045.png",
-      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
+      "source_technical": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png",
       "existing_image_url": "https://raw.githubusercontent.com/QuantumVillage/UncutGem/main/hardware/PCB/images/DiamondGeezer-1.png",
       "existing_image_type": "Render oficial da PCB",
-      "existing_notes": "Componente estrutural; identificação geométrica requer arquivo KiCad."
+      "existing_notes": "Componente estrutural; identificação geométrica requer arquivo KiCad.",
+      "approved_asset_sha256": "e0f7ec14d55adfab06b829c1417f23262dd8651d5d81071bb736202e4f9fe10e",
+      "approved_source_sha256": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922"
     }
   ]
 }

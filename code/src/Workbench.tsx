@@ -10,6 +10,7 @@ import { FlowPage } from "./FlowPage";
 import { AboutPage } from "./AboutPage";
 import { LabFuturePage } from "./LabFuturePages";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
+import { cardPageSize, pageNumbers } from "./Pagination";
 import inventoryData from "../source/InventoryV1.json";
 import "./Workbench.css";
 
@@ -117,6 +118,9 @@ function App() {
   const [layer,setLayer]=useState("");
   const [face,setFace]=useState("");
   const [view,setView]=useState(()=>{try{return sessionStorage.getItem("nv-inventory-view")||"cards"}catch{return "cards"}});
+  const [catalogPage,setCatalogPage]=useState(1);
+  const [catalogWidth,setCatalogWidth]=useState(0);
+  const catalogGridRef=useRef<HTMLDivElement>(null);
   const [sort,setSort]=useState<"tag"|"name"|"subsystem">("tag");
   const [selected,setSelected]=useState<Item | null>(null);
   const [selectedFlow,setSelectedFlow]=useState<FlowStep | null>(null);
@@ -183,6 +187,18 @@ function App() {
   },[selected,selectedFlow,selectedReference]);
   const items=snapshot?.items||[];
   const filtered=filterItems(items,query,subsystem,imageType).filter(i=>(!layer||i.layer===layer)&&(!face||i.face===face)).sort((a,b)=>a[sort].localeCompare(b[sort],"pt-BR",{numeric:true}));
+  const pageSize=cardPageSize(catalogWidth);
+  const totalPages=Math.max(1,Math.ceil(filtered.length/pageSize));
+  const activePage=Math.min(catalogPage,totalPages);
+  const visibleCards=filtered.slice((activePage-1)*pageSize,activePage*pageSize);
+  useEffect(()=>{setCatalogPage(1)},[query,subsystem,imageType,sort,layer,face,pageSize]);
+  useEffect(()=>{
+    const grid=catalogGridRef.current;
+    if(!grid)return;
+    const observer=new ResizeObserver(entries=>setCatalogWidth(entries[0].contentRect.width));
+    observer.observe(grid);
+    return ()=>observer.disconnect();
+  },[page,view,snapshot]);
   const fitted=Math.max(0,Math.min(viewSize.width/photoSize.width,viewSize.height/photoSize.height));
   const imageDimensions={width:photoSize.width*fitted,height:photoSize.height*fitted};
   const selection:InspectorSelection|null = selectedFlow?{kind:"flow",step:selectedFlow}:selectedReference?{kind:"reference",reference:selectedReference}:selected?{kind:"component",item:selected}:null;
@@ -368,7 +384,7 @@ function App() {
             <label>Face da PCB<select aria-label="Face da PCB" value={face} onChange={e=>setFace(e.target.value)}><option value="">Todas</option>{Array.from(new Set(items.map(i=>i.face))).sort().map(f=><option key={f}>{f}</option>)}</select></label>
             <label>Ordenar<select value={sort} onChange={e=>setSort(e.target.value as typeof sort)} aria-label="Ordenar por"><option value="tag">Tag</option><option value="name">Componente</option><option value="subsystem">Subsistema</option></select></label></div>
           <div className="inventory-tools"><div><button onClick={()=>{setQuery("");setSubsystem("");setImageType("");setLayer("");setFace("");setSort("tag")}}>Limpar filtros</button>{["cards","list"].map(mode=><button key={mode} aria-pressed={view===mode} onClick={()=>{setView(mode);try{sessionStorage.setItem("nv-inventory-view",mode)}catch{}}}>{mode==="cards"?"▦ Cards":"☷ Lista"}</button>)}</div><span aria-live="polite">{filtered.length} de {items.length} itens · Inventário do Uncut Gem V1</span><div><button disabled={!items.length} onClick={()=>download(true)}>Baixar CSV · todos</button><button disabled={!filtered.length} onClick={()=>download(false)}>CSV · filtrados</button></div></div>
-          {loadError?<div className="status-panel" role="alert">{loadError}</div>:!snapshot?<div className="status-panel">Carregando inventário…</div>:snapshot.status==="pending"?<div className="status-panel">Snapshot ainda não importado. <Out href={inventorySheet}>Consultar planilha</Out></div>:view==="cards"?<div className="inventory-cards">{filtered.map(item=><article key={item.tag} className="inventory-card"><div className="catalog-image"><ComponentImage item={item} onOpen={setPreview}/></div><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button><span>{item.tag} · Camada {item.layer}</span><span>{item.subsystem} · {item.pcb||"Sem referência PCB"}</span><p>{item.function}</p></article>)}{!filtered.length&&<p>Nenhum componente encontrado para os filtros atuais.</p>}</div>:<div className="inventory-table-shell"><table className="inventory-table"><thead><tr>{["Tag","Imagem","Componente","Ref. PCB","Subsistema","Qtde","Modelo / valor","Função"].map(x=><th key={x} scope="col">{x}</th>)}</tr></thead><tbody>{filtered.map(item=><tr key={item.tag}><td><button className="plain-link" onClick={e=>openItem(item,e.currentTarget)}>{item.tag}</button></td><td><div className="table-photo"><ComponentImage item={item} onOpen={setPreview}/></div></td><td><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button></td><td>{item.pcb||"—"}</td><td>{item.subsystem}</td><td>{item.quantity||"—"}</td><td>{item.model||"—"}</td><td>{item.function}</td></tr>)}</tbody></table>{!filtered.length&&<div className="status-panel">Nenhum componente encontrado para os filtros atuais.</div>}</div>}
+          {loadError?<div className="status-panel" role="alert">{loadError}</div>:!snapshot?<div className="status-panel">Carregando inventário…</div>:snapshot.status==="pending"?<div className="status-panel">Snapshot ainda não importado. <Out href={inventorySheet}>Consultar planilha</Out></div>:view==="cards"?<><div ref={catalogGridRef} className="inventory-cards" data-page-size={pageSize}>{visibleCards.map(item=><article key={item.tag} data-tag={item.tag} className="inventory-card"><div className="catalog-image"><ComponentImage item={item} onOpen={setPreview}/></div><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button><span>{item.tag} · Camada {item.layer}</span><span>{item.subsystem} · {item.pcb||"Sem referência PCB"}</span><p>{item.function}</p></article>)}{!filtered.length&&<p>Nenhum componente encontrado para os filtros atuais.</p>}</div><nav className="inventory-pagination" aria-label="Páginas do inventário"><button disabled={activePage===1} onClick={()=>setCatalogPage(activePage-1)}>Anterior</button>{pageNumbers(activePage,totalPages).map((number,index)=>number===null?<span key={"gap"+index}>…</span>:<button key={number} aria-label={"Página "+number} aria-current={activePage===number?"page":undefined} onClick={()=>setCatalogPage(number)}>{number}</button>)}<button disabled={activePage===totalPages} onClick={()=>setCatalogPage(activePage+1)}>Próxima</button><span role="status">Página {activePage} de {totalPages} · {filtered.length} resultados</span></nav></>:<div className="inventory-table-shell"><table className="inventory-table"><thead><tr>{["Tag","Imagem","Componente","Ref. PCB","Subsistema","Qtde","Modelo / valor","Função"].map(x=><th key={x} scope="col">{x}</th>)}</tr></thead><tbody>{filtered.map(item=><tr key={item.tag}><td><button className="plain-link" onClick={e=>openItem(item,e.currentTarget)}>{item.tag}</button></td><td><div className="table-photo"><ComponentImage item={item} onOpen={setPreview}/></div></td><td><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button></td><td>{item.pcb||"—"}</td><td>{item.subsystem}</td><td>{item.quantity||"—"}</td><td>{item.model||"—"}</td><td>{item.function}</td></tr>)}</tbody></table>{!filtered.length&&<div className="status-panel">Nenhum componente encontrado para os filtros atuais.</div>}</div>}
         </div> : page==="fluxo" ? <FlowPage base={base} onInspect={openStep} onPcb={step=>seePcb(step.pcbTag)} onGallery={openFlowGallery} activeStepId={selectedFlow?.id}/> : page==="guia" ? <Guide base={base} onMedia={(url,title)=>setPreview({url,title})}/> : page==="fundamentos" ? <Fundamentals/> : page==="artigos" ? <Articles/> : page==="revisao" ? <ScientometricDashboard/> : page==="patentes" ? <PatentReviewPlaceholder/> : page==="sobre" ? <AboutPage/> : (page==="uncut-v2"||page==="modelo3d") ? <LabFuturePage kind={page==="uncut-v2"?"v2":"modelo3d"} onReturn={()=>go("explorar")}/> : <References base={base} onInspect={openReference}/>}
       </div>}
         </div>

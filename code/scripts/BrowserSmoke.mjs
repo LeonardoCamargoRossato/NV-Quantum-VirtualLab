@@ -115,9 +115,21 @@ try {
   await page.getByRole("button", { name: "Inventário", exact: true }).click();
   await page.getByText("79 de 79 itens", { exact: false }).waitFor();
   assert.equal(await page.getByRole("searchbox").count(), 1);
-  assert.equal(await page.locator(".inventory-card").count(),79);
+  await page.waitForFunction(()=>document.querySelectorAll('.inventory-card').length>0);
+  const seen=new Set();
+  while(true){
+    const geometry=await page.locator('.inventory-card').evaluateAll(cards=>cards.map(c=>({tag:c.dataset.tag,y:Math.round(c.getBoundingClientRect().top)})));
+    assert(new Set(geometry.map(c=>c.y)).size<=2,"Máximo de duas fileiras por página");
+    geometry.forEach(c=>{assert(!seen.has(c.tag),"Tag repetida entre páginas");seen.add(c.tag)});
+    const next=page.getByRole('navigation',{name:'Páginas do inventário'}).getByRole('button',{name:'Próxima',exact:true});
+    if(await next.isDisabled())break;
+    await next.click();
+  }
+  assert.equal(seen.size,79,"Todas as tags acessíveis pela paginação");
+  await page.getByRole('button',{name:'Página 1',exact:true}).click();
   await page.getByRole("button", {name:"Camada A",exact:true}).click();
-  assert.equal(await page.locator(".inventory-card").count(),10);
+  await page.getByText("10 de 79 itens",{exact:false}).waitFor();
+  assert((await page.locator(".inventory-card").count())<=10);
   await page.locator(".inventory-card .plain-link").first().click();
   await page.getByRole("button",{name:"Ver componentes deste subsistema"}).click();
   assert(await page.locator(".inventory-card").count()>0);
@@ -126,11 +138,12 @@ try {
   await page.getByRole("button",{name:"Fechar inspetor"}).click();
   await page.getByRole("button",{name:"Limpar filtros"}).click();
   await page.getByRole("button", {name:"Camada B",exact:true}).click();
-  assert.equal(await page.locator(".inventory-card").count(),69);
+  await page.getByText("69 de 79 itens",{exact:false}).waitFor();
+  assert((await page.locator(".inventory-card").count())<69);
   assert(await page.getByRole("button",{name:"Camada C · Em breve"}).isDisabled());
   await page.getByRole("button",{name:"Limpar filtros"}).click();
   await page.getByLabel("Face da PCB",{exact:true}).selectOption("Verso");
-  assert.equal(await page.locator(".inventory-card").count(),7);
+  await page.getByText("7 de 79 itens",{exact:false}).waitFor();
   await page.getByRole("button",{name:"Limpar filtros"}).click();
   await page.getByRole("searchbox").fill("capacitor");
   const approved = page.locator('.inventory-card img[src*="UgV1B00"]');
@@ -265,7 +278,13 @@ try {
   await page.getByRole("button",{name:"Inventário",exact:true}).click();
   await page.getByRole("button",{name:"Limpar filtros"}).click();
   await page.getByRole("button",{name:"▦ Cards"}).click();
-  assert.equal(await page.locator(".inventory-card").count(),79);
+  assert.equal(await page.locator(".inventory-card").count(),2,"Mobile: duas fileiras de um card");
+  await page.getByRole('navigation',{name:'Páginas do inventário'}).getByRole('button',{name:'Próxima',exact:true}).click();
+  await page.getByRole('status').getByText('Página 2 de 40',{exact:false}).waitFor();
+  await page.getByRole('searchbox').fill('UG-V1-B044');
+  assert.equal(await page.locator('.inventory-card').count(),1);
+  await page.getByRole('status').getByText('Página 1 de 1',{exact:false}).waitFor();
+  await page.getByRole('button',{name:'Limpar filtros'}).click();
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"Cards mobile sem overflow");
   await page.screenshot({path:join(shots,"UnifiedInventoryMobile.png"),fullPage:true});
   await page.getByRole("button",{name:"☷ Lista"}).click();
