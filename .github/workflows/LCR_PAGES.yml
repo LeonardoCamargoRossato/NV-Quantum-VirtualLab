@@ -86,3 +86,44 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v4
         id: deployment
+
+  verify-public-assets:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar os 11 PNGs no endereço público do GitHub Pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import time
+          from pathlib import Path
+          from urllib.error import HTTPError, URLError
+          from urllib.request import Request, urlopen
+
+          manifest = json.loads(Path('code/public/assets/official/v1/enhanced/manifest.json').read_text(encoding='utf-8'))
+          names = [row['filename'] for row in manifest['crops']]
+          base = 'https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/assets/official/v1/enhanced/'
+          signature = bytes([137, 80, 78, 71, 13, 10, 26, 10])
+          errors = []
+          for attempt in range(1, 9):
+              errors.clear()
+              for name in names:
+                  url = base + name
+                  try:
+                      with urlopen(Request(url, headers={'User-Agent': 'NVLab-CI/1.0'}), timeout=18) as response:
+                          if response.status != 200 or signature != response.read(8):
+                              errors.append(f'{name}: HTTP {response.status} ou PNG inválido')
+                  except (HTTPError, URLError, TimeoutError) as exc:
+                      errors.append(f'{name}: {type(exc).__name__}')
+              if not errors:
+                  print(f'CHECK PUBLIC PAGES: {len(names)} PNGs carregados em {base}')
+                  break
+              print(f'Tentativa {attempt}/8: {len(errors)} imagens ainda indisponíveis; esperando propagação')
+              if attempt < 8:
+                  time.sleep(8)
+          if errors:
+              raise SystemExit('Recortes não publicados: ' + '; '.join(errors))
+          PY
