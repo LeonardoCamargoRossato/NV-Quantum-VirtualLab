@@ -54,7 +54,7 @@ try {
   await page.screenshot({ path: join(shots,"NvLabV01Inspector.png"), fullPage: true });
   // Recorte ampliado deve exibir a imagem do laser, não uma área cinza/alt quebrado.
   await page.getByRole("button", { name: "Ampliar recorte real: Laser verde" }).click();
-  await page.getByRole("dialog", { name: /Recorte oficial V1 aprimorado/ }).waitFor();
+  await page.getByRole("dialog", { name: /Recorte aprimorado do Uncut Gem V1/ }).waitFor();
   assert(await page.locator(".lightbox-dialog .crop-shell img").evaluate(i => i.complete && i.naturalWidth > 0));
   await page.getByRole("button", { name: "Fechar imagem" }).click();
   await page.getByRole("button", { name: "Expandir painel" }).click();
