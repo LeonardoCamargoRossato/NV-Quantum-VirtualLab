@@ -7,6 +7,7 @@ import { Articles, Fundamentals, Guide, Literature, References, navigationGroups
 import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
 import { FlowPage } from "./FlowPage";
 import { AboutPage } from "./AboutPage";
+import { ComponentTreeSearch } from "./ComponentTreeSearch";
 import { LabFuturePage } from "./LabFuturePages";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
 import "./Workbench.css";
@@ -331,6 +332,7 @@ function App() {
       </div> : <div className="content-page">
         {page==="inventario" ? <div className="inventory-page">
           <div className="section-heading"><span className="overline">LABORATÓRIO / DADOS</span><h1>Inventário</h1><p>Componentes do Uncut Gem V1, imagens rotuladas, ficha técnica, filtros e exportação CSV. A planilha Google Sheets permanece fonte mestre privada.</p></div>
+          <ComponentTreeSearch base={base} onPreview={(url,title)=>setPreview({url,title})}/>
           <div className="inventory-summary"><div><strong>Uncut Gem V1</strong><p>{snapshot?.status==="validated"?"Snapshot local · "+new Date(snapshot.snapshotAt||"").toLocaleString("pt-BR")+" · "+items.length+" registros":"Importação não concluída"}</p></div><Out href={inventorySheet}>Abrir planilha original</Out></div>
           <div className="inventory-filters"><label>Buscar<input type="search" placeholder="Tag, componente, modelo, função…" value={query} onChange={e=>setQuery(e.target.value)}/></label>
             <label>Subsistema<select value={subsystem} onChange={e=>setSubsystem(e.target.value)} aria-label="Subsistema"><option value="">Todos</option>{Array.from(new Set(items.map(i=>i.subsystem))).sort().map(s=><option key={s} value={s}>{s}</option>)}</select></label>
