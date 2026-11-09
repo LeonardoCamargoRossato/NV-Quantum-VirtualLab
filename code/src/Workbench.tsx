@@ -269,8 +269,8 @@ function App() {
               <span className="nav-icon" aria-hidden="true">◇</span><span>Uncut Gem V2<small>Ainda não implementado</small></span>
             </button>
             <button type="button" className={"nav-item nav-future-item"+(page==="modelo3d"?" active":"")}
-              aria-current={page==="modelo3d"?"page":undefined} onClick={()=>go("modelo3d")} title="Modelo 3D — Stegemann (2023), implementação futura">
-              <span className="nav-icon" aria-hidden="true">⬡</span><span>Modelo 3D — Stegemann<small>Implementação futura</small></span>
+              aria-current={page==="modelo3d"?"page":undefined} onClick={()=>go("modelo3d")} title="Implementações futuras">
+              <span className="nav-icon" aria-hidden="true">⬡</span><span>NV-Print 3D Stegemann<small>Implementações futuras</small></span>
             </button>
           </div>
         </section>
