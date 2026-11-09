@@ -376,3 +376,7 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .future-lab-panel{display:block}
  .future-lab-mark{width:100px;height:100px;font-size:30px;margin-bottom:18px}
 }
+
+/* Nome extenso da aba de fontes diretas: duas linhas sem corte na sidebar. */
+.nav-tree .nav-study-pages .nav-leaf {white-space:normal;min-height:42px;line-height:1.35;align-items:center;}
+.nav-tree .nav-study-pages .nav-leaf > span:last-child {min-width:0;flex:1;overflow-wrap:break-word;}
