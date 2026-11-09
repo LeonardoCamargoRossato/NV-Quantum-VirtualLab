@@ -10,10 +10,9 @@ class LiveInventoryTest(unittest.TestCase):
         data = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
         self.assertEqual(data["status"], "validated")
         self.assertEqual(len(data["items"]), 79)
-        self.assertEqual(
-            [item["tag"] for item in data["legacyItems"]],
-            [f"UG-V1-{i:04d}" for i in range(1, 34)],
-        )
+        self.assertEqual(data["schemaVersion"], 3)
+        self.assertNotIn("legacyItems", data)
+        self.assertNotIn("legacyOnlyTags", data)
         self.assertRegex(data["sourceSha256"], r"^[0-9a-f]{64}$")
         self.assertRegex(data["snapshotAt"], r"^\d{4}-\d{2}-\d{2}$")
         self.assertIn("XLSX", data["source"])
@@ -27,21 +26,24 @@ class LiveInventoryTest(unittest.TestCase):
                 "location", "price", "imageType", "imageUrl", "source", "datasheet", "notes",
                 "category", "layer", "parent", "parentTag", "legacyTag", "face", "imageFormula", "imageStatus", "imageClass", "imageNotes", "imageSource"
             })
-    def test_hierarchy_and_legacy_views(self):
+    def test_hierarchy_and_canonical_pcb_views(self):
         data = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
         parents = {i["tag"] for i in data["items"] if i["layer"] == "A"}
         children = [i for i in data["items"] if i["layer"] == "B"]
         self.assertEqual(len(parents), 10)
         self.assertEqual(len(children), 69)
         self.assertTrue(all(i["parentTag"] in parents for i in children))
-        self.assertEqual(set(data["legacyOnlyTags"]), {"UG-V1-0002", "UG-V1-0003"})
-        self.assertTrue(data["consolidation"]["differences"])
+        tags = {item["tag"] for item in data["items"]}
+        self.assertIn("UG-V1-B041", tags)
+        self.assertIn("UG-V1-B042", tags)
+        self.assertEqual(data["consolidation"]["filledFields"], [])
 
     def test_optical_safety_mapping(self):
         data = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
         by_id = {item["tag"]: item for item in data["items"]}
         self.assertIn("BPW34", by_id["UG-V1-0028"]["name"])
         self.assertIn("PHOTODIODE1", by_id["UG-V1-0016"]["pcb"])
+        self.assertIn("BPW34", by_id["UG-V1-B028"]["name"])
 
 if __name__ == "__main__":
     unittest.main()
