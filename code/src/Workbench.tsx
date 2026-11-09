@@ -7,6 +7,7 @@ import { Articles, Fundamentals, Guide, Literature, References, navigationGroups
 import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
 import { FlowPage } from "./FlowPage";
 import { AboutPage } from "./AboutPage";
+import { LabFuturePage } from "./LabFuturePages";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
 import "./Workbench.css";
 
@@ -87,10 +88,18 @@ function Lightbox({preview,onClose}: {preview:ImagePreview;onClose:()=>void}) {
     </div>
   </div>;
 }
+const v1Pages: Page[] = ["explorar", "inventario", "fluxo", "guia"];
+const labPages: Page[] = [...v1Pages, "uncut-v2", "modelo3d"];
+function isLabPage(page:Page){return labPages.includes(page);}
+function isV1Page(page:Page){return v1Pages.includes(page);}
 function App() {
   const [page,setPage]=useState<Page>(currentPage);
   const [collapsed,setCollapsed]=useState(()=>{try{return window.localStorage.getItem("nv-sidebar-collapsed")==="true"}catch{return false}});
   const [mobileMenu,setMobileMenu]=useState(false);
+  // Grupos independentes; o laboratório e a Uncut Gem V1 estão abertos por padrão.
+  const [labOpen,setLabOpen]=useState(()=>isLabPage(currentPage()));
+  const [v1Open,setV1Open]=useState(()=>isV1Page(currentPage()));
+  const [studyOpen,setStudyOpen]=useState(()=>!isLabPage(currentPage()));
   const [snapshot,setSnapshot]=useState<Snapshot | null>(null);
   const [loadError,setLoadError]=useState("");
   const [query,setQuery]=useState("");
@@ -121,7 +130,12 @@ function App() {
       .then(validateSnapshot).then(setSnapshot).catch(()=>setLoadError("Não foi possível carregar o snapshot local. Consulte a planilha mestre."));
   },[]);
   useEffect(()=>{
-    function onHash(){setPage(currentPage());setMobileMenu(false)}
+    function onHash(){
+      const target=currentPage();
+      setPage(target);setMobileMenu(false);
+      if(isLabPage(target)){setLabOpen(true);if(isV1Page(target))setV1Open(true);}
+      else setStudyOpen(true);
+    }
     window.addEventListener("hashchange",onHash);
     return ()=>window.removeEventListener("hashchange",onHash);
   },[]);
@@ -162,7 +176,24 @@ function App() {
   const imageDimensions={width:photoSize.width*fitted,height:photoSize.height*fitted};
   const selection:InspectorSelection|null = selectedFlow?{kind:"flow",step:selectedFlow}:selectedReference?{kind:"reference",reference:selectedReference}:selected?{kind:"component",item:selected}:null;
   function clearSelection(){setSelected(null);setSelectedFlow(null);setSelectedReference(null);setInspectorExpanded(false);}
-  function go(target:Page){clearSelection();setPage(target);window.location.hash=target;setMobileMenu(false);}
+  function go(target:Page){
+    clearSelection();setPage(target);window.location.hash=target;setMobileMenu(false);
+    if(isLabPage(target)){setLabOpen(true);if(isV1Page(target))setV1Open(true);}
+    else setStudyOpen(true);
+  }
+  function toggleNavGroup(group:"lab"|"study"){
+    if(collapsed){
+      setCollapsed(false);
+      try{window.localStorage.setItem("nv-sidebar-collapsed","false");}catch{}
+      if(group==="lab")setLabOpen(true);else setStudyOpen(true);
+      return;
+    }
+    if(group==="lab")setLabOpen(open=>!open);else setStudyOpen(open=>!open);
+  }
+  function chooseV1(){
+    if(!isV1Page(page)){go("explorar");setV1Open(true);}
+    else setV1Open(open=>!open);
+  }
   function toggleCollapsed(){setCollapsed(v=>{try{window.localStorage.setItem("nv-sidebar-collapsed",String(!v))}catch{}return !v;});}
   function openItem(item:Item,trigger?:HTMLElement){lastSelectionRef.current=trigger||document.activeElement as HTMLElement;setSelectedFlow(null);setSelectedReference(null);setInspectorExpanded(false);setSelected(item);}
   function openStep(step:FlowStep,trigger:HTMLElement){lastSelectionRef.current=trigger;setSelected(null);setSelectedReference(null);setInspectorExpanded(false);setSelectedFlow(step);}
@@ -172,6 +203,7 @@ function App() {
     const item=items.find(row=>row.tag===tag)||null;
     setSelectedFlow(null);setSelectedReference(null);setInspectorExpanded(false);
     setSelected(item);setPendingPcbTag(item?null:tag);
+    setLabOpen(true);setV1Open(true);
     setPage("explorar");window.location.hash="explorar";setMobileMenu(false);
   }
   useEffect(()=>{
@@ -208,10 +240,57 @@ function App() {
         {!collapsed&&<div className="identity-text"><strong>NV Quantum<br/>Virtual Lab</strong><small>AMBIENTE DE PESQUISA</small></div>}
       </div><button className="sidebar-toggle" type="button" title={collapsed?"Expandir menu":"Recolher menu"} aria-label={collapsed?"Expandir menu lateral":"Recolher menu lateral"} onClick={toggleCollapsed}>{collapsed?"»":"«"}</button></div>
       <div className="sidebar-ita"><a href="https://www.ita.br/" target="_blank" rel="noopener noreferrer" aria-label="Site institucional do ITA" title="ITA — Instituto Tecnológico de Aeronáutica">{logoFailed?<strong>ITA</strong>:<img src={logo} alt="Logomarca do ITA, exibida a partir de site institucional" onError={()=>setLogoFailed(true)}/>}</a>{!collapsed&&<small>Identidade institucional de referência<br/>Projeto acadêmico independente</small>}</div>
-      <nav className="side-navigation" aria-label="Seções">{navigationGroups.map(group=><section key={group.group}><h2>{collapsed?"·":group.group}</h2>{group.pages.map(p=><button
-        type="button" key={p.key} title={pageTitles[p.key]} aria-label={pageTitles[p.key]}
-        aria-current={page===p.key?"page":undefined} className={"nav-item"+(page===p.key?" active":"")}
-        onClick={()=>go(p.key)}><span className="nav-icon" aria-hidden="true">{p.icon}</span>{!collapsed&&<span>{pageTitles[p.key]}</span>}</button>)}</section>)}</nav>
+      <nav className="side-navigation nav-tree" aria-label="Seções">
+        <section className="nav-tree-group">
+          <button type="button" className={"nav-group-toggle"+(isLabPage(page)?" group-current":"")}
+            aria-label="Laboratório" title="Laboratório" aria-expanded={labOpen&&!collapsed} aria-controls="nav-laboratorio"
+            onClick={()=>toggleNavGroup("lab")}>
+            <span className="nav-icon" aria-hidden="true">⚗</span>
+            {!collapsed&&<><span className="nav-group-name">Laboratório</span><span className={"nav-chevron"+(labOpen?" expanded":"")} aria-hidden="true">⌄</span></>}
+          </button>
+          <div id="nav-laboratorio" className="nav-tree-children" hidden={!labOpen||collapsed}>
+            <button type="button" className={"nav-branch-toggle"+(isV1Page(page)?" branch-current":"")}
+              aria-label="Uncut Gem V1" title="Uncut Gem V1" aria-expanded={v1Open} aria-controls="nav-v1-pages"
+              onClick={chooseV1}>
+              <span className="nav-branch-mark" aria-hidden="true">◆</span><span>Uncut Gem V1</span>
+              <span className={"nav-chevron"+(v1Open?" expanded":"")} aria-hidden="true">⌄</span>
+            </button>
+            <div id="nav-v1-pages" className="nav-v1-pages" hidden={!v1Open}>
+              {navigationGroups[0].pages.map(p=><button type="button" key={p.key}
+                title={pageTitles[p.key]} aria-label={pageTitles[p.key]} aria-current={page===p.key?"page":undefined}
+                className={"nav-item nav-leaf"+(page===p.key?" active":"")}
+                onClick={()=>go(p.key)}>
+                <span className="nav-icon" aria-hidden="true">{p.icon}</span><span>{pageTitles[p.key]}</span>
+              </button>)}
+            </div>
+            <button type="button" className={"nav-item nav-future-item"+(page==="uncut-v2"?" active":"")}
+              aria-current={page==="uncut-v2"?"page":undefined} onClick={()=>go("uncut-v2")} title="Uncut Gem V2 — ainda não implementado">
+              <span className="nav-icon" aria-hidden="true">◇</span><span>Uncut Gem V2<small>Ainda não implementado</small></span>
+            </button>
+            <button type="button" className={"nav-item nav-future-item"+(page==="modelo3d"?" active":"")}
+              aria-current={page==="modelo3d"?"page":undefined} onClick={()=>go("modelo3d")} title="Modelo 3D — Stegemann (2023), implementação futura">
+              <span className="nav-icon" aria-hidden="true">⬡</span><span>Modelo 3D — Stegemann<small>Implementação futura</small></span>
+            </button>
+          </div>
+        </section>
+        <section className="nav-tree-group">
+          <button type="button" className={"nav-group-toggle"+(!isLabPage(page)?" group-current":"")}
+            aria-label="Estudo e Pesquisa" title="Estudo e Pesquisa"
+            aria-expanded={studyOpen&&!collapsed} aria-controls="nav-estudo"
+            onClick={()=>toggleNavGroup("study")}>
+            <span className="nav-icon" aria-hidden="true">▤</span>
+            {!collapsed&&<><span className="nav-group-name">Estudo e Pesquisa</span><span className={"nav-chevron"+(studyOpen?" expanded":"")} aria-hidden="true">⌄</span></>}
+          </button>
+          <div id="nav-estudo" className="nav-tree-children nav-study-pages" hidden={!studyOpen||collapsed}>
+            {navigationGroups[1].pages.map(p=><button type="button" key={p.key}
+              title={pageTitles[p.key]} aria-label={pageTitles[p.key]} aria-current={page===p.key?"page":undefined}
+              className={"nav-item nav-leaf"+(page===p.key?" active":"")}
+              onClick={()=>go(p.key)}>
+              <span className="nav-icon" aria-hidden="true">{p.icon}</span><span>{pageTitles[p.key]}</span>
+            </button>)}
+          </div>
+        </section>
+      </nav>
       <div className="sidebar-bottom"><div className="author-block">{!collapsed&&<><strong>Leonardo Camargo Rossato</strong><Out href="https://leonardocamargorossato.github.io/LCR-SolutionsArchitecture-IA-Quantum/#/">Portfólio</Out><span>ITA — Instituto Tecnológico de Aeronáutica</span><small>Projeto acadêmico independente. Sem declaração de endosso oficial.</small></>}{collapsed&&<a href="https://leonardocamargorossato.github.io/LCR-SolutionsArchitecture-IA-Quantum/#/" title="Portfólio — Leonardo Camargo Rossato" aria-label="Portfólio">↗</a>}</div></div>
     </aside>
     <div className="main-column">
@@ -258,7 +337,7 @@ function App() {
             <label>Ordenar<select value={sort} onChange={e=>setSort(e.target.value as typeof sort)} aria-label="Ordenar por"><option value="tag">Tag</option><option value="name">Componente</option><option value="subsystem">Subsistema</option></select></label></div>
           <div className="inventory-tools"><span aria-live="polite">{filtered.length} de {items.length} itens · Inventário do Uncut Gem V1</span><div><button disabled={!items.length} onClick={()=>download(true)}>Baixar CSV · todos</button><button disabled={!filtered.length} onClick={()=>download(false)}>CSV · filtrados</button></div></div>
           {loadError?<div className="status-panel" role="alert">{loadError}</div>:!snapshot?<div className="status-panel">Carregando inventário…</div>:snapshot.status==="pending"?<div className="status-panel">Snapshot ainda não importado. <Out href={inventorySheet}>Consultar planilha</Out></div>:<div className="inventory-table-shell"><table className="inventory-table"><thead><tr>{["Tag","Imagem","Componente","Ref. PCB","Subsistema","Qtde","Modelo / valor","Função"].map(x=><th key={x} scope="col">{x}</th>)}</tr></thead><tbody>{filtered.map(item=><tr key={item.tag}><td><button className="plain-link" onClick={e=>openItem(item,e.currentTarget)}>{item.tag}</button></td><td><div className="table-photo"><ComponentImage item={item} onOpen={setPreview}/></div></td><td><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button></td><td>{item.pcb||"—"}</td><td>{item.subsystem}</td><td>{item.quantity||"—"}</td><td>{item.model||"—"}</td><td>{item.function}</td></tr>)}</tbody></table>{!filtered.length&&<div className="status-panel">Nenhum componente encontrado para os filtros atuais.</div>}</div>}
-        </div> : page==="fluxo" ? <FlowPage base={base} onInspect={openStep} onPcb={step=>seePcb(step.pcbTag)} onGallery={openFlowGallery} activeStepId={selectedFlow?.id}/> : page==="guia" ? <Guide base={base} onMedia={(url,title)=>setPreview({url,title})}/> : page==="fundamentos" ? <Fundamentals/> : page==="artigos" ? <Articles/> : page==="revisao" ? <Literature/> : page==="sobre" ? <AboutPage/> : <References base={base} onInspect={openReference}/>}
+        </div> : page==="fluxo" ? <FlowPage base={base} onInspect={openStep} onPcb={step=>seePcb(step.pcbTag)} onGallery={openFlowGallery} activeStepId={selectedFlow?.id}/> : page==="guia" ? <Guide base={base} onMedia={(url,title)=>setPreview({url,title})}/> : page==="fundamentos" ? <Fundamentals/> : page==="artigos" ? <Articles/> : page==="revisao" ? <Literature/> : page==="sobre" ? <AboutPage/> : (page==="uncut-v2"||page==="modelo3d") ? <LabFuturePage kind={page==="uncut-v2"?"v2":"modelo3d"} onReturn={()=>go("explorar")}/> : <References base={base} onInspect={openReference}/>}
       </div>}
         </div>
       </div>
