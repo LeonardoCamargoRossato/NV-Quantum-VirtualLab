@@ -16,7 +16,34 @@ try {
   await page.goto(process.env.APP_URL || "http://127.0.0.1:5173/NV-Quantum-VirtualLab/", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { name: "Explorar" }).waitFor();
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).waitFor();
-  assert.equal(await page.locator(".side-navigation button").count(), 9);
+  // A primeira visita abre o Laboratório e os itens da Uncut Gem V1.
+  const labGroup = page.getByRole("button",{name:"Laboratório",exact:true});
+  const v1Branch = page.getByRole("button",{name:"Uncut Gem V1",exact:true});
+  const researchGroup = page.getByRole("button",{name:"Estudo e Pesquisa",exact:true});
+  assert.equal(await labGroup.getAttribute("aria-expanded"),"true");
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"true");
+  assert.equal(await researchGroup.getAttribute("aria-expanded"),"false");
+  assert.equal(await page.locator(".side-navigation button:visible").count(),9);
+  // Expandir/recolher independentemente, sem navegar para páginas fictícias.
+  await v1Branch.click();
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"false");
+  await v1Branch.click();
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"true");
+  await labGroup.click();
+  assert.equal(await labGroup.getAttribute("aria-expanded"),"false");
+  await labGroup.click();
+  assert.equal(await labGroup.getAttribute("aria-expanded"),"true");
+  // V2 e modelo 3D são placeholders honestos, com rotas próprias.
+  await page.getByRole("button",{name:/Uncut Gem V2.*Ainda não implementado/}).click();
+  await page.getByRole("heading",{name:"Uncut Gem V2"}).waitFor();
+  await page.getByText("Ainda não identificado · Ainda não implementado").waitFor();
+  await page.getByRole("button",{name:/Modelo 3D — Stegemann/}).click();
+  await page.getByRole("heading",{name:"Modelo 3D — Stegemann (2023)"}).waitFor();
+  await page.getByText("Implementação futura",{exact:true}).first().waitFor();
+  await page.getByRole("button",{name:"Voltar ao Uncut Gem V1"}).click();
+  await page.getByRole("heading",{name:"Explorar"}).waitFor();
+  assert.equal(await v1Branch.getAttribute("aria-expanded"),"true");
+  console.log("PASS: árvore Laboratório / V1 / V2 / Modelo 3D e rotas futuras.");
   assert(await page.locator(".photo-stage>img").evaluate(img => img.complete && img.naturalWidth > 0), "Imagem original precisa carregar");
   // Regressão do hotfix: os 11 recortes estavam no Git, mas faltaram no deploy.
   const expectedEnhancedPngs = [
@@ -118,6 +145,8 @@ try {
 
   await page.getByRole("button", { name: "Guia de montagem" }).click();
   assert.equal(await page.locator(".layer-grid img").count(), 3);
+  await researchGroup.click();
+  assert.equal(await researchGroup.getAttribute("aria-expanded"),"true");
   await page.getByRole("button", { name: "Fundamentos" }).click();
   assert.equal(await page.locator(".fundamental").count(), 6);
   await page.getByRole("button", { name: "Artigos" }).click();
@@ -140,12 +169,14 @@ try {
   await page.getByRole("heading", {name:"Referências"}).waitFor();
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "Sem overflow horizontal no mobile");
   await page.getByRole("button", {name:"Abrir menu lateral"}).click();
-  await page.getByRole("button", {name:"Explorar"}).click();
+  await page.getByRole("button", {name:"Laboratório",exact:true}).click();
+  await page.getByRole("button", {name:"Uncut Gem V1",exact:true}).click();
+  await page.getByRole("button", {name:"Explorar",exact:true}).click();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).waitFor();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).click();
   await page.screenshot({path:join(shots,"NvLabV01MobileInspector.png"),fullPage:true});
   assert.equal(errors.length,0,"Erros JavaScript: "+errors.join("; "));
-  console.log("PASS: sidebar, inspector reflow, 33 real records, CSV, 9 tabs, references, mobile, image crop, zoom and fullscreen.");
+  console.log("PASS: sidebar hierárquica, inspector reflow, 33 componentes, CSV, 9 páginas existentes, 2 rotas futuras, mobile, imagens e fullscreen.");
 } finally {
   await browser.close();
 }
