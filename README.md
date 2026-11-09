@@ -31,7 +31,7 @@ Este repositório foi inicializado com o **esqueleto documental e de automaçõe
 - [Decision Archive](documentation/decision-archive/README.md)
 - [Padrão SEO detalhado](documentation/seo/LCR_SEO_STANDARD.md)
 
-As automações ficam em `.github/workflows/`. **LCR_BACKUP** permanece inativo até configurar `LCR_DRIVE_BACKUP_ENABLED` e credenciais. O arquivo `robots.txt` e o `sitemap.xml` são modelos iniciais que exigem URL real antes da publicação.
+As automações ficam em `.github/workflows/`. **LCR_BACKUP** roda uma vez ao dia às 23h55 de Brasília, quando habilitado e com credenciais válidas. Upload por push e espelhamento individual por chat não são rotina; a validação exige job `success` e snapshot conferido. O arquivo `robots.txt` e o `sitemap.xml` são modelos iniciais que exigem URL real antes da publicação.
 ## Documentos de governança e histórico
 - [Guardrails permanentes](documentation/LCR_GUARDRAILS.md)
 - [Nomenclatura oficial](documentation/LCR_NAMING_CONVENTIONS.md)

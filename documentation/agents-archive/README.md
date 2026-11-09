@@ -19,3 +19,6 @@ Este diretório guarda **registros e entregas**, não código e não cópias dos
 - Código/scripts/testes: `../../code/`.
 - Arquivos visuais e sonoros usados pelo app: `../../code/public/assets/`.
 - Normas permanentes: `../LCR_GUARDRAILS.md` e `../LCR_NAMING_CONVENTIONS.md`.
+
+## Parecer de auditoria e especialistas opcionais (ADR-0008)
+O Auditor pode executar testes, build e GitHub Actions, mas não altera o produto como procedimento padrão. Codex/Builder corrige e o Auditor retesta em commit estável. A convocação de Cybersecurity, Safety ou Scientific Reviewer requer proposta do Planner e decisão humana, após avaliação de risco, especialização e complexidade.
