@@ -1,6 +1,7 @@
 """Verificações da migração LCR_NAMING dos recortes e inventário."""
 import json
 import unittest
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -20,6 +21,17 @@ class LcrNamingMigrationTests(unittest.TestCase):
             self.assertTrue(path.is_file(), name)
             with path.open("rb") as stream:
                 self.assertEqual(stream.read(8), bytes([137, 80, 78, 71, 13, 10, 26, 10]))
+
+    def test_zip_archive_contains_renamed_files(self):
+        manifest = json.loads((ENHANCED / "EnhancedCropsManifest.json").read_text(encoding="utf-8"))
+        archive_path = ENHANCED / "UgV1RecortesAprimorados.zip"
+        self.assertTrue(archive_path.is_file())
+        with zipfile.ZipFile(archive_path) as archive:
+            members = set(archive.namelist())
+            self.assertTrue(archive.testzip() is None)
+        expected = {item["filename"] for item in manifest["crops"]}
+        expected.update({"EnhancedCropsManifest.json", "README.md"})
+        self.assertEqual(members, expected)
 
     def test_inventory_images_reference_existing_files(self):
         data = json.loads((ROOT / "code/public/data/InventoryV1.json").read_text(encoding="utf-8"))
