@@ -7,6 +7,7 @@ import { Articles, Fundamentals, Guide, References, navigationGroups, pageTitles
 import { ScientometricDashboard, PatentReviewPlaceholder } from "./ScientometricDashboard";
 import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
 import { FlowPage } from "./FlowPage";
+import { SchemeViewer } from "./SchemeViewer";
 import { AboutPage } from "./AboutPage";
 import { LabFuturePage } from "./LabFuturePages";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
@@ -129,6 +130,7 @@ function App() {
   const [selectedReference,setSelectedReference]=useState<ReferenceContext | null>(null);
   const [pendingPcbTag,setPendingPcbTag]=useState<string|null>(null);
   const [inspectorExpanded,setInspectorExpanded]=useState(false);
+  const [schemeOpen,setSchemeOpen]=useState(false);
   const [preview,setPreview]=useState<ImagePreview|null>(null);
   const [zoom,setZoom]=useState(1);
   const [pan,setPan]=useState({x:0,y:0});
@@ -174,6 +176,7 @@ function App() {
   useEffect(()=>{
     function onKey(e:KeyboardEvent) {
       if(e.key==="Escape"){
+        if(schemeOpen)return;
         if(preview){setPreview(null);return;}
         if(document.fullscreenElement){document.exitFullscreen().catch(()=>{});return;}
         if(fullFallback){setFullFallback(false);return;}
@@ -183,7 +186,7 @@ function App() {
     }
     document.addEventListener("keydown",onKey);
     return ()=>document.removeEventListener("keydown",onKey);
-  },[selected,selectedFlow,selectedReference,preview,fullFallback,mobileMenu]);
+  },[selected,selectedFlow,selectedReference,preview,fullFallback,mobileMenu,schemeOpen]);
   useEffect(()=>{
     if((selected||selectedFlow||selectedReference)&&window.matchMedia("(max-width: 800px)").matches)inspectorRef.current?.focus();
   },[selected,selectedFlow,selectedReference]);
@@ -347,7 +350,7 @@ function App() {
         {selection&&<ContextInspector selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenItem={tag=>{const item=items.find(i=>i.tag===tag)||snapshot?.legacyItems.find(i=>i.tag===tag);if(item)openItem(item)}} onChildren={tag=>{const item=items.find(i=>i.tag===tag);if(item){go("inventario");setQuery("");setLayer("B");setSubsystem(item.name);setFace("");setImageType("");}}} items={items} legacyItems={snapshot?.legacyItems||[]} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
         <div className="workspace-primary">
       {page==="explorar" ? <div className="workbench-page">
-        <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real alinhada · Quantum Village</span><button className="toolbar-button" onClick={()=>setPreview({url:presentedAsset(enhancedPhoto+ENHANCED_OVERVIEW,base),title:"Fotografia do Uncut Gem V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
+        <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real alinhada · Quantum Village</span><button type="button" className="toolbar-button" onClick={()=>setSchemeOpen(true)}>Ver esquema 2D</button><button className="toolbar-button" onClick={()=>setPreview({url:presentedAsset(enhancedPhoto+ENHANCED_OVERVIEW,base),title:"Fotografia do Uncut Gem V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
         <div className="work-area">
           <section className={"photo-panel"+(fullFallback?" full-fallback":"")} ref={photoPanelRef} aria-label="Fotografia interativa do Uncut Gem V1">
             <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>{PHOTO_REGIONS.length} pontos identificados na imagem</span></div>
@@ -393,6 +396,7 @@ function App() {
       </div>
       <footer className="app-footer"><span>NV Quantum Virtual Lab · estudo acadêmico independente</span><span><Out href={project}>Código e fontes</Out> · <Out href="https://www.bibl-old.ita.br/logomarca_ita.htm">Origem da logomarca ITA</Out></span></footer>
     </div>
+    {schemeOpen&&<SchemeViewer base={base} onClose={()=>setSchemeOpen(false)}/>}
     {preview&&<Lightbox preview={preview} onClose={()=>setPreview(null)}/>}
   </div>;
 }

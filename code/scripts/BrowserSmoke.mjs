@@ -16,6 +16,25 @@ try {
   await page.goto(process.env.APP_URL || "http://127.0.0.1:5173/NV-Quantum-VirtualLab/", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { name: "Explorar" }).waitFor();
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).waitFor();
+  // Esquema 2D: PNGs reais, frente inicial, flip, zoom, Escape e foco.
+  const schemeTrigger=page.getByRole('button',{name:'Ver esquema 2D',exact:true});
+  await schemeTrigger.click();
+  const scheme=page.getByRole('dialog',{name:'Esquema 2D — Uncut Gem V1'});
+  await scheme.getByRole('status').getByText('Frente da PCB',{exact:true}).waitFor();
+  await page.waitForFunction(()=>document.querySelector('.scheme-front img')?.naturalWidth===1672);
+  assert((await scheme.getByRole('img').getAttribute('src')).endsWith('FrontScheme.png'));
+  await scheme.getByRole('button',{name:'Virar para o verso'}).click();
+  await scheme.getByRole('status').getByText('Verso da PCB',{exact:true}).waitFor();
+  await page.waitForFunction(()=>document.querySelector('.scheme-back img')?.naturalWidth===1672);
+  assert((await scheme.getByRole('img').getAttribute('src')).endsWith('BackScheme.png'));
+  await scheme.getByRole('button',{name:'Aumentar zoom do esquema'}).click();
+  assert.equal(await scheme.getByLabel('Zoom do esquema',{exact:true}).textContent(),'125%');
+  await scheme.getByRole('button',{name:'Voltar para a frente'}).click();
+  assert.equal(await scheme.getByLabel('Zoom do esquema',{exact:true}).textContent(),'100%');
+  await page.keyboard.press('Escape');
+  assert.equal(await scheme.count(),0);
+  assert(await schemeTrigger.evaluate(el=>el===document.activeElement));
+  console.log('PASS: esquema 2D, dois PNGs originais, frente/verso, zoom, Escape e restauração de foco.');
   // A primeira visita abre o Laboratório e os itens da Uncut Gem V1.
   const labGroup = page.getByRole("button",{name:"Laboratório",exact:true});
   const v1Branch = page.getByRole("button",{name:"Uncut Gem V1",exact:true});
