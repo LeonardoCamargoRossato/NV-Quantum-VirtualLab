@@ -78,7 +78,7 @@ function Lightbox({preview,onClose}: {preview:ImagePreview;onClose:()=>void}) {
     document.addEventListener("keydown",handle);
     return ()=>document.removeEventListener("keydown",handle);
   },[preview.gallery]);
-  return <div role="dialog" aria-modal="true" aria-label={active?.title||preview.title} className="lightbox-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}>
+  return <div role="dialog" aria-modal="true" aria-label={active ? "Etapa "+active.number+": "+active.title : preview.title} className="lightbox-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}>
     <div className="lightbox-dialog" ref={ref} tabIndex={-1}>
       <div className="lightbox-heading"><strong>{active?"Etapa "+active.number+" · "+active.title:preview.title}</strong><div className="lightbox-buttons"><button onClick={()=>setZoom(z=>Math.max(1,z-0.25))} aria-label="Diminuir zoom da imagem">−</button><output>{Math.round(zoom*100)}%</output><button onClick={()=>setZoom(z=>Math.min(4,z+0.25))} aria-label="Aumentar zoom da imagem">+</button><button onClick={()=>setZoom(1)}>Redefinir</button><button onClick={onClose} aria-label="Fechar imagem">×</button></div></div>
       <div className="lightbox-content"><div className="lightbox-zoom" style={{transform:"scale("+zoom+")"}}>{preview.region&&!active?<Crop region={preview.region} title={preview.title} interactive={false}/>:<img src={active?.url||preview.url} alt={active?.title||preview.title}/>}</div></div>
