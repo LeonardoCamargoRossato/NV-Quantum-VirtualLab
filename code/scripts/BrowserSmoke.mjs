@@ -163,8 +163,13 @@ try {
   assert((await page.getByRole("link",{name:"Abrir no Google Planilhas"}).getAttribute("href")).includes("gid=2026110901"));
   await page.getByRole("searchbox").fill("UG-V1-0001");
   await page.locator(".inventory-table").getByRole("button",{name:"UG-V1-0001",exact:true}).click();
-  await page.getByRole("button",{name:/UG-V1-0002.*vista histórica/}).click();
-  await page.getByRole("complementary",{name:/Painel de informações: PCB — face frontal/}).waitFor();
+  await page.getByRole("button",{name:/UG-V1-B041.*vista canônica/}).click();
+  await page.getByRole("complementary",{name:/Painel de informações: Face frontal da PCB/}).waitFor();
+  await page.getByRole("button",{name:"Fechar inspetor"}).click();
+  await page.getByRole("searchbox").fill("UG-V1-0001");
+  await page.locator(".inventory-table").getByRole("button",{name:"UG-V1-0001",exact:true}).click();
+  await page.getByRole("button",{name:/UG-V1-B042.*vista canônica/}).click();
+  await page.getByRole("complementary",{name:/Painel de informações: Face traseira da PCB/}).waitFor();
   await page.getByRole("button",{name:"Fechar inspetor"}).click();
   await page.getByRole("searchbox").fill("UG-V1-B045");
   await page.getByText("1 de 79 itens", { exact: false }).waitFor();
