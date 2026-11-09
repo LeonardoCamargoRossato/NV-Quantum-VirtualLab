@@ -47,12 +47,13 @@ def read_sheets(path):
 
 def consolidate(path=SOURCE):
     sheets = read_sheets(path)
-    legacy_rows = next(rows for name, rows in sheets if name == 'Uncut Gem V1')
-    tree_name, tree_rows = next((name, rows) for name, rows in sheets if name.startswith('Árvore Uncut Gem V1'))
-    legacy = [{key: row.get(label, '') for label, key in COLUMNS.items()} for row in legacy_rows if row.get('Tag única')]
-    by_tag = {item['tag']: item for item in legacy}
-    if len(legacy) != 33 or len(by_tag) != 33: raise ValueError('Inventário legado deve preservar 33 tags únicas')
-    result, differences, fills = [], [], []
+    names = [name for name, _ in sheets]
+    if len(names) != 4 or any(name == 'Uncut Gem V1' for name in names):
+        raise ValueError('XLSX operacional deve conter exatamente quatro abas, sem a aba V1 histórica')
+    matches = [(name, rows) for name, rows in sheets if name.startswith('Árvore Uncut Gem V1')]
+    if len(matches) != 1: raise ValueError('Fonte canônica não identificada unicamente')
+    tree_name, tree_rows = matches[0]
+    result = []
     for row in tree_rows:
         if not row.get('Tag única'): continue
         mapping = {**COLUMNS, **EXTRA}
@@ -60,15 +61,6 @@ def consolidate(path=SOURCE):
         mapping['Componente / Subsistema'] = 'name'
         item = {key: row.get(label, '') for label, key in mapping.items()}
         item['imageFormula'] = row.get('Imagem', '')
-        old = by_tag.get(item['legacyTag'] or item['tag'])
-        if old:
-            for key, value in old.items():
-                if key == 'tag': continue
-                if value and not item[key] and (old['tag'] == item['tag'] or key in ('source', 'datasheet')):
-                    item[key] = value
-                    fills.append({'tag': item['tag'], 'field': key, 'from': old['tag']})
-                elif value and item[key] != value:
-                    differences.append({'tag': item['tag'], 'field': key, 'canonical': item[key], 'legacy': value, 'legacyTag': old['tag']})
         if item['category'] not in ('subsistema', 'componente'): raise ValueError('Categoria inválida')
         item['layer'] = 'A' if item['category'] == 'subsistema' else 'B'
         result.append(item)
@@ -118,14 +110,12 @@ def consolidate(path=SOURCE):
             item['imageNotes'] += (' ' if item['imageNotes'] else '') + visual['note']
             if visual['lowNativeResolution']:
                 item['imageNotes'] += ' Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.'
-    linked = {i['legacyTag'] or i['tag'] for i in result}
-    return {'schemaVersion': 2, 'status': 'validated', 'source': 'XLSX autorizado — Uncut Gem V1, árvore canônica e legado preservado',
+    return {'schemaVersion': 3, 'status': 'validated', 'source': 'XLSX autorizado — Árvore Uncut Gem V1, única fonte operacional V1',
             'sourceUrl': 'https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=2026110901#gid=2026110901',
             'sourceFile': SOURCE.name, 'sourceSheet': tree_name, 'snapshotAt': '2026-11-09',
             'snapshotDateNote': 'Data de recebimento do arquivo; horário de sincronização online não verificado.',
-            'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'evidenceSha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(evidence_root.glob('*.json'))}, 'items': result, 'legacyItems': legacy,
-            'legacyOnlyTags': [i['tag'] for i in legacy if i['tag'] not in linked],
-            'consolidation': {'filledFields': fills, 'differences': differences, 'policy': 'Árvore prevalece; preencher lacunas com legado vinculado; preservar valores divergentes neste relatório.'}}
+            'sourceSha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'evidenceSha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(evidence_root.glob('*.json'))}, 'items': result,
+            'consolidation': {'filledFields': [], 'differences': [], 'policy': 'Árvore canônica como única fonte; nenhum preenchimento automático proveniente dos 33 registros históricos.'}}
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
@@ -135,4 +125,4 @@ if __name__ == '__main__':
     if args.check:
         if OUTPUT.read_text(encoding='utf-8') != output: raise SystemExit('Catálogo diverge do XLSX: reconsolide antes de publicar')
     else: OUTPUT.write_text(output, encoding='utf-8')
-    print('Catálogo verificado: 10 subsistemas + 69 componentes; 33 registros legados preservados')
+    print('Catálogo verificado: 10 subsistemas + 69 componentes; zero dependências operacionais do legado')
