@@ -1,20 +1,21 @@
 # Inventário — fonte única
 
-- `UncutGemInventoryV1V2.xlsx`: original recebido do responsável em 2026-11-09, preservado byte a byte (SHA-256 `3fa0d1c8fe767964b278d91756fdf4679aca897cc3ffb827d24ac65614c463c4`). Contém cinco abas, incluindo V1 e V2.
-- `InventoryV1.json`: catálogo canônico consumido pela aplicação. Sua origem é a aba `Árvore Uncut Gem V1 — System Co` (nome efetivo no XLSX): 10 subsistemas A + 69 componentes B. A aba antiga complementa lacunas sem duplicar componentes. `legacyItems` preserva os 33 registros; `consolidation` registra complementos e divergências; `legacyOnlyTags` preserva as vistas frontal/traseira da PCB, UG-V1-0002/0003.
+- `UncutGemInventoryV1V2.xlsx`: workbook **operacional migrado** com exatamente quatro abas (árvore canônica, Uncut Gem V2, Galeria de imagens e Leia-me). O original de cinco abas permanece recuperável no histórico Git (`4b641bfebb2d3694163df3338b2e66d0d1556c21`). SHA-256 operacional: `3fa0d1c8fe767964b278d91756fdf4679aca897cc3ffb827d24ac65614c463c4` (substituído automaticamente pelo script de migração após os testes).
+- `InventoryV1.json`: catálogo determinístico de **79 registros** gerado unicamente da aba `Árvore Uncut Gem V1 — System Co` (título truncado pelo Excel). Sem `legacyItems` ou `legacyOnlyTags`, sem preenchimento automático do legado. `legacyTag` é apenas metadado histórico. As vistas PCB são `UG-V1-B041`/`UG-V1-B042`.
 - `evidence/`: evidências do Builder para imagens, estados de revisão e faces da PCB. Alimentam o importador; não são carregadas como catálogos separados pela interface. Seus hashes são registrados no catálogo.
-- `legacy/`: arquivos históricos, não consumidos pela interface. A árvore Markdown histórica não é outro catálogo ativo.
+- `legacy/`: snapshot histórico de 33 registros e árvore Markdown antiga. Nenhum desses arquivos participa da reconstrução nem da interface.
 
-Para atualizar, substituir o XLSX somente após conferir a nova revisão e executar, da raiz do repositório:
+Após autorização e revisão da fonte canônica, executar, da raiz do repositório:
 
 ```bash
+python code/scripts/migrate_inventory_workbook.py --verify-only
 python code/scripts/consolidate_inventory.py
 python code/scripts/consolidate_inventory.py --check
 ```
 
-O importador usa apenas a biblioteca padrão Python, não executa fórmulas e preserva as referências IMAGE como texto. O JSON é derivado: não editar manualmente. As diferenças ficam preservadas, não são resolvidas por adivinhação. V2 e galeria permanecem no XLSX, sem mistura com o catálogo V1. URLs de imagens externas não equivalem ao arquivamento de seus arquivos.
+O importador usa apenas a biblioteca padrão Python, não executa fórmulas e preserva as referências IMAGE como texto. O JSON é derivado da árvore canônica; não editar manualmente. V2, galeria e Leia-me permanecem no XLSX, sem mistura com o catálogo V1. URLs externas não equivalem ao arquivamento de arquivos. Os 15 links foram migrados para a coluna P da árvore por tag; os links para o firmware são referências de código, não datasheets do fabricante.
 
-Não há escrita ou sincronização com Google Sheets/Drive. A data do snapshot é a data de recebimento, sem horário de sincronização inventado. A posição física só tem hotspot quando validada nas seis regiões existentes.
+O Google Sheets foi editado apenas para preencher 15 células da coluna P, por autorização explícita; a exclusão da aba antiga depende do gate de testes e auditoria de dependências. Não existe sincronização automática Google↔GitHub. A data do snapshot é a data de recebimento, sem horário de sincronização inventado. A posição física só tem hotspot quando validada nas seis regiões existentes.
 
 ## Apresentação visual alinhada
 
