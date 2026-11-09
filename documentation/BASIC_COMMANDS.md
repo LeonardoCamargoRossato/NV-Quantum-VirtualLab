@@ -62,7 +62,7 @@ Sempre examinar o último ADR relevante e o brainstorming acessível. Não gerar
 
 ## Persistência de ADR e registros no Drive
 - `LCR_ADR`/desenvolvimento com ADR real: registrar no GitHub no próprio turno; Drive apenas no ciclo diário, com estado pendente até a confirmação.
-- `LCR_DAY`: quando o agente encerrar uma sessão real, tentar persistir somente `daily_summary.md` e `data.json` revisados no GitHub e Drive; `raw_data.jsonl` **não** é publicado automaticamente em repo público. O histórico de chat não é lido automaticamente pelo GitHub Actions.
+- `LCR_DAY`: quando o agente encerrar sessão real, registrar `daily_summary.md` e `data.json` revisados no GitHub e deixar cópia Drive para o backup diário; `raw_data.jsonl` **não** é publicado automaticamente em repo público. O histórico de chat não é lido automaticamente pelo GitHub Actions.
 - `LCR_BACKUP`: modo independente de chat, acionado pelo GitHub Actions após configuração manual de variável, pasta destino e segredo do Google; plugin Drive do ChatGPT sozinho não ativa o workflow.
 
 ## Gate de qualidade e especialistas opcionais (ADR-0008)

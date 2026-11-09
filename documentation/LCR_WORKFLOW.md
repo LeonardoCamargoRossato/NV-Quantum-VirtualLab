@@ -13,7 +13,7 @@ Padronizar criação, desenvolvimento, revisão, documentação, evolução e ra
 | Research | Pesquisa bibliográfica, estado da técnica, patentes, fontes e validação de fundamentos. |
 | Drawer | UX/UI, diagramas e recursos visuais. Somente os registros textuais ficam em `documentation/agents-archive/drawer/`; imagens ficam em `code/public/assets/` ou storage externo. |
 | Audio Designer (opcional) | Identidade sonora, efeitos, áudio e trilhas originais. Recursos em `code/public/assets/audio/`. |
-| Quality & Security Auditor | Testes, auditoria de segurança, SEO, riscos, conformidade e recomendações. Relatórios independentes sob demanda. |
+| Quality & Security Auditor (geral) | Gate independente de qualidade e conformidade: testes, build, GitHub Actions, naming, segurança básica, SEO e riscos; recomenda especialistas opcionais e emite parecer. |
 
 O **Organizador não é um chat**: é a função de consolidação documental do próprio LCR Workflow. O usuário decide prioridades, autoriza publicações e aprova decisões importantes.
 
