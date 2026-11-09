@@ -37,13 +37,15 @@ try {
   await page.getByRole("button",{name:/Uncut Gem V2.*Ainda não implementado/}).click();
   await page.getByRole("heading",{name:"Uncut Gem V2"}).waitFor();
   await page.getByText("Ainda não identificado · Ainda não implementado").waitFor();
-  await page.getByRole("button",{name:/Modelo 3D — Stegemann/}).click();
-  await page.getByRole("heading",{name:"Modelo 3D — Stegemann (2023)"}).waitFor();
-  await page.getByText("Implementação futura",{exact:true}).first().waitFor();
+  const model3d = page.getByRole("button",{name:/NV-Print 3D Stegemann/});
+  assert.equal(await model3d.getAttribute("title"),"Implementações futuras");
+  await model3d.click();
+  await page.getByRole("heading",{name:"NV-Print 3D Stegemann"}).waitFor();
+  await page.getByText("Implementações futuras",{exact:true}).first().waitFor();
   await page.getByRole("button",{name:"Voltar ao Uncut Gem V1"}).click();
   await page.getByRole("heading",{name:"Explorar"}).waitFor();
   assert.equal(await v1Branch.getAttribute("aria-expanded"),"true");
-  console.log("PASS: árvore Laboratório / V1 / V2 / Modelo 3D e rotas futuras.");
+  console.log("PASS: árvore Laboratório / V1 / V2 / NV-Print 3D Stegemann e rotas futuras.");
   assert(await page.locator(".photo-stage>img").evaluate(img => img.complete && img.naturalWidth > 0), "Imagem original precisa carregar");
   // Regressão do hotfix: os 11 recortes estavam no Git, mas faltaram no deploy.
   const expectedEnhancedPngs = [
