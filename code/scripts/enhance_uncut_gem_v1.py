@@ -45,7 +45,7 @@ CROPS = [
     Crop('ug-v1-rf-cable-enhanced.png', 'Cabo/conector proximo ao amplificador RF', 68, 38, 31, 36, 'descriptive'),
     Crop('ug-v1-between-rf-and-esp32-enhanced.png', 'Regiao entre amplificador RF e ESP32', 30, 49, 28, 24, 'descriptive'),
     Crop('ug-v1-above-esp32-enhanced.png', 'Regiao acima do ESP32', 12, 37, 36, 27, 'descriptive'),
-    Crop('ug-v1-laser-driver-enhanced.png', 'Regiao da placa/driver do laser', 8, 31, 33, 29, 'descriptive'),
+    Crop('ug-v1-laser-driver-enhanced.png', 'Regiao da plaquinha junto ao laser', 12, 19, 14, 11, 'descriptive'),
 ]
 
 
