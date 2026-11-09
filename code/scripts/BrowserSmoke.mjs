@@ -34,7 +34,9 @@ try {
 
   await page.getByRole("button", { name: "Recolher menu lateral" }).click();
   assert(await page.locator(".menu-collapsed").count() === 1);
+  await page.waitForTimeout(350);
   const panelCollapsed = await page.locator(".photo-panel").evaluate(el => el.getBoundingClientRect().width);
+  console.log("Larguras da foto (inicial, com inspetor, menu recolhido):", panelBefore, panelWithInspector, panelCollapsed);
   assert(panelCollapsed > panelBefore + 70, "Menu recolhido deve aumentar a foto");
   await page.screenshot({ path: join(shots,"NvLabV01SidebarClosed.png"), fullPage: true });
   await page.getByRole("button", { name: "Expandir menu lateral" }).click();
