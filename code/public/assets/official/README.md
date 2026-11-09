@@ -9,6 +9,16 @@ Cópias sem edição de conteúdo:
 
 O README upstream declara licença Affero GPL; a licença completa AGPL-3.0 acompanha os arquivos em ../licenses/UncutGemLicense.txt. Recursos mantêm a licença de origem, créditos e links. Sem garantia. Fontes originais e arquivos modificáveis estão disponíveis no repositório upstream e nesta cópia pública. O código independente da interface é consultável no link Código-fonte do site. Recursos IA do Drawer preexistentes não são imagens oficiais e não são usados na fotografia principal.
 
-## Recortes visuais da V0.1
+## Recortes visuais V0.2 — preservação e melhoria conservadora
 
-Os recortes de PCB, ESP32, amplificador RF, laser, prisma e OLED são regiões CSS baseadas em `DeviceV1.png`, sem edição nem geração de novos pixels. Seus limites e localização percentual estão versionados em `code/src/PhotoRegions.ts`. Fonte: fotografia original do BuildGuide V1, Quantum Village, licença AGPL-3.0; nem todas as peças do inventário são visíveis/identificáveis. Não há arquivo PNG/WebP individual produzido nesta entrega: as janelas são recortes dinâmicos e levam à fotografia integral original. Em particular, BPW34 está encapsulado no prisma e `PHOTODIODE1` é conector, sem hotspot de fotodiodo na placa.
+A fotografia oficial `DeviceV1.png` é usada sem alteração no mapa interativo de hotspots.
+Os seis recortes associados a tags (PCB, ESP32, RF, laser, prisma e OLED) utilizam PNGs
+tratados por interpolação LANCZOS 2×, pequenos ajustes de contraste e nitidez, **sem IA
+generativa**. Quatro regiões adicionais aparecem na galeria, com identificação
+descritiva provisória e sem inferir pinagem ou modelo.
+
+Os PNGs, ZIP e manifesto estão em `code/public/assets/official/v1/enhanced/`,
+e o script reproduzível em `code/scripts/enhance_uncut_gem_v1.py`.
+Crédito e licença: Quantum Village / Uncut Gem, AGPL-3.0; os originais foram
+preservados. A interpolação **não recupera detalhes invisíveis** no original.
+BPW34 está encapsulado no prisma; `PHOTODIODE1` é um conector, não um fotodiodo exposto.
