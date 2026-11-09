@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Bootstrap: URLs reais serão adicionadas após definir o endereço público. -->
+  <url>
+    <loc>https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/</loc>
+  </url>
 </urlset>

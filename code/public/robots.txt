@@ -1,7 +1,5 @@
-# LCR Workflow — exemplo inicial. Ajustar antes do deploy público.
+# NV Quantum Virtual Lab — site público da V0
 User-agent: *
 Allow: /
-
-# Configure a URL real após a implantação e a geração do sitemap:
-# Sitemap: https://SEU-DOMINIO/SEU-PROJETO/sitemap.xml
-# robots.txt não controla acesso a páginas privadas.
+Sitemap: https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/sitemap.xml
+# O robots.txt não substitui regras de privacidade nem de autenticação.

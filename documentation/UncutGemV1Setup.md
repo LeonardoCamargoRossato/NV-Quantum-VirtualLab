@@ -50,3 +50,11 @@ O ambiente bloqueou docs.google.com, api.github.com e leonardocamargorossato.git
 
 ## Continuação pelo Builder Aux
 O acesso à aba Uncut Gem V1 do Google Sheets foi confirmado por conector autorizado em 09/11/2026 UTC. As 33 tags foram verificadas antes da criação do snapshot; o campo Imagem (fórmula IMAGE) não foi copiado, usando-se apenas URL da imagem. A publicação do snapshot não torna a planilha pública. A confirmação dos workflows e do site depende de execução do GitHub Actions e validação do endereço externo.
+
+## Status de publicação verificado em 09/11/2026 UTC
+- GitHub Pages: publicação por GitHub Actions concluída com sucesso, execução https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42541273773 .
+- URL publicada pelo log oficial: https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/
+- Testes: 4/4 Vitest, 15/15 Python, build npm concluído com sucesso.
+- Limitação: a ferramenta externa de consulta HTTP deste chat não conseguiu abrir a URL publicada; inspeção visual pelo responsável ainda pendente.
+- LCR Naming e Auditoria: falharam na checagem de nomenclatura por 10 caminhos legados (nove imagens com links ativos no inventário e uma tradução histórica). A verificação de indícios de segredo passou. Não renomear esses arquivos de forma destrutiva nem enfraquecer o validador sem decisão explícita.
+- A planilha original permanece privada. Snapshot público contém somente os campos aprovados para o aplicativo.
