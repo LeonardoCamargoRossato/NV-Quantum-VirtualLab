@@ -4,7 +4,7 @@
   "source_sheet_gid": 2026110901,
   "source_rows": "12–80 inclusive, category componente only",
   "untouched_layer_a": "rows 2–11, category subsistema",
-  "producer": "code/scripts/BuildLayerBComponentImages.py",
+  "producer": "code/scripts/build_layer_b_component_images.py",
   "stage": "COMPLETE — 6 approved capacitor PCB footprints, sheet synced, website catalog updated",
   "items": [
     {
@@ -1419,7 +1419,7 @@
       "status": "REVISÃO",
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
-      "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-ima-neodimio-disco-ilustrativo.png",
+      "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ImaNeodimioDiscoIlustrativo.png",
       "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {

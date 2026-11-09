@@ -48,5 +48,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: uncugem-v1-crops-enhanced
-          path: code/public/assets/official/v1/enhanced/ug-v1-recortes-aprimorados.zip
+          path: code/public/assets/official/v1/enhanced/UgV1RecortesAprimorados.zip
           if-no-files-found: error

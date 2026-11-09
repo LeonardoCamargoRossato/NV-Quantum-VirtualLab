@@ -49,12 +49,12 @@ try {
   assert(await page.locator(".photo-stage>img").evaluate(img => img.complete && img.naturalWidth > 0), "Imagem original precisa carregar");
   // Regressão do hotfix: os 11 recortes estavam no Git, mas faltaram no deploy.
   const expectedEnhancedPngs = [
-    "ug-v1-overview-enhanced.png", "ug-v1-pcb-enhanced.png",
-    "ug-v1-esp32-enhanced.png", "ug-v1-rf-amp-enhanced.png",
-    "ug-v1-laser-enhanced.png", "ug-v1-prism-enhanced.png",
-    "ug-v1-oled-enhanced.png", "ug-v1-rf-cable-enhanced.png",
-    "ug-v1-between-rf-and-esp32-enhanced.png",
-    "ug-v1-above-esp32-enhanced.png", "ug-v1-laser-driver-enhanced.png",
+    "UgV1OverviewEnhanced.png", "UgV1PcbEnhanced.png",
+    "UgV1Esp32Enhanced.png", "UgV1RfAmpEnhanced.png",
+    "UgV1LaserEnhanced.png", "UgV1PrismEnhanced.png",
+    "UgV1OledEnhanced.png", "UgV1RfCableEnhanced.png",
+    "UgV1BetweenRfAndEsp32Enhanced.png",
+    "UgV1AboveEsp32Enhanced.png", "UgV1LaserDriverEnhanced.png",
   ];
   const assetsRoot = new URL("assets/official/v1/enhanced/", page.url());
   for (const fileName of expectedEnhancedPngs) {

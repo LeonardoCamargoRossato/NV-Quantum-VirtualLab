@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'code/scripts/BuildLayerBComponentImages.py'
+      - 'code/scripts/build_layer_b_component_images.py'
       - 'code/public/data/LayerBComponentImagePlan.json'
       - '.github/workflows/LCR_LAYER_B_COMPONENT_IMAGES.yml'
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
       - name: Install conservative image processing
         run: python -m pip install 'Pillow==11.3.0'
       - name: Generate all 69 Layer B statuses, 67 evidence-based PNGs
-        run: python code/scripts/BuildLayerBComponentImages.py
+        run: python code/scripts/build_layer_b_component_images.py
       - name: Verify generated files and preserve Layer A
         shell: bash
         run: |

@@ -12,7 +12,7 @@
   "warning": "The interpolation cannot recover text or technical details missing from the source.",
   "crops": [
     {
-      "filename": "ug-v1-overview-enhanced.png",
+      "filename": "UgV1OverviewEnhanced.png",
       "title": "Montagem V1 integral",
       "x": 0,
       "y": 0,
@@ -32,7 +32,7 @@
       "bytes": 6739891
     },
     {
-      "filename": "ug-v1-pcb-enhanced.png",
+      "filename": "UgV1PcbEnhanced.png",
       "title": "PCB V1",
       "x": 2,
       "y": 5,
@@ -52,7 +52,7 @@
       "bytes": 4127994
     },
     {
-      "filename": "ug-v1-esp32-enhanced.png",
+      "filename": "UgV1Esp32Enhanced.png",
       "title": "ESP32",
       "x": 8,
       "y": 61,
@@ -72,7 +72,7 @@
       "bytes": 896380
     },
     {
-      "filename": "ug-v1-rf-amp-enhanced.png",
+      "filename": "UgV1RfAmpEnhanced.png",
       "title": "Amplificador RF",
       "x": 41,
       "y": 43,
@@ -92,7 +92,7 @@
       "bytes": 633428
     },
     {
-      "filename": "ug-v1-laser-enhanced.png",
+      "filename": "UgV1LaserEnhanced.png",
       "title": "Laser verde",
       "x": 10,
       "y": 17,
@@ -112,7 +112,7 @@
       "bytes": 270924
     },
     {
-      "filename": "ug-v1-prism-enhanced.png",
+      "filename": "UgV1PrismEnhanced.png",
       "title": "Conjunto optico NV",
       "x": 42,
       "y": 11,
@@ -132,7 +132,7 @@
       "bytes": 321614
     },
     {
-      "filename": "ug-v1-oled-enhanced.png",
+      "filename": "UgV1OledEnhanced.png",
       "title": "OLED / display",
       "x": 44,
       "y": 64,
@@ -152,7 +152,7 @@
       "bytes": 469308
     },
     {
-      "filename": "ug-v1-rf-cable-enhanced.png",
+      "filename": "UgV1RfCableEnhanced.png",
       "title": "Cabo/conector proximo ao amplificador RF",
       "x": 68,
       "y": 38,
@@ -172,7 +172,7 @@
       "bytes": 799758
     },
     {
-      "filename": "ug-v1-between-rf-and-esp32-enhanced.png",
+      "filename": "UgV1BetweenRfAndEsp32Enhanced.png",
       "title": "Regiao entre amplificador RF e ESP32",
       "x": 30,
       "y": 49,
@@ -192,7 +192,7 @@
       "bytes": 518487
     },
     {
-      "filename": "ug-v1-above-esp32-enhanced.png",
+      "filename": "UgV1AboveEsp32Enhanced.png",
       "title": "Regiao acima do ESP32",
       "x": 12,
       "y": 37,
@@ -212,7 +212,7 @@
       "bytes": 722974
     },
     {
-      "filename": "ug-v1-laser-driver-enhanced.png",
+      "filename": "UgV1LaserDriverEnhanced.png",
       "title": "Regiao da plaquinha junto ao laser",
       "x": 12,
       "y": 19,

@@ -121,7 +121,7 @@ def build(plan, dest, checkpoint_path, preview_only=False):
     checkpoint={'schema_version':1,'source_sheet_id':'158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU',
                 'source_sheet_gid':2026110901,'source_rows':'12–80 inclusive, category componente only',
                 'untouched_layer_a':'rows 2–11, category subsistema',
-                'producer':'code/scripts/BuildLayerBComponentImages.py','stage':'images-generated; spreadsheet synchronization performed separately',
+                'producer':'code/scripts/build_layer_b_component_images.py','stage':'images-generated; spreadsheet synchronization performed separately',
                 'items':[]}
     previous_checkpoint = {}
     if not preview_only and checkpoint_path.is_file():

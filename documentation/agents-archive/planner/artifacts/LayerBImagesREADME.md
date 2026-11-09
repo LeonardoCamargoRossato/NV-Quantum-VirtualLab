@@ -4,7 +4,7 @@ A árvore mestre contém **69 componentes** (linhas 12–80 da aba *Árvore Uncu
 Esta geração mantém **intacta** a Camada A (linhas 2–11, 10 subsistemas).
 
 - Planejamento: `code/public/data/LayerBComponentImagePlan.json`, cada tag com classe, fonte, caixa de recorte e observação.
-- Processamento reproduzível: `code/scripts/BuildLayerBComponentImages.py`.
+- Processamento reproduzível: `code/scripts/build_layer_b_component_images.py`.
 - PNGs por tag: `code/public/assets/official/v1/components/UgV1*.png`.
 - Manifesto: `code/public/assets/official/v1/components/LayerBImageManifest.json`.
 - Checkpoint: `documentation/agents-archive/planner/artifacts/ComponentImageCheckpoint.json`.

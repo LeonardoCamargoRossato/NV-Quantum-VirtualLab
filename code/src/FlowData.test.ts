@@ -9,7 +9,7 @@ describe("fluxo Uncut Gem",()=>{
     expect(new Set(FLOW_STEPS.map(s=>s.id)).size).toBe(7);
   });
   it("usa apenas imagens locais conhecidas, com procedência e vínculo ao inventário",()=>{
-    const known=new Set(["ug-v1-esp32-enhanced.png","ug-v1-laser-enhanced.png","ug-v1-rf-amp-enhanced.png","ug-v1-prism-enhanced.png","ug-v1-oled-enhanced.png","Layer3.png"]);
+    const known=new Set(["UgV1Esp32Enhanced.png","UgV1LaserEnhanced.png","UgV1RfAmpEnhanced.png","UgV1PrismEnhanced.png","UgV1OledEnhanced.png","Layer3.png"]);
     for(const step of FLOW_STEPS){
       expect(known.has(step.image.split("/").at(-1)!)).toBe(true);
       expect(step.sourceUrl).toMatch(/^https:\/\//);

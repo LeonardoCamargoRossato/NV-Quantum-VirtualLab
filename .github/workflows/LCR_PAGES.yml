@@ -52,7 +52,7 @@ jobs:
           from pathlib import Path
           source = Path('code/public/assets/official/v1/enhanced')
           dest = Path('code/dist/assets/official/v1/enhanced')
-          manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+          manifest = json.loads((source / 'EnhancedCropsManifest.json').read_text(encoding='utf-8'))
           expected = [entry['filename'] for entry in manifest['crops']]
           if len(expected) != 11 or len(set(expected)) != len(expected):
               raise SystemExit('Manifesto incorreto: são esperados 11 PNGs únicos')
@@ -103,7 +103,7 @@ jobs:
           from urllib.error import HTTPError, URLError
           from urllib.request import Request, urlopen
 
-          manifest = json.loads(Path('code/public/assets/official/v1/enhanced/manifest.json').read_text(encoding='utf-8'))
+          manifest = json.loads(Path('code/public/assets/official/v1/enhanced/EnhancedCropsManifest.json').read_text(encoding='utf-8'))
           names = [row['filename'] for row in manifest['crops']]
           base = 'https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/assets/official/v1/enhanced/'
           signature = bytes([137, 80, 78, 71, 13, 10, 26, 10])

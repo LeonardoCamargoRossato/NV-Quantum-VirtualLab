@@ -34,7 +34,7 @@ Colunas em ordem: `Tag única`, `Imagem`, `Componente / Subsistema`, `Categoria`
   - Função: Alimenta placa e módulos.
   - Local: 5V_SUPP1/USB · Pendências: Opção ilustrativa: power bank USB 5 V ou fonte de bancada 5 V com limite de corrente/proteção. Confirmar tensão, capacidade e proteção antes do uso; não ligar diretamente ao notebook durante testes iniciais.
   - Tag de origem no inventário V1: `UG-V1-0031`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-power-bank-usb-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1PowerBankUsbIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://commons.wikimedia.org/wiki/File:USB_power_bank.jpg — Domínio público
 - **UG-V1-0013 — Conector 5 V** · Ref.: `5V_SUPP1` · Modelo: 2×3
   - Função: Distribui alimentação 5 V/GND.
@@ -52,37 +52,37 @@ Colunas em ordem: `Tag única`, `Imagem`, `Componente / Subsistema`, `Categoria`
   - Função: Desacoplamento / filtragem de alimentação; conforme BOM, 100 nF.
   - Local: Região de alimentação da PCB · Pendências: Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.
   - Tag de origem no inventário V1: `UG-V1-0011`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B003 — Capacitor C6** · Ref.: `C6` · Modelo: 100 nF
   - Função: Desacoplamento / filtragem de alimentação; conforme BOM, 100 nF.
   - Local: Região de alimentação da PCB · Pendências: Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.
   - Tag de origem no inventário V1: `UG-V1-0011`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B004 — Capacitor C7** · Ref.: `C7` · Modelo: 100 nF
   - Função: Desacoplamento / filtragem de alimentação; conforme BOM, 100 nF.
   - Local: Região de alimentação da PCB · Pendências: Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.
   - Tag de origem no inventário V1: `UG-V1-0011`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B005 — Capacitor C8** · Ref.: `C8` · Modelo: 100 nF
   - Função: Desacoplamento / filtragem de alimentação; conforme BOM, 100 nF.
   - Local: Região de alimentação da PCB · Pendências: Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.
   - Tag de origem no inventário V1: `UG-V1-0011`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B006 — Capacitor C9** · Ref.: `C9` · Modelo: 10 µF
   - Função: Filtragem de alimentação; conforme BOM, 10 µF.
   - Local: Região de alimentação da PCB · Pendências: Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.
   - Tag de origem no inventário V1: `UG-V1-0012`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-eletrolitico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorEletroliticoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B007 — Capacitor C10** · Ref.: `C10` · Modelo: 10 µF
   - Função: Filtragem de alimentação; conforme BOM, 10 µF.
   - Local: Região de alimentação da PCB · Pendências: Valor documentado; hotspot e posição exata devem ser conferidos no KiCad.
   - Tag de origem no inventário V1: `UG-V1-0012`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-eletrolitico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorEletroliticoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 
 ### UG-V1-S02 · Controle e aquisição — ESP32
@@ -379,55 +379,55 @@ Colunas em ordem: `Tag única`, `Imagem`, `Componente / Subsistema`, `Categoria`
   - Função: Resistor do condicionamento analógico do BPW34; função exata no esquema.
   - Local: Região analógica acima do ESP32 · Pendências: Hotspot físico requer identificação por serigrafia/KiCad.
   - Tag de origem no inventário V1: `UG-V1-0006`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B030 — R2 — Resistor** · Ref.: `R2` · Modelo: 1 kΩ
   - Função: Resistor do condicionamento analógico do BPW34; função exata no esquema.
   - Local: Região analógica acima do ESP32 · Pendências: Hotspot físico requer identificação por serigrafia/KiCad.
   - Tag de origem no inventário V1: `UG-V1-0006`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B031 — R3 — Resistor** · Ref.: `R3` · Modelo: 1 kΩ
   - Função: Resistor do condicionamento analógico do BPW34; função exata no esquema.
   - Local: Região analógica acima do ESP32 · Pendências: Hotspot físico requer identificação por serigrafia/KiCad.
   - Tag de origem no inventário V1: `UG-V1-0006`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B032 — R4 — Resistor** · Ref.: `R4` · Modelo: 1 MΩ
   - Função: Resistor do condicionamento analógico do BPW34; função exata no esquema.
   - Local: Região analógica acima do ESP32 · Pendências: Hotspot físico requer identificação por serigrafia/KiCad.
   - Tag de origem no inventário V1: `UG-V1-0007`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B033 — R5 — Resistor** · Ref.: `R5` · Modelo: 47 kΩ
   - Função: Resistor do condicionamento analógico do BPW34; função exata no esquema.
   - Local: Região analógica acima do ESP32 · Pendências: Hotspot físico requer identificação por serigrafia/KiCad.
   - Tag de origem no inventário V1: `UG-V1-0008`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-resistor-axial-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ResistorAxialIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B034 — C1 — Capacitor** · Ref.: `C1` · Modelo: Código 104; valor a confirmar no KiCad
   - Função: Componente associado ao estágio de amplificação/integração conforme esquema.
   - Local: Região analógica acima do ESP32 · Pendências: O README informa modo integrador para C1/C2; código da BOM não confirma valor automaticamente.
   - Tag de origem no inventário V1: `UG-V1-0009`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B035 — C2 — Capacitor** · Ref.: `C2` · Modelo: Código 33; valor a confirmar no KiCad
   - Função: Componente associado ao estágio de amplificação/integração conforme esquema.
   - Local: Região analógica acima do ESP32 · Pendências: O README informa modo integrador para C1/C2; código da BOM não confirma valor automaticamente.
   - Tag de origem no inventário V1: `UG-V1-0010`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B036 — C3 — Capacitor** · Ref.: `C3` · Modelo: 100 nF
   - Função: Componente associado ao estágio de amplificação/integração conforme esquema.
   - Local: Região analógica acima do ESP32 · Pendências: Hotspot físico requer identificação por serigrafia/KiCad.
   - Tag de origem no inventário V1: `UG-V1-0011`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 - **UG-V1-B037 — C4 — Capacitor** · Ref.: `C4` · Modelo: 100 nF
   - Função: Componente associado ao estágio de amplificação/integração conforme esquema.
   - Local: Região analógica acima do ESP32 · Pendências: Hotspot físico requer identificação por serigrafia/KiCad.
   - Tag de origem no inventário V1: `UG-V1-0011`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1CapacitorCeramicoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md
 
 ### UG-V1-S09 · Visualização — OLED
@@ -501,7 +501,7 @@ Colunas em ordem: `Tag única`, `Imagem`, `Componente / Subsistema`, `Categoria`
   - Função: Permite verificar respostas do sensor a mudanças do campo.
   - Local: Externo, próximo ao prisma · Pendências: O guia menciona um ímã pequeno para teste, sem exigir composição específica. Exemplos: disco NdFeB pequeno; cubo NdFeB pequeno; ímã de ferrite pequeno (campo menor em geral). Controlar distância e evitar saturar/deslocar excessivamente a ressonância.
   - Tag de origem no inventário V1: `UG-V1-0032`
-  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-ima-neodimio-disco-ilustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
+  - Imagem: https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ImaNeodimioDiscoIlustrativo.png (Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.)
   - Fonte: https://commons.wikimedia.org/wiki/File:Neodym_Magnete.jpg — Domínio público
 - **UG-V1-B041 — Face frontal da PCB** · Ref.: `PCB-FRONT`
   - Função: Região da placa com laser, analógico, ESP32, OLED e amplificador.
