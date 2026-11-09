@@ -216,3 +216,16 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 /* Miniaturas dos hotspots: apenas recortes da fotografia oficial, sem conteúdo sintético. */
 .hotspot-mini{display:block;position:relative;overflow:hidden;width:128px;margin-top:7px;border:1px solid #D6DDE7;border-radius:5px;background:#EEF0F4}
 .hotspot-tooltip{min-width:150px}
+
+/* Detalhes regionais fiéis à fotografia oficial. */
+.enhanced-gallery{margin:18px 0 8px;padding:18px 21px;background:#fff;border:1px solid var(--line);border-radius:10px}
+.enhanced-gallery h2{font-size:16px;color:#1F3350;margin:0 0 7px}
+.enhanced-gallery>p{font-size:11px;color:#5C6E87;line-height:1.6;margin:0 0 14px}
+.enhanced-gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.enhanced-gallery-card{padding:10px;border:1px solid #DEE5EF;background:#F9FAFC;text-align:left;border-radius:9px;display:flex;flex-direction:column;gap:7px;min-width:0;cursor:zoom-in}
+.enhanced-gallery-card:hover,.enhanced-gallery-card:focus-visible{border-color:var(--ita-blue);background:#EFF5FC}
+.enhanced-gallery-card img{display:block;width:100%;height:130px;object-fit:contain;background:#E9EDF0;border-radius:5px}
+.enhanced-gallery-card strong{font-size:11px;color:#294B73;line-height:1.4}
+.enhanced-gallery-card span{font-size:10px;color:#64748B;line-height:1.55}
+@media(max-width:1050px){.enhanced-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.enhanced-gallery{padding:12px}.enhanced-gallery-grid{gap:8px}.enhanced-gallery-card img{height:100px}}
