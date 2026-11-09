@@ -1,0 +1,235 @@
+{
+  "source": "code/public/assets/official/DeviceV1.png",
+  "upstream": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png",
+  "license": "AGPL-3.0 / Quantum Village; preserve upstream attribution",
+  "source_sha256": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
+  "source_size": [
+    1453,
+    1080
+  ],
+  "scale": 2,
+  "method": "Pillow LANCZOS 2x, contrast 1.055, UnsharpMask radius 1.1 percent 74 threshold 3; no generative AI",
+  "warning": "The interpolation cannot recover text or technical details missing from the source.",
+  "crops": [
+    {
+      "filename": "ug-v1-overview-enhanced.png",
+      "title": "Montagem V1 integral",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "status": "known",
+      "source_box_px": [
+        0,
+        0,
+        1453,
+        1080
+      ],
+      "output_size_px": [
+        2906,
+        2160
+      ],
+      "bytes": 6739891
+    },
+    {
+      "filename": "ug-v1-pcb-enhanced.png",
+      "title": "PCB V1",
+      "x": 2,
+      "y": 5,
+      "w": 69,
+      "h": 86,
+      "status": "known",
+      "source_box_px": [
+        29,
+        54,
+        1032,
+        983
+      ],
+      "output_size_px": [
+        2006,
+        1858
+      ],
+      "bytes": 4127994
+    },
+    {
+      "filename": "ug-v1-esp32-enhanced.png",
+      "title": "ESP32",
+      "x": 8,
+      "y": 61,
+      "w": 38,
+      "h": 30,
+      "status": "known",
+      "source_box_px": [
+        116,
+        658,
+        669,
+        983
+      ],
+      "output_size_px": [
+        1106,
+        650
+      ],
+      "bytes": 896380
+    },
+    {
+      "filename": "ug-v1-rf-amp-enhanced.png",
+      "title": "Amplificador RF",
+      "x": 41,
+      "y": 43,
+      "w": 32,
+      "h": 25,
+      "status": "known",
+      "source_box_px": [
+        595,
+        464,
+        1061,
+        735
+      ],
+      "output_size_px": [
+        932,
+        542
+      ],
+      "bytes": 633428
+    },
+    {
+      "filename": "ug-v1-laser-enhanced.png",
+      "title": "Laser verde",
+      "x": 10,
+      "y": 17,
+      "w": 23,
+      "h": 18,
+      "status": "known",
+      "source_box_px": [
+        145,
+        183,
+        480,
+        378
+      ],
+      "output_size_px": [
+        670,
+        390
+      ],
+      "bytes": 270924
+    },
+    {
+      "filename": "ug-v1-prism-enhanced.png",
+      "title": "Conjunto optico NV",
+      "x": 42,
+      "y": 11,
+      "w": 18,
+      "h": 24,
+      "status": "known",
+      "source_box_px": [
+        610,
+        118,
+        872,
+        378
+      ],
+      "output_size_px": [
+        524,
+        520
+      ],
+      "bytes": 321614
+    },
+    {
+      "filename": "ug-v1-oled-enhanced.png",
+      "title": "OLED / display",
+      "x": 44,
+      "y": 64,
+      "w": 27,
+      "h": 32,
+      "status": "known",
+      "source_box_px": [
+        639,
+        691,
+        1032,
+        1037
+      ],
+      "output_size_px": [
+        786,
+        692
+      ],
+      "bytes": 469308
+    },
+    {
+      "filename": "ug-v1-rf-cable-enhanced.png",
+      "title": "Cabo/conector proximo ao amplificador RF",
+      "x": 68,
+      "y": 38,
+      "w": 31,
+      "h": 36,
+      "status": "descriptive",
+      "source_box_px": [
+        988,
+        410,
+        1439,
+        800
+      ],
+      "output_size_px": [
+        902,
+        780
+      ],
+      "bytes": 799758
+    },
+    {
+      "filename": "ug-v1-between-rf-and-esp32-enhanced.png",
+      "title": "Regiao entre amplificador RF e ESP32",
+      "x": 30,
+      "y": 49,
+      "w": 28,
+      "h": 24,
+      "status": "descriptive",
+      "source_box_px": [
+        435,
+        529,
+        843,
+        789
+      ],
+      "output_size_px": [
+        816,
+        520
+      ],
+      "bytes": 518487
+    },
+    {
+      "filename": "ug-v1-above-esp32-enhanced.png",
+      "title": "Regiao acima do ESP32",
+      "x": 12,
+      "y": 37,
+      "w": 36,
+      "h": 27,
+      "status": "descriptive",
+      "source_box_px": [
+        174,
+        399,
+        698,
+        692
+      ],
+      "output_size_px": [
+        1048,
+        586
+      ],
+      "bytes": 722974
+    },
+    {
+      "filename": "ug-v1-laser-driver-enhanced.png",
+      "title": "Regiao da placa/driver do laser",
+      "x": 8,
+      "y": 31,
+      "w": 33,
+      "h": 29,
+      "status": "descriptive",
+      "source_box_px": [
+        116,
+        334,
+        596,
+        648
+      ],
+      "output_size_px": [
+        960,
+        628
+      ],
+      "bytes": 702797
+    }
+  ]
+}
