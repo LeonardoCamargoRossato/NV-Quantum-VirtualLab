@@ -10,6 +10,7 @@ import { FlowPage } from "./FlowPage";
 import { AboutPage } from "./AboutPage";
 import { LabFuturePage } from "./LabFuturePages";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
+import { imagePresentation, presentedItem, presentedAsset, presentedMarker } from "./ImagePresentation";
 import { cardPageSize, pageNumbers } from "./Pagination";
 import inventoryData from "../source/InventoryV1.json";
 import "./Workbench.css";
@@ -18,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 const inventorySheet = "https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=2026110901#gid=2026110901";
 const project = "https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab";
 const logo = "https://pgfis.ita.br/static/core/uploads/Post/ITA-logo_606c9f4c450c8e7bd0b4b118.jpg_606c9f4c450c8e7bd0b4b118.jpg.jpg";
-const originalPhoto = base + "assets/official/DeviceV1.png";
+const originalPhoto = base + imagePresentation.main.image;
 const enhancedPhoto = base + "assets/official/v1/enhanced/";
 const isPage = (v: string): v is Page => Object.prototype.hasOwnProperty.call(pageTitles, v);
 function currentPage(): Page {
@@ -29,12 +30,13 @@ function currentPage(): Page {
 type GallerySlide = {url:string;title:string;number:number;caption:string;source:string};
 type ImagePreview = { url: string; title: string; region?: PhotoRegion; gallery?:GallerySlide[]; index?:number };
 function Crop({region, title, onClick, interactive = true}: {region: PhotoRegion; title: string; onClick?: () => void; interactive?: boolean}) {
-  const style: React.CSSProperties = { aspectRatio: String(cropAspect(region)) };
+  const visual=presentedItem(region.tag);
+  const style: React.CSSProperties = { aspectRatio: String(visual?visual.outputSize[0]/visual.outputSize[1]:cropAspect(region)) };
   const file = ENHANCED_CROPS[region.tag];
   return <div className="crop-shell" style={style}>
-    <img src={enhancedPhoto + file} draggable={false} loading="lazy"
+    <img src={presentedAsset(enhancedPhoto + file,base)} draggable={false} loading="lazy"
       alt={"Recorte da fotografia do Uncut Gem V1: " + title}
-      style={{width:"100%",height:"100%",position:"absolute",inset:0,objectFit:"fill"}} />
+      style={{width:"100%",height:"100%",position:"absolute",inset:0,objectFit:"contain"}} />
     {interactive && onClick && <button type="button" className="crop-overlay" onClick={onClick} aria-label={"Ampliar recorte real: " + title}>Ampliar recorte <span aria-hidden="true">↗</span></button>}
   </div>;
 }
@@ -53,9 +55,9 @@ function ComponentImage({item,onOpen}: {item: Item; onOpen: (preview: ImagePrevi
   </div>;
   const region = findPhotoRegion(item.tag);
   if (region) return <div className="component-visual">
-    <Crop region={region} title={item.name} onClick={() => onOpen({url:enhancedPhoto+ENHANCED_CROPS[region.tag], title:"Recorte aprimorado do Uncut Gem V1 — "+item.name,region})} />
+    <Crop region={region} title={item.name} onClick={() => onOpen({url:presentedAsset(enhancedPhoto+ENHANCED_CROPS[region.tag],base), title:"Recorte aprimorado do Uncut Gem V1 — "+item.name,region})} />
     <p className="image-provenance"><strong>Recorte de fotografia oficial</strong> · Quantum Village / Uncut Gem V1</p>
-    <p className="visual-note">{region.note} Interpolação conservadora e nitidez ajustada; detalhes ausentes na fonte não podem ser recuperados.</p>
+    <p className="visual-note">{region.note} Enquadramento centralizado e alinhamento geométrico; detalhes ausentes na fonte não podem ser recuperados.</p>
     <Out href={PHOTO_ORIGINAL_URL}>Fotografia integral de origem</Out>
   </div>;
   const type = item.imageType.toLocaleLowerCase("pt-BR");
@@ -93,7 +95,7 @@ function Lightbox({preview,onClose}: {preview:ImagePreview;onClose:()=>void}) {
       <div className="lightbox-heading"><strong>{active?"Etapa "+active.number+" · "+active.title:preview.title}</strong><div className="lightbox-buttons"><button onClick={()=>setZoom(z=>Math.max(1,z-0.25))} aria-label="Diminuir zoom da imagem">−</button><output>{Math.round(zoom*100)}%</output><button onClick={()=>setZoom(z=>Math.min(4,z+0.25))} aria-label="Aumentar zoom da imagem">+</button><button onClick={()=>setZoom(1)}>Redefinir</button><button onClick={onClose} aria-label="Fechar imagem">×</button></div></div>
       <div className="lightbox-content"><div className="lightbox-zoom" style={{transform:"scale("+zoom+")"}}>{preview.region&&!active?<Crop region={preview.region} title={preview.title} interactive={false}/>:<img src={active?.url||preview.url} alt={active?.title||preview.title}/>}</div></div>
       {preview.gallery&&<nav className="gallery-navigation" aria-label="Navegação das imagens do fluxo"><button type="button" onClick={()=>{setSlide(v=>(v+preview.gallery!.length-1)%preview.gallery!.length);setZoom(1)}} aria-label="Imagem anterior">← Anterior</button><span>{slide+1} / {preview.gallery.length}</span><button type="button" onClick={()=>{setSlide(v=>(v+1)%preview.gallery!.length);setZoom(1)}} aria-label="Próxima imagem">Próxima →</button></nav>}
-      <div className="lightbox-caption">{active?<span><strong>Etapa {active.number} · {active.caption}</strong> — fonte: Quantum Village, {active.source}</span>:<span>{preview.region?"Recorte oficial aprimorado com interpolação 2×, contraste e nitidez moderados; sem IA generativa.":"Imagem do inventário ou dos arquivos oficiais."}</span>} <Out href={active?.source|| (preview.region?PHOTO_ORIGINAL_URL:preview.url)}>Abrir fonte original</Out></div>
+      <div className="lightbox-caption">{active?<span><strong>Etapa {active.number} · {active.caption}</strong> — fonte: Quantum Village, {active.source}</span>:<span>{preview.region?"Recorte oficial centralizado e alinhado geometricamente; sem reconstrução generativa.":"Imagem do inventário ou dos arquivos oficiais."}</span>} <Out href={active?.source|| (preview.region?PHOTO_ORIGINAL_URL:preview.url)}>Abrir fonte original</Out></div>
     </div>
   </div>;
 }
@@ -345,7 +347,7 @@ function App() {
         {selection&&<ContextInspector selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenItem={tag=>{const item=items.find(i=>i.tag===tag)||snapshot?.legacyItems.find(i=>i.tag===tag);if(item)openItem(item)}} onChildren={tag=>{const item=items.find(i=>i.tag===tag);if(item){go("inventario");setQuery("");setLayer("B");setSubsystem(item.name);setFace("");setImageType("");}}} items={items} legacyItems={snapshot?.legacyItems||[]} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
         <div className="workspace-primary">
       {page==="explorar" ? <div className="workbench-page">
-        <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real · Quantum Village</span><button className="toolbar-button" onClick={()=>setPreview({url:enhancedPhoto+ENHANCED_OVERVIEW,title:"Fotografia do Uncut Gem V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
+        <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real alinhada · Quantum Village</span><button className="toolbar-button" onClick={()=>setPreview({url:presentedAsset(enhancedPhoto+ENHANCED_OVERVIEW,base),title:"Fotografia do Uncut Gem V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
         <div className="work-area">
           <section className={"photo-panel"+(fullFallback?" full-fallback":"")} ref={photoPanelRef} aria-label="Fotografia interativa do Uncut Gem V1">
             <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>{PHOTO_REGIONS.length} pontos identificados na imagem</span></div>
@@ -355,8 +357,8 @@ function App() {
               onPointerUp={()=>{drag.current=null}} onPointerCancel={()=>{drag.current=null}}>
               {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={PHOTO_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className="photo-stage" style={{width:imageDimensions.width,height:imageDimensions.height,transform:"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+")"}}>
                 <img src={originalPhoto} draggable={false} alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
-                {PHOTO_REGIONS.map(r=>{const item=items.find(i=>i.tag===r.tag);if(!item)return null;return <button key={r.tag} type="button" className={"hotspot"+((selected?.tag===r.tag||(selected?.tag==="UG-V1-0028"&&r.tag==="UG-V1-0023"))?" is-selected":"")} style={{left:r.markerX+"%",top:r.markerY+"%",transform:"translate(-50%,-50%) scale("+(1/zoom)+")"}} title={item.name} aria-label={"Inspecionar "+item.name}
-                  onPointerDown={e=>e.stopPropagation()} onClick={e=>openItem(item,e.currentTarget)}><span className="hotspot-circle" aria-hidden="true">●</span><span className="hotspot-tooltip"><strong>{r.short}</strong><small>{item.tag}</small><span className="hotspot-mini" style={{aspectRatio:String(cropAspect(r))}}><img src={enhancedPhoto+ENHANCED_CROPS[r.tag]} alt="" draggable={false} style={{position:"absolute",inset:0,width:"100%",height:"100%",maxWidth:"none",objectFit:"fill",pointerEvents:"none"}}/></span></span></button>})}
+                {PHOTO_REGIONS.map(r=>{const item=items.find(i=>i.tag===r.tag);if(!item)return null;return <button key={r.tag} type="button" className={"hotspot"+((selected?.tag===r.tag||(selected?.tag==="UG-V1-0028"&&r.tag==="UG-V1-0023"))?" is-selected":"")} style={{left:presentedMarker(r).x+"%",top:presentedMarker(r).y+"%",transform:"translate(-50%,-50%) scale("+(1/zoom)+")"}} title={item.name} aria-label={"Inspecionar "+item.name}
+                  onPointerDown={e=>e.stopPropagation()} onClick={e=>openItem(item,e.currentTarget)}><span className="hotspot-circle" aria-hidden="true">●</span><span className="hotspot-tooltip"><strong>{r.short}</strong><small>{item.tag}</small><span className="hotspot-mini" style={{aspectRatio:String(presentedItem(r.tag).outputSize[0]/presentedItem(r.tag).outputSize[1])}}><img src={presentedAsset(enhancedPhoto+ENHANCED_CROPS[r.tag],base)} alt="" draggable={false} style={{position:"absolute",inset:0,width:"100%",height:"100%",maxWidth:"none",objectFit:"contain",pointerEvents:"none"}}/></span></span></button>})}
               </div>}
               <div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>setZoom(z=>Math.max(1,z-0.25))} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>setZoom(z=>Math.min(4,z+0.25))} aria-label="Aumentar zoom">+</button><button className="reset-button" onClick={()=>{setZoom(1);setPan({x:0,y:0})}}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{isPhotoFull?"↙":"⛶"}</button></div>
             </div>
@@ -365,10 +367,10 @@ function App() {
         </div>
         <section className="enhanced-gallery" aria-label="Detalhes fotográficos da montagem Uncut Gem V1">
           <h2>Detalhes da montagem</h2>
-          <p>Quatro regiões descritivas recortadas da mesma fotografia oficial. A nitidez foi ajustada sem acrescentar componentes ou atribuir identidade técnica incerta.</p>
+          <p>Quatro regiões descritivas recortadas da mesma fotografia oficial. O enquadramento foi centralizado e alinhado sem acrescentar componentes ou atribuir identidade técnica incerta.</p>
           <div className="enhanced-gallery-grid">{EXTRA_CROPS.map(extra=><button key={extra.id} type="button" className="enhanced-gallery-card"
-              onClick={()=>setPreview({url:enhancedPhoto+extra.file,title:extra.title})}>
-              <img loading="lazy" src={enhancedPhoto+extra.file} alt={"Recorte fotográfico: "+extra.title}/>
+              onClick={()=>setPreview({url:presentedAsset(enhancedPhoto+extra.file,base),title:extra.title})}>
+              <img loading="lazy" src={presentedAsset(enhancedPhoto+extra.file,base)} alt={"Recorte fotográfico: "+extra.title}/>
               <strong>{extra.title}</strong><span>{extra.note}</span>
             </button>)}</div>
         </section>

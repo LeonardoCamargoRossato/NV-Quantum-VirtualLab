@@ -10,6 +10,7 @@
   "sourceSha256": "3fa0d1c8fe767964b278d91756fdf4679aca897cc3ffb827d24ac65614c463c4",
   "evidenceSha256": {
     "ComponentImageCheckpoint.json": "9cb03db22158271bace3aab11df73f6fd294b123b8174cd5dcc3807ad5259aaa",
+    "ImageFraming.json": "94f66221b81c1bdd736d1e9f5e5a479006ed2f8bf8759b4be7e3c171fb87cff2",
     "LayerBBoardFaceIndex.json": "deea5a1d18ca6fc5cbfb72eb636b4896746d8f45f0de47a90bdcb8b54b214928",
     "LayerBComponentImagePlan.json": "84cc53919e73daab992ad50feae78f6eda60d56dd17568722f1459f48bec8a39",
     "SubsystemsV1.json": "211f006b9e725dc1562fc6906fb5ed890053db90ffcf72a82a2311e828544d95"
@@ -25,7 +26,7 @@
       "location": "PCB e alimentação externa",
       "price": "",
       "imageType": "Fotografia real — recorte do USB do ESP32",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemPowerUsb.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S01.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. USB do ESP32 identificado na montagem real. A foto NÃO demonstra que a entrada USB equivale à alimentação 5V_SUPP1, nem comprova proteção elétrica da fonte. Fonte visual: foto oficial frontal Quantum Village.",
@@ -39,7 +40,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": ""
     },
     {
@@ -52,7 +53,7 @@
       "location": "Face frontal, parte inferior esquerda",
       "price": "",
       "imageType": "Fotografia real — recorte do ESP32 completo",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemEsp32.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S02.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Módulo ESP32 fotografado na montagem oficial; recorte de região, não fotografia isolada de catálogo.",
@@ -66,7 +67,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -79,7 +80,7 @@
       "location": "Face frontal, parte superior esquerda",
       "price": "",
       "imageType": "Fotografia real — recorte do laser e suporte",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemLaser.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S03.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Módulo laser verde e fiação de suporte presentes na montagem oficial; não identificar potência/comprimento de onda apenas pela foto.",
@@ -93,7 +94,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": ""
     },
     {
@@ -106,7 +107,7 @@
       "location": "Módulo no verso da PCB",
       "price": "",
       "imageType": "Fotografia real do verso — recorte contextual do ADF4351",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemAdf4351.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S04.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Região do módulo preto montado no VERSO; o Build Guide confirma a montagem do ADF4351 atrás da PCB. Não se lê a marcação do CI, logo a identidade é contextual, não confirmada por inscrição. Foto: https://quantumvillage.org/images/device-back.jpeg",
@@ -120,7 +121,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -133,7 +134,7 @@
       "location": "Face frontal, região direita",
       "price": "",
       "imageType": "Fotografia real — recorte do amplificador RF",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemRfAmplifier.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S05.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Módulo amplificador e conectores SMA reais; ganho nominal 40 dB decorre da documentação, não pode ser medido pela foto.",
@@ -147,7 +148,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -160,7 +161,7 @@
       "location": "Região direita e prisma",
       "price": "",
       "imageType": "Fotografia real — recorte de conexões SMA/RF",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemRfConnections.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S06.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Cabo coaxial e conectores SMA visíveis na frente. Parte da conexão RF pode se estender à face traseira, não toda rastreável neste recorte.",
@@ -174,7 +175,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -187,7 +188,7 @@
       "location": "Face frontal, região superior",
       "price": "",
       "imageType": "Fotografia real — recorte do prisma NV",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemPrismDetection.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S07.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. O prisma real é a imagem principal. Diamante, filtro vermelho e BPW34 internos não são separadamente identificáveis. Diagrama complementar oficial: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/images/layer3.png",
@@ -201,7 +202,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -214,7 +215,7 @@
       "location": "Face frontal, imediatamente acima do ESP32",
       "price": "",
       "imageType": "Fotografia real — recorte do TL082 e passivos",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemSignalConditioning.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S08.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Área real do CI TL082 (encapsulamento DIP) e resistores/capacitores da etapa analógica. Inscrições e valores individuais devem ser confirmados pelo esquemático; não são inferidos pela foto.",
@@ -228,7 +229,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -241,7 +242,7 @@
       "location": "Face frontal, parte inferior direita",
       "price": "",
       "imageType": "Fotografia real — recorte do display OLED",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemOled.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S09.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Display OLED físico, com placa e tela completas; imagem retirada da foto real da montagem V1.",
@@ -255,7 +256,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -268,7 +269,7 @@
       "location": "Toda a PCB, frente e verso",
       "price": "",
       "imageType": "Render oficial — PCB DiamondGeezer V1 (frente)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/subsystems/UgV1SubsystemPcbStructure.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1S10.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Recorte oficial processado conservadoramente; sem IA generativa. Imagem: render oficial da PCB DiamondGeezer, NÃO fotografia do dispositivo montado. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png",
@@ -282,7 +283,7 @@
       "parentTag": "",
       "imageStatus": "",
       "imageClass": "",
-      "imageNotes": "",
+      "imageNotes": "Enquadramento revisado; preservada a orientação original.",
       "imageSource": ""
     },
     {
@@ -295,7 +296,7 @@
       "location": "5V_SUPP1/USB",
       "price": "",
       "imageType": "Imagem ilustrativa controlada (gerada por IA) — entrada micro-USB e pinos VIN/GND/3V3; NÃO é foto real",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/illustrative/v1/components/UgV10031UsbPowerIllustrative.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10031.png",
       "source": "Imagem ilustrativa gerada por IA (não fotografia); referência contextual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "CAMADA B — REVISÃO técnica | classe D. Imagem ilustrativa controlada (IA), adotada provisoriamente pelo usuário para representar a região micro-USB e pinos VIN/GND/3V3 de um ESP32. NÃO é fotografia do Uncut Gem V1; NÃO comprova uma fonte com proteção elétrica, a existência de duas saídas 5V ou a identidade do conector 5V_SUPP1 (2×3) da PCB DiamondGeezer. O conector USB real do ESP32 está documentado separadamente na TAG UG-V1-B001. Identificar alimentação e proteção pelos esquemáticos e revisão física antes de criar hotspots ou afirmar equivalência.",
@@ -309,7 +310,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "REVISÃO",
       "imageClass": "D",
-      "imageNotes": "Imagem ilustrativa solicitada pelo usuário, representando visualmente a região micro-USB de um ESP32 e os pinos VIN, GND e 3V3. Não demonstra que o circuito real do Uncut Gem V1 tem proteção elétrica, não identifica o conector 5V_SUPP1 (2×3) da placa DiamondGeezer e não permite atribuir duas saídas 5V ao hardware original. Manter REVISÃO técnica até verificar o esquema elétrico/PCB.",
+      "imageNotes": "Imagem ilustrativa solicitada pelo usuário, representando visualmente a região micro-USB de um ESP32 e os pinos VIN, GND e 3V3. Não demonstra que o circuito real do Uncut Gem V1 tem proteção elétrica, não identifica o conector 5V_SUPP1 (2×3) da placa DiamondGeezer e não permite atribuir duas saídas 5V ao hardware original. Manter REVISÃO técnica até verificar o esquema elétrico/PCB. Ilustração já existente; revisão técnica preservada, sem novos detalhes.",
       "imageSource": "Imagem ilustrativa gerada por IA (não fotografia); referência contextual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md"
     },
     {
@@ -322,7 +323,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10013.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10013.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da PCB como contexto; ponto 5V_SUPP1 não individualizado sem KiCad. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -336,7 +337,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Conector 5 V — 5V_SUPP1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageNotes": "Conector 5 V — 5V_SUPP1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
@@ -349,7 +350,7 @@
       "location": "Módulo ESP32, próximo aos botões EN/BOOT",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B001.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B001.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe A. USB físico do ESP32; não é prova da alimentação 5V_SUPP1. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -363,7 +364,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "USB físico do ESP32; não é prova da alimentação 5V_SUPP1.",
+      "imageNotes": "USB físico do ESP32; não é prova da alimentação 5V_SUPP1. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md"
     },
     {
@@ -376,7 +377,7 @@
       "location": "Face frontal (F.Cu) — faixa de capacitores à esquerda do ESP32",
       "price": "",
       "imageType": "Render oficial da PCB — recorte do footprint de capacitor (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B002.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B002.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da face frontal da PCB DiamondGeezer V1: footprint/pads 5 (100 nF), ref. C5 em F.Cu. Coordenadas KiCad: X=96.25 mm, Y=121.3 mm. A imagem é recorte da posição de montagem, NÃO comprova capacitor soldado. Na foto do conjunto, parte dessa coluna fica encoberta pelo ESP32. Sem hotspot que afirme presença física do capacitor. Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb.",
@@ -390,7 +391,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C5 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C5 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb"
     },
     {
@@ -403,7 +404,7 @@
       "location": "Face frontal (F.Cu) — faixa de capacitores à esquerda do ESP32",
       "price": "",
       "imageType": "Render oficial da PCB — recorte do footprint de capacitor (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B003.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B003.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da face frontal da PCB DiamondGeezer V1: footprint/pads 6 (100 nF), ref. C6 em F.Cu. Coordenadas KiCad: X=96.25 mm, Y=117.25 mm. A imagem é recorte da posição de montagem, NÃO comprova capacitor soldado. Na foto do conjunto, parte dessa coluna fica encoberta pelo ESP32. Sem hotspot que afirme presença física do capacitor. Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb.",
@@ -417,7 +418,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C6 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C6 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb"
     },
     {
@@ -430,7 +431,7 @@
       "location": "Face frontal (F.Cu) — faixa de capacitores à esquerda do ESP32",
       "price": "",
       "imageType": "Render oficial da PCB — recorte do footprint de capacitor (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B004.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B004.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da face frontal da PCB DiamondGeezer V1: footprint/pads 7 (100 nF), ref. C7 em F.Cu. Coordenadas KiCad: X=96.25 mm, Y=130 mm. A imagem é recorte da posição de montagem, NÃO comprova capacitor soldado. Na foto do conjunto, parte dessa coluna fica encoberta pelo ESP32. Sem hotspot que afirme presença física do capacitor. Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb.",
@@ -444,7 +445,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C7 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C7 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb"
     },
     {
@@ -457,7 +458,7 @@
       "location": "Face frontal (F.Cu) — faixa de capacitores à esquerda do ESP32",
       "price": "",
       "imageType": "Render oficial da PCB — recorte do footprint de capacitor (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B005.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B005.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da face frontal da PCB DiamondGeezer V1: footprint/pads 8 (100 nF), ref. C8 em F.Cu. Coordenadas KiCad: X=96.25 mm, Y=125.75 mm. A imagem é recorte da posição de montagem, NÃO comprova capacitor soldado. Na foto do conjunto, parte dessa coluna fica encoberta pelo ESP32. Sem hotspot que afirme presença física do capacitor. Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb.",
@@ -471,7 +472,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C8 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C8 de 100 nF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb"
     },
     {
@@ -484,7 +485,7 @@
       "location": "Face frontal (F.Cu) — faixa de capacitores à esquerda do ESP32",
       "price": "",
       "imageType": "Render oficial da PCB — recorte do footprint de capacitor (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B006.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B006.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da face frontal da PCB DiamondGeezer V1: footprint/pads 9 (10 µF), ref. C9 em F.Cu. Coordenadas KiCad: X=96 mm, Y=111.5 mm. A imagem é recorte da posição de montagem, NÃO comprova capacitor soldado. Na foto do conjunto, parte dessa coluna fica encoberta pelo ESP32. Sem hotspot que afirme presença física do capacitor. Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb.",
@@ -498,7 +499,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C9 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C9 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb"
     },
     {
@@ -511,7 +512,7 @@
       "location": "Face frontal (F.Cu) — faixa de capacitores à esquerda do ESP32",
       "price": "",
       "imageType": "Render oficial da PCB — recorte do footprint de capacitor (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B007.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B007.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da face frontal da PCB DiamondGeezer V1: footprint/pads 10 (10 µF), ref. C10 em F.Cu. Coordenadas KiCad: X=96 mm, Y=136 mm. A imagem é recorte da posição de montagem, NÃO comprova capacitor soldado. Na foto do conjunto, parte dessa coluna fica encoberta pelo ESP32. Sem hotspot que afirme presença física do capacitor. Fonte: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb.",
@@ -525,7 +526,7 @@
       "parentTag": "UG-V1-S01",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C10 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada.",
+      "imageNotes": "Recorte aprovado do render oficial da PCB DiamondGeezer V1: footprint C10 de 10 µF (F.Cu), não fotografia de capacitor soldado. Parte da região de alimentação fica encoberta pelo módulo ESP32 na montagem real; não criar hotspot de peça física isolada. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/DiamondGeezer.kicad_pcb"
     },
     {
@@ -538,7 +539,7 @@
       "location": "Módulo encaixado na PCB",
       "price": "R$ 38–62",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10004.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10004.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "Checar pinagem/footprint.\nCAMADA B — CHECK | classe A. DevKit ESP32 visível, frente da montagem. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -552,7 +553,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "DevKit ESP32 visível, frente da montagem.",
+      "imageNotes": "DevKit ESP32 visível, frente da montagem. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -565,7 +566,7 @@
       "location": "Sobre o DevKit",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B008.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B008.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe A. Blindagem metálica do ESP32; não representa outro microcontrolador. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -579,7 +580,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Blindagem metálica do ESP32; não representa outro microcontrolador.",
+      "imageNotes": "Blindagem metálica do ESP32; não representa outro microcontrolador. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -592,7 +593,7 @@
       "location": "Próximo à entrada USB",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B009.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B009.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe A. Botão EN fisicamente visível e identificado. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -606,7 +607,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Botão EN fisicamente visível e identificado.",
+      "imageNotes": "Botão EN fisicamente visível e identificado. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -619,7 +620,7 @@
       "location": "Próximo à entrada USB",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B010.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B010.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe A. Botão BOOT fisicamente visível e identificado. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -633,7 +634,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Botão BOOT fisicamente visível e identificado.",
+      "imageNotes": "Botão BOOT fisicamente visível e identificado. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -646,7 +647,7 @@
       "location": "Placa ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B011.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B011.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe A. LEDs do DevKit; estado luminoso não informa funções elétricas exatas. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -660,7 +661,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "LEDs do DevKit; estado luminoso não informa funções elétricas exatas.",
+      "imageNotes": "LEDs do DevKit; estado luminoso não informa funções elétricas exatas. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -673,7 +674,7 @@
       "location": "Laterais do módulo ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B012.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B012.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe A. Fileiras de pinos da placa DevKit, recorte contextual que inclui o módulo. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -687,7 +688,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Fileiras de pinos da placa DevKit, recorte contextual que inclui o módulo.",
+      "imageNotes": "Fileiras de pinos da placa DevKit, recorte contextual que inclui o módulo. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -700,7 +701,7 @@
       "location": "Placa de desenvolvimento",
       "price": "",
       "imageType": "Foto real — referência contextual, componente não isolado (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B013.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B013.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "Identificar chip exato na foto da revisão.\nCAMADA B — CHECK | classe B. Região do conversor USB-serial; inscrição do CI ilegível, identificação pelo conjunto ESP32. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -714,7 +715,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Região do conversor USB-serial; inscrição do CI ilegível, identificação pelo conjunto ESP32.",
+      "imageNotes": "Região do conversor USB-serial; inscrição do CI ilegível, identificação pelo conjunto ESP32. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -727,7 +728,7 @@
       "location": "Interno ao microcontrolador: não criar hotspot independente",
       "price": "",
       "imageType": "Foto real do módulo hospedeiro — função interna sem hotspot (C)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B014.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B014.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "Não deve receber retângulo físico separado.\nCAMADA B — CHECK | classe C. ADC é bloco INTERNO ao microcontrolador ESP32. Este PNG representa apenas o hospedeiro; proibido hotspot próprio. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -741,7 +742,7 @@
       "parentTag": "UG-V1-S02",
       "imageStatus": "CHECK",
       "imageClass": "C",
-      "imageNotes": "ADC é bloco INTERNO ao microcontrolador ESP32. Este PNG representa apenas o hospedeiro; proibido hotspot próprio.",
+      "imageNotes": "ADC é bloco INTERNO ao microcontrolador ESP32. Este PNG representa apenas o hospedeiro; proibido hotspot próprio. Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -754,7 +755,7 @@
       "location": "Apontado ao diamante",
       "price": "R$ 58–120+",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10022.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10022.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Confirmar potência, tensão e segurança.\nCAMADA B — CHECK | classe A. Laser cilíndrico verde visível; potência não comprovável pela foto. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -768,7 +769,7 @@
       "parentTag": "UG-V1-S03",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Laser cilíndrico verde visível; potência não comprovável pela foto.",
+      "imageNotes": "Laser cilíndrico verde visível; potência não comprovável pela foto. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -781,7 +782,7 @@
       "location": "Região superior esquerda",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B015.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B015.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Identificação visual a conferir; não extrapolar especificações não publicadas.\nCAMADA B — CHECK | classe A. Plaquinha junto ao laser; circuito do driver deve ser verificado na fonte técnica. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -795,7 +796,7 @@
       "parentTag": "UG-V1-S03",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Plaquinha junto ao laser; circuito do driver deve ser verificado na fonte técnica.",
+      "imageNotes": "Plaquinha junto ao laser; circuito do driver deve ser verificado na fonte técnica. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -808,7 +809,7 @@
       "location": "Região superior esquerda",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B016.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B016.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Identificação visual a conferir; não extrapolar especificações não publicadas.\nCAMADA B — CHECK | classe A. Fiação próxima ao laser; continuidade elétrica não demonstrada pelo recorte. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -822,7 +823,7 @@
       "parentTag": "UG-V1-S03",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Fiação próxima ao laser; continuidade elétrica não demonstrada pelo recorte.",
+      "imageNotes": "Fiação próxima ao laser; continuidade elétrica não demonstrada pelo recorte. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -835,7 +836,7 @@
       "location": "Região superior esquerda",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B017.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B017.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Identificação visual a conferir; não extrapolar especificações não publicadas.\nCAMADA B — CHECK | classe A. Conjunto e fixação mecânica do laser; alinhamento não medido. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -849,7 +850,7 @@
       "parentTag": "UG-V1-S03",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Conjunto e fixação mecânica do laser; alinhamento não medido.",
+      "imageNotes": "Conjunto e fixação mecânica do laser; alinhamento não medido. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -862,7 +863,7 @@
       "location": "Encaixe posterior da PCB",
       "price": "R$ 107–331",
       "imageType": "Foto real do verso — referência contextual (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10018.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10018.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "https://www.analog.com/en/products/adf4351.html",
       "notes": "Verificar DAT/CLK/CE/LE e tensão.\nCAMADA B — CHECK | classe B. Módulo ADF4351 no verso: foto real de contexto, chip e SPI não legíveis. Fonte visual: https://quantumvillage.org/images/device-back.jpeg. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -876,7 +877,7 @@
       "parentTag": "UG-V1-S04",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Módulo ADF4351 no verso: foto real de contexto, chip e SPI não legíveis.",
+      "imageNotes": "Módulo ADF4351 no verso: foto real de contexto, chip e SPI não legíveis. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -889,7 +890,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10017.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10017.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial do verso; header SIGGEN1 não confirmado visualmente no recorte. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -903,7 +904,7 @@
       "parentTag": "UG-V1-S04",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Conector gerador RF — SIGGEN1. Recorte exato do render oficial da verso da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageNotes": "Conector gerador RF — SIGGEN1. Recorte exato do render oficial da verso da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png"
     },
     {
@@ -916,7 +917,7 @@
       "location": "Verso da PCB, módulo ADF4351",
       "price": "",
       "imageType": "Foto real do verso — referência contextual (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B018.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B018.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://www.analog.com/en/products/adf4351.html",
       "notes": "Módulo no verso; geometria e hotspot dependem de imagem oficial compatível.\nCAMADA B — CHECK | classe B. Módulo ADF4351 completo pelo verso; chip sintetizador não está individualmente visível. Fonte visual: https://quantumvillage.org/images/device-back.jpeg. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -930,7 +931,7 @@
       "parentTag": "UG-V1-S04",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Módulo ADF4351 completo pelo verso; chip sintetizador não está individualmente visível.",
+      "imageNotes": "Módulo ADF4351 completo pelo verso; chip sintetizador não está individualmente visível. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -943,7 +944,7 @@
       "location": "Verso da PCB, módulo ADF4351",
       "price": "",
       "imageType": "Foto real do verso — referência contextual (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B019.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B019.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://www.analog.com/en/products/adf4351.html",
       "notes": "Módulo no verso; geometria e hotspot dependem de imagem oficial compatível.\nCAMADA B — CHECK | classe B. Região traseira ADF4351. Os sinais SPI/LE não podem ser localizados individualmente nesta fotografia. Fonte visual: https://quantumvillage.org/images/device-back.jpeg. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -957,7 +958,7 @@
       "parentTag": "UG-V1-S04",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Região traseira ADF4351. Os sinais SPI/LE não podem ser localizados individualmente nesta fotografia.",
+      "imageNotes": "Região traseira ADF4351. Os sinais SPI/LE não podem ser localizados individualmente nesta fotografia. Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -970,7 +971,7 @@
       "location": "Verso da PCB, módulo ADF4351",
       "price": "",
       "imageType": "Foto real do verso — referência contextual (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B020.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B020.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md",
       "datasheet": "https://www.analog.com/en/products/adf4351.html",
       "notes": "Módulo no verso; geometria e hotspot dependem de imagem oficial compatível.\nCAMADA B — CHECK | classe B. Conector SMA visível perto do módulo ADF4351; função de saída não confirmada pela fotografia. Fonte visual: https://quantumvillage.org/images/device-back.jpeg. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -984,7 +985,7 @@
       "parentTag": "UG-V1-S04",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Conector SMA visível perto do módulo ADF4351; função de saída não confirmada pela fotografia.",
+      "imageNotes": "Conector SMA visível perto do módulo ADF4351; função de saída não confirmada pela fotografia. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/README.md"
     },
     {
@@ -997,7 +998,7 @@
       "location": "Frente da PCB",
       "price": "R$ 45–73",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10019.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10019.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Verificar ganho real a 2,87 GHz.\nCAMADA B — CHECK | classe A. Placa do amplificador RF visível e conectores. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1011,7 +1012,7 @@
       "parentTag": "UG-V1-S05",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Placa do amplificador RF visível e conectores.",
+      "imageNotes": "Placa do amplificador RF visível e conectores. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1024,7 +1025,7 @@
       "location": "Módulo frontal, região direita",
       "price": "",
       "imageType": "Foto real — referência contextual, componente não isolado (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B021.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B021.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Sem especificação individual confirmada dos componentes comerciais.\nCAMADA B — CHECK | classe B. Superfície do módulo amplificador RF; CI ativo específico não identificado. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1038,7 +1039,7 @@
       "parentTag": "UG-V1-S05",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Superfície do módulo amplificador RF; CI ativo específico não identificado.",
+      "imageNotes": "Superfície do módulo amplificador RF; CI ativo específico não identificado. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1051,7 +1052,7 @@
       "location": "Módulo frontal, região direita",
       "price": "",
       "imageType": "Foto real — referência contextual, componente não isolado (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B022.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B022.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Sem especificação individual confirmada dos componentes comerciais.\nCAMADA B — CHECK | classe B. Extremidade esquerda do amplificador e conector SMA; sentido de entrada requer documentação. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1065,7 +1066,7 @@
       "parentTag": "UG-V1-S05",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Extremidade esquerda do amplificador e conector SMA; sentido de entrada requer documentação.",
+      "imageNotes": "Extremidade esquerda do amplificador e conector SMA; sentido de entrada requer documentação. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1078,7 +1079,7 @@
       "location": "Módulo frontal, região direita",
       "price": "",
       "imageType": "Foto real — referência contextual, componente não isolado (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B023.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B023.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Sem especificação individual confirmada dos componentes comerciais.\nCAMADA B — CHECK | classe B. Extremidade direita do amplificador e conector SMA; sentido de saída requer documentação. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1092,7 +1093,7 @@
       "parentTag": "UG-V1-S05",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Extremidade direita do amplificador e conector SMA; sentido de saída requer documentação.",
+      "imageNotes": "Extremidade direita do amplificador e conector SMA; sentido de saída requer documentação. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1105,7 +1106,7 @@
       "location": "Módulo frontal, região direita",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B024.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B024.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Sem especificação individual confirmada dos componentes comerciais.\nCAMADA B — CHECK | classe A. Fiação visível na região RF; a pinagem não é inferida. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1119,7 +1120,7 @@
       "parentTag": "UG-V1-S05",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Fiação visível na região RF; a pinagem não é inferida.",
+      "imageNotes": "Fiação visível na região RF; a pinagem não é inferida. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1132,7 +1133,7 @@
       "location": "Módulo frontal, região direita",
       "price": "",
       "imageType": "Foto real — referência contextual, componente não isolado (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B025.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B025.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Sem especificação individual confirmada dos componentes comerciais.\nCAMADA B — CHECK | classe B. Conjunto de componentes SMD na placa do amplificador; valores individuais não identificados. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1146,7 +1147,7 @@
       "parentTag": "UG-V1-S05",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Conjunto de componentes SMD na placa do amplificador; valores individuais não identificados.",
+      "imageNotes": "Conjunto de componentes SMD na placa do amplificador; valores individuais não identificados. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1159,7 +1160,7 @@
       "location": "Entre módulos RF",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10020.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10020.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Cabo coaxial SMA fisicamente visível. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1173,7 +1174,7 @@
       "parentTag": "UG-V1-S06",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Cabo coaxial SMA fisicamente visível.",
+      "imageNotes": "Cabo coaxial SMA fisicamente visível. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md"
     },
     {
@@ -1186,7 +1187,7 @@
       "location": "[object Object]",
       "price": "R$ 41–69+",
       "imageType": "Diagrama oficial do prisma — referência, não foto (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10021.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10021.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Diagrama oficial do laço/estrutura do prisma, não fotografia individual da antena. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/images/layer1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1200,7 +1201,7 @@
       "parentTag": "UG-V1-S06",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Diagrama oficial do laço/estrutura do prisma, não fotografia individual da antena.",
+      "imageNotes": "Diagrama oficial do laço/estrutura do prisma, não fotografia individual da antena. Diagrama completo preservado para manter vistas e legenda; não é fotografia individual.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1213,7 +1214,7 @@
       "location": "Região direita do conjunto",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B026.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B026.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Adaptador/conectores SMA visíveis no conjunto. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1227,7 +1228,7 @@
       "parentTag": "UG-V1-S06",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Adaptador/conectores SMA visíveis no conjunto.",
+      "imageNotes": "Adaptador/conectores SMA visíveis no conjunto. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md"
     },
     {
@@ -1240,7 +1241,7 @@
       "location": "Entre amplificador e prisma",
       "price": "",
       "imageType": "Foto real — referência contextual, componente não isolado (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B027.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B027.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Conjunto visual entre SMA e região óptica; trajetória completa da conexão não verificada. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1254,7 +1255,7 @@
       "parentTag": "UG-V1-S06",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Conjunto visual entre SMA e região óptica; trajetória completa da conexão não verificada.",
+      "imageNotes": "Conjunto visual entre SMA e região óptica; trajetória completa da conexão não verificada. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md"
     },
     {
@@ -1267,7 +1268,7 @@
       "location": "Próximo ao laser",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10023.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10023.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Prisma e seu encapsulamento físico; interiores não visíveis individualmente. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1281,7 +1282,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Prisma e seu encapsulamento físico; interiores não visíveis individualmente.",
+      "imageNotes": "Prisma e seu encapsulamento físico; interiores não visíveis individualmente. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1294,7 +1295,7 @@
       "location": "Centro do laço de cobre",
       "price": "",
       "imageType": "Diagrama oficial do prisma — referência, não foto (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10024.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10024.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "",
       "notes": "Aquisição especializada; não é diamante comum.\nCAMADA B — CHECK | classe B. Diagrama oficial da montagem óptica: diamante está encapsulado, sem foto isolada. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/images/layer1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1308,7 +1309,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Diagrama oficial da montagem óptica: diamante está encapsulado, sem foto isolada.",
+      "imageNotes": "Diagrama oficial da montagem óptica: diamante está encapsulado, sem foto isolada. Diagrama completo preservado para manter vistas e legenda; não é fotografia individual.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1321,7 +1322,7 @@
       "location": "Entre NV e fotodiodo",
       "price": "",
       "imageType": "Diagrama oficial do prisma — referência, não foto (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10027.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10027.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Diagrama oficial com filtro vermelho, sem fotografia da peça instalada. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/images/layer3.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1335,7 +1336,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Diagrama oficial com filtro vermelho, sem fotografia da peça instalada.",
+      "imageNotes": "Diagrama oficial com filtro vermelho, sem fotografia da peça instalada. Diagrama completo preservado para manter vistas e legenda; não é fotografia individual.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1348,7 +1349,7 @@
       "location": "Dentro do prisma, ligado ao PHOTODIODE1",
       "price": "R$ 41–200 por kits",
       "imageType": "Diagrama oficial do prisma — referência, não foto (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10028.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10028.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "https://www.vishay.com/docs/81521/bpw34.pdf",
       "notes": "CAMADA B — CHECK | classe B. Diagrama oficial do fotodiodo BPW34 encapsulado, sem hotspot individual. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/images/layer3.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1362,7 +1363,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Diagrama oficial do fotodiodo BPW34 encapsulado, sem hotspot individual.",
+      "imageNotes": "Diagrama oficial do fotodiodo BPW34 encapsulado, sem hotspot individual. Diagrama completo preservado para manter vistas e legenda; não é fotografia individual.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1375,7 +1376,7 @@
       "location": "Três camadas",
       "price": "R$ 40–95+",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10025.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10025.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Resina/corpo óptico visível; camadas internas não verificáveis. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1389,7 +1390,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Resina/corpo óptico visível; camadas internas não verificáveis.",
+      "imageNotes": "Resina/corpo óptico visível; camadas internas não verificáveis. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1402,7 +1403,7 @@
       "location": "Durante fabricação",
       "price": "",
       "imageType": "Diagrama oficial do prisma — referência, não foto (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10026.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10026.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Diagrama do processo de fabricação; molde não permanece necessariamente no sistema montado. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/images/layer1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1416,7 +1417,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Diagrama do processo de fabricação; molde não permanece necessariamente no sistema montado.",
+      "imageNotes": "Diagrama do processo de fabricação; molde não permanece necessariamente no sistema montado. Diagrama completo preservado para manter vistas e legenda; não é fotografia individual.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1429,7 +1430,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10016.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10016.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da PCB; conector PHOTODIODE1 não é o fotodiodo BPW34. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1443,7 +1444,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Conector do fotodiodo — PHOTODIODE1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageNotes": "Conector do fotodiodo — PHOTODIODE1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
@@ -1456,7 +1457,7 @@
       "location": "Do prisma para a placa",
       "price": "",
       "imageType": "Diagrama oficial do prisma — referência, não foto (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B028.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B028.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md",
       "datasheet": "https://www.vishay.com/docs/81521/bpw34.pdf",
       "notes": "CAMADA B — CHECK | classe B. Diagrama oficial do prisma: pontos de saída representados esquematicamente, sem verificação dos fios na foto. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/images/layer3.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1470,7 +1471,7 @@
       "parentTag": "UG-V1-S07",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Diagrama oficial do prisma: pontos de saída representados esquematicamente, sem verificação dos fios na foto.",
+      "imageNotes": "Diagrama oficial do prisma: pontos de saída representados esquematicamente, sem verificação dos fios na foto. Diagrama completo preservado para manter vistas e legenda; não é fotografia individual.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/DiamondMount/README.md"
     },
     {
@@ -1483,7 +1484,7 @@
       "location": "Seção TIA da PCB",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10005.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10005.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "https://www.ti.com/product/TL082",
       "notes": "Checar se a versão aceita alimentação utilizada.\nCAMADA B — CHECK | classe A. Circuito integrado U2 próximo à serigrafia na região analógica. Modelo TL082 fundamentado no inventário; inscrições pouco legíveis. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1497,7 +1498,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Circuito integrado U2 próximo à serigrafia na região analógica. Modelo TL082 fundamentado no inventário; inscrições pouco legíveis.",
+      "imageNotes": "Circuito integrado U2 próximo à serigrafia na região analógica. Modelo TL082 fundamentado no inventário; inscrições pouco legíveis. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1510,7 +1511,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10015.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10015.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Ponto marcado OScope1 e região de teste na PCB. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1524,7 +1525,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Ponto marcado OScope1 e região de teste na PCB.",
+      "imageNotes": "Ponto marcado OScope1 e região de teste na PCB. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1537,7 +1538,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B029.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B029.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Hotspot físico requer identificação por serigrafia/KiCad.\nCAMADA B — CHECK | classe A. R1 com identificação por serigrafia na placa. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1551,7 +1552,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "R1 com identificação por serigrafia na placa.",
+      "imageNotes": "R1 com identificação por serigrafia na placa. Enquadramento revisado; preservada a orientação original. Corrigida associação visual: R1 é o resistor inferior esquerdo, não R3. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1564,7 +1565,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B030.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B030.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Hotspot físico requer identificação por serigrafia/KiCad.\nCAMADA B — CHECK | classe A. R2 com identificação por serigrafia na placa. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1578,7 +1579,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "R2 com identificação por serigrafia na placa.",
+      "imageNotes": "R2 com identificação por serigrafia na placa. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1591,7 +1592,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B031.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B031.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Hotspot físico requer identificação por serigrafia/KiCad.\nCAMADA B — CHECK | classe A. R3 com identificação por serigrafia na placa. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1605,7 +1606,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "R3 com identificação por serigrafia na placa.",
+      "imageNotes": "R3 com identificação por serigrafia na placa. Enquadramento revisado; preservada a orientação original. Corrigida associação visual: R3 é o resistor acima do TL082. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1618,7 +1619,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B032.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B032.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Hotspot físico requer identificação por serigrafia/KiCad.\nCAMADA B — CHECK | classe A. R4 com identificação por serigrafia na placa. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1632,7 +1633,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "R4 com identificação por serigrafia na placa.",
+      "imageNotes": "R4 com identificação por serigrafia na placa. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1645,7 +1646,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B033.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B033.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Hotspot físico requer identificação por serigrafia/KiCad.\nCAMADA B — CHECK | classe A. R5 com identificação por serigrafia na placa. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1659,7 +1660,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "R5 com identificação por serigrafia na placa.",
+      "imageNotes": "R5 com identificação por serigrafia na placa. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1672,7 +1673,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B034.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B034.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "O README informa modo integrador para C1/C2; código da BOM não confirma valor automaticamente.\nCAMADA B — CHECK | classe A. Região do capacitor C1; valor/polaridade não inferidos do aspecto. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1686,7 +1687,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Região do capacitor C1; valor/polaridade não inferidos do aspecto.",
+      "imageNotes": "Região do capacitor C1; valor/polaridade não inferidos do aspecto. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1699,7 +1700,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B035.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B035.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "O README informa modo integrador para C1/C2; código da BOM não confirma valor automaticamente.\nCAMADA B — CHECK | classe A. Região do capacitor C2; valor não inferido do aspecto. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1713,7 +1714,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Região do capacitor C2; valor não inferido do aspecto.",
+      "imageNotes": "Região do capacitor C2; valor não inferido do aspecto. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1726,7 +1727,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B036.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B036.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Hotspot físico requer identificação por serigrafia/KiCad.\nCAMADA B — CHECK | classe A. Região do capacitor C3, próximo a R2; valor não inferido do aspecto. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1740,7 +1741,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Região do capacitor C3, próximo a R2; valor não inferido do aspecto.",
+      "imageNotes": "Região do capacitor C3, próximo a R2; valor não inferido do aspecto. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1753,7 +1754,7 @@
       "location": "Região analógica acima do ESP32",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B037.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B037.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Hotspot físico requer identificação por serigrafia/KiCad.\nCAMADA B — CHECK | classe A. Região do capacitor C4, próximo a R3; identificação da serigrafia pouco nítida. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1767,7 +1768,7 @@
       "parentTag": "UG-V1-S08",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Região do capacitor C4, próximo a R3; identificação da serigrafia pouco nítida.",
+      "imageNotes": "Região do capacitor C4, próximo a R3; identificação da serigrafia pouco nítida. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1780,7 +1781,7 @@
       "location": "Conector OLED na PCB",
       "price": "R$ 29–60",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10030.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10030.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "Seu OLED pessoal ainda não foi verificado.\nCAMADA B — CHECK | classe A. Display OLED completo na montagem real. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1794,7 +1795,7 @@
       "parentTag": "UG-V1-S09",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Display OLED completo na montagem real.",
+      "imageNotes": "Display OLED completo na montagem real. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1807,7 +1808,7 @@
       "location": "PCB V1",
       "price": "",
       "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10014.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10014.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe B. Render oficial da PCB, contexto do conector OLED J2 sem serigrafia de identificação legível. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1821,7 +1822,7 @@
       "parentTag": "UG-V1-S09",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Conector OLED — J2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível.",
+      "imageNotes": "Conector OLED — J2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Identificação pela serigrafia visível. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
@@ -1834,7 +1835,7 @@
       "location": "Módulo OLED frontal",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B038.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B038.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe A. Área emissora visível; controlador físico não está neste recorte. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1848,7 +1849,7 @@
       "parentTag": "UG-V1-S09",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Área emissora visível; controlador físico não está neste recorte.",
+      "imageNotes": "Área emissora visível; controlador físico não está neste recorte. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1861,7 +1862,7 @@
       "location": "Módulo OLED frontal",
       "price": "",
       "imageType": "Foto real do módulo hospedeiro — função interna sem hotspot (C)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B039.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B039.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "CAMADA B — CHECK | classe C. Controlador SH110X é circuito interno/placa do OLED, não identificável nesta face. Recorte do hospedeiro; sem hotspot próprio. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1875,7 +1876,7 @@
       "parentTag": "UG-V1-S09",
       "imageStatus": "CHECK",
       "imageClass": "C",
-      "imageNotes": "Controlador SH110X é circuito interno/placa do OLED, não identificável nesta face. Recorte do hospedeiro; sem hotspot próprio.",
+      "imageNotes": "Controlador SH110X é circuito interno/placa do OLED, não identificável nesta face. Recorte do hospedeiro; sem hotspot próprio. Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1888,7 +1889,7 @@
       "location": "Módulo OLED frontal",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B040.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B040.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "https://github.com/QuantumVillage/UncutGem/blob/main/firmware/src/uncut-gem.ino",
       "notes": "Pode haver módulos comerciais com VDD/GND invertidos.\nCAMADA B — CHECK | classe A. Região superior do OLED com labels/pads VDD, GND, SCK e SDA; pinagem deve ser confirmada. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1902,7 +1903,7 @@
       "parentTag": "UG-V1-S09",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Região superior do OLED com labels/pads VDD, GND, SCK e SDA; pinagem deve ser confirmada.",
+      "imageNotes": "Região superior do OLED com labels/pads VDD, GND, SCK e SDA; pinagem deve ser confirmada. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1915,7 +1916,7 @@
       "location": "Base principal",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10001.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10001.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Placa física DiamondGeezer e componentes, frente da montagem. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1929,7 +1930,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Placa física DiamondGeezer e componentes, frente da montagem.",
+      "imageNotes": "Placa física DiamondGeezer e componentes, frente da montagem. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -1942,7 +1943,7 @@
       "location": "PCB",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10033.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10033.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Região de espaçadores/parafusos de fixação sobre a PCB. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1956,7 +1957,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Região de espaçadores/parafusos de fixação sobre a PCB.",
+      "imageNotes": "Região de espaçadores/parafusos de fixação sobre a PCB. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md"
     },
     {
@@ -1969,7 +1970,7 @@
       "location": "PCB/prisma",
       "price": "",
       "imageType": "Foto real / recorte físico da montagem oficial V1 (A)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV10029.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10029.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md",
       "datasheet": "",
       "notes": "CAMADA B — CHECK | classe A. Fios e suportes próximos ao prisma; funções/ligação requerem fonte. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -1983,7 +1984,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "A",
-      "imageNotes": "Fios e suportes próximos ao prisma; funções/ligação requerem fonte.",
+      "imageNotes": "Fios e suportes próximos ao prisma; funções/ligação requerem fonte. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/BuildGuide.md"
     },
     {
@@ -1996,7 +1997,7 @@
       "location": "Externo, próximo ao prisma",
       "price": "",
       "imageType": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/UgV1ImaNeodimioDiscoIlustrativo.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV10032.png",
       "source": "https://commons.wikimedia.org/wiki/File:Neodym_Magnete.jpg — Domínio público",
       "datasheet": "",
       "notes": "O guia menciona um ímã pequeno para teste, sem exigir composição específica. Exemplos: disco NdFeB pequeno; cubo NdFeB pequeno; ímã de ferrite pequeno (campo menor em geral). Controlar distância e evitar saturar/deslocar excessivamente a ressonância.\nCAMADA B — REVISÃO | classe D. Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -2010,7 +2011,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "REVISÃO",
       "imageClass": "D",
-      "imageNotes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
+      "imageNotes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física. Ilustração já existente; revisão técnica preservada, sem novos detalhes.",
       "imageSource": "https://commons.wikimedia.org/wiki/File:Neodym_Magnete.jpg — Domínio público"
     },
     {
@@ -2023,7 +2024,7 @@
       "location": "Frente da PCB",
       "price": "",
       "imageType": "Render oficial PCB — referência contextual (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B041.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B041.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Componente estrutural; identificação geométrica requer arquivo KiCad.\nCAMADA B — CHECK | classe B. Render oficial frontal da DiamondGeezer V1. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -2037,7 +2038,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial frontal da DiamondGeezer V1.",
+      "imageNotes": "Render oficial frontal da DiamondGeezer V1. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -2050,7 +2051,7 @@
       "location": "Verso da PCB",
       "price": "",
       "imageType": "Render oficial PCB — referência contextual (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B042.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B042.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Componente estrutural; identificação geométrica requer arquivo KiCad.\nCAMADA B — CHECK | classe B. Render oficial traseiro da DiamondGeezer V1. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-2.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -2064,7 +2065,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial traseiro da DiamondGeezer V1.",
+      "imageNotes": "Render oficial traseiro da DiamondGeezer V1. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -2077,7 +2078,7 @@
       "location": "Dentro e sobre as camadas da PCB",
       "price": "",
       "imageType": "Render oficial PCB — referência contextual (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B043.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B043.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Componente estrutural; identificação geométrica requer arquivo KiCad.\nCAMADA B — CHECK | classe B. Render oficial da frente; trilhas internas e todas as camadas não são visíveis. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -2091,7 +2092,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Render oficial da frente; trilhas internas e todas as camadas não são visíveis.",
+      "imageNotes": "Render oficial da frente; trilhas internas e todas as camadas não são visíveis. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md"
     },
     {
@@ -2104,7 +2105,7 @@
       "location": "Superfície da PCB",
       "price": "",
       "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B044.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B044.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Componente estrutural; identificação geométrica requer arquivo KiCad.\nCAMADA B — CHECK | classe B. Render oficial da frente; pads não individualizados por coordenadas KiCad. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -2118,7 +2119,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Pads / ilhas de solda — exemplo U2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Exemplo representativo de pads; não representa todas as ilhas da placa.",
+      "imageNotes": "Pads / ilhas de solda — exemplo U2. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Exemplo representativo de pads; não representa todas as ilhas da placa. Enquadramento revisado; preservada a orientação original.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     },
     {
@@ -2131,7 +2132,7 @@
       "location": "Face frontal e verso",
       "price": "",
       "imageType": "Render oficial PCB — footprint / pads de montagem (B)",
-      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/components/UgV1B045.png",
+      "imageUrl": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/official/v1/presentation/UgV1B045.png",
       "source": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/README.md",
       "datasheet": "",
       "notes": "Componente estrutural; identificação geométrica requer arquivo KiCad.\nCAMADA B — CHECK | classe B. Render da PCB como referência de footprints/headers, sem componente isolado. Fonte visual: https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png. Sem hotspot autônomo para funções internas ou objetos sem localização confirmada.",
@@ -2145,7 +2146,7 @@
       "parentTag": "UG-V1-S10",
       "imageStatus": "CHECK",
       "imageClass": "B",
-      "imageNotes": "Soquetes / headers — footprint U1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Footprint de header U1 usado como referência de montagem; não comprova soquete mecânico instalado.",
+      "imageNotes": "Soquetes / headers — footprint U1. Recorte exato do render oficial da frente da PCB; não mostra conector, soquete ou componente instalado. Footprint de header U1 usado como referência de montagem; não comprova soquete mecânico instalado. Enquadramento revisado; preservada a orientação original. Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.",
       "imageSource": "https://github.com/QuantumVillage/UncutGem/blob/main/hardware/PCB/images/DiamondGeezer-1.png"
     }
   ],

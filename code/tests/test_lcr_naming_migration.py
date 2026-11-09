@@ -45,7 +45,10 @@ class LcrNamingMigrationTests(unittest.TestCase):
             name = url.rsplit("/", 1)[-1]
             self.assertTrue((ILLUSTRATIVE / name).is_file(), name)
             self.assertRegex(name, r"^UgV1[A-Za-z0-9]+\.png$")
-        self.assertGreater(found, 0)
+        # Canonical display images now live in the audited presentation directory.
+        for item in data["items"]:
+            local = item["imageUrl"].split("/main/code/public/")[-1]
+            self.assertTrue((ROOT / "code/public" / local).is_file())
 
     def test_generators_use_new_paths(self):
         source = (ROOT / "code/scripts/enhance_uncut_gem_v1.py").read_text(encoding="utf-8")

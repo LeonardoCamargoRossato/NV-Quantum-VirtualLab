@@ -1,0 +1,1436 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "front": {
+      "path": "public/assets/official/DeviceV1.png",
+      "size": [
+        1453,
+        1080
+      ]
+    },
+    "backphoto": {
+      "path": "public/assets/official/v1/subsystems/sources/DeviceBackV1.jpeg",
+      "size": [
+        2025,
+        1632
+      ]
+    },
+    "pcbfront": {
+      "path": "public/assets/official/v1/subsystems/sources/DiamondGeezerFrontV1.png",
+      "size": [
+        3022,
+        1952
+      ]
+    },
+    "pcbback": {
+      "path": "public/assets/official/v1/components/sources/DiamondGeezerBackV1.png",
+      "size": [
+        3022,
+        1952
+      ]
+    },
+    "layer1": {
+      "path": "public/assets/official/Layer1.png",
+      "size": [
+        1300,
+        648
+      ]
+    },
+    "layer3": {
+      "path": "public/assets/official/Layer3.png",
+      "size": [
+        1300,
+        648
+      ]
+    },
+    "UG-V1-0031": {
+      "path": "../code/public/assets/illustrative/v1/components/UgV10031UsbPowerIllustrative.png",
+      "size": [
+        1200,
+        900
+      ]
+    },
+    "UG-V1-0032": {
+      "path": "../assets/components/illustrative/UgV1ImaNeodimioDiscoIlustrativo.png",
+      "size": [
+        444,
+        443
+      ]
+    }
+  },
+  "frontBoard": {
+    "sourceCorners": [
+      [
+        32,
+        72
+      ],
+      [
+        978,
+        59
+      ],
+      [
+        998,
+        987
+      ],
+      [
+        44,
+        991
+      ]
+    ],
+    "targetCorners": [
+      [
+        44,
+        70
+      ],
+      [
+        990,
+        70
+      ],
+      [
+        990,
+        992
+      ],
+      [
+        44,
+        992
+      ]
+    ]
+  },
+  "items": [
+    {
+      "tag": "UG-V1-S01",
+      "name": "Alimentação elétrica",
+      "source": "front",
+      "subjectBox": [
+        89,
+        786,
+        179,
+        866
+      ],
+      "axis": [
+        [
+          114,
+          688
+        ],
+        [
+          652,
+          671
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-S02",
+      "name": "Controle e aquisição — ESP32",
+      "source": "front",
+      "subjectBox": [
+        95,
+        664,
+        663,
+        975
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-S03",
+      "name": "Excitação óptica — laser",
+      "source": "front",
+      "subjectBox": [
+        174,
+        211,
+        469,
+        288
+      ],
+      "axis": [
+        [
+          309,
+          239
+        ],
+        [
+          455,
+          226
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-S04",
+      "name": "Geração de micro-ondas — ADF4351",
+      "source": "backphoto",
+      "subjectBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "axis": [
+        [
+          590,
+          797
+        ],
+        [
+          1248,
+          810
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-S05",
+      "name": "Amplificação de micro-ondas",
+      "source": "front",
+      "subjectBox": [
+        610,
+        448,
+        1155,
+        704
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-S06",
+      "name": "Conexões RF e antena",
+      "source": "front",
+      "subjectBox": [
+        1000,
+        434,
+        1450,
+        898
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-S07",
+      "name": "Prisma e detecção óptica",
+      "source": "front",
+      "subjectBox": [
+        628,
+        165,
+        817,
+        355
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-S08",
+      "name": "Condicionamento eletrônico de sinal",
+      "source": "front",
+      "subjectBox": [
+        145,
+        464,
+        582,
+        713
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-S09",
+      "name": "Visualização — OLED",
+      "source": "front",
+      "subjectBox": [
+        647,
+        684,
+        1041,
+        1040
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "oled"
+    },
+    {
+      "tag": "UG-V1-S10",
+      "name": "Placa-base e estrutura",
+      "source": "pcbfront",
+      "subjectBox": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0031",
+      "name": "Fonte de alimentação protegida",
+      "source": "UG-V1-0031",
+      "subjectBox": [
+        0,
+        0,
+        1200,
+        900
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Ilustração já existente; revisão técnica preservada, sem novos detalhes."
+    },
+    {
+      "tag": "UG-V1-0013",
+      "name": "Conector 5 V",
+      "source": "pcbfront",
+      "subjectBox": [
+        721,
+        1080,
+        823,
+        1235
+      ],
+      "axis": null,
+      "padding": 0.28,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B001",
+      "name": "Conector USB do ESP32",
+      "source": "front",
+      "subjectBox": [
+        89,
+        786,
+        179,
+        866
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B002",
+      "name": "Capacitor C5",
+      "source": "pcbfront",
+      "subjectBox": [
+        629,
+        1474,
+        722,
+        1521
+      ],
+      "axis": null,
+      "padding": 0.2,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B003",
+      "name": "Capacitor C6",
+      "source": "pcbfront",
+      "subjectBox": [
+        629,
+        1398,
+        722,
+        1445
+      ],
+      "axis": null,
+      "padding": 0.2,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B004",
+      "name": "Capacitor C7",
+      "source": "pcbfront",
+      "subjectBox": [
+        629,
+        1637,
+        722,
+        1684
+      ],
+      "axis": null,
+      "padding": 0.2,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B005",
+      "name": "Capacitor C8",
+      "source": "pcbfront",
+      "subjectBox": [
+        629,
+        1558,
+        722,
+        1604
+      ],
+      "axis": null,
+      "padding": 0.2,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B006",
+      "name": "Capacitor C9",
+      "source": "pcbfront",
+      "subjectBox": [
+        633,
+        1290,
+        717,
+        1337
+      ],
+      "axis": null,
+      "padding": 0.2,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B007",
+      "name": "Capacitor C10",
+      "source": "pcbfront",
+      "subjectBox": [
+        633,
+        1750,
+        717,
+        1797
+      ],
+      "axis": null,
+      "padding": 0.2,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0004",
+      "name": "ESP32 DOIT DevKit V1",
+      "source": "front",
+      "subjectBox": [
+        95,
+        664,
+        663,
+        975
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B008",
+      "name": "Módulo metálico ESP32",
+      "source": "front",
+      "subjectBox": [
+        399,
+        729,
+        592,
+        908
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B009",
+      "name": "Botão EN",
+      "source": "front",
+      "subjectBox": [
+        134,
+        724,
+        183,
+        774
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B010",
+      "name": "Botão BOOT",
+      "source": "front",
+      "subjectBox": [
+        143,
+        890,
+        193,
+        935
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B011",
+      "name": "LEDs do DevKit",
+      "source": "front",
+      "subjectBox": [
+        304,
+        733,
+        381,
+        855
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B012",
+      "name": "Fileiras de pinos / headers",
+      "source": "front",
+      "subjectBox": [
+        112,
+        670,
+        658,
+        969
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B013",
+      "name": "Conversor USB–serial",
+      "source": "front",
+      "subjectBox": [
+        218,
+        802,
+        298,
+        885
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-B014",
+      "name": "ADC interno do ESP32",
+      "source": "front",
+      "subjectBox": [
+        399,
+        729,
+        592,
+        908
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível.",
+      "plane": "esp32"
+    },
+    {
+      "tag": "UG-V1-0022",
+      "name": "Laser verde",
+      "source": "front",
+      "subjectBox": [
+        174,
+        211,
+        469,
+        288
+      ],
+      "axis": [
+        [
+          309,
+          239
+        ],
+        [
+          455,
+          226
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B015",
+      "name": "Driver / placa do laser",
+      "source": "front",
+      "subjectBox": [
+        182,
+        223,
+        310,
+        284
+      ],
+      "axis": [
+        [
+          309,
+          239
+        ],
+        [
+          455,
+          226
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B016",
+      "name": "Fios de alimentação do laser",
+      "source": "front",
+      "subjectBox": [
+        100,
+        0,
+        339,
+        331
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B017",
+      "name": "Suporte e alinhamento do laser",
+      "source": "front",
+      "subjectBox": [
+        170,
+        202,
+        480,
+        342
+      ],
+      "axis": [
+        [
+          309,
+          239
+        ],
+        [
+          455,
+          226
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0018",
+      "name": "Placa geradora RF ADF4351",
+      "source": "backphoto",
+      "subjectBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "axis": [
+        [
+          590,
+          797
+        ],
+        [
+          1248,
+          810
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0017",
+      "name": "Conector gerador RF",
+      "source": "pcbback",
+      "subjectBox": [
+        1117,
+        1506,
+        1370,
+        1597
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B018",
+      "name": "Circuito sintetizador ADF4351",
+      "source": "backphoto",
+      "subjectBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "axis": [
+        [
+          590,
+          797
+        ],
+        [
+          1248,
+          810
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B019",
+      "name": "Pinos de comando SPI/LE",
+      "source": "backphoto",
+      "subjectBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "axis": [
+        [
+          590,
+          797
+        ],
+        [
+          1248,
+          810
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível."
+    },
+    {
+      "tag": "UG-V1-B020",
+      "name": "Saída RF do ADF4351",
+      "source": "backphoto",
+      "subjectBox": [
+        385,
+        850,
+        1395,
+        1198
+      ],
+      "axis": [
+        [
+          590,
+          797
+        ],
+        [
+          1248,
+          810
+        ]
+      ],
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0019",
+      "name": "Amplificador RF 40 dB",
+      "source": "front",
+      "subjectBox": [
+        610,
+        448,
+        1155,
+        704
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-B021",
+      "name": "Circuito ativo do amplificador RF",
+      "source": "front",
+      "subjectBox": [
+        700,
+        462,
+        1007,
+        693
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-B022",
+      "name": "Conector SMA de entrada RF",
+      "source": "front",
+      "subjectBox": [
+        609,
+        538,
+        716,
+        610
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-B023",
+      "name": "Conector SMA de saída RF",
+      "source": "front",
+      "subjectBox": [
+        995,
+        535,
+        1156,
+        617
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-B024",
+      "name": "Fios de alimentação do módulo RF",
+      "source": "front",
+      "subjectBox": [
+        660,
+        413,
+        832,
+        674
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B025",
+      "name": "Componentes SMD do módulo RF",
+      "source": "front",
+      "subjectBox": [
+        747,
+        502,
+        946,
+        620
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-0020",
+      "name": "Cabo SMA curto",
+      "source": "front",
+      "subjectBox": [
+        1000,
+        434,
+        1450,
+        898
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0021",
+      "name": "Antena em laço",
+      "source": "layer1",
+      "subjectBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    {
+      "tag": "UG-V1-B026",
+      "name": "Adaptadores e terminais SMA",
+      "source": "front",
+      "subjectBox": [
+        1000,
+        530,
+        1180,
+        640
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-B027",
+      "name": "Ligação do amplificador à antena",
+      "source": "front",
+      "subjectBox": [
+        1000,
+        434,
+        1450,
+        898
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0023",
+      "name": "Conjunto do prisma NV",
+      "source": "front",
+      "subjectBox": [
+        628,
+        165,
+        817,
+        355
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0024",
+      "name": "Diamante com centros NV",
+      "source": "layer1",
+      "subjectBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    {
+      "tag": "UG-V1-0027",
+      "name": "Filtro gel vermelho",
+      "source": "layer3",
+      "subjectBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    {
+      "tag": "UG-V1-0028",
+      "name": "Fotodiodo BPW34",
+      "source": "layer3",
+      "subjectBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    {
+      "tag": "UG-V1-0025",
+      "name": "Resina transparente UV",
+      "source": "front",
+      "subjectBox": [
+        628,
+        165,
+        817,
+        355
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0026",
+      "name": "Molde de silicone",
+      "source": "layer1",
+      "subjectBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    {
+      "tag": "UG-V1-0016",
+      "name": "Conector do fotodiodo",
+      "source": "pcbfront",
+      "subjectBox": [
+        1197,
+        878,
+        1366,
+        943
+      ],
+      "axis": null,
+      "padding": 0.28,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B028",
+      "name": "Fios de saída do BPW34",
+      "source": "layer3",
+      "subjectBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    {
+      "tag": "UG-V1-0005",
+      "name": "TL082 amplificador operacional",
+      "source": "front",
+      "subjectBox": [
+        352,
+        550,
+        450,
+        657
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0015",
+      "name": "Ponto de osciloscópio",
+      "source": "front",
+      "subjectBox": [
+        521,
+        503,
+        560,
+        543
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B029",
+      "name": "R1 — Resistor",
+      "source": "front",
+      "subjectBox": [
+        198,
+        586,
+        294,
+        615
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original. Corrigida associação visual: R1 é o resistor inferior esquerdo, não R3."
+    },
+    {
+      "tag": "UG-V1-B030",
+      "name": "R2 — Resistor",
+      "source": "front",
+      "subjectBox": [
+        198,
+        557,
+        294,
+        584
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B031",
+      "name": "R3 — Resistor",
+      "source": "front",
+      "subjectBox": [
+        371,
+        513,
+        455,
+        540
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original. Corrigida associação visual: R3 é o resistor acima do TL082."
+    },
+    {
+      "tag": "UG-V1-B032",
+      "name": "R4 — Resistor",
+      "source": "front",
+      "subjectBox": [
+        315,
+        564,
+        348,
+        646
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B033",
+      "name": "R5 — Resistor",
+      "source": "front",
+      "subjectBox": [
+        468,
+        571,
+        499,
+        643
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B034",
+      "name": "C1 — Capacitor",
+      "source": "front",
+      "subjectBox": [
+        477,
+        503,
+        509,
+        550
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B035",
+      "name": "C2 — Capacitor",
+      "source": "front",
+      "subjectBox": [
+        308,
+        518,
+        340,
+        559
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B036",
+      "name": "C3 — Capacitor",
+      "source": "front",
+      "subjectBox": [
+        219,
+        534,
+        273,
+        563
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B037",
+      "name": "C4 — Capacitor",
+      "source": "front",
+      "subjectBox": [
+        219,
+        611,
+        275,
+        645
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0030",
+      "name": "Display OLED",
+      "source": "front",
+      "subjectBox": [
+        647,
+        684,
+        1041,
+        1040
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "oled"
+    },
+    {
+      "tag": "UG-V1-0014",
+      "name": "Conector OLED",
+      "source": "pcbfront",
+      "subjectBox": [
+        2000,
+        1307,
+        2180,
+        1370
+      ],
+      "axis": null,
+      "padding": 0.28,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B038",
+      "name": "Painel emissor OLED 128 × 64",
+      "source": "front",
+      "subjectBox": [
+        672,
+        753,
+        1003,
+        956
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "oled"
+    },
+    {
+      "tag": "UG-V1-B039",
+      "name": "Controlador SH110X",
+      "source": "front",
+      "subjectBox": [
+        647,
+        684,
+        1041,
+        1040
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível.",
+      "plane": "oled"
+    },
+    {
+      "tag": "UG-V1-B040",
+      "name": "Pinos VDD/GND/SCK/SDA",
+      "source": "front",
+      "subjectBox": [
+        735,
+        699,
+        911,
+        739
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "oled"
+    },
+    {
+      "tag": "UG-V1-0001",
+      "name": "PCB DiamondGeezer V1",
+      "source": "front",
+      "subjectBox": [
+        32,
+        60,
+        1000,
+        993
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0033",
+      "name": "Espaçadores de PCB",
+      "source": "front",
+      "subjectBox": [
+        699,
+        448,
+        1009,
+        697
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original.",
+      "plane": "rf"
+    },
+    {
+      "tag": "UG-V1-0029",
+      "name": "Suportes e fios de fixação",
+      "source": "front",
+      "subjectBox": [
+        689,
+        213,
+        1040,
+        523
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-0032",
+      "name": "Ímã de ensaio",
+      "source": "UG-V1-0032",
+      "subjectBox": [
+        0,
+        0,
+        444,
+        443
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Ilustração já existente; revisão técnica preservada, sem novos detalhes."
+    },
+    {
+      "tag": "UG-V1-B041",
+      "name": "Face frontal da PCB",
+      "source": "pcbfront",
+      "subjectBox": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B042",
+      "name": "Face traseira da PCB",
+      "source": "pcbback",
+      "subjectBox": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B043",
+      "name": "Trilhas de cobre",
+      "source": "pcbfront",
+      "subjectBox": [
+        0,
+        0,
+        3022,
+        1952
+      ],
+      "axis": null,
+      "padding": 0.14,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B044",
+      "name": "Pads / ilhas de solda",
+      "source": "pcbfront",
+      "subjectBox": [
+        1166,
+        1037,
+        1370,
+        1245
+      ],
+      "axis": null,
+      "padding": 0.28,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    {
+      "tag": "UG-V1-B045",
+      "name": "Soquetes / headers mecânicos",
+      "source": "pcbfront",
+      "subjectBox": [
+        1634,
+        1493,
+        1902,
+        1604
+      ],
+      "axis": null,
+      "padding": 0.28,
+      "note": "Enquadramento revisado; preservada a orientação original."
+    }
+  ],
+  "planes": {
+    "esp32": {
+      "sourceCorners": [
+        [
+          153,
+          711
+        ],
+        [
+          614,
+          699
+        ],
+        [
+          623,
+          930
+        ],
+        [
+          154,
+          948
+        ]
+      ],
+      "targetCorners": [
+        [
+          153,
+          711
+        ],
+        [
+          623,
+          711
+        ],
+        [
+          623,
+          948
+        ],
+        [
+          153,
+          948
+        ]
+      ]
+    },
+    "oled": {
+      "sourceCorners": [
+        [
+          689,
+          721
+        ],
+        [
+          994,
+          707
+        ],
+        [
+          1011,
+          1009
+        ],
+        [
+          698,
+          1021
+        ]
+      ],
+      "targetCorners": [
+        [
+          689,
+          721
+        ],
+        [
+          1011,
+          721
+        ],
+        [
+          1011,
+          1021
+        ],
+        [
+          689,
+          1021
+        ]
+      ]
+    },
+    "rf": {
+      "sourceCorners": [
+        [
+          737,
+          492
+        ],
+        [
+          976,
+          480
+        ],
+        [
+          983,
+          655
+        ],
+        [
+          739,
+          664
+        ]
+      ],
+      "targetCorners": [
+        [
+          737,
+          492
+        ],
+        [
+          983,
+          492
+        ],
+        [
+          983,
+          664
+        ],
+        [
+          737,
+          664
+        ]
+      ]
+    }
+  }
+}

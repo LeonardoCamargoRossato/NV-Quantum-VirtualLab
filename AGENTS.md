@@ -32,3 +32,7 @@ O Planner recomenda um especialista quando **risco alto OU (especialização alt
 
 ## Política de backup ao final do dia (ADR-0009)
 **GitHub é a fonte de verdade e o histórico contínuo. Google Drive recebe uma única rodada automática diária**: 23h55 Brasília (02h55 UTC do dia seguinte), via `LCR_BACKUP.yml`, ou `workflow_dispatch` excepcional autorizado. Não realizar upload por arquivo, ADR, relatório ou push durante o desenvolvimento. O `rclone copy` atualiza incrementalmente o espelho navegável e salva ZIP + `git bundle` por data/commit; **não apagar históricos sem política de retenção aprovada**. Status Drive é **pendente** até verificar job `success`, SHA e snapshot. OAuth do GitHub Actions é independente do plugin Drive deste chat. Em 09/11/2026, a última falha observada foi HTTP 401; não declarar corrigida sem novo teste.
+
+## Preferências operacionais do responsável
+- Neste projeto, o responsável autorizou entrega das alterações na `main` e acionamento da publicação; preservar alterações concorrentes e verificar testes antes do envio.
+- Ao finalizar, informar o tempo decorrido desde a leitura do pedido até a conclusão, medido por relógio. Não inventar duração se a medição estiver indisponível.

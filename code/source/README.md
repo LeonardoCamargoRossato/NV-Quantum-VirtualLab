@@ -15,3 +15,16 @@ python code/scripts/consolidate_inventory.py --check
 O importador usa apenas a biblioteca padrão Python, não executa fórmulas e preserva as referências IMAGE como texto. O JSON é derivado: não editar manualmente. As diferenças ficam preservadas, não são resolvidas por adivinhação. V2 e galeria permanecem no XLSX, sem mistura com o catálogo V1. URLs de imagens externas não equivalem ao arquivamento de seus arquivos.
 
 Não há escrita ou sincronização com Google Sheets/Drive. A data do snapshot é a data de recebimento, sem horário de sincronização inventado. A posição física só tem hotspot quando validada nas seis regiões existentes.
+
+## Apresentação visual alinhada
+
+`evidence/ImageFraming.json` registra, item por item, a fonte original, o retângulo do assunto principal e as referências geométricas. `ImagePresentation.json` registra as transformações e hashes das versões exibidas em `code/public/assets/official/v1/presentation/`. O catálogo usa essas URLs, preservando a classificação e a procedência; os assets anteriores permanecem como referência. Para R1/R3, o enquadramento atual é o registrado em ImageFraming, corrigindo a associação visual anterior.
+
+Para regenerar, com Chromium disponível e dependências npm instaladas, da raiz:
+
+```bash
+node code/scripts/AlignInventoryImages.mjs
+python code/scripts/consolidate_inventory.py
+```
+
+Opcional: `CHROMIUM_PATH` seleciona o executável do Chromium. A transformação é geométrica, com margem neutra e interpolação máxima 2×; não recupera detalhes ausentes. A foto principal usa o plano da PCB; recortes do ESP32, OLED e RF usam referências dos seus planos visíveis. Os hotspots continuam definidos na foto original e são remapeados para a apresentação alinhada. Não interpretar a retificação como calibração metrológica. Novas imagens ou mudanças de fonte exigem revisar coordenadas e hashes antes de regenerar.

@@ -1,3 +1,4 @@
+import { presentedAsset } from "./ImagePresentation";
 /** Fluxo didático — Uncut Gem V1.
  * Dados de componentes da planilha V1; descrições contextualizadas pelo BuildGuide.
  * Fotos derivadas da imagem oficial (Quantum Village); nenhuma foto de produto inventada.
@@ -93,5 +94,5 @@ export const FLOW_STEPS: FlowStep[] = [
     pcbTag:"UG-V1-0030",relatedTags:["UG-V1-0030","UG-V1-0004"],
   },
 ];
-export function flowImageUrl(step:FlowStep,base:string):string{return base+step.image;}
+export function flowImageUrl(step:FlowStep,base:string):string{return presentedAsset(base+step.image,base);}
 export function getFlowStep(id:string):FlowStep|undefined{return FLOW_STEPS.find(step=>step.id===id);}

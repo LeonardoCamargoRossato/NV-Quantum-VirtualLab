@@ -1,0 +1,4540 @@
+{
+  "schemaVersion": 1,
+  "method": "Projective alignment to PCB plane, small rigid deskew against visible module edges, centered crop with symmetric padding; browser rasterization, at most 2x interpolation. No generative restoration.",
+  "originals": {
+    "front": {
+      "path": "public/assets/official/DeviceV1.png",
+      "sha256": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
+      "size": [
+        1453,
+        1080
+      ]
+    },
+    "backphoto": {
+      "path": "public/assets/official/v1/subsystems/sources/DeviceBackV1.jpeg",
+      "sha256": "2ecebd560a1e1b3e6e3b639c1510e74392c3e1a8711c7c50df85eb7bfc911bd2",
+      "size": [
+        2025,
+        1632
+      ]
+    },
+    "pcbfront": {
+      "path": "public/assets/official/v1/subsystems/sources/DiamondGeezerFrontV1.png",
+      "sha256": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
+      "size": [
+        3022,
+        1952
+      ]
+    },
+    "pcbback": {
+      "path": "public/assets/official/v1/components/sources/DiamondGeezerBackV1.png",
+      "sha256": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
+      "size": [
+        3022,
+        1952
+      ]
+    },
+    "layer1": {
+      "path": "public/assets/official/Layer1.png",
+      "sha256": "f689acf7eb9952ce684f10d9cc4265fa614c45a5951e37c1cb7b07fa4e5fb08f",
+      "size": [
+        1300,
+        648
+      ]
+    },
+    "layer3": {
+      "path": "public/assets/official/Layer3.png",
+      "sha256": "a845bd9ff61fb2c7631ae13e5292a4fee1502ba0418a2c5795c1c4ca03fd102f",
+      "size": [
+        1300,
+        648
+      ]
+    },
+    "UG-V1-0031": {
+      "path": "../code/public/assets/illustrative/v1/components/UgV10031UsbPowerIllustrative.png",
+      "sha256": "7e6b8514659a4e488e5499a091aa1778e1c342bcae47891bb1b6a3a57b6bacb4",
+      "size": [
+        1200,
+        900
+      ]
+    },
+    "UG-V1-0032": {
+      "path": "../assets/components/illustrative/UgV1ImaNeodimioDiscoIlustrativo.png",
+      "sha256": "7c302776c0df3bcb5ca51c2c91c598afea0e2b7494f2bac77e86d421e6b8ffcd",
+      "size": [
+        444,
+        443
+      ]
+    }
+  },
+  "items": {
+    "UG-V1-S01": {
+      "image": "assets/official/v1/presentation/UgV1S01.png",
+      "source": "front",
+      "sourceBox": [
+        89,
+        786,
+        179,
+        866
+      ],
+      "subjectBounds": [
+        69.7233846081224,
+        789.9304659807157,
+        162.80731218748443,
+        872.3429580445222
+      ],
+      "cropBounds": [
+        56,
+        778,
+        176,
+        884
+      ],
+      "sourceToOutput": [
+        [
+          2.0197106763484283,
+          -0.0755718205382865,
+          -86.62628384536629
+        ],
+        [
+          0.06179932255576756,
+          2.0109482544541115,
+          -1562.0562569213423
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        240,
+        212
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        120,
+        106
+      ],
+      "scale": 2,
+      "deskewDegrees": 1.385181621355333,
+      "lowNativeResolution": true,
+      "sha256": "375ad9e77f7b403a284ac490f2f833cb266f43cbc154ad82c377808903f60d73",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S02": {
+      "image": "assets/official/v1/presentation/UgV1S02.png",
+      "source": "front",
+      "sourceBox": [
+        95,
+        664,
+        663,
+        975
+      ],
+      "subjectBounds": [
+        95.45464072942367,
+        661.5984729471023,
+        675.8331386779611,
+        994.7913852432807
+      ],
+      "cropBounds": [
+        14,
+        614,
+        758,
+        1042
+      ],
+      "sourceToOutput": [
+        [
+          1.0356050852823095,
+          0.0065996610860616645,
+          -17.436435515288363
+        ],
+        [
+          0.022672148863959855,
+          1.0744888599389903,
+          -665.7524350862311
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        744,
+        428
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        744,
+        428
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "f3db4e20c311abc346c17d7e9fed540178053b54730e24e8dd980d299ee3efba",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S03": {
+      "image": "assets/official/v1/presentation/UgV1S03.png",
+      "source": "front",
+      "sourceBox": [
+        174,
+        211,
+        469,
+        288
+      ],
+      "subjectBounds": [
+        161.2033326103113,
+        225.7873978719377,
+        462.8034531658726,
+        329.1168280575513
+      ],
+      "cropBounds": [
+        118,
+        211,
+        506,
+        344
+      ],
+      "sourceToOutput": [
+        [
+          1.036830492137799,
+          -0.09461944018010979,
+          -108.42355298629755
+        ],
+        [
+          0.09299837586559834,
+          1.0382531164199091,
+          -219.95201485819194
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        137
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        388,
+        133
+      ],
+      "scale": 1.0309278350515463,
+      "deskewDegrees": 4.414414493690854,
+      "lowNativeResolution": true,
+      "sha256": "e8e42837fb59cf7aaeb74c858ad2a64b964227ea857682fbd324557e4c2a7917",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S04": {
+      "image": "assets/official/v1/presentation/UgV1S04.png",
+      "source": "backphoto",
+      "sourceBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "subjectBounds": [
+        580.5341267456681,
+        766.9567134464634,
+        1286.0256313143047,
+        1318.5800686772889
+      ],
+      "cropBounds": [
+        481,
+        689,
+        1385,
+        1396
+      ],
+      "sourceToOutput": [
+        [
+          0.9998048907744987,
+          0.019752984164237816,
+          -481
+        ],
+        [
+          -0.019752984164237816,
+          0.9998048907744987,
+          -689
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        904,
+        707
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        904,
+        707
+      ],
+      "scale": 1,
+      "deskewDegrees": -1.1318362369209545,
+      "lowNativeResolution": false,
+      "sha256": "4cfe3be37bddfdd2dbac5eaab70d37d5794ec85a9db5fc9ca9406b96594124b9",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S05": {
+      "image": "assets/official/v1/presentation/UgV1S05.png",
+      "source": "front",
+      "sourceBox": [
+        610,
+        448,
+        1155,
+        704
+      ],
+      "subjectBounds": [
+        602.3538218927316,
+        439.80462640382984,
+        1162.8533672071671,
+        716.2018124989644
+      ],
+      "cropBounds": [
+        523,
+        401,
+        1242,
+        755
+      ],
+      "sourceToOutput": [
+        [
+          1.209799729210311,
+          0.014717958752223828,
+          -655.8950620841824
+        ],
+        [
+          0.06674325663884302,
+          1.169967530494009,
+          -521.4953928162447
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        719,
+        354
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        719,
+        354
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "bc61471bfc819d4327f6a1555f53f68b1e700893657438526d12a133dd322aac",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S06": {
+      "image": "assets/official/v1/presentation/UgV1S06.png",
+      "source": "front",
+      "sourceBox": [
+        1000,
+        434,
+        1450,
+        898
+      ],
+      "subjectBounds": [
+        993.8496651299854,
+        444.55568397569596,
+        1445.533143497997,
+        906.5139768240149
+      ],
+      "cropBounds": [
+        930,
+        379,
+        1509,
+        972
+      ],
+      "sourceToOutput": [
+        [
+          1.0013086847792716,
+          -0.021035466322469155,
+          -917.3900501788823
+        ],
+        [
+          0.010660406203932195,
+          1.0096099302509107,
+          -382.33393091668114
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        579,
+        593
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        579,
+        593
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "d69eb49ee3d8db7d0adcff82c0c17a0837228c8ab728c3e443a73d69b33aaa20",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S07": {
+      "image": "assets/official/v1/presentation/UgV1S07.png",
+      "source": "front",
+      "sourceBox": [
+        628,
+        165,
+        817,
+        355
+      ],
+      "subjectBounds": [
+        636.8223176251472,
+        171.61951906469574,
+        828.2317080802561,
+        363.96363354083144
+      ],
+      "cropBounds": [
+        610,
+        144,
+        856,
+        391
+      ],
+      "sourceToOutput": [
+        [
+          1.6270052183066683,
+          -0.029480539648142106,
+          -967.4332796419147
+        ],
+        [
+          0.021268136658177596,
+          1.6383629425930195,
+          -238.59745897438242
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        398,
+        400
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        246,
+        247
+      ],
+      "scale": 1.6194331983805668,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "6fcb5679349dd277d7318d317b5fb5f61e87f28fa184049a9c19c24d48b1fcb4",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S08": {
+      "image": "assets/official/v1/presentation/UgV1S08.png",
+      "source": "front",
+      "sourceBox": [
+        145,
+        464,
+        582,
+        713
+      ],
+      "subjectBounds": [
+        148.9204225516033,
+        466.1799274652132,
+        589.0982616918885,
+        718.50157441282
+      ],
+      "cropBounds": [
+        87,
+        430,
+        651,
+        754
+      ],
+      "sourceToOutput": [
+        [
+          1.0101787242594469,
+          -0.013576936651681642,
+          -74.39005017888239
+        ],
+        [
+          0.010123784598369998,
+          1.0091587024772333,
+          -433.33393091668114
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        564,
+        324
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        564,
+        324
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "c5a767e2a47a079f515459ef28bb0e7643f5171c5a2692ccdadae356bb3d0ec9",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S09": {
+      "image": "assets/official/v1/presentation/UgV1S09.png",
+      "source": "front",
+      "sourceBox": [
+        647,
+        684,
+        1041,
+        1040
+      ],
+      "subjectBounds": [
+        635.5974901497842,
+        680.9478962612168,
+        1061.4971173999197,
+        1051.9558539447903
+      ],
+      "cropBounds": [
+        575,
+        629,
+        1122,
+        1104
+      ],
+      "sourceToOutput": [
+        [
+          1.160137782476937,
+          -0.024133925809671684,
+          -657.8320621198707
+        ],
+        [
+          0.05410089340803477,
+          1.123684261816209,
+          -747.2991273292643
+        ],
+        [
+          0.00003166514290269785,
+          0.00009264835856060734,
+          1
+        ]
+      ],
+      "outputSize": [
+        547,
+        475
+      ],
+      "plane": "oled",
+      "nativeCropSize": [
+        547,
+        475
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "9e803484fd193509dfb7846b305cd3e79ffd0d54eecb93ce824480aa02bcf2f7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-S10": {
+      "image": "assets/official/v1/presentation/UgV1S10.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "subjectBounds": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "cropBounds": [
+        294,
+        -198,
+        2726,
+        2158
+      ],
+      "sourceToOutput": [
+        [
+          0.6167763157894737,
+          0,
+          -181.33223684210526
+        ],
+        [
+          0,
+          0.6167763157894737,
+          122.12171052631578
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        1453
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        2432,
+        2356
+      ],
+      "scale": 0.6167763157894737,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "2d59e807d12e9f800bec1fdb01bcf549f0cdeae58ee4c95a152e3ef749347416",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0031": {
+      "image": "assets/official/v1/presentation/UgV10031.png",
+      "source": "UG-V1-0031",
+      "sourceBox": [
+        0,
+        0,
+        1200,
+        900
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        1200,
+        900
+      ],
+      "cropBounds": [
+        -169,
+        -127,
+        1368,
+        1026
+      ],
+      "sourceToOutput": [
+        [
+          0.9759271307742355,
+          0,
+          164.9316851008458
+        ],
+        [
+          0,
+          0.9759271307742355,
+          123.94274560832791
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        1125
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1537,
+        1153
+      ],
+      "scale": 0.9759271307742355,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "a37cf00f324168883665860fac3562423d25809dae5f2bf77123a0a6e150bee3",
+      "note": "Ilustração já existente; revisão técnica preservada, sem novos detalhes."
+    },
+    "UG-V1-0013": {
+      "image": "assets/official/v1/presentation/UgV10013.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        721,
+        1080,
+        823,
+        1235
+      ],
+      "subjectBounds": [
+        721,
+        1080,
+        823,
+        1235
+      ],
+      "cropBounds": [
+        692,
+        1036,
+        852,
+        1279
+      ],
+      "sourceToOutput": [
+        [
+          1.646090534979424,
+          0,
+          -1139.0946502057614
+        ],
+        [
+          0,
+          1.646090534979424,
+          -1705.3497942386832
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        263,
+        400
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        160,
+        243
+      ],
+      "scale": 1.646090534979424,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "17ce738c68698f3e11a32ac03158d033dcc573546264465e5511572284a2176f",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B001": {
+      "image": "assets/official/v1/presentation/UgV1B001.png",
+      "source": "front",
+      "sourceBox": [
+        89,
+        786,
+        179,
+        866
+      ],
+      "subjectBounds": [
+        89.5724339998955,
+        784.9780874863484,
+        178.44236800014974,
+        867.8065043931917
+      ],
+      "cropBounds": [
+        77,
+        773,
+        191,
+        880
+      ],
+      "sourceToOutput": [
+        [
+          2.0778315021277214,
+          0.003227987285051248,
+          -160.87287103057673
+        ],
+        [
+          0.0620552773871775,
+          2.123811969924894,
+          -1649.5048701724622
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        228,
+        214
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        114,
+        107
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "a978b0f4313c27611d01509f21ca87e14583265488e336bb1d435c6f6f6fb855",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B002": {
+      "image": "assets/official/v1/presentation/UgV1B002.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        629,
+        1474,
+        722,
+        1521
+      ],
+      "subjectBounds": [
+        629,
+        1474,
+        722,
+        1521
+      ],
+      "cropBounds": [
+        610,
+        1464,
+        741,
+        1531
+      ],
+      "sourceToOutput": [
+        [
+          2,
+          0,
+          -1220
+        ],
+        [
+          0,
+          2,
+          -2928
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        262,
+        134
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        131,
+        67
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "0189ecf218f77f35864e3405a8b84e562694ec5f7bd80d8b4ded984aaa0d08b6",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B003": {
+      "image": "assets/official/v1/presentation/UgV1B003.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        629,
+        1398,
+        722,
+        1445
+      ],
+      "subjectBounds": [
+        629,
+        1398,
+        722,
+        1445
+      ],
+      "cropBounds": [
+        610,
+        1388,
+        741,
+        1455
+      ],
+      "sourceToOutput": [
+        [
+          2,
+          0,
+          -1220
+        ],
+        [
+          0,
+          2,
+          -2776
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        262,
+        134
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        131,
+        67
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "24d02da1e78f970c95cb9a72f9805e41503204508d20a5c3a38dbbc0283ffff4",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B004": {
+      "image": "assets/official/v1/presentation/UgV1B004.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        629,
+        1637,
+        722,
+        1684
+      ],
+      "subjectBounds": [
+        629,
+        1637,
+        722,
+        1684
+      ],
+      "cropBounds": [
+        610,
+        1627,
+        741,
+        1694
+      ],
+      "sourceToOutput": [
+        [
+          2,
+          0,
+          -1220
+        ],
+        [
+          0,
+          2,
+          -3254
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        262,
+        134
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        131,
+        67
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "aff8ca5a53cc0a3eded91ffb07f5add93397105780533995a8e5e2021aa1e1e7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B005": {
+      "image": "assets/official/v1/presentation/UgV1B005.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        629,
+        1558,
+        722,
+        1604
+      ],
+      "subjectBounds": [
+        629,
+        1558,
+        722,
+        1604
+      ],
+      "cropBounds": [
+        610,
+        1548,
+        741,
+        1614
+      ],
+      "sourceToOutput": [
+        [
+          2,
+          0,
+          -1220
+        ],
+        [
+          0,
+          2,
+          -3096
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        262,
+        132
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        131,
+        66
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "e370d2858460c06ad1fac8b827dec44c83b678bd3e3b10cd2cb0e8192092db31",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B006": {
+      "image": "assets/official/v1/presentation/UgV1B006.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        633,
+        1290,
+        717,
+        1337
+      ],
+      "subjectBounds": [
+        633,
+        1290,
+        717,
+        1337
+      ],
+      "cropBounds": [
+        616,
+        1280,
+        734,
+        1347
+      ],
+      "sourceToOutput": [
+        [
+          2,
+          0,
+          -1232
+        ],
+        [
+          0,
+          2,
+          -2560
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        236,
+        134
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        118,
+        67
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "7171912f275ff7bc7409bf3b0f305ecd4744af1a1fe0f455a9b07b64bcd8e4b8",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B007": {
+      "image": "assets/official/v1/presentation/UgV1B007.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        633,
+        1750,
+        717,
+        1797
+      ],
+      "subjectBounds": [
+        633,
+        1750,
+        717,
+        1797
+      ],
+      "cropBounds": [
+        616,
+        1740,
+        734,
+        1807
+      ],
+      "sourceToOutput": [
+        [
+          2,
+          0,
+          -1232
+        ],
+        [
+          0,
+          2,
+          -3480
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        236,
+        134
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        118,
+        67
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "deef346c9f48523095b2668bbae63207bf6e5b6c075caec365b9c81230ac72d3",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0004": {
+      "image": "assets/official/v1/presentation/UgV10004.png",
+      "source": "front",
+      "sourceBox": [
+        95,
+        664,
+        663,
+        975
+      ],
+      "subjectBounds": [
+        95.45464072942367,
+        661.5984729471023,
+        675.8331386779611,
+        994.7913852432807
+      ],
+      "cropBounds": [
+        14,
+        614,
+        758,
+        1042
+      ],
+      "sourceToOutput": [
+        [
+          1.0356050852823095,
+          0.0065996610860616645,
+          -17.436435515288363
+        ],
+        [
+          0.022672148863959855,
+          1.0744888599389903,
+          -665.7524350862311
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        744,
+        428
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        744,
+        428
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "f3db4e20c311abc346c17d7e9fed540178053b54730e24e8dd980d299ee3efba",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B008": {
+      "image": "assets/official/v1/presentation/UgV1B008.png",
+      "source": "front",
+      "sourceBox": [
+        399,
+        729,
+        592,
+        908
+      ],
+      "subjectBounds": [
+        396.30711695327875,
+        736.1117311594502,
+        598.905242067686,
+        924.6473601541749
+      ],
+      "cropBounds": [
+        367,
+        709,
+        628,
+        952
+      ],
+      "sourceToOutput": [
+        [
+          1.6155637144966986,
+          -0.032698703622120955,
+          -567.7186751192158
+        ],
+        [
+          0.042397582623045015,
+          1.6352042758382404,
+          -1165.904115074684
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        372
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        261,
+        243
+      ],
+      "scale": 1.5325670498084292,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "2b17ff4158064e07414b4b1655b7ed250c0aeb5c93c6953cdab094ca9da12cc0",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B009": {
+      "image": "assets/official/v1/presentation/UgV1B009.png",
+      "source": "front",
+      "sourceBox": [
+        134,
+        724,
+        183,
+        774
+      ],
+      "subjectBounds": [
+        133.94070761766554,
+        723.7025875291067,
+        182.8088286075886,
+        775.7013678907962
+      ],
+      "cropBounds": [
+        125,
+        715,
+        191,
+        784
+      ],
+      "sourceToOutput": [
+        [
+          2.0828763261757994,
+          -0.004369220247956052,
+          -256.87287103057673
+        ],
+        [
+          0.05595944832908346,
+          2.132991929027278,
+          -1533.5048701724622
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        132,
+        138
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        66,
+        69
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "6454903011d3f29e44166a75445cc6b63a2d1b4b7108ff7be7ccbdfc17ba0b4f",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B010": {
+      "image": "assets/official/v1/presentation/UgV1B010.png",
+      "source": "front",
+      "sourceBox": [
+        143,
+        890,
+        193,
+        935
+      ],
+      "subjectBounds": [
+        142.29674208717708,
+        890.3946364195557,
+        191.60141143811035,
+        936.6675845709601
+      ],
+      "cropBounds": [
+        134,
+        882,
+        200,
+        945
+      ],
+      "sourceToOutput": [
+        [
+          2.083822230684814,
+          -0.00579369666039492,
+          -274.87287103057673
+        ],
+        [
+          0.0735112319963542,
+          2.10655997781869,
+          -1867.5048701724622
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        132,
+        126
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        66,
+        63
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "6f465b3f29e1a0399e40e104a55f7e9a2635ba879a0ecb55ddcbdd87f1a7799a",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B011": {
+      "image": "assets/official/v1/presentation/UgV1B011.png",
+      "source": "front",
+      "sourceBox": [
+        304,
+        733,
+        381,
+        855
+      ],
+      "subjectBounds": [
+        302.137172752271,
+        737.5472252502327,
+        381.9881810654828,
+        863.6786903492439
+      ],
+      "cropBounds": [
+        290,
+        719,
+        394,
+        882
+      ],
+      "sourceToOutput": [
+        [
+          2.1002179088410666,
+          -0.03048462114266864,
+          -586.8728710305767
+        ],
+        [
+          0.05637985033308995,
+          2.132358828399527,
+          -1541.5048701724622
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        208,
+        326
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        104,
+        163
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "8019ab9f7180e9b8893f0da461ef88a4ffbb0770dc7b6dd7349f90e52c7a8110",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B012": {
+      "image": "assets/official/v1/presentation/UgV1B012.png",
+      "source": "front",
+      "sourceBox": [
+        112,
+        670,
+        658,
+        969
+      ],
+      "subjectBounds": [
+        112.00759662089112,
+        668.1423005163475,
+        670.3084563637386,
+        988.5736527648214
+      ],
+      "cropBounds": [
+        33,
+        623,
+        749,
+        1034
+      ],
+      "sourceToOutput": [
+        [
+          1.036603540041825,
+          0.005096047095153969,
+          -36.43643551528836
+        ],
+        [
+          0.02314510111846715,
+          1.0737766217327709,
+          -674.7524350862311
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        716,
+        411
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        716,
+        411
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "2e9a34779791d86188bbfb4ffcf433046ab8c3832f9e8954f64e9cc2a1be929e",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B013": {
+      "image": "assets/official/v1/presentation/UgV1B013.png",
+      "source": "front",
+      "sourceBox": [
+        218,
+        802,
+        298,
+        885
+      ],
+      "subjectBounds": [
+        216.31443142069736,
+        804.9960017795007,
+        296.9399138989867,
+        890.8711443793657
+      ],
+      "cropBounds": [
+        205,
+        792,
+        309,
+        903
+      ],
+      "sourceToOutput": [
+        [
+          2.091284366255929,
+          -0.017031232802968217,
+          -416.87287103057673
+        ],
+        [
+          0.06405218690620829,
+          2.1208047419430787,
+          -1687.5048701724622
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        208,
+        222
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        104,
+        111
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "1d8bb25cf776a97b54a94f331bf5a1a34684ee55d063768bb1cd2eec6892f518",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B014": {
+      "image": "assets/official/v1/presentation/UgV1B014.png",
+      "source": "front",
+      "sourceBox": [
+        399,
+        729,
+        592,
+        908
+      ],
+      "subjectBounds": [
+        396.30711695327875,
+        736.1117311594502,
+        598.905242067686,
+        924.6473601541749
+      ],
+      "cropBounds": [
+        367,
+        709,
+        628,
+        952
+      ],
+      "sourceToOutput": [
+        [
+          1.6155637144966986,
+          -0.032698703622120955,
+          -567.7186751192158
+        ],
+        [
+          0.042397582623045015,
+          1.6352042758382404,
+          -1165.904115074684
+        ],
+        [
+          -0.00005255025050081065,
+          0.00007913757846882603,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        372
+      ],
+      "plane": "esp32",
+      "nativeCropSize": [
+        261,
+        243
+      ],
+      "scale": 1.5325670498084292,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "2b17ff4158064e07414b4b1655b7ed250c0aeb5c93c6953cdab094ca9da12cc0",
+      "note": "Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível."
+    },
+    "UG-V1-0022": {
+      "image": "assets/official/v1/presentation/UgV10022.png",
+      "source": "front",
+      "sourceBox": [
+        174,
+        211,
+        469,
+        288
+      ],
+      "subjectBounds": [
+        161.2033326103113,
+        225.7873978719377,
+        462.8034531658726,
+        329.1168280575513
+      ],
+      "cropBounds": [
+        118,
+        211,
+        506,
+        344
+      ],
+      "sourceToOutput": [
+        [
+          1.036830492137799,
+          -0.09461944018010979,
+          -108.42355298629755
+        ],
+        [
+          0.09299837586559834,
+          1.0382531164199091,
+          -219.95201485819194
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        137
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        388,
+        133
+      ],
+      "scale": 1.0309278350515463,
+      "deskewDegrees": 4.414414493690854,
+      "lowNativeResolution": true,
+      "sha256": "e8e42837fb59cf7aaeb74c858ad2a64b964227ea857682fbd324557e4c2a7917",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B015": {
+      "image": "assets/official/v1/presentation/UgV1B015.png",
+      "source": "front",
+      "sourceBox": [
+        182,
+        223,
+        310,
+        284
+      ],
+      "subjectBounds": [
+        169.5770763509138,
+        238.54192696368642,
+        303.1676298346086,
+        311.051375355846
+      ],
+      "cropBounds": [
+        150,
+        228,
+        322,
+        322
+      ],
+      "sourceToOutput": [
+        [
+          2.010777747242311,
+          -0.18412796056736128,
+          -274.3416927934172
+        ],
+        [
+          0.18005910144221932,
+          2.0139102273388394,
+          -460.7069088248924
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        344,
+        188
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        172,
+        94
+      ],
+      "scale": 2,
+      "deskewDegrees": 4.414414493690854,
+      "lowNativeResolution": true,
+      "sha256": "37076badc007423cf7d52ae70bac9d695f5f0745969bbb7915ad75548634fb4e",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B016": {
+      "image": "assets/official/v1/presentation/UgV1B016.png",
+      "source": "front",
+      "sourceBox": [
+        100,
+        0,
+        339,
+        331
+      ],
+      "subjectBounds": [
+        109.04609608709903,
+        -1.8671421838475801,
+        354.10777582753667,
+        334.7482713387054
+      ],
+      "cropBounds": [
+        74,
+        -49,
+        389,
+        382
+      ],
+      "sourceToOutput": [
+        [
+          1.0103155101589039,
+          -0.013461917807410897,
+          -61.39005017888239
+        ],
+        [
+          0.01516381889374827,
+          1.01339670450844,
+          45.666069083318845
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        315,
+        431
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        315,
+        431
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "2ee9b8f6a4b79e37b8ccee81c983f0fb93eea9a607573b054d21394ea3adc0f7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B017": {
+      "image": "assets/official/v1/presentation/UgV1B017.png",
+      "source": "front",
+      "sourceBox": [
+        170,
+        202,
+        480,
+        342
+      ],
+      "subjectBounds": [
+        152.24855492648535,
+        216.39799043054228,
+        474.5993525033955,
+        383.97961929434643
+      ],
+      "cropBounds": [
+        107,
+        192,
+        520,
+        408
+      ],
+      "sourceToOutput": [
+        [
+          1.0058413192885904,
+          -0.09168353333724663,
+          -94.17084639670863
+        ],
+        [
+          0.09040834244268298,
+          1.0072736273920155,
+          -194.3534544124462
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        413,
+        216
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        413,
+        216
+      ],
+      "scale": 1,
+      "deskewDegrees": 4.414414493690854,
+      "lowNativeResolution": false,
+      "sha256": "f6fbc41eb38ab4be7e3537630dd795ea81b20c00c29adb9ec47e61e38bf4c5a3",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0018": {
+      "image": "assets/official/v1/presentation/UgV10018.png",
+      "source": "backphoto",
+      "sourceBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "subjectBounds": [
+        580.5341267456681,
+        766.9567134464634,
+        1286.0256313143047,
+        1318.5800686772889
+      ],
+      "cropBounds": [
+        481,
+        689,
+        1385,
+        1396
+      ],
+      "sourceToOutput": [
+        [
+          0.9998048907744987,
+          0.019752984164237816,
+          -481
+        ],
+        [
+          -0.019752984164237816,
+          0.9998048907744987,
+          -689
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        904,
+        707
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        904,
+        707
+      ],
+      "scale": 1,
+      "deskewDegrees": -1.1318362369209545,
+      "lowNativeResolution": false,
+      "sha256": "4cfe3be37bddfdd2dbac5eaab70d37d5794ec85a9db5fc9ca9406b96594124b9",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0017": {
+      "image": "assets/official/v1/presentation/UgV10017.png",
+      "source": "pcbback",
+      "sourceBox": [
+        1117,
+        1506,
+        1370,
+        1597
+      ],
+      "subjectBounds": [
+        1117,
+        1506,
+        1370,
+        1597
+      ],
+      "cropBounds": [
+        1081,
+        1493,
+        1406,
+        1610
+      ],
+      "sourceToOutput": [
+        [
+          1.2307692307692308,
+          0,
+          -1330.4615384615386
+        ],
+        [
+          0,
+          1.2307692307692308,
+          -1837.5384615384617
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        144
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        325,
+        117
+      ],
+      "scale": 1.2307692307692308,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "7a58d6b20828b1835254a4ff276f7ecce45c3d45c43da7612bc2ebd0e99be8ea",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B018": {
+      "image": "assets/official/v1/presentation/UgV1B018.png",
+      "source": "backphoto",
+      "sourceBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "subjectBounds": [
+        580.5341267456681,
+        766.9567134464634,
+        1286.0256313143047,
+        1318.5800686772889
+      ],
+      "cropBounds": [
+        481,
+        689,
+        1385,
+        1396
+      ],
+      "sourceToOutput": [
+        [
+          0.9998048907744987,
+          0.019752984164237816,
+          -481
+        ],
+        [
+          -0.019752984164237816,
+          0.9998048907744987,
+          -689
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        904,
+        707
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        904,
+        707
+      ],
+      "scale": 1,
+      "deskewDegrees": -1.1318362369209545,
+      "lowNativeResolution": false,
+      "sha256": "4cfe3be37bddfdd2dbac5eaab70d37d5794ec85a9db5fc9ca9406b96594124b9",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B019": {
+      "image": "assets/official/v1/presentation/UgV1B019.png",
+      "source": "backphoto",
+      "sourceBox": [
+        565,
+        792,
+        1260,
+        1330
+      ],
+      "subjectBounds": [
+        580.5341267456681,
+        766.9567134464634,
+        1286.0256313143047,
+        1318.5800686772889
+      ],
+      "cropBounds": [
+        481,
+        689,
+        1385,
+        1396
+      ],
+      "sourceToOutput": [
+        [
+          0.9998048907744987,
+          0.019752984164237816,
+          -481
+        ],
+        [
+          -0.019752984164237816,
+          0.9998048907744987,
+          -689
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        904,
+        707
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        904,
+        707
+      ],
+      "scale": 1,
+      "deskewDegrees": -1.1318362369209545,
+      "lowNativeResolution": false,
+      "sha256": "4cfe3be37bddfdd2dbac5eaab70d37d5794ec85a9db5fc9ca9406b96594124b9",
+      "note": "Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível."
+    },
+    "UG-V1-B020": {
+      "image": "assets/official/v1/presentation/UgV1B020.png",
+      "source": "backphoto",
+      "sourceBox": [
+        385,
+        850,
+        1395,
+        1198
+      ],
+      "subjectBounds": [
+        401.7149194877842,
+        822.2787442492122,
+        1418.3918976591826,
+        1190.161360244618
+      ],
+      "cropBounds": [
+        259,
+        770,
+        1561,
+        1242
+      ],
+      "sourceToOutput": [
+        [
+          0.9998048907744987,
+          0.019752984164237816,
+          -259
+        ],
+        [
+          -0.019752984164237816,
+          0.9998048907744987,
+          -770
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1302,
+        472
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1302,
+        472
+      ],
+      "scale": 1,
+      "deskewDegrees": -1.1318362369209545,
+      "lowNativeResolution": false,
+      "sha256": "2c11c55a99374351c73932722804a333da6cc6ad2d0c64b1984adef42dc1f153",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0019": {
+      "image": "assets/official/v1/presentation/UgV10019.png",
+      "source": "front",
+      "sourceBox": [
+        610,
+        448,
+        1155,
+        704
+      ],
+      "subjectBounds": [
+        602.3538218927316,
+        439.80462640382984,
+        1162.8533672071671,
+        716.2018124989644
+      ],
+      "cropBounds": [
+        523,
+        401,
+        1242,
+        755
+      ],
+      "sourceToOutput": [
+        [
+          1.209799729210311,
+          0.014717958752223828,
+          -655.8950620841824
+        ],
+        [
+          0.06674325663884302,
+          1.169967530494009,
+          -521.4953928162447
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        719,
+        354
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        719,
+        354
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "bc61471bfc819d4327f6a1555f53f68b1e700893657438526d12a133dd322aac",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B021": {
+      "image": "assets/official/v1/presentation/UgV1B021.png",
+      "source": "front",
+      "sourceBox": [
+        700,
+        462,
+        1007,
+        693
+      ],
+      "subjectBounds": [
+        696.6147337517541,
+        459.29592428441083,
+        1014.976857425121,
+        701.1550596009178
+      ],
+      "cropBounds": [
+        652,
+        425,
+        1060,
+        736
+      ],
+      "sourceToOutput": [
+        [
+          1.1975948021701606,
+          -0.0024920686917399154,
+          -784.8950620841824
+        ],
+        [
+          0.0644725725383499,
+          1.166765664923039,
+          -545.4953928162447
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        408,
+        311
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        408,
+        311
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "cf36ce9194f3a570620fc4111e308f635470f56420f45e145bc6b3d0564900b7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B022": {
+      "image": "assets/official/v1/presentation/UgV1B022.png",
+      "source": "front",
+      "sourceBox": [
+        609,
+        538,
+        716,
+        610
+      ],
+      "subjectBounds": [
+        601.6184923099362,
+        532.5695082151517,
+        714.51953152431,
+        609.8314383752356
+      ],
+      "cropBounds": [
+        585,
+        521,
+        731,
+        621
+      ],
+      "sourceToOutput": [
+        [
+          2.4078675905680744,
+          0.012892945387769333,
+          -1435.7901241683649
+        ],
+        [
+          0.11077967227275486,
+          2.307916405278318,
+          -1282.9907856324894
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        292,
+        200
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        146,
+        100
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "28faf6729773409a29fe61ea543f7b6c9f331bf57d969cc3f9a7291666b1a5b7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B023": {
+      "image": "assets/official/v1/presentation/UgV1B023.png",
+      "source": "front",
+      "sourceBox": [
+        995,
+        535,
+        1156,
+        617
+      ],
+      "subjectBounds": [
+        996.4030657927891,
+        547.5849578560939,
+        1158.6213809115209,
+        633.8883604989301
+      ],
+      "cropBounds": [
+        973,
+        535,
+        1182,
+        646
+      ],
+      "sourceToOutput": [
+        [
+          2.233922301102517,
+          -0.08673114010232275,
+          -2116.5455733668564
+        ],
+        [
+          0.1034742017437125,
+          2.2049577946847077,
+          -1254.5366369688895
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        212
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        209,
+        111
+      ],
+      "scale": 1.9138755980861244,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "712036c7cbba930b93c31f0978d8aac66aa578c52fbd5f2794aac10bf010b8aa",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B024": {
+      "image": "assets/official/v1/presentation/UgV1B024.png",
+      "source": "front",
+      "sourceBox": [
+        660,
+        413,
+        832,
+        674
+      ],
+      "subjectBounds": [
+        662.7454457007108,
+        420.23381864786035,
+        838.1508253859384,
+        681.5596731557197
+      ],
+      "cropBounds": [
+        638,
+        383,
+        863,
+        719
+      ],
+      "sourceToOutput": [
+        [
+          1.195691793477288,
+          -0.021966626342952527,
+          -744.5119644986695
+        ],
+        [
+          0.012640855041510109,
+          1.2018744521872489,
+          -459.92134632938235
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        268,
+        400
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        225,
+        336
+      ],
+      "scale": 1.1904761904761905,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "e2727e74c651c8e4025e7a73f0b7fa27b88420e6efb69e0b1f51ce3292d5852f",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B025": {
+      "image": "assets/official/v1/presentation/UgV1B025.png",
+      "source": "front",
+      "sourceBox": [
+        747,
+        502,
+        946,
+        620
+      ],
+      "subjectBounds": [
+        745.7784978409326,
+        502.688379419208,
+        951.8582384929024,
+        628.7935286574761
+      ],
+      "cropBounds": [
+        716,
+        485,
+        981,
+        647
+      ],
+      "sourceToOutput": [
+        [
+          1.7985504068963707,
+          -0.0166496254807445,
+          -1281.3510371082
+        ],
+        [
+          0.08874847137678055,
+          1.7490732090499834,
+          -913.9553099113128
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        245
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        265,
+        162
+      ],
+      "scale": 1.509433962264151,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "8d5ead4d3df7d63169bb8cbc6a9f056d01b63fde26f8dcb7968503a651d4bcb6",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0020": {
+      "image": "assets/official/v1/presentation/UgV10020.png",
+      "source": "front",
+      "sourceBox": [
+        1000,
+        434,
+        1450,
+        898
+      ],
+      "subjectBounds": [
+        993.8496651299854,
+        444.55568397569596,
+        1445.533143497997,
+        906.5139768240149
+      ],
+      "cropBounds": [
+        930,
+        379,
+        1509,
+        972
+      ],
+      "sourceToOutput": [
+        [
+          1.0013086847792716,
+          -0.021035466322469155,
+          -917.3900501788823
+        ],
+        [
+          0.010660406203932195,
+          1.0096099302509107,
+          -382.33393091668114
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        579,
+        593
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        579,
+        593
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "d69eb49ee3d8db7d0adcff82c0c17a0837228c8ab728c3e443a73d69b33aaa20",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0021": {
+      "image": "assets/official/v1/presentation/UgV10021.png",
+      "source": "layer1",
+      "sourceBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "cropBounds": [
+        -183,
+        -91,
+        1482,
+        739
+      ],
+      "sourceToOutput": [
+        [
+          0.9009009009009009,
+          0,
+          164.86486486486487
+        ],
+        [
+          0,
+          0.9009009009009009,
+          81.98198198198199
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        748
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1665,
+        830
+      ],
+      "scale": 0.9009009009009009,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "f9f29e27ff5be09d1a44c2e97fe7b4ae9a292a2c1283222e01d47247397d8c51",
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    "UG-V1-B026": {
+      "image": "assets/official/v1/presentation/UgV1B026.png",
+      "source": "front",
+      "sourceBox": [
+        1000,
+        530,
+        1180,
+        640
+      ],
+      "subjectBounds": [
+        1000.3954120139304,
+        542.8757913991158,
+        1182.254236596783,
+        656.6678905684689
+      ],
+      "cropBounds": [
+        974,
+        526,
+        1208,
+        673
+      ],
+      "sourceToOutput": [
+        [
+          1.9950936589547767,
+          -0.07769304575883884,
+          -1892.1283112550127
+        ],
+        [
+          0.09387483239106785,
+          1.9714378586527752,
+          -1105.1203296004182
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        251
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        234,
+        147
+      ],
+      "scale": 1.7094017094017093,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "814e7dc37abde5557b5c27a00926973d6807458634d3fcdc38a522908a08d674",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B027": {
+      "image": "assets/official/v1/presentation/UgV1B027.png",
+      "source": "front",
+      "sourceBox": [
+        1000,
+        434,
+        1450,
+        898
+      ],
+      "subjectBounds": [
+        993.8496651299854,
+        444.55568397569596,
+        1445.533143497997,
+        906.5139768240149
+      ],
+      "cropBounds": [
+        930,
+        379,
+        1509,
+        972
+      ],
+      "sourceToOutput": [
+        [
+          1.0013086847792716,
+          -0.021035466322469155,
+          -917.3900501788823
+        ],
+        [
+          0.010660406203932195,
+          1.0096099302509107,
+          -382.33393091668114
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        579,
+        593
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        579,
+        593
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "d69eb49ee3d8db7d0adcff82c0c17a0837228c8ab728c3e443a73d69b33aaa20",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0023": {
+      "image": "assets/official/v1/presentation/UgV10023.png",
+      "source": "front",
+      "sourceBox": [
+        628,
+        165,
+        817,
+        355
+      ],
+      "subjectBounds": [
+        636.8223176251472,
+        171.61951906469574,
+        828.2317080802561,
+        363.96363354083144
+      ],
+      "cropBounds": [
+        610,
+        144,
+        856,
+        391
+      ],
+      "sourceToOutput": [
+        [
+          1.6270052183066683,
+          -0.029480539648142106,
+          -967.4332796419147
+        ],
+        [
+          0.021268136658177596,
+          1.6383629425930195,
+          -238.59745897438242
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        398,
+        400
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        246,
+        247
+      ],
+      "scale": 1.6194331983805668,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "6fcb5679349dd277d7318d317b5fb5f61e87f28fa184049a9c19c24d48b1fcb4",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0024": {
+      "image": "assets/official/v1/presentation/UgV10024.png",
+      "source": "layer1",
+      "sourceBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "cropBounds": [
+        -183,
+        -91,
+        1482,
+        739
+      ],
+      "sourceToOutput": [
+        [
+          0.9009009009009009,
+          0,
+          164.86486486486487
+        ],
+        [
+          0,
+          0.9009009009009009,
+          81.98198198198199
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        748
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1665,
+        830
+      ],
+      "scale": 0.9009009009009009,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "f9f29e27ff5be09d1a44c2e97fe7b4ae9a292a2c1283222e01d47247397d8c51",
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    "UG-V1-0027": {
+      "image": "assets/official/v1/presentation/UgV10027.png",
+      "source": "layer3",
+      "sourceBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "cropBounds": [
+        -183,
+        -91,
+        1482,
+        739
+      ],
+      "sourceToOutput": [
+        [
+          0.9009009009009009,
+          0,
+          164.86486486486487
+        ],
+        [
+          0,
+          0.9009009009009009,
+          81.98198198198199
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        748
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1665,
+        830
+      ],
+      "scale": 0.9009009009009009,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "865fea392367422e4b7ea2101f5e9500ece9a33fb03992ca386ce22f13ac2ad5",
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    "UG-V1-0028": {
+      "image": "assets/official/v1/presentation/UgV10028.png",
+      "source": "layer3",
+      "sourceBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "cropBounds": [
+        -183,
+        -91,
+        1482,
+        739
+      ],
+      "sourceToOutput": [
+        [
+          0.9009009009009009,
+          0,
+          164.86486486486487
+        ],
+        [
+          0,
+          0.9009009009009009,
+          81.98198198198199
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        748
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1665,
+        830
+      ],
+      "scale": 0.9009009009009009,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "865fea392367422e4b7ea2101f5e9500ece9a33fb03992ca386ce22f13ac2ad5",
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    "UG-V1-0025": {
+      "image": "assets/official/v1/presentation/UgV10025.png",
+      "source": "front",
+      "sourceBox": [
+        628,
+        165,
+        817,
+        355
+      ],
+      "subjectBounds": [
+        636.8223176251472,
+        171.61951906469574,
+        828.2317080802561,
+        363.96363354083144
+      ],
+      "cropBounds": [
+        610,
+        144,
+        856,
+        391
+      ],
+      "sourceToOutput": [
+        [
+          1.6270052183066683,
+          -0.029480539648142106,
+          -967.4332796419147
+        ],
+        [
+          0.021268136658177596,
+          1.6383629425930195,
+          -238.59745897438242
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        398,
+        400
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        246,
+        247
+      ],
+      "scale": 1.6194331983805668,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "6fcb5679349dd277d7318d317b5fb5f61e87f28fa184049a9c19c24d48b1fcb4",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0026": {
+      "image": "assets/official/v1/presentation/UgV10026.png",
+      "source": "layer1",
+      "sourceBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "cropBounds": [
+        -183,
+        -91,
+        1482,
+        739
+      ],
+      "sourceToOutput": [
+        [
+          0.9009009009009009,
+          0,
+          164.86486486486487
+        ],
+        [
+          0,
+          0.9009009009009009,
+          81.98198198198199
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        748
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1665,
+        830
+      ],
+      "scale": 0.9009009009009009,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "f9f29e27ff5be09d1a44c2e97fe7b4ae9a292a2c1283222e01d47247397d8c51",
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    "UG-V1-0016": {
+      "image": "assets/official/v1/presentation/UgV10016.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        1197,
+        878,
+        1366,
+        943
+      ],
+      "subjectBounds": [
+        1197,
+        878,
+        1366,
+        943
+      ],
+      "cropBounds": [
+        1149,
+        859,
+        1414,
+        962
+      ],
+      "sourceToOutput": [
+        [
+          1.509433962264151,
+          0,
+          -1734.3396226415095
+        ],
+        [
+          0,
+          1.509433962264151,
+          -1296.6037735849059
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        155
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        265,
+        103
+      ],
+      "scale": 1.509433962264151,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "c517bd78c0c92f7d5cc44adb08711fdd33943528d1b4157335d2006190de739c",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B028": {
+      "image": "assets/official/v1/presentation/UgV1B028.png",
+      "source": "layer3",
+      "sourceBox": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        1300,
+        648
+      ],
+      "cropBounds": [
+        -183,
+        -91,
+        1482,
+        739
+      ],
+      "sourceToOutput": [
+        [
+          0.9009009009009009,
+          0,
+          164.86486486486487
+        ],
+        [
+          0,
+          0.9009009009009009,
+          81.98198198198199
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        748
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1665,
+        830
+      ],
+      "scale": 0.9009009009009009,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "865fea392367422e4b7ea2101f5e9500ece9a33fb03992ca386ce22f13ac2ad5",
+      "note": "Diagrama completo preservado para manter vistas e legenda; não é fotografia individual."
+    },
+    "UG-V1-0005": {
+      "image": "assets/official/v1/presentation/UgV10005.png",
+      "source": "front",
+      "sourceBox": [
+        352,
+        550,
+        450,
+        657
+      ],
+      "subjectBounds": [
+        356.70612357652686,
+        554.2025215595474,
+        456.1785483954112,
+        661.7941280761985
+      ],
+      "cropBounds": [
+        342,
+        539,
+        471,
+        677
+      ],
+      "sourceToOutput": [
+        [
+          2.0149912324632715,
+          -0.031666151040138646,
+          -658.7801003577648
+        ],
+        [
+          0.017953774882768253,
+          2.01638862741208,
+          -1084.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        258,
+        276
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        129,
+        138
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "05678859cc7b197204ed2f850e40746d4863548c5fcc4ff98f51508064e784f0",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0015": {
+      "image": "assets/official/v1/presentation/UgV10015.png",
+      "source": "front",
+      "sourceBox": [
+        521,
+        503,
+        560,
+        543
+      ],
+      "subjectBounds": [
+        527.0147063729665,
+        508.7650697076488,
+        566.5213103081368,
+        549.0352952121857
+      ],
+      "cropBounds": [
+        519,
+        500,
+        575,
+        558
+      ],
+      "sourceToOutput": [
+        [
+          2.011266447201134,
+          -0.03479820264566508,
+          -1012.7801003577648
+        ],
+        [
+          0.018774490279510437,
+          2.0170787404777046,
+          -1006.6678618333623
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        112,
+        116
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        56,
+        58
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "81807d1cb9b707a1adc85ab3bd86b9bfe5160df5c87a30f78f3bc73b560ad096",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B029": {
+      "image": "assets/official/v1/presentation/UgV1B029.png",
+      "source": "front",
+      "sourceBox": [
+        198,
+        586,
+        294,
+        615
+      ],
+      "subjectBounds": [
+        203.39965676885825,
+        588.8828098689796,
+        299.8841207808423,
+        618.6648579257352
+      ],
+      "cropBounds": [
+        189,
+        580,
+        314,
+        627
+      ],
+      "sourceToOutput": [
+        [
+          2.018210962096645,
+          -0.02895878439807343,
+          -352.78010035776475
+        ],
+        [
+          0.017090971516962372,
+          2.0156631239328338,
+          -1166.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        250,
+        94
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        125,
+        47
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "1bbc619b3978c9d6e8670448fbfb9c76834a79fbede543da80c7132f82645f53",
+      "note": "Enquadramento revisado; preservada a orientação original. Corrigida associação visual: R1 é o resistor inferior esquerdo, não R3."
+    },
+    "UG-V1-B030": {
+      "image": "assets/official/v1/presentation/UgV1B030.png",
+      "source": "front",
+      "sourceBox": [
+        198,
+        557,
+        294,
+        584
+      ],
+      "subjectBounds": [
+        203.84920799711716,
+        559.861456066674,
+        300.3289059772269,
+        587.6885629708067
+      ],
+      "cropBounds": [
+        190,
+        551,
+        314,
+        596
+      ],
+      "sourceToOutput": [
+        [
+          2.018189918112113,
+          -0.028976479604884312,
+          -354.78010035776475
+        ],
+        [
+          0.017701247068386043,
+          2.0161762849303497,
+          -1108.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        248,
+        90
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        124,
+        45
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "b1c2291629128ffe13e759d2033d1fb2b4e133453e3323c81d765ebcbe51eb2a",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B031": {
+      "image": "assets/official/v1/presentation/UgV1B031.png",
+      "source": "front",
+      "sourceBox": [
+        371,
+        513,
+        455,
+        540
+      ],
+      "subjectBounds": [
+        377.53249212975925,
+        517.382681031349,
+        461.7809709578337,
+        545.116972133201
+      ],
+      "cropBounds": [
+        365,
+        509,
+        474,
+        554
+      ],
+      "sourceToOutput": [
+        [
+          2.014507220819039,
+          -0.032073140796788975,
+          -704.7801003577648
+        ],
+        [
+          0.01858509441872378,
+          2.0169194836164066,
+          -1024.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        218,
+        90
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        109,
+        45
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "4269b1809202e7fa6da91b7d5adb87888394a170df0580c2b09f664cef31d903",
+      "note": "Enquadramento revisado; preservada a orientação original. Corrigida associação visual: R3 é o resistor acima do TL082."
+    },
+    "UG-V1-B032": {
+      "image": "assets/official/v1/presentation/UgV1B032.png",
+      "source": "front",
+      "sourceBox": [
+        315,
+        564,
+        348,
+        646
+      ],
+      "subjectBounds": [
+        319.94208466836864,
+        567.8755849586237,
+        354.18316457163434,
+        650.0422862729291
+      ],
+      "cropBounds": [
+        311,
+        556,
+        363,
+        662
+      ],
+      "sourceToOutput": [
+        [
+          2.015643595983759,
+          -0.03111759962900125,
+          -596.7801003577648
+        ],
+        [
+          0.017596027145726792,
+          2.016087808896295,
+          -1118.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        104,
+        212
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        52,
+        106
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "57f756ba93301a33bd1e8a1faf7b63bb11fa5f09d3ce1d1b0e80498043c967d7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B033": {
+      "image": "assets/official/v1/presentation/UgV1B033.png",
+      "source": "front",
+      "sourceBox": [
+        468,
+        571,
+        499,
+        643
+      ],
+      "subjectBounds": [
+        472.55164668745505,
+        576.1753342146579,
+        504.6340461454256,
+        648.2196728607853
+      ],
+      "cropBounds": [
+        464,
+        566,
+        513,
+        659
+      ],
+      "sourceToOutput": [
+        [
+          2.0124238663503857,
+          -0.033824966271066466,
+          -902.7801003577648
+        ],
+        [
+          0.017385587300408283,
+          2.0159108568281865,
+          -1138.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        98,
+        186
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        49,
+        93
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "2dcd6f0eb48a837d70ac570a0c588cdbb37fe628d420f28bdad3f911b92a8b5b",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B034": {
+      "image": "assets/official/v1/presentation/UgV1B034.png",
+      "source": "front",
+      "sourceBox": [
+        477,
+        503,
+        509,
+        550
+      ],
+      "subjectBounds": [
+        483.08254200768994,
+        508.35992531323194,
+        515.7573106057129,
+        555.5727725048396
+      ],
+      "cropBounds": [
+        475,
+        500,
+        524,
+        564
+      ],
+      "sourceToOutput": [
+        [
+          2.0121923825205354,
+          -0.03401961354598619,
+          -924.7801003577648
+        ],
+        [
+          0.018774490279510437,
+          2.0170787404777046,
+          -1006.6678618333623
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        98,
+        128
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        49,
+        64
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "cd0012770037ad924b6ea44229e8081444e5e7f6bcc9bf66ca2722913155fe3e",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B035": {
+      "image": "assets/official/v1/presentation/UgV1B035.png",
+      "source": "front",
+      "sourceBox": [
+        308,
+        518,
+        340,
+        559
+      ],
+      "subjectBounds": [
+        314.29472198825556,
+        521.8100958403624,
+        346.9168024771803,
+        563.0934765434182
+      ],
+      "cropBounds": [
+        306,
+        513,
+        355,
+        572
+      ],
+      "sourceToOutput": [
+        [
+          2.0157488159064183,
+          -0.03102912359494683,
+          -586.7801003577648
+        ],
+        [
+          0.018500918480596377,
+          2.0168487027891633,
+          -1032.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        98,
+        118
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        49,
+        59
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "9d0c6d1054b3d581c6d6b4963f71a0c148743f679b5f03cfc87d5c442e1ad5c9",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B036": {
+      "image": "assets/official/v1/presentation/UgV1B036.png",
+      "source": "front",
+      "sourceBox": [
+        219,
+        534,
+        273,
+        563
+      ],
+      "subjectBounds": [
+        225.1885004267286,
+        537.0216764625774,
+        279.6748823781998,
+        566.5140705884112
+      ],
+      "cropBounds": [
+        217,
+        529,
+        288,
+        575
+      ],
+      "sourceToOutput": [
+        [
+          2.017621730529753,
+          -0.029454250188778175,
+          -408.78010035776475
+        ],
+        [
+          0.018164214728086762,
+          2.016565579480189,
+          -1064.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        142,
+        92
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        71,
+        46
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "dcbd22bfad61655980971c3ecd2f0299bbca7376dfb419493d8885dab54f852c",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B037": {
+      "image": "assets/official/v1/presentation/UgV1B037.png",
+      "source": "front",
+      "sourceBox": [
+        219,
+        611,
+        275,
+        645
+      ],
+      "subjectBounds": [
+        223.984580014545,
+        614.0600053053261,
+        280.50758733503426,
+        648.4785027502365
+      ],
+      "cropBounds": [
+        215,
+        606,
+        289,
+        657
+      ],
+      "sourceToOutput": [
+        [
+          2.0176638184988165,
+          -0.029418859775156406,
+          -404.78010035776475
+        ],
+        [
+          0.01654382791913425,
+          2.015203048555751,
+          -1218.6678618333624
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        148,
+        102
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        74,
+        51
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "7c1b6dcc8b1c1e11822a958225626e84c6db7456833c4034446f02756b314033",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0030": {
+      "image": "assets/official/v1/presentation/UgV10030.png",
+      "source": "front",
+      "sourceBox": [
+        647,
+        684,
+        1041,
+        1040
+      ],
+      "subjectBounds": [
+        635.5974901497842,
+        680.9478962612168,
+        1061.4971173999197,
+        1051.9558539447903
+      ],
+      "cropBounds": [
+        575,
+        629,
+        1122,
+        1104
+      ],
+      "sourceToOutput": [
+        [
+          1.160137782476937,
+          -0.024133925809671684,
+          -657.8320621198707
+        ],
+        [
+          0.05410089340803477,
+          1.123684261816209,
+          -747.2991273292643
+        ],
+        [
+          0.00003166514290269785,
+          0.00009264835856060734,
+          1
+        ]
+      ],
+      "outputSize": [
+        547,
+        475
+      ],
+      "plane": "oled",
+      "nativeCropSize": [
+        547,
+        475
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "9e803484fd193509dfb7846b305cd3e79ffd0d54eecb93ce824480aa02bcf2f7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0014": {
+      "image": "assets/official/v1/presentation/UgV10014.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        2000,
+        1307,
+        2180,
+        1370
+      ],
+      "subjectBounds": [
+        2000,
+        1307,
+        2180,
+        1370
+      ],
+      "cropBounds": [
+        1949,
+        1289,
+        2231,
+        1388
+      ],
+      "sourceToOutput": [
+        [
+          1.4184397163120568,
+          0,
+          -2764.5390070921985
+        ],
+        [
+          0,
+          1.4184397163120568,
+          -1828.3687943262412
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        140
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        282,
+        99
+      ],
+      "scale": 1.4184397163120568,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "176b5ffa47c8c00080c0d951332201e158138a8b0072ae77aa8122fef7d4b2e7",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B038": {
+      "image": "assets/official/v1/presentation/UgV1B038.png",
+      "source": "front",
+      "sourceBox": [
+        672,
+        753,
+        1003,
+        956
+      ],
+      "subjectBounds": [
+        663.9385258131172,
+        752.9097804966144,
+        1017.6713640415463,
+        969.2618452067418
+      ],
+      "cropBounds": [
+        614,
+        722,
+        1068,
+        1000
+      ],
+      "sourceToOutput": [
+        [
+          1.158902841903732,
+          -0.02774721179353537,
+          -696.8320621198707
+        ],
+        [
+          0.05115603511808388,
+          1.1150679644700727,
+          -840.2991273292643
+        ],
+        [
+          0.00003166514290269785,
+          0.00009264835856060734,
+          1
+        ]
+      ],
+      "outputSize": [
+        454,
+        278
+      ],
+      "plane": "oled",
+      "nativeCropSize": [
+        454,
+        278
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "293e76ec02b3d642e7fb5657cf5cf07ecafb420c6274418ccc8f397557552028",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B039": {
+      "image": "assets/official/v1/presentation/UgV1B039.png",
+      "source": "front",
+      "sourceBox": [
+        647,
+        684,
+        1041,
+        1040
+      ],
+      "subjectBounds": [
+        635.5974901497842,
+        680.9478962612168,
+        1061.4971173999197,
+        1051.9558539447903
+      ],
+      "cropBounds": [
+        575,
+        629,
+        1122,
+        1104
+      ],
+      "sourceToOutput": [
+        [
+          1.160137782476937,
+          -0.024133925809671684,
+          -657.8320621198707
+        ],
+        [
+          0.05410089340803477,
+          1.123684261816209,
+          -747.2991273292643
+        ],
+        [
+          0.00003166514290269785,
+          0.00009264835856060734,
+          1
+        ]
+      ],
+      "outputSize": [
+        547,
+        475
+      ],
+      "plane": "oled",
+      "nativeCropSize": [
+        547,
+        475
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "9e803484fd193509dfb7846b305cd3e79ffd0d54eecb93ce824480aa02bcf2f7",
+      "note": "Função interna: imagem contextual do módulo hospedeiro, sem inventar chip visível."
+    },
+    "UG-V1-B040": {
+      "image": "assets/official/v1/presentation/UgV1B040.png",
+      "source": "front",
+      "sourceBox": [
+        735,
+        699,
+        911,
+        739
+      ],
+      "subjectBounds": [
+        737.1577224534619,
+        700.6156395841094,
+        924.4705524443336,
+        749.6486439934816
+      ],
+      "cropBounds": [
+        710,
+        692,
+        951,
+        758
+      ],
+      "sourceToOutput": [
+        [
+          1.918444793668171,
+          -0.060815691643740545,
+          -1315.9038375433538
+        ],
+        [
+          0.08648296996707852,
+          1.8553484070155866,
+          -1344.8948171440072
+        ],
+        [
+          0.00003166514290269785,
+          0.00009264835856060734,
+          1
+        ]
+      ],
+      "outputSize": [
+        400,
+        110
+      ],
+      "plane": "oled",
+      "nativeCropSize": [
+        241,
+        66
+      ],
+      "scale": 1.6597510373443984,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "0d57005be49312816fd7676c1ba363668a828374f98770f2dd96f7a1c91297ba",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0001": {
+      "image": "assets/official/v1/presentation/UgV10001.png",
+      "source": "front",
+      "sourceBox": [
+        32,
+        60,
+        1000,
+        993
+      ],
+      "subjectBounds": [
+        31.955903731328206,
+        57.86240401580982,
+        1011.7529041593647,
+        997.9192520260099
+      ],
+      "cropBounds": [
+        -106,
+        -74,
+        1149,
+        1130
+      ],
+      "sourceToOutput": [
+        [
+          1.0122094687667704,
+          -0.011869349194431358,
+          118.60994982111761
+        ],
+        [
+          0.015426868700396406,
+          1.0136178945935759,
+          70.66606908331885
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        1255,
+        1204
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        1255,
+        1204
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "7fad6ab9f4e80e1f30adc3ca5377bbd9f3f2292c1869ef57ef3d47f3abe332b4",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0033": {
+      "image": "assets/official/v1/presentation/UgV10033.png",
+      "source": "front",
+      "sourceBox": [
+        699,
+        448,
+        1009,
+        697
+      ],
+      "subjectBounds": [
+        695.5560434220754,
+        444.7903162115989,
+        1017.6077989787957,
+        705.0226020750023
+      ],
+      "cropBounds": [
+        650,
+        408,
+        1063,
+        742
+      ],
+      "sourceToOutput": [
+        [
+          1.1977840258452015,
+          -0.002225246560825747,
+          -782.8950620841824
+        ],
+        [
+          0.0660809737761992,
+          1.1690336530358094,
+          -528.4953928162447
+        ],
+        [
+          0.00009461183752054663,
+          0.00013341106545708325,
+          1
+        ]
+      ],
+      "outputSize": [
+        413,
+        334
+      ],
+      "plane": "rf",
+      "nativeCropSize": [
+        413,
+        334
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "cdc1bb4a523c3bfe82b5d38fa8a1ae10a5dcfb9a90f7b054a9b258ae521d38cf",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0029": {
+      "image": "assets/official/v1/presentation/UgV10029.png",
+      "source": "front",
+      "sourceBox": [
+        689,
+        213,
+        1040,
+        523
+      ],
+      "subjectBounds": [
+        694.3093703944448,
+        220.50572130493146,
+        1047.9770870241766,
+        533.3752366046667
+      ],
+      "cropBounds": [
+        644,
+        176,
+        1098,
+        578
+      ],
+      "sourceToOutput": [
+        [
+          1.0043179745673263,
+          -0.018505051748512774,
+          -631.3900501788823
+        ],
+        [
+          0.012796370633915054,
+          1.0114059937422155,
+          -179.33393091668117
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        454,
+        402
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        454,
+        402
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "ecf234a6218047eaa4de90c68afb126de9bb578e641e8919189a62fe51ebc56c",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-0032": {
+      "image": "assets/official/v1/presentation/UgV10032.png",
+      "source": "UG-V1-0032",
+      "sourceBox": [
+        0,
+        0,
+        444,
+        443
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        444,
+        443
+      ],
+      "cropBounds": [
+        -63,
+        -63,
+        507,
+        506
+      ],
+      "sourceToOutput": [
+        [
+          1,
+          0,
+          63
+        ],
+        [
+          0,
+          1,
+          63
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        570,
+        569
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        570,
+        569
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "583cc88ee84275695b5ac5c71ba22aaa37ac312f837534a7e480faa846d4c42d",
+      "note": "Ilustração já existente; revisão técnica preservada, sem novos detalhes."
+    },
+    "UG-V1-B041": {
+      "image": "assets/official/v1/presentation/UgV1B041.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "subjectBounds": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "cropBounds": [
+        294,
+        -198,
+        2726,
+        2158
+      ],
+      "sourceToOutput": [
+        [
+          0.6167763157894737,
+          0,
+          -181.33223684210526
+        ],
+        [
+          0,
+          0.6167763157894737,
+          122.12171052631578
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        1453
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        2432,
+        2356
+      ],
+      "scale": 0.6167763157894737,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "2d59e807d12e9f800bec1fdb01bcf549f0cdeae58ee4c95a152e3ef749347416",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B042": {
+      "image": "assets/official/v1/presentation/UgV1B042.png",
+      "source": "pcbback",
+      "sourceBox": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "subjectBounds": [
+        560,
+        60,
+        2460,
+        1900
+      ],
+      "cropBounds": [
+        294,
+        -198,
+        2726,
+        2158
+      ],
+      "sourceToOutput": [
+        [
+          0.6167763157894737,
+          0,
+          -181.33223684210526
+        ],
+        [
+          0,
+          0.6167763157894737,
+          122.12171052631578
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        1453
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        2432,
+        2356
+      ],
+      "scale": 0.6167763157894737,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "67f90daf7b47b1798c97633bcd2102f197238c8f5d3e2b261d1baa3fa6d812f9",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B043": {
+      "image": "assets/official/v1/presentation/UgV1B043.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        0,
+        0,
+        3022,
+        1952
+      ],
+      "subjectBounds": [
+        0,
+        0,
+        3022,
+        1952
+      ],
+      "cropBounds": [
+        -424,
+        -274,
+        3446,
+        2226
+      ],
+      "sourceToOutput": [
+        [
+          0.3875968992248062,
+          0,
+          164.34108527131784
+        ],
+        [
+          0,
+          0.3875968992248062,
+          106.20155038759691
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        1500,
+        969
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        3870,
+        2500
+      ],
+      "scale": 0.3875968992248062,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "59d1f31f3b55eb35bf8abf25fb4f4124ab736ef219ba24588f4f924bdd235b15",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B044": {
+      "image": "assets/official/v1/presentation/UgV1B044.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        1166,
+        1037,
+        1370,
+        1245
+      ],
+      "subjectBounds": [
+        1166,
+        1037,
+        1370,
+        1245
+      ],
+      "cropBounds": [
+        1108,
+        978,
+        1428,
+        1304
+      ],
+      "sourceToOutput": [
+        [
+          1.2269938650306749,
+          0,
+          -1359.5092024539877
+        ],
+        [
+          0,
+          1.2269938650306749,
+          -1200
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        393,
+        400
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        320,
+        326
+      ],
+      "scale": 1.2269938650306749,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "0a8a03b2936b14e88c33f4b7102b460e0484bca0ae587d4fcaa5fb311b5f21dc",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    },
+    "UG-V1-B045": {
+      "image": "assets/official/v1/presentation/UgV1B045.png",
+      "source": "pcbfront",
+      "sourceBox": [
+        1634,
+        1493,
+        1902,
+        1604
+      ],
+      "subjectBounds": [
+        1634,
+        1493,
+        1902,
+        1604
+      ],
+      "cropBounds": [
+        1558,
+        1461,
+        1978,
+        1636
+      ],
+      "sourceToOutput": [
+        [
+          1,
+          0,
+          -1558
+        ],
+        [
+          0,
+          1,
+          -1461
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "outputSize": [
+        420,
+        175
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        420,
+        175
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "68b2896565022a0b02de4923fc0da231152b7baafd4e553571528a39506c8c74",
+      "note": "Enquadramento revisado; preservada a orientação original."
+    }
+  },
+  "main": {
+    "image": "assets/official/v1/presentation/DeviceV1Aligned.png",
+    "source": "front",
+    "sourceBox": [
+      0,
+      0,
+      1453,
+      1080
+    ],
+    "subjectBounds": [
+      -1.210256448125594,
+      -3.3339309166811555,
+      1459.4174934070281,
+      1084.9947253055911
+    ],
+    "cropBounds": [
+      -10,
+      -12,
+      1468,
+      1093
+    ],
+    "sourceToOutput": [
+      [
+        1.0111993575092415,
+        -0.012718719121353778,
+        22.609949821117613
+      ],
+      [
+        0.01477450517990903,
+        1.0130693431824385,
+        8.666069083318845
+      ],
+      [
+        0.000010521992265925414,
+        0.00000884760340544189,
+        1
+      ]
+    ],
+    "outputSize": [
+      1478,
+      1105
+    ],
+    "plane": null,
+    "nativeCropSize": [
+      1478,
+      1105
+    ],
+    "scale": 1,
+    "deskewDegrees": 0,
+    "lowNativeResolution": false,
+    "sha256": "d52c32150452c7fa3c6cf0983e2165cbb477ec41f40f312a8dd2b67da950fc18",
+    "referenceCorners": [
+      [
+        53.99999999999999,
+        82
+      ],
+      [
+        999.9999999999998,
+        82.00000000000007
+      ],
+      [
+        999.9999999999997,
+        1003.9999999999998
+      ],
+      [
+        53.999999999999986,
+        1003.9999999999997
+      ]
+    ]
+  },
+  "gallery": {
+    "UgV1RfCableEnhanced": {
+      "image": "assets/official/v1/presentation/UgV1RfCableEnhanced.png",
+      "source": "front",
+      "sourceBox": [
+        1000,
+        434,
+        1450,
+        898
+      ],
+      "subjectBounds": [
+        993.8496651299854,
+        444.55568397569596,
+        1445.533143497997,
+        906.5139768240149
+      ],
+      "cropBounds": [
+        930,
+        379,
+        1509,
+        972
+      ],
+      "sourceToOutput": [
+        [
+          1.0013086847792716,
+          -0.021035466322469155,
+          -917.3900501788823
+        ],
+        [
+          0.010660406203932195,
+          1.0096099302509107,
+          -382.33393091668114
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        579,
+        593
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        579,
+        593
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "d69eb49ee3d8db7d0adcff82c0c17a0837228c8ab728c3e443a73d69b33aaa20"
+    },
+    "UgV1BetweenRfAndEsp32Enhanced": {
+      "image": "assets/official/v1/presentation/UgV1BetweenRfAndEsp32Enhanced.png",
+      "source": "front",
+      "sourceBox": [
+        450,
+        530,
+        820,
+        790
+      ],
+      "subjectBounds": [
+        452.1830064516726,
+        535.0855450144187,
+        823.9466150576263,
+        796.479403886024
+      ],
+      "cropBounds": [
+        400,
+        498,
+        876,
+        834
+      ],
+      "sourceToOutput": [
+        [
+          1.006885340680212,
+          -0.016346236517584954,
+          -387.3900501788824
+        ],
+        [
+          0.00940828912428707,
+          1.0085570654456633,
+          -501.33393091668114
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        476,
+        336
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        476,
+        336
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "2aab9d29bb064750313625d764f1b52494c26d5ab22fd6c207ca27e9293e5a54"
+    },
+    "UgV1AboveEsp32Enhanced": {
+      "image": "assets/official/v1/presentation/UgV1AboveEsp32Enhanced.png",
+      "source": "front",
+      "sourceBox": [
+        160,
+        455,
+        580,
+        680
+      ],
+      "subjectBounds": [
+        164.41017898775252,
+        457.29723943881686,
+        587.2691699185672,
+        685.6673174441835
+      ],
+      "cropBounds": [
+        105,
+        425,
+        647,
+        718
+      ],
+      "sourceToOutput": [
+        [
+          1.00998932839866,
+          -0.013736193512979595,
+          -92.39005017888239
+        ],
+        [
+          0.010176394559699625,
+          1.0092029404942604,
+          -428.33393091668114
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        542,
+        293
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        542,
+        293
+      ],
+      "scale": 1,
+      "deskewDegrees": 0,
+      "lowNativeResolution": false,
+      "sha256": "0d472b924586d042e1eff1a677c46e0395feb3485bb5434e9b1e1f175bdbe72f"
+    },
+    "UgV1LaserDriverEnhanced": {
+      "image": "assets/official/v1/presentation/UgV1LaserDriverEnhanced.png",
+      "source": "front",
+      "sourceBox": [
+        182,
+        223,
+        310,
+        284
+      ],
+      "subjectBounds": [
+        192.14109210489607,
+        224.35055729877755,
+        321.51007634378857,
+        287.2299447743974
+      ],
+      "cropBounds": [
+        174,
+        215,
+        340,
+        297
+      ],
+      "sourceToOutput": [
+        [
+          2.0185266218646225,
+          -0.02869335629591017,
+          -322.78010035776475
+        ],
+        [
+          0.024772025871087924,
+          2.0221218744188065,
+          -436.66786183336234
+        ],
+        [
+          0.000010521992265925414,
+          0.00000884760340544189,
+          1
+        ]
+      ],
+      "outputSize": [
+        332,
+        164
+      ],
+      "plane": null,
+      "nativeCropSize": [
+        166,
+        82
+      ],
+      "scale": 2,
+      "deskewDegrees": 0,
+      "lowNativeResolution": true,
+      "sha256": "53f1a89e315cbe5fcc3e3d897220f09fb1ca79e4f27ee2c258baa1938098c51a"
+    }
+  },
+  "configSha256": "94f66221b81c1bdd736d1e9f5e5a479006ed2f8bf8759b4be7e3c171fb87cff2"
+}

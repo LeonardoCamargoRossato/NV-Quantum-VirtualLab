@@ -109,6 +109,15 @@ def consolidate(path=SOURCE):
                 stem = url.rsplit('/',1)[-1].removesuffix('.png')
                 item[key] = url.rsplit('/',1)[0] + '/' + ''.join(w.title() for w in stem.split('-')) + '.png'
         if item['imageUrl'] and not validate_url(item['imageUrl']): raise ValueError('Imagem inválida')
+    presentation_path = ROOT / 'source/ImagePresentation.json'
+    if presentation_path.is_file():
+        presentation = json.loads(presentation_path.read_text(encoding='utf-8'))
+        for item in result:
+            visual = presentation['items'][item['tag']]
+            item['imageUrl'] = 'https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/' + visual['image']
+            item['imageNotes'] += (' ' if item['imageNotes'] else '') + visual['note']
+            if visual['lowNativeResolution']:
+                item['imageNotes'] += ' Fonte com poucos pixels nativos; ampliação não recupera inscrições ou detalhes.'
     linked = {i['legacyTag'] or i['tag'] for i in result}
     return {'schemaVersion': 2, 'status': 'validated', 'source': 'XLSX autorizado — Uncut Gem V1, árvore canônica e legado preservado',
             'sourceUrl': 'https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=2026110901#gid=2026110901',
