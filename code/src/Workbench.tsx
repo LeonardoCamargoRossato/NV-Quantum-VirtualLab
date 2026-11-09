@@ -8,10 +8,11 @@ import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
 import { FlowPage } from "./FlowPage";
 import { AboutPage } from "./AboutPage";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
+import inventoryData from "../source/InventoryV1.json";
 import "./Workbench.css";
 
 const base = import.meta.env.BASE_URL;
-const inventorySheet = "https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=1346018179#gid=1346018179";
+const inventorySheet = "https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=2026110901#gid=2026110901";
 const project = "https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab";
 const logo = "https://pgfis.ita.br/static/core/uploads/Post/ITA-logo_606c9f4c450c8e7bd0b4b118.jpg_606c9f4c450c8e7bd0b4b118.jpg.jpg";
 const originalPhoto = base + "assets/official/DeviceV1.png";
@@ -54,6 +55,7 @@ function ComponentImage({item,onOpen}: {item: Item; onOpen: (preview: ImagePrevi
     <Picture url={item.imageUrl} label={"Ilustração por IA — "+item.name} onClick={onOpen} />
     <p className="image-provenance"><strong>Imagem ilustrativa por IA</strong> · pode não corresponder ao modelo original</p>
   </div>;
+  if (type.includes("fotografia real")) return <div className="component-visual"><Picture url={item.imageUrl} label={item.name} onClick={onOpen}/><p className="image-provenance">{item.imageType}</p><p className="visual-note">{item.notes}</p><Out href={item.source}>Fonte técnica</Out></div>;
   if (type.includes("diagrama") || type.includes("render")) return <div className="component-visual">
     <Picture url={item.imageUrl} label={(type.includes("render")?"Render":"Diagrama")+" — "+item.name} onClick={onOpen} />
     <p className="image-provenance"><strong>{type.includes("render") ? "Render oficial de placa" : "Diagrama técnico"}</strong> · não é fotografia individual da peça</p>
@@ -96,6 +98,9 @@ function App() {
   const [query,setQuery]=useState("");
   const [subsystem,setSubsystem]=useState("");
   const [imageType,setImageType]=useState("");
+  const [layer,setLayer]=useState("");
+  const [face,setFace]=useState("");
+  const [view,setView]=useState(()=>{try{return sessionStorage.getItem("nv-inventory-view")||"cards"}catch{return "cards"}});
   const [sort,setSort]=useState<"tag"|"name"|"subsystem">("tag");
   const [selected,setSelected]=useState<Item | null>(null);
   const [selectedFlow,setSelectedFlow]=useState<FlowStep | null>(null);
@@ -117,8 +122,7 @@ function App() {
   const lastSelectionRef=useRef<HTMLElement|null>(null);
   const drag=useRef<{x:number;y:number;px:number;py:number}|null>(null);
   useEffect(()=>{
-    fetch(base+"data/InventoryV1.json").then(r=>{if(!r.ok)throw Error("Erro HTTP "+r.status);return r.json()})
-      .then(validateSnapshot).then(setSnapshot).catch(()=>setLoadError("Não foi possível carregar o snapshot local. Consulte a planilha mestre."));
+    try { setSnapshot(validateSnapshot(inventoryData)); } catch { setLoadError("Não foi possível validar o catálogo de referência."); }
   },[]);
   useEffect(()=>{
     function onHash(){setPage(currentPage());setMobileMenu(false)}
@@ -157,7 +161,7 @@ function App() {
     if((selected||selectedFlow||selectedReference)&&window.matchMedia("(max-width: 800px)").matches)inspectorRef.current?.focus();
   },[selected,selectedFlow,selectedReference]);
   const items=snapshot?.items||[];
-  const filtered=filterItems(items,query,subsystem,imageType).sort((a,b)=>a[sort].localeCompare(b[sort],"pt-BR",{numeric:true}));
+  const filtered=filterItems(items,query,subsystem,imageType).filter(i=>(!layer||i.layer===layer)&&(!face||i.face===face)).sort((a,b)=>a[sort].localeCompare(b[sort],"pt-BR",{numeric:true}));
   const fitted=Math.max(0,Math.min(viewSize.width/photoSize.width,viewSize.height/photoSize.height));
   const imageDimensions={width:photoSize.width*fitted,height:photoSize.height*fitted};
   const selection:InspectorSelection|null = selectedFlow?{kind:"flow",step:selectedFlow}:selectedReference?{kind:"reference",reference:selectedReference}:selected?{kind:"component",item:selected}:null;
@@ -217,7 +221,7 @@ function App() {
     <div className="main-column">
       <div className="mobile-bar"><button type="button" onClick={()=>{setCollapsed(false);setMobileMenu(true)}} aria-label="Abrir menu lateral">☰</button><strong>NV Quantum Virtual Lab</strong><span>Laboratório</span></div>
       <div className={"workspace-layout"+(selection?" has-inspector":"")+(selection&&inspectorExpanded?" wide-inspector":"")}>
-        {selection&&<ContextInspector selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
+        {selection&&<ContextInspector selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenItem={tag=>{const item=items.find(i=>i.tag===tag)||snapshot?.legacyItems.find(i=>i.tag===tag);if(item)openItem(item)}} onChildren={tag=>{const item=items.find(i=>i.tag===tag);if(item){go("inventario");setQuery("");setLayer("B");setSubsystem(item.name);setFace("");setImageType("");}}} items={items} legacyItems={snapshot?.legacyItems||[]} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
         <div className="workspace-primary">
       {page==="explorar" ? <div className="workbench-page">
         <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real · Quantum Village</span><button className="toolbar-button" onClick={()=>setPreview({url:enhancedPhoto+ENHANCED_OVERVIEW,title:"Fotografia do Uncut Gem V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
@@ -250,14 +254,16 @@ function App() {
         <div className="below-photo"><strong>Nota de montagem:</strong> o BPW34 está no prisma encapsulado; <code>PHOTODIODE1</code> é apenas seu conector na placa. <button type="button" onClick={()=>go("guia")}>Ver guia de montagem ↗</button></div>
       </div> : <div className="content-page">
         {page==="inventario" ? <div className="inventory-page">
-          <div className="section-heading"><span className="overline">LABORATÓRIO / DADOS</span><h1>Inventário</h1><p>Componentes do Uncut Gem V1, imagens rotuladas, ficha técnica, filtros e exportação CSV. A planilha Google Sheets permanece fonte mestre privada.</p></div>
-          <div className="inventory-summary"><div><strong>Uncut Gem V1</strong><p>{snapshot?.status==="validated"?"Snapshot local · "+new Date(snapshot.snapshotAt||"").toLocaleString("pt-BR")+" · "+items.length+" registros":"Importação não concluída"}</p></div><Out href={inventorySheet}>Abrir planilha original</Out></div>
+          <div className="section-heading"><span className="overline">LABORATÓRIO / DADOS</span><h1>Inventário — Uncut Gem V1</h1><p>Catálogo de subsistemas, componentes, imagens e documentação técnica.</p></div>
+          <div className="inventory-summary"><div><strong>Uncut Gem V1</strong><p>{snapshot?.status==="validated"?"Snapshot local · "+new Date(snapshot.snapshotAt||"").toLocaleString("pt-BR")+" · "+items.length+" registros":"Importação não concluída"}</p></div><Out href={inventorySheet}>Abrir no Google Planilhas</Out></div>
+          <div className="inventory-layer" role="group" aria-label="Camada do inventário">{[["","Todas (A+B)"],["A","Camada A"],["B","Camada B"]].map(([value,label])=><button key={value} aria-pressed={layer===value} onClick={()=>setLayer(value)}>{label}</button>)}<button disabled title="Em breve">Camada C · Em breve</button></div>
           <div className="inventory-filters"><label>Buscar<input type="search" placeholder="Tag, componente, modelo, função…" value={query} onChange={e=>setQuery(e.target.value)}/></label>
             <label>Subsistema<select value={subsystem} onChange={e=>setSubsystem(e.target.value)} aria-label="Subsistema"><option value="">Todos</option>{Array.from(new Set(items.map(i=>i.subsystem))).sort().map(s=><option key={s} value={s}>{s}</option>)}</select></label>
             <label>Tipo de imagem<select value={imageType} onChange={e=>setImageType(e.target.value)} aria-label="Tipo de imagem"><option value="">Todos</option>{Array.from(new Set(items.map(i=>i.imageType))).sort().map(s=><option key={s} value={s}>{s}</option>)}</select></label>
+            <label>Face da PCB<select aria-label="Face da PCB" value={face} onChange={e=>setFace(e.target.value)}><option value="">Todas</option>{Array.from(new Set(items.map(i=>i.face))).sort().map(f=><option key={f}>{f}</option>)}</select></label>
             <label>Ordenar<select value={sort} onChange={e=>setSort(e.target.value as typeof sort)} aria-label="Ordenar por"><option value="tag">Tag</option><option value="name">Componente</option><option value="subsystem">Subsistema</option></select></label></div>
-          <div className="inventory-tools"><span aria-live="polite">{filtered.length} de {items.length} itens · Inventário do Uncut Gem V1</span><div><button disabled={!items.length} onClick={()=>download(true)}>Baixar CSV · todos</button><button disabled={!filtered.length} onClick={()=>download(false)}>CSV · filtrados</button></div></div>
-          {loadError?<div className="status-panel" role="alert">{loadError}</div>:!snapshot?<div className="status-panel">Carregando inventário…</div>:snapshot.status==="pending"?<div className="status-panel">Snapshot ainda não importado. <Out href={inventorySheet}>Consultar planilha</Out></div>:<div className="inventory-table-shell"><table className="inventory-table"><thead><tr>{["Tag","Imagem","Componente","Ref. PCB","Subsistema","Qtde","Modelo / valor","Função"].map(x=><th key={x} scope="col">{x}</th>)}</tr></thead><tbody>{filtered.map(item=><tr key={item.tag}><td><button className="plain-link" onClick={e=>openItem(item,e.currentTarget)}>{item.tag}</button></td><td><div className="table-photo"><ComponentImage item={item} onOpen={setPreview}/></div></td><td><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button></td><td>{item.pcb||"—"}</td><td>{item.subsystem}</td><td>{item.quantity||"—"}</td><td>{item.model||"—"}</td><td>{item.function}</td></tr>)}</tbody></table>{!filtered.length&&<div className="status-panel">Nenhum componente encontrado para os filtros atuais.</div>}</div>}
+          <div className="inventory-tools"><div><button onClick={()=>{setQuery("");setSubsystem("");setImageType("");setLayer("");setFace("");setSort("tag")}}>Limpar filtros</button>{["cards","list"].map(mode=><button key={mode} aria-pressed={view===mode} onClick={()=>{setView(mode);try{sessionStorage.setItem("nv-inventory-view",mode)}catch{}}}>{mode==="cards"?"▦ Cards":"☷ Lista"}</button>)}</div><span aria-live="polite">{filtered.length} de {items.length} itens · Inventário do Uncut Gem V1</span><div><button disabled={!items.length} onClick={()=>download(true)}>Baixar CSV · todos</button><button disabled={!filtered.length} onClick={()=>download(false)}>CSV · filtrados</button></div></div>
+          {loadError?<div className="status-panel" role="alert">{loadError}</div>:!snapshot?<div className="status-panel">Carregando inventário…</div>:snapshot.status==="pending"?<div className="status-panel">Snapshot ainda não importado. <Out href={inventorySheet}>Consultar planilha</Out></div>:view==="cards"?<div className="inventory-cards">{filtered.map(item=><article key={item.tag} className="inventory-card"><div className="catalog-image"><ComponentImage item={item} onOpen={setPreview}/></div><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button><span>{item.tag} · Camada {item.layer}</span><span>{item.subsystem} · {item.pcb||"Sem referência PCB"}</span><p>{item.function}</p></article>)}{!filtered.length&&<p>Nenhum componente encontrado para os filtros atuais.</p>}</div>:<div className="inventory-table-shell"><table className="inventory-table"><thead><tr>{["Tag","Imagem","Componente","Ref. PCB","Subsistema","Qtde","Modelo / valor","Função"].map(x=><th key={x} scope="col">{x}</th>)}</tr></thead><tbody>{filtered.map(item=><tr key={item.tag}><td><button className="plain-link" onClick={e=>openItem(item,e.currentTarget)}>{item.tag}</button></td><td><div className="table-photo"><ComponentImage item={item} onOpen={setPreview}/></div></td><td><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button></td><td>{item.pcb||"—"}</td><td>{item.subsystem}</td><td>{item.quantity||"—"}</td><td>{item.model||"—"}</td><td>{item.function}</td></tr>)}</tbody></table>{!filtered.length&&<div className="status-panel">Nenhum componente encontrado para os filtros atuais.</div>}</div>}
         </div> : page==="fluxo" ? <FlowPage base={base} onInspect={openStep} onPcb={step=>seePcb(step.pcbTag)} onGallery={openFlowGallery} activeStepId={selectedFlow?.id}/> : page==="guia" ? <Guide base={base} onMedia={(url,title)=>setPreview({url,title})}/> : page==="fundamentos" ? <Fundamentals/> : page==="artigos" ? <Articles/> : page==="revisao" ? <Literature/> : page==="sobre" ? <AboutPage/> : <References base={base} onInspect={openReference}/>}
       </div>}
         </div>

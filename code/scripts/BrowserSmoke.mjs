@@ -84,9 +84,38 @@ try {
   await page.waitForFunction(() => !document.fullscreenElement && !document.querySelector(".full-fallback"), undefined, {timeout: 8000});
 
   await page.getByRole("button", { name: "Inventário", exact: true }).click();
-  await page.getByText("33 de 33 itens", { exact: false }).waitFor();
+  await page.getByText("79 de 79 itens", { exact: false }).waitFor();
+  assert.equal(await page.getByRole("searchbox").count(), 1);
+  assert.equal(await page.locator(".inventory-card").count(),79);
+  await page.getByRole("button", {name:"Camada A",exact:true}).click();
+  assert.equal(await page.locator(".inventory-card").count(),10);
+  await page.locator(".inventory-card .plain-link").first().click();
+  await page.getByRole("button",{name:"Ver componentes deste subsistema"}).click();
+  assert(await page.locator(".inventory-card").count()>0);
+  await page.locator(".inventory-card .plain-link").first().click();
+  await page.getByRole("button",{name:"Ver subsistema responsável"}).click();
+  await page.getByRole("button",{name:"Fechar inspetor"}).click();
+  await page.getByRole("button",{name:"Limpar filtros"}).click();
+  await page.getByRole("button", {name:"Camada B",exact:true}).click();
+  assert.equal(await page.locator(".inventory-card").count(),69);
+  assert(await page.getByRole("button",{name:"Camada C · Em breve"}).isDisabled());
+  await page.getByRole("button",{name:"Limpar filtros"}).click();
+  await page.getByLabel("Face da PCB",{exact:true}).selectOption("Verso");
+  assert.equal(await page.locator(".inventory-card").count(),7);
+  await page.getByRole("button",{name:"Limpar filtros"}).click();
+  await page.getByRole("button",{name:"☷ Lista"}).click();
+  assert.equal(await page.locator(".inventory-table tbody tr").count(),79);
+  await page.getByRole("button",{name:"Explorar",exact:true}).click();
+  await page.getByRole("button",{name:"Inventário",exact:true}).click();
+  assert.equal(await page.locator(".inventory-table tbody tr").count(),79);
+  assert((await page.getByRole("link",{name:"Abrir no Google Planilhas"}).getAttribute("href")).includes("gid=2026110901"));
+  await page.getByRole("searchbox").fill("UG-V1-0001");
+  await page.locator(".inventory-table").getByRole("button",{name:"UG-V1-0001",exact:true}).click();
+  await page.getByRole("button",{name:/UG-V1-0002.*vista histórica/}).click();
+  await page.getByRole("complementary",{name:/Painel de informações: PCB — face frontal/}).waitFor();
+  await page.getByRole("button",{name:"Fechar inspetor"}).click();
   await page.getByRole("searchbox").fill("UG-V1-0028");
-  await page.getByText("1 de 33 itens", { exact: false }).waitFor();
+  await page.getByText("1 de 79 itens", { exact: false }).waitFor();
   const expectedDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "CSV · filtrados" }).click();
   assert.equal((await expectedDownload).suggestedFilename(), "UncutGemV1Filtrado.csv");
@@ -145,7 +174,7 @@ try {
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).click();
   await page.screenshot({path:join(shots,"NvLabV01MobileInspector.png"),fullPage:true});
   assert.equal(errors.length,0,"Erros JavaScript: "+errors.join("; "));
-  console.log("PASS: sidebar, inspector reflow, 33 real records, CSV, 9 tabs, references, mobile, image crop, zoom and fullscreen.");
+  console.log("PASS: sidebar, inspector reflow, 79 canonical records, CSV, 9 tabs, references, mobile, image crop, zoom and fullscreen.");
 } finally {
   await browser.close();
 }

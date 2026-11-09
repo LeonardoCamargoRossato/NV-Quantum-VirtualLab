@@ -28,6 +28,7 @@ jobs:
           python-version: '3.12'
       - run: npm ci
         working-directory: code
+      - run: python code/scripts/consolidate_inventory.py --check
       - run: npm test && npm run build
         working-directory: code
       - run: python -m unittest discover -s code/tests -p 'test_*.py' -v
@@ -37,12 +38,12 @@ jobs:
         run: |
           python - <<'PY'
           import json, os
-          data = json.load(open('code/public/data/InventoryV1.json'))
+          data = json.load(open('code/source/InventoryV1.json'))
           tags = [item['tag'] for item in data['items']]
-          ready = data['status'] == 'validated' and len(tags) == 33 and set(tags) == {f'UG-V1-{i:04d}' for i in range(1,34)} and bool(data.get('snapshotAt')) and bool(data.get('sourceSha256'))
+          ready = data['status'] == 'validated' and len(tags) == len(set(tags)) == 79 and sum(i['layer'] == 'A' for i in data['items']) == 10 and sum(i['layer'] == 'B' for i in data['items']) == 69 and bool(data.get('snapshotAt')) and bool(data.get('sourceSha256'))
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write('publishable=' + str(ready).lower() + '\n')
-          print('Inventário validado; publicação permitida.' if ready else 'Publicação pendente: importar 33 registros reais autorizados.')
+          print('Inventário validado; publicação permitida.' if ready else 'Publicação pendente: validar catálogo canônico de 79 registros.')
           PY
       - name: Verificar recortes fotográficos no pacote que será publicado
         shell: bash

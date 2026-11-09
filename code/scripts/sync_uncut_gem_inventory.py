@@ -60,7 +60,7 @@ def parse_csv(text: str) -> list[dict[str, str]]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('csv', type=Path)
-    parser.add_argument('--output', type=Path, default=Path(__file__).resolve().parents[1] / 'public/data/InventoryV1.json')
+    parser.add_argument('--output', type=Path, default=Path(__file__).resolve().parents[1] / 'source/legacy/InventoryV1Legacy.json')
     parser.add_argument('--allow-public-snapshot', action='store_true', help='Confirmar autorização para publicar os campos aprovados desta exportação')
     args = parser.parse_args()
     if not args.allow_public_snapshot:

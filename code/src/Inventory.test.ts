@@ -7,6 +7,7 @@ import {
   type Item,
 } from "./Inventory";
 const item: Item = {
+  category:"componente", layer:"B", parent:"Óptica", parentTag:"UG-V1-S01", legacyTag:"UG-V1-0001", face:"Frente", imageFormula:"",
   tag: "UG-V1-0001",
   name: "Amplificador",
   pcb: "U1",
@@ -24,7 +25,7 @@ const item: Item = {
 };
 describe("inventário V1", () => {
   it("busca sem acentos e combina filtros", () => {
-    expect(filterItems([item], "optica", "", "")).toHaveLength(0);
+    expect(filterItems([item], "optica", "", "")).toHaveLength(1);
     expect(filterItems([item], "bpw", "Óptica", "Diagrama")).toHaveLength(1);
     expect(filterItems([item], "bpw", "RF", "")).toHaveLength(0);
   });
@@ -41,10 +42,10 @@ describe("inventário V1", () => {
   });
   it("rejeita snapshot validado incompleto e não confunde pendente com validado", () => {
     expect(() =>
-      validateSnapshot({ schemaVersion: 1, status: "validated", items: [] }),
+      validateSnapshot({ schemaVersion: 2, status: "validated", items: [] }),
     ).toThrow();
     expect(
-      validateSnapshot({ schemaVersion: 1, status: "pending", items: [] })
+      validateSnapshot({ schemaVersion: 2, status: "pending", items: [] })
         .status,
     ).toBe("pending");
   });
