@@ -28,6 +28,7 @@ jobs:
           python-version: '3.12'
       - run: npm ci
         working-directory: code
+      - run: python code/scripts/migrate_inventory_workbook.py --verify-only
       - run: python code/scripts/consolidate_inventory.py --check
       - run: npm test && npm run build
         working-directory: code
@@ -40,7 +41,7 @@ jobs:
           import json, os
           data = json.load(open('code/source/InventoryV1.json'))
           tags = [item['tag'] for item in data['items']]
-          ready = data['status'] == 'validated' and len(tags) == len(set(tags)) == 79 and sum(i['layer'] == 'A' for i in data['items']) == 10 and sum(i['layer'] == 'B' for i in data['items']) == 69 and bool(data.get('snapshotAt')) and bool(data.get('sourceSha256'))
+          ready = data['schemaVersion'] == 3 and 'legacyItems' not in data and 'legacyOnlyTags' not in data and data['status'] == 'validated' and len(tags) == len(set(tags)) == 79 and sum(i['layer'] == 'A' for i in data['items']) == 10 and sum(i['layer'] == 'B' for i in data['items']) == 69 and bool(data.get('snapshotAt')) and bool(data.get('sourceSha256'))
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write('publishable=' + str(ready).lower() + '\n')
           print('Inventário validado; publicação permitida.' if ready else 'Publicação pendente: validar catálogo canônico de 79 registros.')
