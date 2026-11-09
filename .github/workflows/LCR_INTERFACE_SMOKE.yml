@@ -1,0 +1,54 @@
+name: LCR Interface Smoke — V0.1
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'code/**'
+      - '.github/workflows/LCR_INTERFACE_SMOKE.yml'
+  pull_request:
+    paths:
+      - 'code/**'
+      - '.github/workflows/LCR_INTERFACE_SMOKE.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: code/package-lock.json
+      - name: Instalar dependências
+        working-directory: code
+        run: npm ci
+      - name: Instalar Chromium para Playwright
+        working-directory: code
+        run: npx playwright install --with-deps chromium
+      - name: Iniciar servidor Vite
+        working-directory: code
+        run: |
+          npm run dev -- --host 127.0.0.1 --port 4173 > /tmp/nvlab-vite.log 2>&1 &
+          for i in $(seq 1 45); do
+            if curl --silent --fail http://127.0.0.1:4173/NV-Quantum-VirtualLab/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail http://127.0.0.1:4173/NV-Quantum-VirtualLab/ > /dev/null
+      - name: Smoke visual e funcional — desktop/mobile
+        working-directory: code
+        env:
+          APP_URL: http://127.0.0.1:4173/NV-Quantum-VirtualLab/
+          SCREENSHOT_DIR: /tmp/nvlab-evidence
+        run: node scripts/BrowserSmoke.mjs
+      - name: Evidências de tela
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: V01VisualEvidence
+          path: /tmp/nvlab-evidence/*.png
+          if-no-files-found: warn
+          retention-days: 14
