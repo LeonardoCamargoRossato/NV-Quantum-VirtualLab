@@ -20,10 +20,10 @@
       "parent": "Alimentação elétrica",
       "classification": "D",
       "status": "REVISÃO",
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
+      "notes": "Imagem ilustrativa solicitada pelo usuário, representando visualmente a região micro-USB de um ESP32 e os pinos VIN, GND e 3V3. Não demonstra que o circuito real do Uncut Gem V1 tem proteção elétrica, não identifica o conector 5V_SUPP1 (2×3) da placa DiamondGeezer e não permite atribuir duas saídas 5V ao hardware original. Manter REVISÃO técnica até verificar o esquema elétrico/PCB.",
       "image": null,
-      "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-power-bank-usb-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
+      "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/illustrative/v1/components/UgV10031UsbPowerIllustrative.png",
+      "image_type": "Imagem ilustrativa controlada (gerada por IA) — entrada micro-USB e pinos VIN/GND/3V3; NÃO é foto real"
     },
     {
       "tag": "UG-V1-0013",

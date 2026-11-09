@@ -5,7 +5,7 @@
   "source_rows": "12–80 inclusive, category componente only",
   "untouched_layer_a": "rows 2–11, category subsistema",
   "producer": "code/scripts/BuildLayerBComponentImages.py",
-  "stage": "COMPLETE — published and Google Sheets sync verified",
+  "stage": "images-generated; spreadsheet synchronization performed separately",
   "items": [
     {
       "tag": "UG-V1-0031",
@@ -14,13 +14,10 @@
       "parent": "Alimentação elétrica",
       "classification": "D",
       "status": "REVISÃO",
-      "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
+      "notes": "Imagem ilustrativa solicitada pelo usuário, representando visualmente a região micro-USB de um ESP32 e os pinos VIN, GND e 3V3. Não demonstra que o circuito real do Uncut Gem V1 tem proteção elétrica, não identifica o conector 5V_SUPP1 (2×3) da placa DiamondGeezer e não permite atribuir duas saídas 5V ao hardware original. Manter REVISÃO técnica até verificar o esquema elétrico/PCB.",
       "image": null,
-      "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-power-bank-usb-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/assets/illustrative/v1/components/UgV10031UsbPowerIllustrative.png",
+      "image_type": "Imagem ilustrativa controlada (gerada por IA) — entrada micro-USB e pinos VIN/GND/3V3; NÃO é foto real"
     },
     {
       "tag": "UG-V1-0013",
@@ -42,10 +39,7 @@
       "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
       "width": 1500,
       "height": 969,
-      "bytes": 666736,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 666736
     },
     {
       "tag": "UG-V1-B001",
@@ -67,10 +61,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 320,
       "height": 280,
-      "bytes": 100633,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 100633
     },
     {
       "tag": "UG-V1-B002",
@@ -82,10 +73,7 @@
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {
       "tag": "UG-V1-B003",
@@ -97,10 +85,7 @@
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {
       "tag": "UG-V1-B004",
@@ -112,10 +97,7 @@
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {
       "tag": "UG-V1-B005",
@@ -127,10 +109,7 @@
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-ceramico-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {
       "tag": "UG-V1-B006",
@@ -142,10 +121,7 @@
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-eletrolitico-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {
       "tag": "UG-V1-B007",
@@ -157,10 +133,7 @@
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-capacitor-eletrolitico-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {
       "tag": "UG-V1-0004",
@@ -182,10 +155,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 1088,
       "height": 620,
-      "bytes": 811124,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 811124
     },
     {
       "tag": "UG-V1-B008",
@@ -207,10 +177,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 432,
       "height": 398,
-      "bytes": 201044,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 201044
     },
     {
       "tag": "UG-V1-B009",
@@ -232,10 +199,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 154,
       "height": 194,
-      "bytes": 36339,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 36339
     },
     {
       "tag": "UG-V1-B010",
@@ -257,10 +221,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 166,
       "height": 174,
-      "bytes": 36897,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 36897
     },
     {
       "tag": "UG-V1-B011",
@@ -282,10 +243,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 220,
       "height": 326,
-      "bytes": 96110,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 96110
     },
     {
       "tag": "UG-V1-B012",
@@ -307,10 +265,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 832,
       "height": 618,
-      "bytes": 631749,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 631749
     },
     {
       "tag": "UG-V1-B013",
@@ -332,10 +287,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 234,
       "height": 328,
-      "bytes": 93831,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 93831
     },
     {
       "tag": "UG-V1-B014",
@@ -357,10 +309,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 528,
       "height": 514,
-      "bytes": 317394,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 317394
     },
     {
       "tag": "UG-V1-0022",
@@ -382,10 +331,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 644,
       "height": 288,
-      "bytes": 195586,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 195586
     },
     {
       "tag": "UG-V1-B015",
@@ -407,10 +353,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 312,
       "height": 188,
-      "bytes": 72105,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 72105
     },
     {
       "tag": "UG-V1-B016",
@@ -432,10 +375,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 504,
       "height": 732,
-      "bytes": 375280,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 375280
     },
     {
       "tag": "UG-V1-B017",
@@ -457,10 +397,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 648,
       "height": 336,
-      "bytes": 221056,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 221056
     },
     {
       "tag": "UG-V1-0018",
@@ -482,10 +419,7 @@
       "source_hash": "2ecebd560a1e1b3e6e3b639c1510e74392c3e1a8711c7c50df85eb7bfc911bd2",
       "width": 1032,
       "height": 751,
-      "bytes": 799723,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 799723
     },
     {
       "tag": "UG-V1-0017",
@@ -507,10 +441,7 @@
       "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
       "width": 1500,
       "height": 969,
-      "bytes": 666736,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 666736
     },
     {
       "tag": "UG-V1-B018",
@@ -532,10 +463,7 @@
       "source_hash": "2ecebd560a1e1b3e6e3b639c1510e74392c3e1a8711c7c50df85eb7bfc911bd2",
       "width": 1032,
       "height": 751,
-      "bytes": 799723,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 799723
     },
     {
       "tag": "UG-V1-B019",
@@ -557,10 +485,7 @@
       "source_hash": "2ecebd560a1e1b3e6e3b639c1510e74392c3e1a8711c7c50df85eb7bfc911bd2",
       "width": 1032,
       "height": 751,
-      "bytes": 799723,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 799723
     },
     {
       "tag": "UG-V1-B020",
@@ -582,10 +507,7 @@
       "source_hash": "2ecebd560a1e1b3e6e3b639c1510e74392c3e1a8711c7c50df85eb7bfc911bd2",
       "width": 1195,
       "height": 702,
-      "bytes": 872885,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 872885
     },
     {
       "tag": "UG-V1-0019",
@@ -607,10 +529,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 1062,
       "height": 496,
-      "bytes": 628330,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 628330
     },
     {
       "tag": "UG-V1-B021",
@@ -632,10 +551,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 624,
       "height": 430,
-      "bytes": 339183,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 339183
     },
     {
       "tag": "UG-V1-B022",
@@ -657,10 +573,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 298,
       "height": 330,
-      "bytes": 104101,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 104101
     },
     {
       "tag": "UG-V1-B023",
@@ -682,10 +595,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 376,
       "height": 354,
-      "bytes": 164858,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 164858
     },
     {
       "tag": "UG-V1-B024",
@@ -707,10 +617,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 380,
       "height": 522,
-      "bytes": 247921,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 247921
     },
     {
       "tag": "UG-V1-B025",
@@ -732,10 +639,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 468,
       "height": 274,
-      "bytes": 160442,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 160442
     },
     {
       "tag": "UG-V1-0020",
@@ -757,10 +661,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 952,
       "height": 1008,
-      "bytes": 1015488,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 1015488
     },
     {
       "tag": "UG-V1-0021",
@@ -782,10 +683,7 @@
       "source_hash": "f689acf7eb9952ce684f10d9cc4265fa614c45a5951e37c1cb7b07fa4e5fb08f",
       "width": 1300,
       "height": 648,
-      "bytes": 49267,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 49267
     },
     {
       "tag": "UG-V1-B026",
@@ -807,10 +705,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 556,
       "height": 572,
-      "bytes": 374247,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 374247
     },
     {
       "tag": "UG-V1-B027",
@@ -832,10 +727,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 1138,
       "height": 1128,
-      "bytes": 1332895,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 1332895
     },
     {
       "tag": "UG-V1-0023",
@@ -857,10 +749,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 496,
       "height": 484,
-      "bytes": 279137,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 279137
     },
     {
       "tag": "UG-V1-0024",
@@ -882,10 +771,7 @@
       "source_hash": "f689acf7eb9952ce684f10d9cc4265fa614c45a5951e37c1cb7b07fa4e5fb08f",
       "width": 1300,
       "height": 648,
-      "bytes": 49267,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 49267
     },
     {
       "tag": "UG-V1-0027",
@@ -907,10 +793,7 @@
       "source_hash": "a845bd9ff61fb2c7631ae13e5292a4fee1502ba0418a2c5795c1c4ca03fd102f",
       "width": 1300,
       "height": 648,
-      "bytes": 72628,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 72628
     },
     {
       "tag": "UG-V1-0028",
@@ -932,10 +815,7 @@
       "source_hash": "a845bd9ff61fb2c7631ae13e5292a4fee1502ba0418a2c5795c1c4ca03fd102f",
       "width": 1300,
       "height": 648,
-      "bytes": 72628,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 72628
     },
     {
       "tag": "UG-V1-0025",
@@ -957,10 +837,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 460,
       "height": 406,
-      "bytes": 231450,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 231450
     },
     {
       "tag": "UG-V1-0026",
@@ -982,10 +859,7 @@
       "source_hash": "f689acf7eb9952ce684f10d9cc4265fa614c45a5951e37c1cb7b07fa4e5fb08f",
       "width": 1300,
       "height": 648,
-      "bytes": 49267,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 49267
     },
     {
       "tag": "UG-V1-0016",
@@ -1007,10 +881,7 @@
       "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
       "width": 1500,
       "height": 969,
-      "bytes": 666736,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 666736
     },
     {
       "tag": "UG-V1-B028",
@@ -1032,10 +903,7 @@
       "source_hash": "a845bd9ff61fb2c7631ae13e5292a4fee1502ba0418a2c5795c1c4ca03fd102f",
       "width": 1300,
       "height": 648,
-      "bytes": 72628,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 72628
     },
     {
       "tag": "UG-V1-0005",
@@ -1057,10 +925,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 220,
       "height": 240,
-      "bytes": 62303,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 62303
     },
     {
       "tag": "UG-V1-0015",
@@ -1082,10 +947,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 192,
       "height": 226,
-      "bytes": 64376,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 64376
     },
     {
       "tag": "UG-V1-B029",
@@ -1107,10 +969,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 212,
       "height": 144,
-      "bytes": 38256,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 38256
     },
     {
       "tag": "UG-V1-B030",
@@ -1132,10 +991,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 224,
       "height": 98,
-      "bytes": 28765,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 28765
     },
     {
       "tag": "UG-V1-B031",
@@ -1157,10 +1013,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 220,
       "height": 114,
-      "bytes": 33461,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 33461
     },
     {
       "tag": "UG-V1-B032",
@@ -1182,10 +1035,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 162,
       "height": 250,
-      "bytes": 51177,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 51177
     },
     {
       "tag": "UG-V1-B033",
@@ -1207,10 +1057,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 168,
       "height": 244,
-      "bytes": 57032,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 57032
     },
     {
       "tag": "UG-V1-B034",
@@ -1232,10 +1079,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 140,
       "height": 154,
-      "bytes": 29798,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 29798
     },
     {
       "tag": "UG-V1-B035",
@@ -1257,10 +1101,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 158,
       "height": 156,
-      "bytes": 25236,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 25236
     },
     {
       "tag": "UG-V1-B036",
@@ -1282,10 +1123,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 186,
       "height": 158,
-      "bytes": 32359,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 32359
     },
     {
       "tag": "UG-V1-B037",
@@ -1307,10 +1145,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 174,
       "height": 120,
-      "bytes": 25553,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 25553
     },
     {
       "tag": "UG-V1-0030",
@@ -1332,10 +1167,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 812,
       "height": 762,
-      "bytes": 542647,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 542647
     },
     {
       "tag": "UG-V1-0014",
@@ -1357,10 +1189,7 @@
       "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
       "width": 1500,
       "height": 969,
-      "bytes": 666736,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 666736
     },
     {
       "tag": "UG-V1-B038",
@@ -1382,10 +1211,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 686,
       "height": 466,
-      "bytes": 268562,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 268562
     },
     {
       "tag": "UG-V1-B039",
@@ -1407,10 +1233,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 794,
       "height": 714,
-      "bytes": 496880,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 496880
     },
     {
       "tag": "UG-V1-B040",
@@ -1432,10 +1255,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 480,
       "height": 184,
-      "bytes": 101081,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 101081
     },
     {
       "tag": "UG-V1-0001",
@@ -1457,10 +1277,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 952,
       "height": 939,
-      "bytes": 1376809,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 1376809
     },
     {
       "tag": "UG-V1-0033",
@@ -1482,10 +1299,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 764,
       "height": 584,
-      "bytes": 546500,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 546500
     },
     {
       "tag": "UG-V1-0029",
@@ -1507,10 +1321,7 @@
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
       "width": 716,
       "height": 602,
-      "bytes": 494302,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 494302
     },
     {
       "tag": "UG-V1-0032",
@@ -1522,10 +1333,7 @@
       "notes": "Não há identificação física individual confirmada no conjunto. Preservada a imagem pré-existente como ilustração genérica, sem afirmar identidade, valor ou posicionamento; conferir BOM, KiCad e revisão física.",
       "image": null,
       "preserved_existing_url": "https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/assets/components/illustrative/ug-v1-ima-neodimio-disco-ilustrativo.png",
-      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original.",
-      "sheet_sync": "CHECK",
-      "image_cell_updated": false,
-      "notes_cell_updated": true
+      "image_type": "Imagem gerada por IA — ilustrativa; não corresponde necessariamente ao modelo original."
     },
     {
       "tag": "UG-V1-B041",
@@ -1547,10 +1355,7 @@
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
       "width": 1500,
       "height": 969,
-      "bytes": 656967,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 656967
     },
     {
       "tag": "UG-V1-B042",
@@ -1572,10 +1377,7 @@
       "source_hash": "ab85553dcf0c101f707a6f7d87f2c10ab75266f9e0f9050e757937dfd678c196",
       "width": 1500,
       "height": 969,
-      "bytes": 666736,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 666736
     },
     {
       "tag": "UG-V1-B043",
@@ -1597,10 +1399,7 @@
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
       "width": 1500,
       "height": 969,
-      "bytes": 656967,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 656967
     },
     {
       "tag": "UG-V1-B044",
@@ -1622,10 +1421,7 @@
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
       "width": 1500,
       "height": 969,
-      "bytes": 656967,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 656967
     },
     {
       "tag": "UG-V1-B045",
@@ -1647,51 +1443,7 @@
       "source_hash": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
       "width": 1500,
       "height": 969,
-      "bytes": 656967,
-      "sheet_sync": "CHECK",
-      "image_cell_updated": true,
-      "notes_cell_updated": true
+      "bytes": 656967
     }
-  ],
-  "sheet_sync": {
-    "status": "CHECK",
-    "verified_at": "2026-11-09",
-    "sheet_id": "158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU",
-    "sheet_gid": 2026110901,
-    "range": "A12:Q80",
-    "updated_rows": 69,
-    "with_new_images": 61,
-    "preserved_images_in_review": 8,
-    "batches": [
-      {
-        "rows": "12–21",
-        "status": "CHECK"
-      },
-      {
-        "rows": "22–31",
-        "status": "CHECK"
-      },
-      {
-        "rows": "32–41",
-        "status": "CHECK"
-      },
-      {
-        "rows": "42–51",
-        "status": "CHECK"
-      },
-      {
-        "rows": "52–61",
-        "status": "CHECK"
-      },
-      {
-        "rows": "62–71",
-        "status": "CHECK"
-      },
-      {
-        "rows": "72–80",
-        "status": "CHECK"
-      }
-    ],
-    "layer_a": "Untouched, only categories read to verify"
-  }
+  ]
 }
