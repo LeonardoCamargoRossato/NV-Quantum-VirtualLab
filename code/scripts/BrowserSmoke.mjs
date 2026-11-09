@@ -155,21 +155,23 @@ try {
   assert.equal(await page.locator(".paper-card").count(), 3);
   await page.getByRole("button", { name: "Revisão Bibliográfica" }).click();
   assert(await page.getByText("Acesso sujeito às permissões do proprietário.", { exact:false }).isVisible());
-  await page.getByRole("button", { name: "Referências" }).click();
+  await page.getByRole("button", { name: "Referências Diretas Virtual Lab" }).click();
+  assert(await page.getByRole("button",{name:"Referências Diretas Virtual Lab"}).evaluate(el=>getComputedStyle(el).whiteSpace==="normal"),"A sidebar deve permitir o rótulo em duas linhas");
   assert.equal(await page.locator(".reference-triptych .preview-card").count(), 3);
   await page.getByRole("button", {name:"Inspecionar referência"}).click();
   assert(await page.getByRole("complementary",{name:/Painel de informações: Uncut Gem/}).isVisible());
   await page.getByRole("button",{name:"Fechar inspetor"}).click();
   await page.getByRole("button", {name:"Sobre o Projeto"}).click();
   await page.getByRole("heading",{name:"Sobre o Projeto"}).waitFor();
-  await page.getByRole("button", {name:"Referências"}).click();
+  await page.getByRole("button", {name:"Referências Diretas Virtual Lab"}).click();
 
   await page.screenshot({ path: join(shots,"NvLabV01References.png"), fullPage: true });
 
   await page.setViewportSize({width:390,height:844});
   await page.reload({waitUntil:"domcontentloaded"});
-  await page.getByRole("heading", {name:"Referências"}).waitFor();
-  assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "Sem overflow horizontal no mobile");
+  await page.getByRole("heading", {name:"Referências Diretas Virtual Lab"}).waitFor();
+  assert(await page.getByRole("button",{name:"Referências Diretas Virtual Lab"}).count()===1,"Menu de fontes diretas precisa existir");
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "Sem overflow horizontal no mobile");
   await page.getByRole("button", {name:"Abrir menu lateral"}).click();
   await page.getByRole("button", {name:"Laboratório",exact:true}).click();
   await page.getByRole("button", {name:"Uncut Gem V1",exact:true}).click();
