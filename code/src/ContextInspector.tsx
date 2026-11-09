@@ -26,7 +26,6 @@ type Props = {
   refTarget:React.RefObject<HTMLElement | null>;
   base:string;
   items:Item[];
-  legacyItems:Item[];
   onOpenItem:(tag:string)=>void;
   onChildren:(tag:string)=>void;
 };
@@ -34,7 +33,7 @@ function Link({href,children}: {href:string;children:React.ReactNode}) {
   return safeUrl(href)?<a href={href} target="_blank" rel="noopener noreferrer">{children} ↗</a>:null;
 }
 /** Um único inspetor contextual utilizado por PCB, inventário, fluxo e referências. */
-export function ContextInspector({selection,expanded,onExpand,onClose,onSeePcb,renderComponent,onOpenFlowImage,refTarget,base,items,legacyItems,onOpenItem,onChildren}:Props) {
+export function ContextInspector({selection,expanded,onExpand,onClose,onSeePcb,renderComponent,onOpenFlowImage,refTarget,base,items,onOpenItem,onChildren}:Props) {
   const isComponent=selection.kind==="component";
   const isFlow=selection.kind==="flow";
   const title=isComponent?selection.item.name:isFlow?selection.step.title:selection.reference.title;
@@ -49,7 +48,7 @@ export function ContextInspector({selection,expanded,onExpand,onClose,onSeePcb,r
         {renderComponent(selection.item)}
         <dl className="field-list">{(Object.keys(fields) as (keyof Item)[]).filter(k=>!["tag","name","imageUrl","source","datasheet"].includes(k)).map(k=><div key={k}><dt>{fields[k]}</dt><dd>{selection.item[k]||"Não documentado"}</dd></div>)}</dl>
         <p className="visual-note">{selection.item.source}</p><div className="source-line"><Link href={selection.item.source}>Fonte técnica</Link><Link href={selection.item.datasheet}>Datasheet</Link><Link href={selection.item.imageUrl}>Imagem do inventário</Link></div>
-        <div className="hierarchy-navigation">{selection.item.tag==="UG-V1-0001"&&legacyItems.filter(i=>["UG-V1-0002","UG-V1-0003"].includes(i.tag)).map(i=><button key={i.tag} onClick={()=>onOpenItem(i.tag)}>{i.tag} · {i.name} (vista histórica da PCB)</button>)}{selection.item.parentTag&&<button onClick={()=>onOpenItem(selection.item.parentTag)}>Ver subsistema responsável</button>}{selection.item.layer==="A"&&<><button onClick={()=>onChildren(selection.item.tag)}>Ver componentes deste subsistema</button>{items.filter(i=>i.parentTag===selection.item.tag).map(i=><button key={i.tag} onClick={()=>onOpenItem(i.tag)}>{i.tag} · {i.name}</button>)}</>}</div>
+        <div className="hierarchy-navigation">{selection.item.tag==="UG-V1-0001"&&items.filter(i=>["UG-V1-B041","UG-V1-B042"].includes(i.tag)).map(i=><button key={i.tag} onClick={()=>onOpenItem(i.tag)}>{i.tag} · {i.name} (vista canônica da PCB)</button>)}{selection.item.parentTag&&<button onClick={()=>onOpenItem(selection.item.parentTag)}>Ver subsistema responsável</button>}{selection.item.layer==="A"&&<><button onClick={()=>onChildren(selection.item.tag)}>Ver componentes deste subsistema</button>{items.filter(i=>i.parentTag===selection.item.tag).map(i=><button key={i.tag} onClick={()=>onOpenItem(i.tag)}>{i.tag} · {i.name}</button>)}</>}</div>
         <p className="price-disclaimer">Os preços do inventário são referências históricas, não cotações atuais.</p>
         <button type="button" className="inspector-pcb-link" onClick={()=>onSeePcb(selection.item.tag)}>
           Ver na PCB
