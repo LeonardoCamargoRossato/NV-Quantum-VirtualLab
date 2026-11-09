@@ -229,3 +229,102 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 .enhanced-gallery-card span{font-size:10px;color:#64748B;line-height:1.55}
 @media(max-width:1050px){.enhanced-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:500px){.enhanced-gallery{padding:12px}.enhanced-gallery-grid{gap:8px}.enhanced-gallery-card img{height:100px}}
+
+
+/* Shared contextual workspace: PCB, inventory, study flow and references use one inspector. */
+.workspace-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:0;min-width:0;flex:1;align-items:start}
+.workspace-layout.has-inspector{grid-template-columns:minmax(260px,335px) minmax(0,1fr);column-gap:0}
+.workspace-layout.wide-inspector{grid-template-columns:minmax(350px,445px) minmax(0,1fr)}
+.workspace-primary{min-width:0;min-height:0}
+.workspace-layout>.inspector{margin:21px 0 15px 18px;position:sticky;top:16px;max-height:calc(100dvh - 33px);min-height:390px;z-index:7}
+.workspace-layout.has-inspector .workbench-page{padding-left:16px}
+.workspace-layout.has-inspector .content-page{padding-left:18px}
+.workspace-layout .work-area{display:grid;grid-template-columns:minmax(0,1fr)}
+.context-inspector .context-explanation{font-size:12px;line-height:1.85;color:#45536B}
+.context-inspector h3{font-size:12px;color:var(--ita-blue);margin:20px 0 8px}
+.context-photo-button{display:block;position:relative;background:#EDF1F6;width:100%;padding:6px;overflow:hidden;border-radius:9px}
+.context-photo-button img{display:block;max-width:100%;height:min(220px,32vh);margin:auto;object-fit:contain}
+.context-photo-button>span{display:block;font-size:10px;margin:6px 0;color:var(--ita-blue);font-weight:700}
+.related-tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 16px}
+.inspector-pcb-link{width:100%;background:var(--ita-blue);color:white;border-color:var(--ita-blue);font-size:12px;font-weight:750;margin-top:7px;padding:12px}
+.inspector-pcb-link:hover{background:#245282}
+.reference-inspector-links{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;font-size:12px;font-weight:700}
+.reference-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.reference-actions button{background:var(--ita-blue);border-color:var(--ita-blue);color:#fff;font-size:11px;font-weight:750;padding:12px}
+.reference-actions>a{padding:12px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:11px;font-weight:700}
+.gallery-navigation{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;border-top:1px solid var(--line);background:#FAFBFD}
+.gallery-navigation span{color:var(--ita-blue);font-size:12px;font-weight:800}
+.gallery-navigation button{color:var(--ita-blue);font-size:12px;font-weight:800}
+
+/* Flow diagram: true optical + microwave parallel branches converge on NV diamond. */
+.flow-page{max-width:1420px}
+.flow-key{display:flex;gap:8px;flex-wrap:wrap;margin:-3px 0 23px}
+.flow-key span{font-size:10px;font-weight:750;background:#EDF1F8;border:1px solid #DAE2EE;color:var(--ita-blue);padding:7px 11px;border-radius:20px}
+.flow-key .key-optical{background:#EFF7E9;border-color:#CDE5BB;color:#376A26}
+.flow-key .key-rf{background:#F1F2FA;border-color:#D4D8F0;color:#4F5698}
+.flow-step{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:22px;padding:20px 22px;background:#fff;border:1px solid #DCE3EC;border-radius:12px;min-width:0;align-items:center;transition:border .15s ease}
+.flow-step:hover{border-color:#A3B3C9}
+.flow-step.flow-step-active{border-color:var(--ita-red);box-shadow:0 0 0 2px #B91C1C12}
+.flow-copy,.flow-media{min-width:0}
+.flow-numeral{font-size:10px;font-weight:850;letter-spacing:1.2px;color:var(--ita-red)}
+.flow-title-button{text-align:left;display:block;padding:0;margin:10px 0 8px;outline-offset:5px;border:0;background:transparent;color:var(--ink)}
+.flow-title-button:hover{text-decoration:underline;text-decoration-color:var(--ita-red)}
+.flow-title-button h2{font-size:clamp(16px,1.55vw,20px);font-weight:760;letter-spacing:-.4px;line-height:1.3;margin:0}
+.flow-copy>p{font-size:12px;line-height:1.77;color:#5F6D83;margin:8px 0 15px}
+.flow-step-actions{display:flex;gap:8px;flex-wrap:wrap}
+.flow-step-actions button{font-size:11px;font-weight:760;padding:9px 11px;border:1px solid #D2DAE6}
+.flow-step-actions button:first-child{background:#F2F5F9;color:var(--ita-blue)}
+.flow-step-actions .flow-pcb-link{background:var(--ita-blue);color:#fff;border-color:var(--ita-blue)}
+.flow-image-open{display:block;position:relative;padding:0;width:100%;height:165px;overflow:hidden;border-radius:9px;background:#E9EEF3;border:1px solid #DFE6EF}
+.flow-image-open img{display:block;width:100%;height:100%;object-fit:contain}
+.flow-zoom-badge{position:absolute;bottom:7px;right:7px;border-radius:6px;background:#FFFFFFE9;padding:5px 10px;color:var(--ita-blue);font-size:18px}
+.flow-credit{display:flex;flex-wrap:wrap;gap:4px 9px;font-size:10px;color:#728098;line-height:1.4;margin-top:9px}
+.flow-credit strong{font-size:9px;letter-spacing:.2px;color:var(--ita-blue);white-space:nowrap}
+.flow-down{text-align:center;font-size:30px;height:53px;line-height:53px;color:var(--ita-red);font-weight:800}
+.flow-branches{padding:16px;border-radius:13px;background:#F2F5FA;border:1px solid #E2E7EF}
+.flow-branch-label{text-align:center;color:var(--ita-blue);font-size:12px;font-weight:800;margin:0 0 6px}
+.flow-parallel{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.flow-branch{display:flex;min-width:0;flex-direction:column}
+.flow-branch.optical .flow-step{border-top:4px solid #629B4B}
+.flow-branch.microwave .flow-step{border-top:4px solid #5966B5}
+.flow-branch .flow-step{grid-template-columns:minmax(0,1fr);flex:1}
+.flow-branch .flow-image-open{height:145px}
+.flow-branch .flow-title-button h2{font-size:17px}
+.branch-arrow{display:block;text-align:center;color:#8293AC;font-size:25px;line-height:35px;height:35px}
+.flow-converge{text-align:center;color:var(--ita-blue);font-size:12px;font-weight:800;margin:0 auto;padding:11px 12px;background:#E4EBF6;border:1px solid #D1DDED;border-radius:7px;max-width:460px}
+.flow-converge span{display:block;font-size:26px;color:var(--ita-red)}
+.flow-science-note{margin:25px 0 15px;border-left:4px solid var(--ita-blue);background:#fff;padding:18px;color:#506078;font-size:12px;line-height:1.85}
+.flow-source-line{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;font-weight:750}
+.about-lead{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:20px;align-items:center;background:white;border:1px solid var(--line);border-radius:12px;padding:26px}
+.about-lead h2{font-size:25px;letter-spacing:-.6px}.about-lead p{color:#566A84;font-size:13px;line-height:1.8}
+.about-lead figure{margin:0;min-width:0}.about-lead img{width:100%;height:235px;object-fit:contain;border-radius:8px;background:#E6EAF0}
+.about-lead figcaption{font-size:10px;color:#7D8999;margin-top:8px}
+.about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+.about-grid>section{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px}
+.about-grid h3{font-size:16px;margin:12px 0 7px}.about-grid p{color:#61708A;font-size:12px;line-height:1.75}
+.about-footer-links{display:flex;flex-wrap:wrap;gap:15px;font-size:12px;font-weight:700;margin-top:22px}
+@media(max-width:1180px){
+ .workspace-layout.has-inspector{grid-template-columns:minmax(245px,285px) minmax(0,1fr)}
+ .workspace-layout.wide-inspector{grid-template-columns:minmax(265px,330px) minmax(0,1fr)}
+ .flow-step{gap:12px;padding:16px}.flow-branches{padding:10px}
+}
+@media(max-width:800px){
+ .workspace-layout,.workspace-layout.has-inspector,.workspace-layout.wide-inspector{display:block}
+ .workspace-layout>.inspector{position:fixed;left:0;top:0;bottom:0;margin:0;width:min(390px,94vw);height:100dvh;min-height:0;max-height:100dvh;border-radius:0 12px 12px 0;z-index:78;box-shadow:8px 0 55px #16213A55}
+ .workspace-layout.has-inspector .workbench-page{padding-left:12px}
+ .workspace-layout.has-inspector .content-page{padding-left:14px}
+ .flow-parallel{grid-template-columns:1fr;gap:8px}
+ .flow-branch .flow-step{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .flow-branch .flow-image-open{height:175px}
+ .about-lead{grid-template-columns:1fr}
+ .about-grid{grid-template-columns:1fr}
+}
+@media(max-width:540px){
+ .flow-step,.flow-branch .flow-step{grid-template-columns:1fr}
+ .flow-image-open,.flow-branch .flow-image-open{height:175px}
+ .flow-branches{padding:8px}
+ .flow-branch-label{padding:10px 8px}
+ .flow-title-button h2{font-size:18px}
+ .flow-step-actions button{flex:1}
+ .about-lead{padding:18px}
+}
