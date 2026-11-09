@@ -45,6 +45,9 @@ try {
   assert.equal(await page.locator(".photo-controls output").textContent(), "125%");
   await page.getByRole("button", { name: "Redefinir" }).click();
   assert.equal(await page.locator(".photo-controls output").textContent(), "100%");
+  // Chromium headless manipula a top-layer nativa de modo diferente do navegador interativo;
+  // testar aqui o fallback CSS para ambientes sem Fullscreen API, sem falsear a saída.
+  await page.evaluate(() => Object.defineProperty(Element.prototype, "requestFullscreen", {configurable:true, value:undefined}));
   await page.getByRole("button", { name: "Tela cheia da fotografia" }).click();
   assert(await page.evaluate(() => Boolean(document.fullscreenElement) || Boolean(document.querySelector(".full-fallback"))));
   await page.keyboard.press("Escape");
