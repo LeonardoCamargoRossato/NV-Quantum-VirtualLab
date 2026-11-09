@@ -174,8 +174,14 @@ function App() {
     if(fullFallback){setFullFallback(false);return;}
     const el=photoPanelRef.current;
     if(!el)return;
-    try{if(el.requestFullscreen)await el.requestFullscreen();else setFullFallback(true)}
-    catch{setFullFallback(true)}
+    // Fallback visual imediato: a Fullscreen API pode não ser suportada ou ser negada.
+    setFullFallback(true);
+    try{
+      if(el.requestFullscreen){
+        await el.requestFullscreen();
+        if(document.fullscreenElement)setFullFallback(false);
+      }
+    }catch{ /* Mantém fullscreen visual em CSS quando a API falha. */ }
   }
   const isPhotoFull=isFull||fullFallback;
   return <div className={"app-shell"+(collapsed?" menu-collapsed":"")}>
