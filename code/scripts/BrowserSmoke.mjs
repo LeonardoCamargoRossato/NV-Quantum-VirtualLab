@@ -114,7 +114,17 @@ try {
 
   await page.getByRole("button", { name: "Inventário", exact: true }).click();
   await page.getByText("33 de 33 itens", { exact: false }).waitFor();
-  await page.getByRole("searchbox").fill("UG-V1-0028");
+  // Árvore da Camada B: capacitores, filtro por face e prévias ainda não aprovadas.
+  await page.getByRole("heading",{name:"Pesquisar componentes"}).waitFor();
+  await page.getByText("10 de 69 componentes encontrados",{exact:false}).waitFor();
+  assert.equal(await page.locator(".v1-tree-card").count(),10);
+  assert.equal(await page.locator(".v1-tree-pending").count(),6,"Os seis recortes C5–C10 ainda dependem de aprovação.");
+  await page.getByRole("combobox",{name:"Filtrar face da PCB"}).selectOption("Verso");
+  assert.equal(await page.locator(".v1-tree-card").count(),0,"Capacitores C1–C10 são da frente da PCB.");
+  await page.getByRole("combobox",{name:"Filtrar face da PCB"}).selectOption("Frente");
+  assert.equal(await page.locator(".v1-tree-card").count(),10);
+  await page.screenshot({path:join(shots,"NvLabV01CapacitorsPending.png"),fullPage:true});
+  await page.locator(".inventory-filters input[type=search]").fill("UG-V1-0028");
   await page.getByText("1 de 33 itens", { exact: false }).waitFor();
   const expectedDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "CSV · filtrados" }).click();
