@@ -14,6 +14,16 @@ const base = import.meta.env.BASE_URL;
 const sheet =
   "https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=1346018179#gid=1346018179";
 const official = "https://github.com/QuantumVillage/UncutGem";
+// Pontos verificados visualmente na fotografia oficial device-v1.png (1000 × 743).
+// Coordenadas em porcentagem da imagem; nunca da área externa que a contém.
+const hotspots = [
+  { tag: "UG-V1-0001", label: "PCB V1", x: 39, y: 39 },
+  { tag: "UG-V1-0004", label: "ESP32", x: 32, y: 76 },
+  { tag: "UG-V1-0019", label: "Amplificador RF", x: 58, y: 55 },
+  { tag: "UG-V1-0022", label: "Laser", x: 21, y: 23 },
+  { tag: "UG-V1-0023", label: "Prisma NV", x: 50, y: 25 },
+  { tag: "UG-V1-0030", label: "OLED", x: 57, y: 78 },
+] as const;
 function Link({ url, children }: { url: string; children: React.ReactNode }) {
   const safe = safeUrl(url);
   return safe ? (
@@ -58,11 +68,13 @@ function Dialog({
   onClose,
   children,
   expanded = false,
+  placement = "center",
 }: {
   title: string;
   onClose: () => void;
   children: React.ReactNode;
   expanded?: boolean;
+  placement?: "center" | "left";
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -77,7 +89,7 @@ function Dialog({
   return (
     <dialog
       ref={ref}
-      className={expanded ? "expanded" : ""}
+      className={[expanded ? "expanded" : "", placement === "left" ? "component-panel" : ""].filter(Boolean).join(" ")}
       onCancel={onClose}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -120,6 +132,19 @@ function App() {
     px: number;
     py: number;
   } | null>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [viewSize, setViewSize] = useState({ width: 0, height: 0 });
+  const [photoSize, setPhotoSize] = useState({ width: 1000, height: 743 });
+  useEffect(() => {
+    const node = viewportRef.current;
+    if (!node) return;
+    const observer = new ResizeObserver((entries) => {
+      const rect = entries[0].contentRect;
+      setViewSize({ width: rect.width, height: rect.height });
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     fetch(base + "data/InventoryV1.json")
       .then((r) => {
@@ -149,6 +174,8 @@ function App() {
     setLightbox({ url, label });
   }
   const items = snapshot?.items || [];
+  const fit = Math.max(0, Math.min(viewSize.width / photoSize.width, viewSize.height / photoSize.height));
+  const renderedPhoto = { width: photoSize.width * fit, height: photoSize.height * fit };
   const filtered = filterItems(items, query, subsystem, imageType).sort(
     (a, b) =>
       a[sort as keyof Item].localeCompare(b[sort as keyof Item], "pt-BR", {
@@ -231,6 +258,7 @@ function App() {
                   <span>Quantum Village</span>
                 </div>
                 <div
+                  ref={viewportRef}
                   className="viewport"
                   aria-label="Fotografia ampliável do Uncut Gem V1"
                   onWheel={(e) =>
@@ -264,15 +292,47 @@ function App() {
                   {photoFailed ? (
                     <p>Fotografia indisponível. Consulte o guia oficial.</p>
                   ) : (
-                    <img
-                      draggable="false"
-                      src={base + "assets/official/DeviceV1.png"}
-                      alt="Fotografia oficial da montagem completa Uncut Gem V1, com placa, módulos e conjunto óptico"
-                      onError={() => setPhotoFailed(true)}
+                    <div
+                      className="photo-stage"
                       style={{
+                        width: renderedPhoto.width,
+                        height: renderedPhoto.height,
                         transform: `translate(${pan.x}px,${pan.y}px) scale(${zoom})`,
                       }}
-                    />
+                    >
+                      <img
+                        draggable="false"
+                        src={base + "assets/official/DeviceV1.png"}
+                        alt="Fotografia oficial da montagem completa Uncut Gem V1, com placa, módulos e conjunto óptico"
+                        onError={() => setPhotoFailed(true)}
+                        onLoad={(e) => setPhotoSize({
+                          width: e.currentTarget.naturalWidth,
+                          height: e.currentTarget.naturalHeight,
+                        })}
+                      />
+                      {snapshot?.status === "validated" && hotspots.map((point) => {
+                        const component = items.find((item) => item.tag === point.tag);
+                        if (!component) return null;
+                        return (
+                          <button
+                            key={point.tag}
+                            type="button"
+                            className="photo-hotspot"
+                            style={{ left: `${point.x}%`, top: `${point.y}%` }}
+                            title={`${point.label}: ${component.name}`}
+                            aria-label={`Abrir ficha do componente ${component.name}`}
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onClick={() => {
+                              setExpanded(false);
+                              setSelected(component);
+                            }}
+                          >
+                            <span className="hotspot-dot" aria-hidden="true">+</span>
+                            <span className="hotspot-label">{point.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
                   )}
                   <div
                     className="zoom-controls"
@@ -349,9 +409,8 @@ function App() {
                   Como a montagem se organiza ↗
                 </button>
                 <p className="small-note">
-                  Hotspots pendentes: o vínculo entre posição e tag será
-                  publicado após importar o inventário e validar a
-                  correspondência visual.
+                  Selecione os seis pontos identificáveis na fotografia para abrir a ficha.
+                  Demais peças permanecem acessíveis no inventário, sem localização presumida.
                 </p>
               </aside>
             </section>
@@ -574,6 +633,7 @@ function App() {
           title={selected.name}
           onClose={() => setSelected(null)}
           expanded={expanded}
+          placement="left"
         >
           <button
             className="text-button"
@@ -581,7 +641,11 @@ function App() {
           >
             {expanded ? "Reduzir ficha" : "Expandir ficha"}
           </button>
-          <p className="eyebrow">{selected.tag} · NÃO LOCALIZADO VISUALMENTE</p>
+          <p className="eyebrow">
+            {selected.tag} · {hotspots.some((p) => p.tag === selected.tag)
+              ? "LOCALIZADO NA FOTOGRAFIA V1"
+              : "NÃO LOCALIZADO VISUALMENTE"}
+          </p>
           <Picture
             url={selected.imageUrl}
             label={selected.name}
