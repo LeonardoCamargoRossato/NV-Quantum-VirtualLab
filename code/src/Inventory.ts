@@ -34,7 +34,6 @@ export type Snapshot = {
   snapshotAt: string | null;
   sourceSha256: string | null;
   items: Item[];
-  legacyItems: Item[];
 };
 export function safeUrl(url: string): string | undefined {
   try {
@@ -50,13 +49,14 @@ export function validateSnapshot(value: unknown): Snapshot {
   const data = value as Snapshot;
   if (
     !data ||
-    data.schemaVersion !== 2 ||
+    data.schemaVersion !== 3 ||
     !Array.isArray(data.items) ||
     !["pending", "validated"].includes(data.status)
   )
     throw Error("Formato de inventário inválido");
   if (data.status === "pending" && data.items.length)
     throw Error("Snapshot pendente não deve conter registros");
+  if ("legacyItems" in data || "legacyOnlyTags" in data) throw Error("Fonte histórica não pode ser catálogo operacional");
   if (data.status === "validated") {
     if (data.items.length !== 79 || !data.snapshotAt || !data.sourceSha256 || !/^[a-f0-9]{64}$/.test(data.sourceSha256))
       throw Error("Snapshot incompleto");
