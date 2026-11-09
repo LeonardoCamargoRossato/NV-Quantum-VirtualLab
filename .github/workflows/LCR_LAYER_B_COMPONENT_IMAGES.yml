@@ -51,8 +51,19 @@ jobs:
           assert Path('code/public/assets/official/v1/subsystems/UgV1SubsystemAdf4351.png').is_file()
           print('CHECK 69/69; 67 PNGs; 2 review; zero Layer A modifications')
           PY
+      - name: Validate four-sheet canonical workbook before image-driven rebuild
+        run: python code/scripts/migrate_inventory_workbook.py --verify-only
       - name: Rebuild canonical catalog with current image evidence
         run: python code/scripts/consolidate_inventory.py
+      - name: Reject legacy repopulation
+        run: |
+          python - <<'PY'
+          import json
+          data=json.load(open("code/source/InventoryV1.json"))
+          assert data["schemaVersion"]==3 and len(data["items"])==79
+          assert "legacyItems" not in data and "legacyOnlyTags" not in data
+          print("CHECK: Layer B cannot repopulate historical inventory")
+          PY
       - name: Commit only generated Layer B files and checkpoint
         if: github.ref == 'refs/heads/main'
         run: |
