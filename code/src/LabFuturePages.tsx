@@ -9,7 +9,7 @@ export function LabFuturePage({ kind, onReturn }: Props) {
   return <div className="study-page future-lab-page">
     <SectionHeading
       eyebrow="LABORATÓRIO / PRÓXIMAS IMPLEMENTAÇÕES"
-      title={isV2 ? "Uncut Gem V2" : "Modelo 3D — Stegemann (2023)"}
+      title={isV2 ? "Uncut Gem V2" : "NV-Print 3D Stegemann"}
       subtitle={isV2
         ? "Área reservada a uma futura versão do hardware Uncut Gem."
         : "Área reservada à plataforma experimental modular impressa em 3D descrita por Stegemann e colaboradores."}
@@ -17,7 +17,7 @@ export function LabFuturePage({ kind, onReturn }: Props) {
     <div className="future-lab-panel">
       <div className="future-lab-mark" aria-hidden="true">{isV2 ? "V2" : "3D"}</div>
       <div className="future-lab-copy">
-        <span className="future-lab-status">{isV2 ? "Ainda não identificado · Ainda não implementado" : "Implementação futura"}</span>
+        <span className="future-lab-status">{isV2 ? "Ainda não identificado · Ainda não implementado" : "Implementações futuras"}</span>
         <h2>{isV2 ? "Hardware ainda não catalogado" : "Visualização tridimensional ainda não implementada"}</h2>
         <p>{isV2
           ? "Ainda não há inventário, imagens, esquema elétrico ou identificação de componentes da Uncut Gem V2 validados nesta plataforma. Nenhuma peça da versão anterior será apresentada como se pertencesse à V2."
