@@ -3,7 +3,7 @@ import {SectionHeading,Out} from "./StudyPages";
 import {parseResearchCsv,filterResearchRows} from "./ResearchCsv";
 import {
   DOCUMENT_FIGURES,RESEARCH_SHEET,RESEARCH_SHEET_PREVIEW,SCIENTOMETRIC_DOC,
-  SCIENTOMETRIC_DOC_PREVIEW,SUPPORT_DOC,SEARCH_EQUATIONS,searchResults,
+  SCIENTOMETRIC_PDF,SCIENTOMETRIC_PDF_PREVIEW,SUPPORT_DOC,SEARCH_EQUATIONS,searchResults,
   researcherDecisions,reviewMethods,RESEARCH_AUDIT_DATE,RESEARCH_SHEET_LAST_MODIFIED_UTC
 } from "./ScientometricData";
 
@@ -111,28 +111,24 @@ function PrivateSheet({expanded,onClose}:{expanded:boolean;onClose:()=>void}){
 
 function ScientometricFigures({pdfUrl,onSetPage,selectedPage}:{pdfUrl:string|null;onSetPage:(p:number|null)=>void;selectedPage:number|null}){
  const [index,setIndex]=useState(0);
- const [pageInput,setPageInput]=useState("");
+ const [pageInput,setPageInput]=useState(String(DOCUMENT_FIGURES[0].page));
  const [pageByFigure,setPageByFigure]=useState<Record<number,number>>({});
  const item=DOCUMENT_FIGURES[index];
  function next(delta:number){
    const dest=(index+DOCUMENT_FIGURES.length+delta)%DOCUMENT_FIGURES.length;
    setIndex(dest);
-   setPageInput(pageByFigure[dest]?String(pageByFigure[dest]):"");
-   onSetPage(pageByFigure[dest]??null);
+   setPageInput(String(pageByFigure[dest]??DOCUMENT_FIGURES[dest].page));
+   onSetPage(pageByFigure[dest]??DOCUMENT_FIGURES[dest].page);
  }
  return <section className="sciento-results-card sciento-figures" aria-label="Carrossel de figuras do artigo">
    <div className="sciento-result-head"><span className="overline">FIGURAS DO DOCUMENTO ORIGINAL</span><h3>Carrossel de figuras</h3></div>
    <div className="sciento-figure-navigation"><button type="button" onClick={()=>next(-1)} aria-label="Figura anterior">←</button><strong>Figura {item.number} de {DOCUMENT_FIGURES.length}</strong><button type="button" onClick={()=>next(1)} aria-label="Próxima figura">→</button></div>
    <div className="sciento-figure-image">
-     {pdfUrl&&selectedPage?<iframe title={"Página "+selectedPage+" do PDF privado"} src={pdfUrl+"#page="+selectedPage+"&view=FitH"}/>:<div className="sciento-figure-unavailable">
-       <strong>Imagem original não publicada</strong>
-       <p>As quatro figuras estão no documento científico privado. Nenhuma figura foi redesenhada, recortada por estimativa ou publicada sem confirmação do PDF e da página de origem.</p>
-       <Out href={SCIENTOMETRIC_DOC}>Ver as figuras no documento original</Out>
-     </div>}
+     <iframe title={"Figura "+item.number+" no PDF privado, página "+(selectedPage??item.page)} src={pdfUrl?pdfUrl+"#page="+(selectedPage??item.page)+"&view=FitH":SCIENTOMETRIC_PDF_PREVIEW+"#page="+item.page} loading="lazy" referrerPolicy="no-referrer"/>
    </div>
-   <div className="sciento-figure-caption"><h4>{item.title}</h4><p>{item.description}</p><span>{item.origin} · Página no PDF: {selectedPage??"a confirmar"}</span></div>
+   <div className="sciento-figure-caption"><h4>{item.title}</h4><p>{item.description}</p><span>{item.origin} · Página verificada no PDF exportado: {item.page}{selectedPage&&selectedPage!==item.page?" · página selecionada: "+selectedPage:""}</span></div>
    {pdfUrl&&<div className="sciento-page-locator"><label>Página desta figura no PDF carregado<input type="number" min="1" max="300" value={pageInput} onChange={e=>setPageInput(e.target.value)} placeholder="Ex.: 8"/></label><button type="button" onClick={()=>{const n=Number(pageInput);if(Number.isInteger(n)&&n>0&&n<=300){setPageByFigure(old=>({...old,[index]:n}));onSetPage(n)}}}>Localizar no PDF</button></div>}
-   <p className="sciento-figure-footnote">A numeração da figura é confirmada pelo artigo V0; a página física não foi identificada. O carregamento local do PDF permite indicar a página correta sem armazenar o documento no site.</p>
+   <p className="sciento-figure-footnote">Figura extraída do documento fonte em PDF privado: página {item.page}. A prévia do Google Drive exige acesso autorizado e pode ignorar o fragmento de página. Para navegar precisamente pelas figuras, carregue no navegador o PDF privado — seus dados não são enviados ao site.</p>
  </section>;
 }
 function PrivateDocument({expanded,onClose,pdfUrl,onLoadPdf,selectedPage}:{expanded:boolean;onClose:()=>void;pdfUrl:string|null;onLoadPdf:(file:File)=>void;selectedPage:number|null}){
@@ -148,8 +144,8 @@ function PrivateDocument({expanded,onClose,pdfUrl,onLoadPdf,selectedPage}:{expan
    setFullscreen(true);try{await ref.current?.requestFullscreen?.()}catch{}
  }
  return <section ref={ref} className={"sciento-results-card sciento-document"+(expanded||fullscreen?" expanded":"")} aria-label="Visualizador do documento da revisão">
-   <div className="sciento-result-head"><span className="overline">DOCUMENTO DA REVISÃO · ACESSO RESTRITO</span><h3>{pdfUrl?"PDF local da revisão":"Artigo científico original (Google Docs)"}</h3>
-    <p>{pdfUrl?"PDF selecionado permanece exclusivamente neste navegador.":"O PDF cientométrico original não foi encontrado na pasta do projeto. Esta prévia exibe o Google Doc associado, sem substituí-lo por outro PDF."}</p>
+   <div className="sciento-result-head"><span className="overline">DOCUMENTO DA REVISÃO · ACESSO RESTRITO</span><h3>{pdfUrl?"PDF local da revisão":"PDF cientométrico privado — cópia exportada do artigo V0"}</h3>
+    <p>{pdfUrl?"PDF selecionado permanece exclusivamente neste navegador.":"Cópia fiel exportada do artigo cientométrico principal em 09/11/2026, preservada com acesso restrito. Não é o PDF antigo, que não foi localizado."}</p>
    </div>
    <div className="sciento-document-actions">
      <button type="button" disabled={!expanded&&!fullscreen} onClick={()=>{void close()}}>Minimizar</button>
@@ -158,15 +154,15 @@ function PrivateDocument({expanded,onClose,pdfUrl,onLoadPdf,selectedPage}:{expan
      <input ref={inp} type="file" accept=".pdf,application/pdf" className="sciento-file-input" aria-label="Carregar PDF privado da revisão" onChange={e=>{const f=e.target.files?.[0];if(f)onLoadPdf(f);e.currentTarget.value="";}}/>
      <button type="button" onClick={()=>inp.current?.click()}>Carregar PDF local</button>
    </div>
-   <iframe key={resetKey+"-"+selectedPage} className="sciento-pdf-frame" title="Visualizador de documento cientométrico" loading="lazy" src={pdfUrl?pdfUrl+(selectedPage?"#page="+selectedPage:""):SCIENTOMETRIC_DOC_PREVIEW} referrerPolicy="no-referrer"/>
-   <div className="sciento-document-links"><Out href={SCIENTOMETRIC_DOC}>Abrir documento principal</Out><Out href={SUPPORT_DOC}>Artigo de apoio</Out><button type="button" onClick={()=>setResetKey(x=>x+1)}>Recarregar visualizador</button></div>
+   <iframe key={resetKey+"-"+selectedPage} className="sciento-pdf-frame" title="Visualizador de documento cientométrico" loading="lazy" src={pdfUrl?pdfUrl+(selectedPage?"#page="+selectedPage:""):SCIENTOMETRIC_PDF_PREVIEW+"#page="+(selectedPage??7)} referrerPolicy="no-referrer"/>
+   <div className="sciento-document-links"><Out href={SCIENTOMETRIC_PDF}>Abrir PDF privado no Drive</Out><Out href={SCIENTOMETRIC_DOC}>Abrir documento principal</Out><Out href={SUPPORT_DOC}>Artigo de apoio</Out><button type="button" onClick={()=>setResetKey(x=>x+1)}>Recarregar visualizador</button></div>
  </section>;
 }
 export function ScientometricDashboard(){
  const [sheetExpanded,setSheetExpanded]=useState(false);
  const [pdfExpanded,setPdfExpanded]=useState(false);
  const [pdfUrl,setPdfUrl]=useState<string|null>(null);
- const [selectedPage,setSelectedPage]=useState<number|null>(null);
+ const [selectedPage,setSelectedPage]=useState<number|null>(7);
  const [pdfError,setPdfError]=useState("");
  useEffect(()=>()=>{if(pdfUrl)URL.revokeObjectURL(pdfUrl)},[pdfUrl]);
  useEffect(()=>{
@@ -178,7 +174,7 @@ export function ScientometricDashboard(){
    if(file.size>35_000_000){setPdfError("PDF maior que 35 MB. Abra o documento original no Google Drive.");return;}
    setPdfError("");
    setPdfUrl(URL.createObjectURL(file));
-   setSelectedPage(null);
+   setSelectedPage(7);
  }
  return <div className="study-page sciento-dashboard">
    <SectionHeading eyebrow="ESTUDO E PESQUISA / REVISÃO BIBLIOGRÁFICA" title="Revisão Cientométrica" subtitle="Dados verificados do levantamento NV + INS (Scopus e Web of Science, 05/11/2026). Triagem documental e bibliométrica descritiva; não se trata de uma avaliação experimental de navegação."/>
@@ -199,7 +195,7 @@ export function ScientometricDashboard(){
      </article>)}</div>
      <p className="sciento-strategy-note">Consultas exploratórias amplas E2 e E3 produziram 1.974 e 2.799 resultados na Scopus, respectivamente. Esses registros não integram os 447 resultados finais e não foram misturados com o corpus analisado.</p>
    </section>
-   <section className="sciento-results"><div className="sciento-section-head"><span className="overline">RESULTADOS DOCUMENTAIS</span><h2>Resultados Cientométricos</h2><p>Figuras e documento técnico lado a lado. O documento permanece no Google Drive com as permissões originais; para um PDF local, selecione o arquivo no navegador, sem enviá-lo ao GitHub.</p></div>
+   <section className="sciento-results"><div className="sciento-section-head"><span className="overline">RESULTADOS DOCUMENTAIS</span><h2>Resultados Cientométricos</h2><p>Quatro figuras originais identificadas nas páginas 7, 8, 9 e 12 do PDF exportado do artigo V0. O arquivo está em pasta privada no Drive; a visualização depende da sua conta Google ou de uma seleção local do PDF.</p></div>
      <div className="sciento-results-grid">
        <ScientometricFigures pdfUrl={pdfUrl} onSetPage={setSelectedPage} selectedPage={selectedPage}/>
        <PrivateDocument expanded={pdfExpanded} onClose={()=>setPdfExpanded(v=>!v)} pdfUrl={pdfUrl} onLoadPdf={loadPdf} selectedPage={selectedPage}/>
