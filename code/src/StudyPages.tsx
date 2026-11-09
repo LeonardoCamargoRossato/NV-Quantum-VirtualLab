@@ -14,7 +14,7 @@ export function Out({ href, children, className = "" }: {href: string; children:
 export type Page = "explorar" | "inventario" | "fluxo" | "guia" | "uncut-v2" | "modelo3d" | "fundamentos" | "artigos" | "revisao" | "referencias" | "sobre";
 export const pageTitles: Record<Page, string> = {
   explorar: "Explorar", inventario: "Inventário", fluxo: "Entenda o Fluxo", guia: "Guia de montagem",
-  "uncut-v2": "Uncut Gem V2", modelo3d: "Modelo 3D — Stegemann (2023)",
+  "uncut-v2": "Uncut Gem V2", modelo3d: "NV-Print 3D Stegemann",
   fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Bibliográfica", referencias: "Referências", sobre: "Sobre o Projeto",
 };
 export const navigationGroups: {group:string; pages: {key:Page; icon:string}[]}[] = [
