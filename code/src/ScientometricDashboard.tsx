@@ -4,7 +4,7 @@ import {parseResearchCsv,filterResearchRows} from "./ResearchCsv";
 import {
   DOCUMENT_FIGURES,RESEARCH_SHEET,RESEARCH_SHEET_PREVIEW,SCIENTOMETRIC_DOC,
   SCIENTOMETRIC_DOC_PREVIEW,SUPPORT_DOC,SEARCH_EQUATIONS,searchResults,
-  researcherDecisions,reviewMethods,RESEARCH_AUDIT_DATE
+  researcherDecisions,reviewMethods,RESEARCH_AUDIT_DATE,RESEARCH_SHEET_LAST_MODIFIED_UTC
 } from "./ScientometricData";
 
 type DialogName="sheet"|"pdf"|null;
@@ -105,15 +105,21 @@ function PrivateSheet({expanded,onClose}:{expanded:boolean;onClose:()=>void}){
        <p className="sciento-table-status" aria-live="polite">{visible.length} de {body.length} linhas exibidas. Nenhuma alteração foi enviada ao Google Sheets.</p>
      </>}
    </div>}
-   <p className="sciento-panel-note" aria-live="polite">{sheetStatus} · Atualização do arquivo original: consulte o Google Sheets. Os indicadores agregados foram conferidos em {RESEARCH_AUDIT_DATE.split("-").reverse().join("/")}.</p>
+   <p className="sciento-panel-note" aria-live="polite">{sheetStatus} · Última modificação verificada da planilha: {new Date(RESEARCH_SHEET_LAST_MODIFIED_UTC).toLocaleString("pt-BR",{timeZone:"UTC"})} UTC. Indicadores conferidos em {RESEARCH_AUDIT_DATE.split("-").reverse().join("/")}.</p>
  </section>;
 }
 
 function ScientometricFigures({pdfUrl,onSetPage,selectedPage}:{pdfUrl:string|null;onSetPage:(p:number|null)=>void;selectedPage:number|null}){
  const [index,setIndex]=useState(0);
  const [pageInput,setPageInput]=useState("");
+ const [pageByFigure,setPageByFigure]=useState<Record<number,number>>({});
  const item=DOCUMENT_FIGURES[index];
- function next(delta:number){setIndex(i=>(i+DOCUMENT_FIGURES.length+delta)%DOCUMENT_FIGURES.length);setPageInput("");onSetPage(null);}
+ function next(delta:number){
+   const dest=(index+DOCUMENT_FIGURES.length+delta)%DOCUMENT_FIGURES.length;
+   setIndex(dest);
+   setPageInput(pageByFigure[dest]?String(pageByFigure[dest]):"");
+   onSetPage(pageByFigure[dest]??null);
+ }
  return <section className="sciento-results-card sciento-figures" aria-label="Carrossel de figuras do artigo">
    <div className="sciento-result-head"><span className="overline">FIGURAS DO DOCUMENTO ORIGINAL</span><h3>Carrossel de figuras</h3></div>
    <div className="sciento-figure-navigation"><button type="button" onClick={()=>next(-1)} aria-label="Figura anterior">←</button><strong>Figura {item.number} de {DOCUMENT_FIGURES.length}</strong><button type="button" onClick={()=>next(1)} aria-label="Próxima figura">→</button></div>
@@ -125,7 +131,7 @@ function ScientometricFigures({pdfUrl,onSetPage,selectedPage}:{pdfUrl:string|nul
      </div>}
    </div>
    <div className="sciento-figure-caption"><h4>{item.title}</h4><p>{item.description}</p><span>{item.origin} · Página no PDF: {selectedPage??"a confirmar"}</span></div>
-   {pdfUrl&&<div className="sciento-page-locator"><label>Página desta figura no PDF carregado<input type="number" min="1" max="300" value={pageInput} onChange={e=>setPageInput(e.target.value)} placeholder="Ex.: 8"/></label><button type="button" onClick={()=>{const n=Number(pageInput);if(Number.isInteger(n)&&n>0&&n<=300)onSetPage(n)}}>Localizar no PDF</button></div>}
+   {pdfUrl&&<div className="sciento-page-locator"><label>Página desta figura no PDF carregado<input type="number" min="1" max="300" value={pageInput} onChange={e=>setPageInput(e.target.value)} placeholder="Ex.: 8"/></label><button type="button" onClick={()=>{const n=Number(pageInput);if(Number.isInteger(n)&&n>0&&n<=300){setPageByFigure(old=>({...old,[index]:n}));onSetPage(n)}}}>Localizar no PDF</button></div>}
    <p className="sciento-figure-footnote">A numeração da figura é confirmada pelo artigo V0; a página física não foi identificada. O carregamento local do PDF permite indicar a página correta sem armazenar o documento no site.</p>
  </section>;
 }
