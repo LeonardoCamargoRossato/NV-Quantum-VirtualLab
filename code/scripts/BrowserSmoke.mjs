@@ -161,10 +161,45 @@ try {
   assert.equal(await researchGroup.getAttribute("aria-expanded"),"true");
   await page.getByRole("button", { name: "Fundamentos" }).click();
   assert.equal(await page.locator(".fundamental").count(), 6);
-  await page.getByRole("button", { name: "Artigos" }).click();
+  const reviewBranch=page.getByRole("button",{name:"Revisão Bibliográfica",exact:true});
+  await reviewBranch.click();
+  assert.equal(await reviewBranch.getAttribute("aria-expanded"),"true");
+  await page.getByRole("button", { name: "Artigos",exact:true }).click();
   assert.equal(await page.locator(".paper-card").count(), 3);
-  await page.getByRole("button", { name: "Revisão Bibliográfica" }).click();
-  assert(await page.getByText("Acesso sujeito às permissões do proprietário.", { exact:false }).isVisible());
+  await page.getByRole("button", { name: "Revisão Cientométrica" }).click();
+  await page.getByRole("heading",{name:"Revisão Cientométrica"}).waitFor();
+  assert.equal(await page.locator(".sciento-kpi").count(),7);
+  assert(await page.getByText("419",{exact:true}).isVisible());
+  assert(await page.getByText("245",{exact:true}).isVisible());
+  assert(await page.getByText("172",{exact:true}).isVisible());
+  assert.equal(await page.locator(".sciento-equation").count(),3);
+  assert.equal(await page.locator(".sciento-figures .sciento-figure-navigation").count(),1);
+  assert.equal(await page.getByRole("button",{name:"Copiar equação de busca"}).count(),3);
+  assert.equal(await page.getByRole("link",{name:/Abrir no Google Planilhas/}).count(),1);
+  assert.equal(await page.getByRole("button",{name:/baixar/i}).count(),0,"Sem botão de download no dashboard");
+  await page.getByRole("button",{name:"Tabela pesquisável"}).click();
+  await page.locator('input[accept=".csv,text/csv"]').setInputFiles({
+    name:"TestePrivado.csv",mimeType:"text/csv",
+    buffer:Buffer.from('Nº,Sua decisão,Título original,Autores,Palavras-chave originais\n1,Manter,Quantum magnetometer,Alice,NV centers\n2,Apoio teórico,Magnetic navigation,Bob,INS\n')
+  });
+  await page.getByText("2 de 2 linhas exibidas.",{exact:false}).waitFor();
+  await page.getByRole("searchbox",{name:/Buscar título/}).fill("Quantum");
+  await page.getByText("1 de 2 linhas exibidas.",{exact:false}).waitFor();
+  await page.getByRole("button",{name:"Expandir",exact:true}).click();
+  assert.equal(await page.locator(".sciento-sheet-panel.expanded").count(),1);
+  await page.getByRole("button",{name:"Fechar ampliação"}).click();
+  assert.equal(await page.locator(".sciento-sheet-panel.expanded").count(),0);
+  await page.getByRole("button",{name:"Figura anterior"}).click();
+  assert(await page.getByText("Figura 4 de 4",{exact:true}).isVisible());
+  await page.getByRole("button",{name:"Próxima figura"}).click();
+  assert(await page.getByText("Figura 1 de 4",{exact:true}).isVisible());
+  await page.getByRole("button",{name:"Revisão de Patentes"}).click();
+  await page.getByRole("heading",{name:"Revisão de Patentes"}).waitFor();
+  assert(await page.getByText("EM BREVE · IMPLEMENTAÇÃO FUTURA").isVisible());
+  await page.getByRole("button",{name:"Revisão Cientométrica"}).click();
+  await page.getByRole("heading",{name:"Revisão Cientométrica"}).waitFor();
+  await page.screenshot({path:join(shots,"NvLabScientometricDashboard.png"),fullPage:true});
+  console.log("PASS: review hierarchy, real aggregates, equations, in-browser CSV search and future patents.");
   await page.getByRole("button", { name: "Referências Diretas Virtual Lab" }).click();
   assert(await page.getByRole("button",{name:"Referências Diretas Virtual Lab"}).evaluate(el=>getComputedStyle(el).whiteSpace==="normal"),"A sidebar deve permitir o rótulo em duas linhas");
   assert.equal(await page.locator(".reference-triptych .preview-card").count(), 3);
