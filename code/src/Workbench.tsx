@@ -29,7 +29,7 @@ function Crop({region, title, onClick, interactive = true}: {region: PhotoRegion
   const file = ENHANCED_CROPS[region.tag];
   return <div className="crop-shell" style={style}>
     <img src={enhancedPhoto + file} draggable={false} loading="lazy"
-      alt={"Recorte aprimorado da fotografia oficial V1: " + title}
+      alt={"Recorte da fotografia do Uncut Gem V1: " + title}
       style={{width:"100%",height:"100%",position:"absolute",inset:0,objectFit:"fill"}} />
     {interactive && onClick && <button type="button" className="crop-overlay" onClick={onClick} aria-label={"Ampliar recorte real: " + title}>Ampliar recorte <span aria-hidden="true">↗</span></button>}
   </div>;
@@ -44,7 +44,7 @@ function Picture({url,label,onClick}: {url: string; label: string; onClick: (pre
 function ComponentImage({item,onOpen}: {item: Item; onOpen: (preview: ImagePreview) => void}) {
   const region = findPhotoRegion(item.tag);
   if (region) return <div className="component-visual">
-    <Crop region={region} title={item.name} onClick={() => onOpen({url:enhancedPhoto+ENHANCED_CROPS[region.tag], title:"Recorte oficial V1 aprimorado — "+item.name,region})} />
+    <Crop region={region} title={item.name} onClick={() => onOpen({url:enhancedPhoto+ENHANCED_CROPS[region.tag], title:"Recorte aprimorado do Uncut Gem V1 — "+item.name,region})} />
     <p className="image-provenance"><strong>Recorte de fotografia oficial</strong> · Quantum Village / Uncut Gem V1</p>
     <p className="visual-note">{region.note} Interpolação conservadora e nitidez ajustada; detalhes ausentes na fonte não podem ser recuperados.</p>
     <Out href={PHOTO_ORIGINAL_URL}>Fotografia integral de origem</Out>
@@ -220,11 +220,11 @@ function App() {
         {selection&&<ContextInspector selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
         <div className="workspace-primary">
       {page==="explorar" ? <div className="workbench-page">
-        <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real · Quantum Village</span><button className="toolbar-button" onClick={()=>setPreview({url:enhancedPhoto+ENHANCED_OVERVIEW,title:"Fotografia oficial V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
+        <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real · Quantum Village</span><button className="toolbar-button" onClick={()=>setPreview({url:enhancedPhoto+ENHANCED_OVERVIEW,title:"Fotografia do Uncut Gem V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
         <div className="work-area">
-          <section className={"photo-panel"+(fullFallback?" full-fallback":"")} ref={photoPanelRef} aria-label="Fotografia interativa da V1">
+          <section className={"photo-panel"+(fullFallback?" full-fallback":"")} ref={photoPanelRef} aria-label="Fotografia interativa do Uncut Gem V1">
             <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>{PHOTO_REGIONS.length} pontos identificados na imagem</span></div>
-            <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem V1 com hotspots" onWheel={e=>setZoom(z=>Math.min(4,Math.max(1,z+(e.deltaY<0?0.15:-0.15))))}
+            <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com pontos interativos" onWheel={e=>setZoom(z=>Math.min(4,Math.max(1,z+(e.deltaY<0?0.15:-0.15))))}
               onPointerDown={e=>{if(e.button!==0)return;drag.current={x:e.clientX,y:e.clientY,px:pan.x,py:pan.y};e.currentTarget.setPointerCapture(e.pointerId)}}
               onPointerMove={e=>{const d=drag.current;if(d)setPan({x:d.px+e.clientX-d.x,y:d.py+e.clientY-d.y})}}
               onPointerUp={()=>{drag.current=null}} onPointerCancel={()=>{drag.current=null}}>
