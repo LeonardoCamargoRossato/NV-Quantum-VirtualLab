@@ -11,7 +11,7 @@ Comandos são **convenções** interpretadas pelos chats que recebem estas instr
 | `LCR_NAMING` | Inspecionar nomes dos caminhos versionados no Git, sem renomeação automática. | Relatório de nomes conformes ou violações |
 | `LCR_DAY` | 1ª ocorrência marca início; toda ocorrência seguinte fecha o trecho desde o marcador anterior, registra e torna-se novo marco. | `daily_summary.md`, `raw_data.jsonl`, `data.json` |
 | `LCR_STATUS` | Exibe registros existentes, módulos ativos e pendências, sem inferir atividade não registrada. | Estado da sessão/projeto |
-| `LCR_AUDITORIA` | Solicita verificação de qualidade/segurança; relatório sem expor valores secretos. | Relatório do Auditor |
+| `LCR_AUDITORIA` | Verifica qualidade/conformidade/testes/build/Actions em commit estável, com recomendação de especialistas se justificável. | Relatório independente do Auditor |
 | `LCR_SEO` | Solicita inspeção da indexação e documentação SEO. | Diagnóstico SEO |
 | `LCR_BACKUP` | Verifica a configuração e aciona backup autorizado; nunca afirma sucesso sem evidência. | Log/artefato de backup |
 | `LCR_ADR` | Avalia relevância arquitetural e gera ADR quando aplicável, seguindo `LCR_ADR_GUARDRAILS.md`. | ADR proposto/aprovado conforme evidência |
@@ -61,6 +61,16 @@ Apresente opções técnicas adequadas ao projeto; se precisar de revisão cient
 Sempre examinar o último ADR relevante e o brainstorming acessível. Não gerar ADR em todo upgrade por padrão. Se houver decisão nova significativa, entregar `DevelopmentPrompt.md` e `ADR-XXXX-titulo-curto.md` como dois documentos. Caso contrário, só o prompt com justificativa de uma linha. A skill `LCR_ADR_GENERATOR` é especializada nesse julgamento; o usuário não precisa chamá-la nominalmente.
 
 ## Persistência de ADR e registros no Drive
-- `LCR_ADR`/desenvolvimento com ADR real: gerar `ADR-XXXX-...`, salvar no GitHub do projeto e espelhar no Drive correspondente na mesma conversa, se as duas ferramentas de escrita estiverem disponíveis; exibir links reais e pendências.
+- `LCR_ADR`/desenvolvimento com ADR real: registrar no GitHub no próprio turno; Drive apenas no ciclo diário, com estado pendente até a confirmação.
 - `LCR_DAY`: quando o agente encerrar uma sessão real, tentar persistir somente `daily_summary.md` e `data.json` revisados no GitHub e Drive; `raw_data.jsonl` **não** é publicado automaticamente em repo público. O histórico de chat não é lido automaticamente pelo GitHub Actions.
 - `LCR_BACKUP`: modo independente de chat, acionado pelo GitHub Actions após configuração manual de variável, pasta destino e segredo do Google; plugin Drive do ChatGPT sozinho não ativa o workflow.
+
+## Gate de qualidade e especialistas opcionais (ADR-0008)
+Fluxo aprovado: **Planner → decisão humana → Auditor geral + especialista opcional → parecer consolidado → Codex/Builder → retestes do Auditor → aprovação final humana**.
+
+O Auditor verifica nomenclatura, conformidade, testes, build, GitHub Actions, segurança básica, SEO e documentação em commit **estável**. Pode inspecionar em paralelo ao Builder (somente leitura), mas somente emite parecer final quando a implementação terminar. Codex/Builder executa correções; o Auditor retesta independentemente. Estados: **aprovado, atenção, reprovado, não verificado**; todo achado precisa de evidência.
+
+O Planner recomenda um especialista quando **risco alto OU (especialização alta E complexidade alta)**. **Cybersecurity**: ataques digitais, autenticação, permissões e dependências; **Safety**: danos físicos, ópticos e elétricos; **Scientific/Technical Reviewer**: modelos, unidades, incertezas e método científico. A convocação depende de autorização humana, com ADR quando necessária. Normas externas são referências conforme contexto, **não certificações automáticas**. Skill: `.agents/skills/lcr-audit-generator/SKILL.md`.
+
+## Política de backup ao final do dia (ADR-0009)
+**GitHub é a fonte de verdade e o histórico contínuo. Google Drive recebe uma única rodada automática diária**: 23h55 Brasília (02h55 UTC do dia seguinte), via `LCR_BACKUP.yml`, ou `workflow_dispatch` excepcional autorizado. Não realizar upload por arquivo, ADR, relatório ou push durante o desenvolvimento. O `rclone copy` atualiza incrementalmente o espelho navegável e salva ZIP + `git bundle` por data/commit; **não apagar históricos sem política de retenção aprovada**. Status Drive é **pendente** até verificar job `success`, SHA e snapshot. OAuth do GitHub Actions é independente do plugin Drive deste chat. Em 09/11/2026, a última falha observada foi HTTP 401; não declarar corrigida sem novo teste.

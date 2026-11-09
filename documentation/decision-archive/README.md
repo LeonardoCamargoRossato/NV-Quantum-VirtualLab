@@ -27,3 +27,7 @@ Decisões relevantes: GitHub como fonte de verdade, Drive como backup, Supabase 
 - [Modelo único de ADR](../../.agents/skills/lcr-adr-generator/templates/AdrTemplate.md) — documento de registro, não terceiro modelo de prompt.
 
 Todo prompt de desenvolvimento avalia a relevância de ADR; **nem todo desenvolvimento cria um**. Registros existentes e o histórico realmente acessível servem de contexto. Não reescrever ADRs históricos silenciosamente; novas decisões relacionam/sucedem registros antigos.
+
+## Decisões aprovadas em 09/11/2026
+- [ADR-0008 — Auditoria independente e especialistas opcionais](ADR-0008-gate-de-auditoria-e-especialistas-opcionais.md).
+- [ADR-0009 — Backup central diário no Drive](ADR-0009-backup-diario-drive.md) (complementa ADR-0006).
