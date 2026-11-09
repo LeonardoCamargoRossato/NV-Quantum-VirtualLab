@@ -34,7 +34,7 @@ O importador mapeia cabeçalhos, exige as tags UG-V1-0001 a UG-V1-0033, valida U
 Fotografia DeviceV1.png e diagramas Layer1/2/3.png copiados sem modificações do projeto QuantumVillage/UncutGem, revisão fdc0fcb28f0962d59b279080658e2c11bf367494. Veja créditos e licença em code/public/assets/official/README.md. Os assets existentes em assets/components/illustrative são IA e permanecem nos caminhos originais para preservar links da planilha; não são usados como fotos reais. Seis hotspots visuais identificáveis sobre a fotografia oficial foram associados às tags da planilha: PCB, ESP32, amplificador RF, laser, conjunto do prisma e OLED. Os percentuais são relativos à fotografia, não ao painel, e acompanham zoom/pan. Itens não localizáveis não recebem marcador.
 
 ## Publicação
-O workflow LCR_PAGES.yml testa e constrói em PR; em push main publica somente com snapshot validado de 33 itens. É necessário habilitar GitHub Pages com origem GitHub Actions nas configurações do repositório. O pedido atual autoriza entregar site; o bloqueio de dados impede uma entrega completa. Não há URL publicada verificada nesta execução.
+O workflow LCR_PAGES.yml testa e constrói em PR; em push main publica somente com snapshot validado de 33 itens. É necessário habilitar GitHub Pages com origem GitHub Actions nas configurações do repositório. A V0 com os 33 registros reais foi publicada. A V0.1 atualiza a experiência de interface, mantendo o contrato do snapshot e implantando automaticamente por GitHub Actions com evidência de execução.
 
 O ambiente bloqueou docs.google.com, api.github.com e leonardocamargorossato.github.io. A ferramenta de configuração retornou INVALID_ARGUMENT. Liberar esses destinos nas configurações permite testar acesso real; isso não concede permissão à planilha privada. Se persistir falta de acesso Google, fornecer exportação CSV legítima.
 
@@ -58,3 +58,19 @@ O acesso à aba Uncut Gem V1 do Google Sheets foi confirmado por conector autori
 - Limitação: a ferramenta externa de consulta HTTP deste chat não conseguiu abrir a URL publicada; inspeção visual pelo responsável ainda pendente.
 - LCR Naming e Auditoria: falharam na checagem de nomenclatura por 10 caminhos legados (nove imagens com links ativos no inventário e uma tradução histórica). A verificação de indícios de segredo passou. Não renomear esses arquivos de forma destrutiva nem enfraquecer o validador sem decisão explícita.
 - A planilha original permanece privada. Snapshot público contém somente os campos aprovados para o aplicativo.
+
+## Upgrade V0.1 — interface científica
+
+O frontend usa `code/src/Workbench.tsx` como aplicação e `code/src/Workbench.css` como layout; `code/src/StudyPages.tsx` contém as áreas Guia, Fundamentos, Artigos, Revisão Bibliográfica e Referências. `code/src/PhotoRegions.ts` registra seis hotspots e as regiões percentuais relativas à fotografia oficial V1. O antigo `Main.tsx` é o ponto de entrada e importa `Workbench`.
+
+O inspetor desktop é uma coluna integrada, não modal; no mobile é drawer sobreposto com botão de fechamento. O zoom não deve ser perdido ao trocar componentes. Fullscreen API usa fallback CSS. O fechamento de painel expandido remove a coluna adicional do grid.
+
+As imagens de peças verificadas são recortes visuais realizados no navegador sobre `DeviceV1.png`. Não são arquivos PNG individuais, nem fotos feitas separadamente, nem imagens inventadas. A fidelidade é limitada à resolução da foto V1. Os itens com apenas foto geral, sem recorte identificado, apresentam aviso e link à montagem. O arquivo do inventário/Sheets permanece inalterado.
+
+A logomarca ITA é exibida por URL institucional (`pgfis.ita.br`) e possui texto de fallback. Não foi copiada para GitHub; não se declara apoio/endosso institucional. Referência de uso em mídia eletrônica: https://www.bibl-old.ita.br/logomarca_ita.htm .
+
+Documentos científicos: versão arXiv livre incorporada como PDF com acesso alternativo; capítulo Springer listado apenas com link (acesso por assinatura). A base de revisão do doutorado recebe somente link e descrição de estrutura; seus registros e PDFs privados não são versionados. A V2 e as simulações permanecem fora do escopo.
+
+Teste automatizado adicional: `.github/workflows/LCR_INTERFACE_SMOKE.yml`, `code/scripts/BrowserSmoke.mjs`, `code/src/PhotoRegions.test.ts`. O workflow gera artefato `V01VisualEvidence` com capturas de tela para desktop, mobile e Referências, quando seu teste termina as etapas.
+
+Consulte também `documentation/UncutGemV01InterfaceUpgrade.md`.
