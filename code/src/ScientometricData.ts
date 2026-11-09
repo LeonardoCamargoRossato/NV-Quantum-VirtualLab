@@ -68,6 +68,7 @@ export const DOCUMENT_FIGURES:DocumentFigure[] = [
 ];
 export const RESEARCH_SNAPSHOT_DATE = "2026-11-05";
 export const RESEARCH_AUDIT_DATE = "2026-11-09";
+export const RESEARCH_SHEET_LAST_MODIFIED_UTC = "2026-11-06T04:18:00.104Z";
 export const reviewMethods = [
  "Formular três famílias de equações booleanas (E1, E2 e E3).",
  "Consultar Scopus e Web of Science Core Collection em 05/11/2026, via acesso institucional/Portal CAPES.",
