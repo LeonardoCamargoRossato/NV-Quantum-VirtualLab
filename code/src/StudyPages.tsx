@@ -15,7 +15,7 @@ export type Page = "explorar" | "inventario" | "fluxo" | "guia" | "uncut-v2" | "
 export const pageTitles: Record<Page, string> = {
   explorar: "Explorar", inventario: "Inventário", fluxo: "Entenda o Fluxo", guia: "Guia de montagem",
   "uncut-v2": "Uncut Gem V2", modelo3d: "NV-Print 3D Stegemann",
-  fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Bibliográfica", referencias: "Referências", sobre: "Sobre o Projeto",
+  fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Bibliográfica", referencias: "Referências Diretas Virtual Lab", sobre: "Sobre o Projeto",
 };
 export const navigationGroups: {group:string; pages: {key:Page; icon:string}[]}[] = [
   { group:"LABORATÓRIO", pages:[{key:"explorar",icon:"◉"},{key:"inventario",icon:"▤"},{key:"fluxo",icon:"⇢"},{key:"guia",icon:"⌁"}] },
@@ -73,7 +73,7 @@ export function Literature() {
   return <div className="study-page"><SectionHeading eyebrow="ESTUDO / MÉTODO" title="Revisão Bibliográfica" subtitle="Área destinada à organização metodológica da pesquisa de doutorado sobre NV e INS, separada das fontes de montagem do Uncut Gem."/>
     <div className="review-layout"><section className="research-panel"><span className="paper-type">BASE DE TRABALHO · ACESSO RESTRITO</span><h2>Doutorado ITA — Revisão NV + INS</h2><p>A planilha de pesquisa inclui as abas “Artigos - 172”, “Resumo e critérios” e “Artigos que preciso ler”. O título e a organização da base são apresentados apenas como metadados: seus registros e análises não foram publicados neste site.</p><Out href={reviewSheet}>Abrir base original no Google Sheets</Out><p className="muted-note">Acesso sujeito às permissões do proprietário. Nenhuma permissão de compartilhamento foi alterada.</p></section>
     <section className="research-panel"><span className="paper-type">ESTRUTURA METODOLÓGICA</span><h2>Como a revisão será organizada</h2><ol className="research-method"><li>Definir questão de pesquisa e critérios de inclusão/exclusão.</li><li>Registrar bases e estratégias de busca, incluindo Scopus e Web of Science quando documentadas.</li><li>Remover duplicatas, selecionar e classificar os trabalhos por relevância.</li><li>Sistematizar lacunas, questões metodológicas e evidências citáveis.</li></ol><p className="muted-note">Esse fluxo é uma estrutura de trabalho, não estatística de uma análise executada nesta página.</p></section></div>
-    <div className="roadmap-note">As referências de hardware ficam na aba <strong>Referências</strong>; a revisão científica só receberá registros detalhados após seleção e autorização para divulgação.</div>
+    <div className="roadmap-note">As referências de hardware ficam na aba <strong>Referências Diretas Virtual Lab</strong>; a revisão científica só receberá registros detalhados após seleção e autorização para divulgação.</div>
   </div>;
 }
 export function References({base,onInspect}:{base:string;onInspect?:(reference:ReferenceContext,trigger:HTMLElement)=>void}) {
@@ -83,7 +83,7 @@ export function References({base,onInspect}:{base:string;onInspect?:(reference:R
     origin:"Quantum Village / arXiv / Springer",
     links:[{label:"Preprint PDF",url:pdf},{label:"Site do projeto",url:"https://quantumvillage.org/uncut-gem.html"},{label:"Repositório oficial",url:source},{label:"Capítulo Springer (acesso por assinatura)",url:springer}],
   };
-  return <div className="study-page references-page"><SectionHeading eyebrow="PESQUISA / FONTES" title="Referências" subtitle="Fontes oficiais do hardware, publicações abertas e trabalhos relacionados. Cada recurso é identificado pela sua procedência."/>
+  return <div className="study-page references-page"><SectionHeading eyebrow="PESQUISA / FONTES" title="Referências Diretas Virtual Lab" subtitle="Fontes oficiais do hardware, publicações abertas e trabalhos relacionados. Cada recurso é identificado pela sua procedência."/>
     <div className="feature-head"><div><span className="paper-type">PROJETO PRINCIPAL · HARDWARE ABERTO</span><h2>Uncut Gem — Quantum Village</h2><p>Magnetômetro didático com centros NV baseado em componentes comerciais e firmware aberto. Implementação deste laboratório é um estudo acadêmico independente.</p></div><div className="reference-actions"><button type="button" onClick={e=>onInspect?.(primary,e.currentTarget)}>Inspecionar referência</button><Out href={source}>Projeto no GitHub</Out></div></div>
     <div className="reference-triptych">
       <article className="preview-card"><div className="preview-head"><span>01 / PREPRINT</span><strong>Artigo científico</strong></div><div className="pdf-preview"><iframe loading="lazy" title="PDF aberto do artigo Uncut Gem no arXiv" src={pdf+"#view=FitH"} referrerPolicy="no-referrer" /><div className="embed-notice">O PDF do arXiv pode bloquear incorporação neste navegador. Utilize o link abaixo caso não apareça.</div></div><div className="preview-info"><h3>Uncut Gem — An Open-Source Hackable Quantum Sensor</h3><p>Mark Carney e Victoria Kumaran · arXiv:2509.18329 (2025)</p><Out href={pdf}>Abrir PDF livre</Out> <Out href={paper}>Ver registro arXiv</Out></div></article>
