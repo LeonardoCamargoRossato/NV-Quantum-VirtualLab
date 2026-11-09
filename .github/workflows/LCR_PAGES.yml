@@ -63,10 +63,10 @@ jobs:
                   errors.append(f'{name}: ausente no repositório ou no dist')
               elif original.stat().st_size != deployed.stat().st_size:
                   errors.append(f'{name}: tamanho divergente')
-              elif deployed.read_bytes()[:8] != b'\\x89PNG\\r\\n\\x1a\\n':
+              elif deployed.read_bytes()[:8] != bytes([137,80,78,71,13,10,26,10]):
                   errors.append(f'{name}: cabeçalho PNG inválido')
           if errors:
-              raise SystemExit('Erro de publicação de imagens:\\n' + '\\n'.join(errors))
+              raise SystemExit('Erro de publicação de imagens: ' + '; '.join(errors))
           print(f'CHECK: {len(expected)} PNGs presentes e íntegros em code/dist')
           PY
       - uses: actions/upload-pages-artifact@v3
