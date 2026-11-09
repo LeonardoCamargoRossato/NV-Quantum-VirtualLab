@@ -38,7 +38,7 @@ O workflow LCR_PAGES.yml testa e constrói em PR; em push main publica somente c
 
 O ambiente bloqueou docs.google.com, api.github.com e leonardocamargorossato.github.io. A ferramenta de configuração retornou INVALID_ARGUMENT. Liberar esses destinos nas configurações permite testar acesso real; isso não concede permissão à planilha privada. Se persistir falta de acesso Google, fornecer exportação CSV legítima.
 
-## Evidências desta implementação
+## Evidências históricas da V0 (antes do upgrade V0.1)
 - Build TypeScript/Vite: passou.
 - Vitest: 4 testes passaram (filtros, CSV seguro, URLs e validação de snapshot).
 - Python unittest: 13 testes passaram (9 LCR existentes + 4 do importador).
@@ -74,3 +74,9 @@ Documentos científicos: versão arXiv livre incorporada como PDF com acesso alt
 Teste automatizado adicional: `.github/workflows/LCR_INTERFACE_SMOKE.yml`, `code/scripts/BrowserSmoke.mjs`, `code/src/PhotoRegions.test.ts`. O workflow gera artefato `V01VisualEvidence` com capturas de tela para desktop, mobile e Referências, quando seu teste termina as etapas.
 
 Consulte também `documentation/UncutGemV01InterfaceUpgrade.md`.
+
+## Evidência final V0.1
+- Testes: 6 Vitest, 15 Python, build TypeScript/Vite aprovados em https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42546579254 .
+- Browser desktop/mobile: PASS em https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42546579261 .
+- Capturas PNG de evidência: https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42546579261/artifacts/13643876608 .
+- Deploy GitHub Pages confirmado: https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/ .
