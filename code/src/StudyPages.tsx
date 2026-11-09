@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { safeUrl } from "./Inventory";
+import type { ReferenceContext } from "./ContextInspector";
 const source = "https://github.com/QuantumVillage/UncutGem";
 const paper = "https://arxiv.org/abs/2509.18329";
 const pdf = "https://arxiv.org/pdf/2509.18329";
@@ -10,14 +11,14 @@ const reviewSheet = "https://docs.google.com/spreadsheets/d/1ID0MHrg_-2Fx37vGR8S
 export function Out({ href, children, className = "" }: {href: string; children: React.ReactNode; className?: string}) {
   return safeUrl(href) ? <a className={className} href={href} target="_blank" rel="noopener noreferrer">{children}<span aria-hidden="true"> ↗</span></a> : null;
 }
-export type Page = "explorar" | "inventario" | "guia" | "fundamentos" | "artigos" | "revisao" | "referencias";
+export type Page = "explorar" | "inventario" | "fluxo" | "guia" | "fundamentos" | "artigos" | "revisao" | "referencias" | "sobre";
 export const pageTitles: Record<Page, string> = {
-  explorar: "Explorar V1", inventario: "Inventário", guia: "Guia de montagem V1",
-  fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Bibliográfica", referencias: "Referências",
+  explorar: "Explorar", inventario: "Inventário", fluxo: "Entenda o Fluxo", guia: "Guia de montagem",
+  fundamentos: "Fundamentos", artigos: "Artigos", revisao: "Revisão Bibliográfica", referencias: "Referências", sobre: "Sobre o Projeto",
 };
 export const navigationGroups: {group:string; pages: {key:Page; icon:string}[]}[] = [
-  { group:"LABORATÓRIO", pages:[{key:"explorar",icon:"◉"},{key:"inventario",icon:"▤"},{key:"guia",icon:"⌁"}] },
-  { group:"ESTUDO E PESQUISA", pages:[{key:"fundamentos",icon:"◇"},{key:"artigos",icon:"▣"},{key:"revisao",icon:"≡"},{key:"referencias",icon:"↗"}] },
+  { group:"LABORATÓRIO", pages:[{key:"explorar",icon:"◉"},{key:"inventario",icon:"▤"},{key:"fluxo",icon:"⇢"},{key:"guia",icon:"⌁"}] },
+  { group:"ESTUDO E PESQUISA", pages:[{key:"referencias",icon:"↗"},{key:"revisao",icon:"≡"},{key:"fundamentos",icon:"◇"},{key:"artigos",icon:"▣"},{key:"sobre",icon:"ⓘ"}] },
 ];
 const articles = [
   {title:"Uncut Gem — An Open-Source Hackable Quantum Sensor",authors:"Mark Carney; Victoria Kumaran",year:"2025 / 2026", type:"Preprint livre + capítulo de conferência",url:paper,pdf,doi:"10.1007/978-3-032-13852-1_7",notes:"Hardware aberto de magnetometria com centros NV; a versão Springer é acesso por assinatura."},
@@ -30,12 +31,12 @@ export function SectionHeading({eyebrow, title, subtitle}: {eyebrow:string; titl
 export function Guide({base, onMedia}:{base:string; onMedia:(url:string,label:string)=>void}) {
   const steps=[
     {number:"01",heading:"PCB, componentes passivos e alimentação",detail:"Identifique os soquetes, componentes da PCB e interfaces de alimentação. Confira o esquema e a pinagem antes de soldar ou energizar; a foto geral não é mapa de footprints."},
-    {number:"02",heading:"ESP32, RF e conexões",detail:"O guia V1 documenta módulos ESP32, ADF4351, amplificador RF e cabo SMA. Compare conectores e orientação no guia original antes de montar."},
+    {number:"02",heading:"ESP32, RF e conexões",detail:"O guia do Uncut Gem V1 documenta módulos ESP32, ADF4351, amplificador RF e cabo SMA. Compare conectores e orientação no guia original antes de montar."},
     {number:"03",heading:"Prisma óptico e diamante NV",detail:"Montagem em camadas: diamante e laço de cobre esmaltado; resina de encapsulamento; filtro vermelho e fotodiodo BPW34. Os diagramas são esquemáticos, fora de escala."},
     {number:"04",heading:"Laser, OLED e testes",detail:"Confira o circuito do laser e a orientação do OLED, especialmente VDD/GND. O fotodiodo BPW34 está no prisma; PHOTODIODE1 é o conector na placa."},
   ];
   return <div className="study-page">
-    <SectionHeading eyebrow="LABORATÓRIO / MONTAGEM" title="Guia de montagem V1" subtitle="Leitura orientada do projeto Quantum Village. As etapas são referências didáticas, não instruções certificadas de soldagem."/>
+    <SectionHeading eyebrow="LABORATÓRIO / MONTAGEM" title="Guia de montagem" subtitle="Leitura orientada do projeto Quantum Village. As etapas são referências didáticas, não instruções certificadas de soldagem."/>
     <div className="action-strip"><Out href={source+"/blob/main/BuildGuide/BuildGuide.md"}>Abrir guia oficial completo</Out><Out href={source+"/blob/main/hardware/PCB/README.md"}>PCB e esquemáticos</Out><Out href={source+"/blob/main/hardware/DiamondMount/README.md"}>Conjunto óptico</Out></div>
     <div className="step-stack">{steps.map(s=><section className="study-step" key={s.number}><span className="step-no">{s.number}</span><div><h2>{s.heading}</h2><p>{s.detail}</p></div></section>)}</div>
     <h2 className="section-subtitle">Três camadas do prisma — diagramas oficiais</h2>
@@ -54,7 +55,7 @@ const basics = [
 export function Fundamentals() {
   return <div className="study-page"><SectionHeading eyebrow="ESTUDO / TEORIA" title="Fundamentos" subtitle="Do defeito na estrutura cristalina até o sinal detectado pelo hardware. Conteúdo conceitual, sem simulação."/>
     <div className="fundamentals-grid">{basics.map(s=><article key={s.tag} className="fundamental"><span className="step-no">{s.tag}</span><h2>{s.title}</h2><p>{s.detail}</p><Out href={s.ref}>Fonte de estudo</Out></article>)}</div>
-    <div className="roadmap-note">Próximas etapas de pesquisa: fluxo matemático, equações de leitura ODMR e magnetometria quantitativa — <strong>não implementadas na V0.1</strong>.</div>
+    <div className="roadmap-note">Próximas etapas de pesquisa: fluxo matemático, equações de leitura ODMR e magnetometria quantitativa — <strong>não implementadas nesta plataforma</strong>.</div>
   </div>;
 }
 export function Articles() {
@@ -74,9 +75,15 @@ export function Literature() {
     <div className="roadmap-note">As referências de hardware ficam na aba <strong>Referências</strong>; a revisão científica só receberá registros detalhados após seleção e autorização para divulgação.</div>
   </div>;
 }
-export function References({base}:{base:string}) {
+export function References({base,onInspect}:{base:string;onInspect?:(reference:ReferenceContext,trigger:HTMLElement)=>void}) {
+  const primary:ReferenceContext = {
+    id:"uncut-gem",title:"Uncut Gem — Quantum Village",
+    description:"Hardware aberto para magnetometria com centros NV. A publicação aberta, o projeto original, o código-fonte e o capítulo Springer são fontes distintas.",
+    origin:"Quantum Village / arXiv / Springer",
+    links:[{label:"Preprint PDF",url:pdf},{label:"Site do projeto",url:"https://quantumvillage.org/uncut-gem.html"},{label:"Repositório oficial",url:source},{label:"Capítulo Springer (acesso por assinatura)",url:springer}],
+  };
   return <div className="study-page references-page"><SectionHeading eyebrow="PESQUISA / FONTES" title="Referências" subtitle="Fontes oficiais do hardware, publicações abertas e trabalhos relacionados. Cada recurso é identificado pela sua procedência."/>
-    <div className="feature-head"><div><span className="paper-type">PROJETO PRINCIPAL · HARDWARE ABERTO</span><h2>Uncut Gem — Quantum Village</h2><p>Magnetômetro didático com centros NV baseado em componentes comerciais e firmware aberto. Implementação deste laboratório é um estudo acadêmico independente.</p></div><Out href={source}>Projeto no GitHub</Out></div>
+    <div className="feature-head"><div><span className="paper-type">PROJETO PRINCIPAL · HARDWARE ABERTO</span><h2>Uncut Gem — Quantum Village</h2><p>Magnetômetro didático com centros NV baseado em componentes comerciais e firmware aberto. Implementação deste laboratório é um estudo acadêmico independente.</p></div><div className="reference-actions"><button type="button" onClick={e=>onInspect?.(primary,e.currentTarget)}>Inspecionar referência</button><Out href={source}>Projeto no GitHub</Out></div></div>
     <div className="reference-triptych">
       <article className="preview-card"><div className="preview-head"><span>01 / PREPRINT</span><strong>Artigo científico</strong></div><div className="pdf-preview"><iframe loading="lazy" title="PDF aberto do artigo Uncut Gem no arXiv" src={pdf+"#view=FitH"} referrerPolicy="no-referrer" /><div className="embed-notice">O PDF do arXiv pode bloquear incorporação neste navegador. Utilize o link abaixo caso não apareça.</div></div><div className="preview-info"><h3>Uncut Gem — An Open-Source Hackable Quantum Sensor</h3><p>Mark Carney e Victoria Kumaran · arXiv:2509.18329 (2025)</p><Out href={pdf}>Abrir PDF livre</Out> <Out href={paper}>Ver registro arXiv</Out></div></article>
       <article className="preview-card"><div className="preview-head"><span>02 / FONTE ORIGINAL</span><strong>Site oficial</strong></div><div className="real-photo"><img src={base+"assets/official/DeviceV1.png"} alt="Fotografia oficial da montagem Uncut Gem V1 por Quantum Village" loading="lazy"/><small>Fotografia oficial do projeto, não captura do site</small></div><div className="preview-info"><h3>Quantum Village / Uncut Gem</h3><p>Descrição técnica, ciência, hardware e guia de montagem da V1. A página externa não é reproduzida aqui.</p><Out href="https://quantumvillage.org/uncut-gem.html">Abrir site oficial</Out></div></article>
@@ -90,6 +97,6 @@ export function References({base}:{base:string}) {
       <div><span className="paper-type">ESTUDO RELACIONADO · 2023</span><h3>Stegemann et al.</h3><p>Plataforma modular didática com centros NV, distinta da BOM V1.</p><Out href={stegemann}>Ver publicação</Out></div>
       <div><span className="paper-type">REFERÊNCIA DIDÁTICA · 2018</span><h3>Frellsen e Ahmadi</h3><p>Introdução à detecção com diamantes e laser verde.</p><Out href={frellsen}>Ver artigo</Out></div>
     </div>
-    <div className="roadmap-note"><strong>Linhas futuras — não implementadas:</strong> fluxo matemático e equações, magnetometria ODMR, visualização 3D e análise documental de hardware Uncut Gem V2.</div>
+    <div className="roadmap-note"><strong>Linhas futuras — não implementadas:</strong> fluxo matemático e equações, magnetometria ODMR, visualização 3D e análise documental de hardware futuras versões do hardware.</div>
   </div>;
 }
