@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import { fields, filterItems, exportCsv, safeUrl, validateSnapshot, type Item, type Snapshot } from "./Inventory";
 import { PHOTO_REGIONS, findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, type PhotoRegion } from "./PhotoRegions";
 import { ENHANCED_CROPS, ENHANCED_OVERVIEW, EXTRA_CROPS } from "./EnhancedPhotoAssets";
-import { Articles, Fundamentals, Guide, Literature, References, navigationGroups, pageTitles, Out, type Page } from "./StudyPages";
+import { Articles, Fundamentals, Guide, References, navigationGroups, pageTitles, Out, type Page } from "./StudyPages";
+import { ScientometricDashboard, PatentReviewPlaceholder } from "./ScientometricDashboard";
 import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
 import { FlowPage } from "./FlowPage";
 import { AboutPage } from "./AboutPage";
@@ -101,6 +102,7 @@ function App() {
   const [labOpen,setLabOpen]=useState(()=>isLabPage(currentPage()));
   const [v1Open,setV1Open]=useState(()=>isV1Page(currentPage()));
   const [studyOpen,setStudyOpen]=useState(()=>!isLabPage(currentPage()));
+  const [reviewOpen,setReviewOpen]=useState(()=>["artigos","revisao","patentes"].includes(currentPage()));
   const [snapshot,setSnapshot]=useState<Snapshot | null>(null);
   const [loadError,setLoadError]=useState("");
   const [query,setQuery]=useState("");
@@ -135,7 +137,7 @@ function App() {
       const target=currentPage();
       setPage(target);setMobileMenu(false);
       if(isLabPage(target)){setLabOpen(true);if(isV1Page(target))setV1Open(true);}
-      else setStudyOpen(true);
+      else {setStudyOpen(true);if(["artigos","revisao","patentes"].includes(target))setReviewOpen(true);}
     }
     window.addEventListener("hashchange",onHash);
     return ()=>window.removeEventListener("hashchange",onHash);
@@ -180,7 +182,7 @@ function App() {
   function go(target:Page){
     clearSelection();setPage(target);window.location.hash=target;setMobileMenu(false);
     if(isLabPage(target)){setLabOpen(true);if(isV1Page(target))setV1Open(true);}
-    else setStudyOpen(true);
+    else {setStudyOpen(true);if(["artigos","revisao","patentes"].includes(target))setReviewOpen(true);}
   }
   function toggleNavGroup(group:"lab"|"study"){
     if(collapsed){
@@ -284,10 +286,28 @@ function App() {
             {!collapsed&&<><span className="nav-group-name">Estudo e Pesquisa</span><span className={"nav-chevron"+(studyOpen?" expanded":"")} aria-hidden="true">⌄</span></>}
           </button>
           <div id="nav-estudo" className="nav-tree-children nav-study-pages" hidden={!studyOpen||collapsed}>
-            {navigationGroups[1].pages.map(p=><button type="button" key={p.key}
+            {navigationGroups[1].pages.slice(0,1).map(p=><button type="button" key={p.key}
               title={pageTitles[p.key]} aria-label={pageTitles[p.key]} aria-current={page===p.key?"page":undefined}
-              className={"nav-item nav-leaf"+(page===p.key?" active":"")}
-              onClick={()=>go(p.key)}>
+              className={"nav-item nav-leaf"+(page===p.key?" active":"")} onClick={()=>go(p.key)}>
+              <span className="nav-icon" aria-hidden="true">{p.icon}</span><span>{pageTitles[p.key]}</span>
+            </button>)}
+            <button type="button" className={"nav-branch-toggle nav-review-toggle"+(["artigos","revisao","patentes"].includes(page)?" branch-current":"")}
+              aria-label="Revisão Bibliográfica" aria-expanded={reviewOpen} aria-controls="nav-revisao-pages"
+              onClick={()=>setReviewOpen(v=>!v)}>
+              <span className="nav-branch-mark" aria-hidden="true">≡</span><span>Revisão Bibliográfica</span>
+              <span className={"nav-chevron"+(reviewOpen?" expanded":"")} aria-hidden="true">⌄</span>
+            </button>
+            <div id="nav-revisao-pages" className="nav-v1-pages nav-review-pages" hidden={!reviewOpen}>
+              {([{key:"artigos",icon:"▣"},{key:"revisao",icon:"≋"},{key:"patentes",icon:"◇"}] as const).map(p=><button type="button" key={p.key}
+                title={pageTitles[p.key]} aria-label={pageTitles[p.key]} aria-current={page===p.key?"page":undefined}
+                className={"nav-item nav-leaf"+(page===p.key?" active":"")} onClick={()=>go(p.key)}>
+                <span className="nav-icon" aria-hidden="true">{p.icon}</span>
+                <span>{pageTitles[p.key]}{p.key==="patentes"&&<small className="sciento-coming-soon">Em breve</small>}</span>
+              </button>)}
+            </div>
+            {navigationGroups[1].pages.slice(1).map(p=><button type="button" key={p.key}
+              title={pageTitles[p.key]} aria-label={pageTitles[p.key]} aria-current={page===p.key?"page":undefined}
+              className={"nav-item nav-leaf"+(page===p.key?" active":"")} onClick={()=>go(p.key)}>
               <span className="nav-icon" aria-hidden="true">{p.icon}</span><span>{pageTitles[p.key]}</span>
             </button>)}
           </div>
@@ -340,7 +360,7 @@ function App() {
             <label>Ordenar<select value={sort} onChange={e=>setSort(e.target.value as typeof sort)} aria-label="Ordenar por"><option value="tag">Tag</option><option value="name">Componente</option><option value="subsystem">Subsistema</option></select></label></div>
           <div className="inventory-tools"><span aria-live="polite">{filtered.length} de {items.length} itens · Inventário do Uncut Gem V1</span><div><button disabled={!items.length} onClick={()=>download(true)}>Baixar CSV · todos</button><button disabled={!filtered.length} onClick={()=>download(false)}>CSV · filtrados</button></div></div>
           {loadError?<div className="status-panel" role="alert">{loadError}</div>:!snapshot?<div className="status-panel">Carregando inventário…</div>:snapshot.status==="pending"?<div className="status-panel">Snapshot ainda não importado. <Out href={inventorySheet}>Consultar planilha</Out></div>:<div className="inventory-table-shell"><table className="inventory-table"><thead><tr>{["Tag","Imagem","Componente","Ref. PCB","Subsistema","Qtde","Modelo / valor","Função"].map(x=><th key={x} scope="col">{x}</th>)}</tr></thead><tbody>{filtered.map(item=><tr key={item.tag}><td><button className="plain-link" onClick={e=>openItem(item,e.currentTarget)}>{item.tag}</button></td><td><div className="table-photo"><ComponentImage item={item} onOpen={setPreview}/></div></td><td><button className="plain-link strong" onClick={e=>openItem(item,e.currentTarget)}>{item.name}</button></td><td>{item.pcb||"—"}</td><td>{item.subsystem}</td><td>{item.quantity||"—"}</td><td>{item.model||"—"}</td><td>{item.function}</td></tr>)}</tbody></table>{!filtered.length&&<div className="status-panel">Nenhum componente encontrado para os filtros atuais.</div>}</div>}
-        </div> : page==="fluxo" ? <FlowPage base={base} onInspect={openStep} onPcb={step=>seePcb(step.pcbTag)} onGallery={openFlowGallery} activeStepId={selectedFlow?.id}/> : page==="guia" ? <Guide base={base} onMedia={(url,title)=>setPreview({url,title})}/> : page==="fundamentos" ? <Fundamentals/> : page==="artigos" ? <Articles/> : page==="revisao" ? <Literature/> : page==="sobre" ? <AboutPage/> : (page==="uncut-v2"||page==="modelo3d") ? <LabFuturePage kind={page==="uncut-v2"?"v2":"modelo3d"} onReturn={()=>go("explorar")}/> : <References base={base} onInspect={openReference}/>}
+        </div> : page==="fluxo" ? <FlowPage base={base} onInspect={openStep} onPcb={step=>seePcb(step.pcbTag)} onGallery={openFlowGallery} activeStepId={selectedFlow?.id}/> : page==="guia" ? <Guide base={base} onMedia={(url,title)=>setPreview({url,title})}/> : page==="fundamentos" ? <Fundamentals/> : page==="artigos" ? <Articles/> : page==="revisao" ? <ScientometricDashboard/> : page==="patentes" ? <PatentReviewPlaceholder/> : page==="sobre" ? <AboutPage/> : (page==="uncut-v2"||page==="modelo3d") ? <LabFuturePage kind={page==="uncut-v2"?"v2":"modelo3d"} onReturn={()=>go("explorar")}/> : <References base={base} onInspect={openReference}/>}
       </div>}
         </div>
       </div>
