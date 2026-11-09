@@ -55,7 +55,7 @@ try {
 
   await page.getByRole("button", { name: "Inventário", exact: true }).click();
   await page.getByText("33 de 33 itens", { exact: false }).waitFor();
-  await page.getByRole("searchbox").fill("BPW34");
+  await page.getByRole("searchbox").fill("UG-V1-0028");
   await page.getByText("1 de 33 itens", { exact: false }).waitFor();
   const expectedDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "CSV · filtrados" }).click();
