@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "revision": "Uncut Gem V1",
+  "imageRoot": "assets/official/v1/subsystems/",
+  "imageReference": "See code/public/assets/official/v1/subsystems/SubsystemsManifest.json",
+  "upstream": "https://github.com/QuantumVillage/UncutGem",
+  "attribution": "Quantum Village / Uncut Gem AGPL-3.0",
+  "items": [
+    {
+      "tag": "UG-V1-S01",
+      "name": "Alimentação elétrica",
+      "image": "UgV1SubsystemPowerUsb.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "USB do ESP32 visível; NÃO comprova borne 5V_SUPP1"
+    },
+    {
+      "tag": "UG-V1-S02",
+      "name": "Controle e aquisição — ESP32",
+      "image": "UgV1SubsystemEsp32.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "ESP32 completo"
+    },
+    {
+      "tag": "UG-V1-S03",
+      "name": "Excitação óptica — laser",
+      "image": "UgV1SubsystemLaser.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "Laser verde e suporte"
+    },
+    {
+      "tag": "UG-V1-S04",
+      "name": "Geração de micro-ondas — ADF4351",
+      "image": "UgV1SubsystemAdf4351.png",
+      "kind": "fotografia real do verso",
+      "limitations": "ADF4351 identificado por contexto do BuildGuide; inscrição do CI ilegível"
+    },
+    {
+      "tag": "UG-V1-S05",
+      "name": "Amplificação de micro-ondas",
+      "image": "UgV1SubsystemRfAmplifier.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "Amplificador e SMA"
+    },
+    {
+      "tag": "UG-V1-S06",
+      "name": "Conexões RF e antena",
+      "image": "UgV1SubsystemRfConnections.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "SMA e cabo RF visíveis"
+    },
+    {
+      "tag": "UG-V1-S07",
+      "name": "Prisma e detecção óptica",
+      "image": "UgV1SubsystemPrismDetection.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "Prisma real; elementos internos não isoladamente visíveis"
+    },
+    {
+      "tag": "UG-V1-S08",
+      "name": "Condicionamento eletrônico de sinal",
+      "image": "UgV1SubsystemSignalConditioning.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "Região do TL082 e passivos; valores não inferidos"
+    },
+    {
+      "tag": "UG-V1-S09",
+      "name": "Visualização — OLED",
+      "image": "UgV1SubsystemOled.png",
+      "kind": "fotografia real do conjunto",
+      "limitations": "Display OLED completo"
+    },
+    {
+      "tag": "UG-V1-S10",
+      "name": "Placa-base e estrutura",
+      "image": "UgV1SubsystemPcbStructure.png",
+      "kind": "render oficial da PCB",
+      "limitations": "Render frontal DiamondGeezer V1"
+    }
+  ]
+}
