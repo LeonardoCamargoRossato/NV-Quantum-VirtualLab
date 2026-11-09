@@ -32,7 +32,17 @@
 - A logo remota pode falhar em rede externa: existe fallback “ITA” em texto. Sem afirmação de endosso oficial.
 - Anotações de bounding boxes são coordenadas percentuais inspecionadas; podem ser refinadas a partir de exame visual do usuário.
 
-## Testes e publicação
+## Testes e publicação confirmados — 09/11/2026 UTC
+- Build + TypeScript: npm run build aprovado no GitHub Actions.
+- Vitest: 6 de 6 testes passaram.
+- Python unittest: 15 de 15 testes passaram.
+- Playwright Chromium: smoke funcional desktop/mobile aprovado, incluindo sete abas, zoom/fallback tela cheia, sidebar aberta/fechada, inspector com reflow, busca/CSV com 33 registros, referências e responsividade.
+- Capturas: [V01VisualEvidence](https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42546579261/artifacts/13643876608) — 5 imagens PNG: sidebar aberta, inspector, sidebar recolhida, referências e mobile.
+- Publicação: [GitHub Pages / deploy](https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/actions/runs/42546579254) confirmou https://leonardocamargorossato.github.io/NV-Quantum-VirtualLab/.
+- Limitação: ferramenta de navegação web externa deste chat não abriu a URL GitHub Pages, mas CI executou o navegador no ambiente Vite e o deploy foi confirmado pelo GitHub Actions. Revisão humana do endereço publicado recomendada.
+- LCR Naming/Auditoria: seguem com 10 violações de nomes anteriores (9 PNGs linkados e 1 arquivo histórico). A verificação de segredos dentro da Auditoria concluiu sucesso.
+ 
+## Comandos para reproduzir
 - Rodar: cd code && npm ci && npm test && npm run build
 - Rodar: python -m unittest discover -s code/tests -p 'test_*.py' -v
 - Rodar: python code/scripts/lcr_naming.py --check
