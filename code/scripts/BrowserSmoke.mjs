@@ -180,6 +180,8 @@ try {
   await page.getByRole("button",{name:"Inventário",exact:true}).click();
   assert.equal(await page.locator(".inventory-table tbody tr").count(),79);
   assert((await page.getByRole("link",{name:"Abrir no Google Planilhas"}).getAttribute("href")).includes("gid=2026110901"));
+  assert.equal(await page.locator('a[href*="gid=1346018179"]').count(),0,"Nenhum link do site pode depender do gid legado");
+  assert.equal(await page.locator('.inventory-table tbody tr').count(),79,"A remoção da aba antiga não pode afetar as 79 tags operacionais");
   await page.getByRole("searchbox").fill("UG-V1-0001");
   await page.locator(".inventory-table").getByRole("button",{name:"UG-V1-0001",exact:true}).click();
   await page.getByRole("button",{name:/UG-V1-B041.*vista canônica/}).click();
