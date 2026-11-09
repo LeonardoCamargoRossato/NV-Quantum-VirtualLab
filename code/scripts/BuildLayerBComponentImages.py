@@ -20,7 +20,7 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 CODE = Path(__file__).resolve().parents[1]
 PLAN = CODE / 'public/data/LayerBComponentImagePlan.json'
 OUT = CODE / 'public/assets/official/v1/components'
-CHECKPOINT = CODE.parent / 'documentation/agents-archive/planner/artifacts/component-image-checkpoint.json'
+CHECKPOINT = CODE.parent / 'documentation/agents-archive/planner/artifacts/ComponentImageCheckpoint.json'
 GITHUB = 'https://github.com/QuantumVillage/UncutGem'
 SOURCES = {
     'front': CODE / 'public/assets/official/DeviceV1.png',
