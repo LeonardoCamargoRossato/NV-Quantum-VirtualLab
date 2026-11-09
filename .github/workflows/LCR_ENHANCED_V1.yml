@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 jobs:
   enhance:
     runs-on: ubuntu-latest
@@ -23,6 +24,7 @@ jobs:
       - name: Criar PNGs e validar imagem original
         run: python code/scripts/enhance_uncut_gem_v1.py
       - name: Publicar recortes oficiais sem alterar a fonte
+        id: asset_commit
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
@@ -30,10 +32,19 @@ jobs:
           git add code/public/assets/official/v1/enhanced
           if git diff --cached --quiet; then
             echo "Recortes já atualizados"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "assets(v1): add conservative official photo crops"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+      # Um push feito com GITHUB_TOKEN não dispara automaticamente outros workflows.
+      # workflow_dispatch é a exceção: republica Pages APÓS os PNGs entrarem em main.
+      - name: Republicar GitHub Pages após commit dos recortes
+        if: github.ref == 'refs/heads/main' && steps.asset_commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run LCR_PAGES.yml --ref main
       - uses: actions/upload-artifact@v4
         with:
           name: uncugem-v1-crops-enhanced
