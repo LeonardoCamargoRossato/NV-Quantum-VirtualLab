@@ -18,15 +18,45 @@ try {
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).waitFor();
   assert.equal(await page.locator(".side-navigation button").count(), 7);
   assert(await page.locator(".photo-stage>img").evaluate(img => img.complete && img.naturalWidth > 0), "Imagem original precisa carregar");
+  // Regressão do hotfix: os 11 recortes estavam no Git, mas faltaram no deploy.
+  const expectedEnhancedPngs = [
+    "ug-v1-overview-enhanced.png", "ug-v1-pcb-enhanced.png",
+    "ug-v1-esp32-enhanced.png", "ug-v1-rf-amp-enhanced.png",
+    "ug-v1-laser-enhanced.png", "ug-v1-prism-enhanced.png",
+    "ug-v1-oled-enhanced.png", "ug-v1-rf-cable-enhanced.png",
+    "ug-v1-between-rf-and-esp32-enhanced.png",
+    "ug-v1-above-esp32-enhanced.png", "ug-v1-laser-driver-enhanced.png",
+  ];
+  const assetsRoot = new URL("assets/official/v1/enhanced/", page.url());
+  for (const fileName of expectedEnhancedPngs) {
+    const assetUrl = new URL(fileName, assetsRoot).href;
+    const response = await page.request.get(assetUrl);
+    assert(response.ok(), "Imagem não publicada: " + assetUrl + " (HTTP " + response.status() + ")");
+    assert((response.headers()["content-type"] || "").includes("image/png"), "Conteúdo não PNG: " + assetUrl);
+    const bytes = await response.body();
+    assert(bytes.subarray(0, 8).equals(Buffer.from([137,80,78,71,13,10,26,10])), "PNG inválido: " + assetUrl);
+  }
+  await page.waitForFunction(
+    () => [...document.querySelectorAll(".enhanced-gallery-card img")].length === 4 &&
+      [...document.querySelectorAll(".enhanced-gallery-card img")].every(i => i.complete && i.naturalWidth > 0),
+    undefined, { timeout: 12000 },
+  );
+  console.log("PASS: 11 arquivos PNG aprimorados acessíveis pelo caminho público e galeria carregada.");
   await page.screenshot({ path: join(shots,"NvLabV01SidebarOpen.png"), fullPage: true });
 
   const panelBefore = await page.locator(".photo-panel").evaluate(el => el.getBoundingClientRect().width);
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).click();
   await page.getByRole("complementary", { name: /Ficha de componente/ }).waitFor();
   assert(await page.getByText("Recorte de fotografia oficial", { exact: false }).isVisible());
+  assert(await page.locator(".inspector .crop-shell img").evaluate(i => i.complete && i.naturalWidth > 0), "Imagem individual do laser não carregou");
   const panelWithInspector = await page.locator(".photo-panel").evaluate(el => el.getBoundingClientRect().width);
   assert(panelWithInspector < panelBefore, "Foto deve refluir à direita com inspector");
   await page.screenshot({ path: join(shots,"NvLabV01Inspector.png"), fullPage: true });
+  // Recorte ampliado deve exibir a imagem do laser, não uma área cinza/alt quebrado.
+  await page.getByRole("button", { name: "Ampliar recorte real: Laser verde" }).click();
+  await page.getByRole("dialog", { name: /Recorte oficial V1 aprimorado/ }).waitFor();
+  assert(await page.locator(".lightbox-dialog .crop-shell img").evaluate(i => i.complete && i.naturalWidth > 0));
+  await page.getByRole("button", { name: "Fechar imagem" }).click();
   await page.getByRole("button", { name: "Expandir painel" }).click();
   assert(await page.locator(".work-area.inspector-big").isVisible());
   await page.getByRole("button", { name: "Fechar inspetor" }).click();
