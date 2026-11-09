@@ -1,6 +1,6 @@
 # Inventário — fonte única
 
-- `UncutGemInventoryV1V2.xlsx`: workbook **operacional migrado** com exatamente quatro abas (árvore canônica, Uncut Gem V2, Galeria de imagens e Leia-me). O original de cinco abas permanece recuperável no histórico Git (`4b641bfebb2d3694163df3338b2e66d0d1556c21`). SHA-256 operacional: `3fa0d1c8fe767964b278d91756fdf4679aca897cc3ffb827d24ac65614c463c4` (substituído automaticamente pelo script de migração após os testes).
+- `UncutGemInventoryV1V2.xlsx`: workbook **operacional migrado** com exatamente quatro abas (árvore canônica, Uncut Gem V2, Galeria de imagens e Leia-me). O original de cinco abas permanece recuperável no histórico Git (`4b641bfebb2d3694163df3338b2e66d0d1556c21`). SHA-256 operacional: `13339c68d4fcb0a44134faf0a9fff29b39859904bc9b5f44078bf2f0a6413445` (substituído automaticamente pelo script de migração após os testes).
 - `InventoryV1.json`: catálogo determinístico de **79 registros** gerado unicamente da aba `Árvore Uncut Gem V1 — System Co` (título truncado pelo Excel). Sem `legacyItems` ou `legacyOnlyTags`, sem preenchimento automático do legado. `legacyTag` é apenas metadado histórico. As vistas PCB são `UG-V1-B041`/`UG-V1-B042`.
 - `evidence/`: evidências do Builder para imagens, estados de revisão e faces da PCB. Alimentam o importador; não são carregadas como catálogos separados pela interface. Seus hashes são registrados no catálogo.
 - `legacy/`: snapshot histórico de 33 registros e árvore Markdown antiga. Nenhum desses arquivos participa da reconstrução nem da interface.
