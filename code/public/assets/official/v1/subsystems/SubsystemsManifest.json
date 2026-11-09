@@ -1,0 +1,223 @@
+{
+  "project": "NV Quantum Virtual Lab / Uncut Gem V1",
+  "method": "Pillow crop, contrast 1.035, moderate UnsharpMask. Optional Lanczos 2x for small crops. No generative AI.",
+  "attribution": "Quantum Village / Uncut Gem; official project AGPL-3.0. Retain upstream source and project license.",
+  "originals": {
+    "front": {
+      "sha256": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
+      "dimensions": [
+        1453,
+        1080
+      ],
+      "url": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png"
+    },
+    "back": {
+      "sha256": "2ecebd560a1e1b3e6e3b639c1510e74392c3e1a8711c7c50df85eb7bfc911bd2",
+      "dimensions": [
+        2025,
+        1632
+      ],
+      "url": "https://quantumvillage.org/images/device-back.jpeg"
+    },
+    "pcb": {
+      "sha256": "a669f214fa6c9cd7dd2c188b4de96bbc1ba0fd3261db6d1b0ea8743b5efbf922",
+      "dimensions": [
+        3022,
+        1952
+      ],
+      "url": "https://raw.githubusercontent.com/QuantumVillage/UncutGem/main/hardware/PCB/images/DiamondGeezer-1.png"
+    }
+  },
+  "subsystems": [
+    {
+      "id": "S01",
+      "file": "UgV1SubsystemPowerUsb.png",
+      "title": "Conector USB no ESP32 e circuito adjacente",
+      "source": "front",
+      "source_crop_box_px": [
+        0,
+        702,
+        364,
+        983
+      ],
+      "kind": "recorte real",
+      "notes": "O conector USB é visível, porém não demonstra o circuito do borne 5V_SUPP1.",
+      "size": [
+        728,
+        562
+      ],
+      "bytes": 490428
+    },
+    {
+      "id": "S02",
+      "file": "UgV1SubsystemEsp32.png",
+      "title": "ESP32 completo",
+      "source": "front",
+      "source_crop_box_px": [
+        101,
+        658,
+        683,
+        994
+      ],
+      "kind": "recorte real",
+      "notes": "Módulo controlador na face frontal.",
+      "size": [
+        1164,
+        672
+      ],
+      "bytes": 939810
+    },
+    {
+      "id": "S03",
+      "file": "UgV1SubsystemLaser.png",
+      "title": "Laser verde e seu suporte",
+      "source": "front",
+      "source_crop_box_px": [
+        130,
+        162,
+        509,
+        411
+      ],
+      "kind": "recorte real",
+      "notes": "Laser e placa de acionamento junto ao suporte.",
+      "size": [
+        758,
+        498
+      ],
+      "bytes": 376471
+    },
+    {
+      "id": "S04",
+      "file": "UgV1SubsystemAdf4351.png",
+      "title": "Região traseira do módulo ADF4351",
+      "source": "back",
+      "source_crop_box_px": [
+        141,
+        652,
+        1175,
+        1404
+      ],
+      "kind": "fotografia oficial do verso",
+      "notes": "Região do módulo traseiro, associada ao ADF4351 pelo guia oficial. Marcação do CI não é legível.",
+      "size": [
+        2068,
+        1504
+      ],
+      "bytes": 2273743
+    },
+    {
+      "id": "S05",
+      "file": "UgV1SubsystemRfAmplifier.png",
+      "title": "Amplificador de micro-ondas",
+      "source": "front",
+      "source_crop_box_px": [
+        581,
+        453,
+        1076,
+        756
+      ],
+      "kind": "recorte real",
+      "notes": "Placa de amplificação RF e terminais SMA.",
+      "size": [
+        990,
+        606
+      ],
+      "bytes": 719410
+    },
+    {
+      "id": "S06",
+      "file": "UgV1SubsystemRfConnections.png",
+      "title": "Conectores SMA e cabo RF",
+      "source": "front",
+      "source_crop_box_px": [
+        929,
+        421,
+        1453,
+        908
+      ],
+      "kind": "recorte real",
+      "notes": "Região da ligação coaxial do amplificador; percurso completo não visível em um único recorte.",
+      "size": [
+        1048,
+        974
+      ],
+      "bytes": 1092067
+    },
+    {
+      "id": "S07",
+      "file": "UgV1SubsystemPrismDetection.png",
+      "title": "Prisma real e óptica encapsulada",
+      "source": "front",
+      "source_crop_box_px": [
+        595,
+        108,
+        901,
+        389
+      ],
+      "kind": "recorte real",
+      "notes": "Prisma real. Filtro vermelho e BPW34 internos não podem ser vistos individualmente nesta foto.",
+      "size": [
+        612,
+        562
+      ],
+      "bytes": 382901
+    },
+    {
+      "id": "S08",
+      "file": "UgV1SubsystemSignalConditioning.png",
+      "title": "TL082 e componentes passivos",
+      "source": "front",
+      "source_crop_box_px": [
+        145,
+        464,
+        582,
+        713
+      ],
+      "kind": "recorte real",
+      "notes": "Região analógica com TL082 e resistores/capacitores, conforme montagem V1.",
+      "size": [
+        874,
+        498
+      ],
+      "bytes": 541419
+    },
+    {
+      "id": "S09",
+      "file": "UgV1SubsystemOled.png",
+      "title": "Display OLED completo",
+      "source": "front",
+      "source_crop_box_px": [
+        639,
+        669,
+        1061,
+        1059
+      ],
+      "kind": "recorte real",
+      "notes": "Módulo e tela OLED frontal.",
+      "size": [
+        844,
+        780
+      ],
+      "bytes": 587563
+    },
+    {
+      "id": "S10",
+      "file": "UgV1SubsystemPcbStructure.png",
+      "title": "PCB DiamondGeezer",
+      "source": "pcb",
+      "source_crop_box_px": [
+        0,
+        0,
+        3022,
+        1952
+      ],
+      "kind": "render oficial PCB",
+      "notes": "Render oficial frontal da PCB, não fotografia de montagem.",
+      "size": [
+        3022,
+        1952
+      ],
+      "bytes": 2320123
+    }
+  ]
+}
