@@ -167,7 +167,7 @@ function App() {
   function go(target:Page){setPage(target);window.location.hash=target;setMobileMenu(false);setSelected(null);}
   function toggleCollapsed(){setCollapsed(v=>{try{window.localStorage.setItem("nv-sidebar-collapsed",String(!v))}catch{}return !v;});}
   function openItem(item:Item,trigger?:HTMLElement){lastSelectionRef.current=trigger||document.activeElement as HTMLElement;setInspectorExpanded(false);setSelected(item);}
-  function closeInspector(){setSelected(null);lastSelectionRef.current?.focus();}
+  function closeInspector(){setSelected(null);setInspectorExpanded(false);lastSelectionRef.current?.focus();}
   function download(all:boolean){const file=new Blob([exportCsv(all?items:filtered)],{type:"text/csv;charset=utf-8"});const url=URL.createObjectURL(file);const a=document.createElement("a");a.href=url;a.download=all?"UncutGemV1.csv":"UncutGemV1Filtrado.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
   async function fullscreen(){
     if(document.fullscreenElement){await document.exitFullscreen();return;}
@@ -196,7 +196,7 @@ function App() {
       <div className="mobile-bar"><button type="button" onClick={()=>setMobileMenu(true)} aria-label="Abrir menu lateral">☰</button><strong>NV Quantum Virtual Lab</strong><span>V0.1</span></div>
       {page==="explorar" ? <div className="workbench-page">
         <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar V1</h1></div><div className="toolbar-right"><span className="small-source">Foto real · Quantum Village</span><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
-        <div className={"work-area"+(selected?" with-inspector":"")+(inspectorExpanded?" inspector-big":"")}>
+        <div className={"work-area"+(selected?" with-inspector":"")+(selected&&inspectorExpanded?" inspector-big":"")}>
           {selected&&<Inspector item={selected} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeInspector} onOpen={setPreview} refTarget={inspectorRef}/>}
           <section className={"photo-panel"+(fullFallback?" full-fallback":"")} ref={photoPanelRef} aria-label="Fotografia interativa da V1">
             <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>{PHOTO_REGIONS.length} pontos identificados na imagem</span></div>
