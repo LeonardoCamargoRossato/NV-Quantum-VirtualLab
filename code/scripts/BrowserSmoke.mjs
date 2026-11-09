@@ -193,6 +193,13 @@ try {
   assert(await page.getByText("Figura 4 de 4",{exact:true}).isVisible());
   await page.getByRole("button",{name:"Próxima figura"}).click();
   assert(await page.getByText("Figura 1 de 4",{exact:true}).isVisible());
+  assert((await page.locator(".sciento-figures iframe").getAttribute("src")).includes("1pouGbfNMHSnZkp-MIDdNgP34CJXlA7aG"),"Carrossel deve apontar ao PDF cientométrico correto");
+  assert((await page.locator(".sciento-document iframe").getAttribute("src")).includes("1pouGbfNMHSnZkp-MIDdNgP34CJXlA7aG"),"Visualizador deve apontar ao PDF cientométrico correto");
+  await page.getByRole("button",{name:"Ampliar figura 1"}).click();
+  await page.getByRole("dialog",{name:"Figura 1 ampliada"}).waitFor();
+  assert(await page.getByRole("dialog",{name:"Figura 1 ampliada"}).locator("iframe").getAttribute("src"));
+  await page.getByRole("button",{name:"Fechar figura ampliada"}).click();
+  assert.equal(await page.getByRole("dialog",{name:"Figura 1 ampliada"}).count(),0);
   await page.getByRole("button",{name:"Revisão de Patentes"}).click();
   await page.getByRole("heading",{name:"Revisão de Patentes"}).waitFor();
   assert(await page.getByText("EM BREVE · IMPLEMENTAÇÃO FUTURA").isVisible());
