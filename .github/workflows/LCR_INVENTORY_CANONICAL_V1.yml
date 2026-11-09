@@ -1,0 +1,60 @@
+name: LCR Inventory Canonical V1 — One-time migration
+on:
+  push:
+    branches: [lcr-dev-inventory-canonical-v1]
+    paths: ['.github/workflows/LCR_INVENTORY_CANONICAL_V1.yml']
+permissions:
+  contents: write
+concurrency:
+  group: lcr-canonical-v1-migration
+  cancel-in-progress: false
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: lcr-dev-inventory-canonical-v1
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: code/package-lock.json
+      - name: Transformar XLSX preservando conteúdo e links aprovados
+        run: |
+          python code/scripts/migrate_inventory_workbook.py
+          python code/scripts/migrate_inventory_workbook.py --verify-only
+      - name: Regenerar JSON somente da Árvore de 79 tags
+        run: |
+          python code/scripts/consolidate_inventory.py
+          python code/scripts/consolidate_inventory.py --check
+      - name: Verificar integridade e auditoria de nomes
+        run: |
+          python -m unittest discover -s code/tests -p 'test_*.py' -v
+          python code/scripts/lcr_naming.py --check
+          python code/scripts/lcr_auditoria.py
+      - name: Build e testes de interface TypeScript
+        working-directory: code
+        run: |
+          npm ci
+          npm test
+          npm run build
+      - name: Commitar somente artefatos regenerados após os testes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add code/source/UncutGemInventoryV1V2.xlsx code/source/InventoryV1.json code/source/README.md
+          git diff --cached --stat
+          if git diff --cached --quiet; then
+            echo "No generated changes; already migrated"
+          else
+            git commit -m "data(inventory): finalize four-tab canonical workbook and 79-item snapshot"
+            git push origin HEAD:lcr-dev-inventory-canonical-v1
+          fi
+          echo "STABLE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          sha256sum code/source/UncutGemInventoryV1V2.xlsx >> "$GITHUB_STEP_SUMMARY"
