@@ -191,7 +191,8 @@ function App() {
     if(group==="lab")setLabOpen(open=>!open);else setStudyOpen(open=>!open);
   }
   function chooseV1(){
-    if(!isV1Page(page)){go("explorar");setV1Open(true);}
+    // Em Estudo/Pesquisa, apenas abre a árvore; na V2 ou 3D, volta ao laboratório real.
+    if(isLabPage(page)&&!isV1Page(page)){go("explorar");setV1Open(true);}
     else setV1Open(open=>!open);
   }
   function toggleCollapsed(){setCollapsed(v=>{try{window.localStorage.setItem("nv-sidebar-collapsed",String(!v))}catch{}return !v;});}
