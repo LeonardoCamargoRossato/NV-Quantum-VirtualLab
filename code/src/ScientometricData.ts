@@ -6,6 +6,9 @@ export const RESEARCH_SHEET = "https://docs.google.com/spreadsheets/d/1ID0MHrg_-
 export const RESEARCH_SHEET_PREVIEW = "https://docs.google.com/spreadsheets/d/1ID0MHrg_-2Fx37vGR8SMhoILLs6E8WR8CnMV4mlf734/preview?gid=448820393";
 export const SCIENTOMETRIC_DOC = "https://docs.google.com/document/d/12TKAwbNWHPy99cCV4XF26fLyAKZGOUkNwMoBGCkuOhE/edit";
 export const SCIENTOMETRIC_DOC_PREVIEW = "https://docs.google.com/document/d/12TKAwbNWHPy99cCV4XF26fLyAKZGOUkNwMoBGCkuOhE/preview";
+export const SCIENTOMETRIC_PDF = "https://drive.google.com/file/d/1pouGbfNMHSnZkp-MIDdNgP34CJXlA7aG/view";
+export const SCIENTOMETRIC_PDF_PREVIEW = "https://drive.google.com/file/d/1pouGbfNMHSnZkp-MIDdNgP34CJXlA7aG/preview";
+export const SCIENTOMETRIC_PDF_CREATED_UTC = "2026-11-09T15:06:59.682Z";
 export const SUPPORT_DOC = "https://docs.google.com/document/d/1ylp9JnYox8yULs5msb1bzgS7i7B_1keRxkDUyuhXdiU/edit";
 
 export const searchResults = [
@@ -59,12 +62,12 @@ export const SEARCH_EQUATIONS:SearchEquation[] = [
     explanation:"Agrupa estudos de referência clássicos para avaliar erro, deriva e desempenho de navegação."
   }
 ];
-export type DocumentFigure = {number:number;title:string;description:string;origin:string;page:number|null};
+export type DocumentFigure = {number:number;title:string;description:string;origin:string;page:number};
 export const DOCUMENT_FIGURES:DocumentFigure[] = [
- {number:1,title:"Fluxo de buscas e triagem",description:"Busca, exportação, deduplicação e decisões. Esquema documental, não fluxograma PRISMA de leitura integral.",origin:"Artigo V0, Figura 1",page:null},
- {number:2,title:"Publicações por ano",description:"Distribuição temporal do corpus ‘Manter’ (63 trabalhos). O ano de 2026 ainda não havia terminado quando os dados foram coletados.",origin:"Artigo V0, Figura 2",page:null},
- {number:3,title:"País da primeira afiliação",description:"Contagem por país de afiliação do primeiro autor nos 63 trabalhos; classificação preliminar.",origin:"Artigo V0, Figura 3",page:null},
- {number:4,title:"Arquitetura experimental proposta",description:"Arquitetura conceitual de coleta, calibração, fusão e comparação de configurações INS; não implementada/validada.",origin:"Artigo V0, Figura 4",page:null},
+ {number:1,title:"Fluxo de buscas e triagem",description:"Busca, exportação, deduplicação e decisões. Esquema documental, não fluxograma PRISMA de leitura integral.",origin:"Artigo V0, Figura 1",page:7},
+ {number:2,title:"Publicações por ano",description:"Distribuição temporal do corpus ‘Manter’ (63 trabalhos). O ano de 2026 ainda não havia terminado quando os dados foram coletados.",origin:"Artigo V0, Figura 2",page:8},
+ {number:3,title:"País da primeira afiliação",description:"Contagem por país de afiliação do primeiro autor nos 63 trabalhos; classificação preliminar.",origin:"Artigo V0, Figura 3",page:9},
+ {number:4,title:"Arquitetura experimental proposta",description:"Arquitetura conceitual de coleta, calibração, fusão e comparação de configurações INS; não implementada/validada.",origin:"Artigo V0, Figura 4",page:12},
 ];
 export const RESEARCH_SNAPSHOT_DATE = "2026-11-05";
 export const RESEARCH_AUDIT_DATE = "2026-11-09";
