@@ -221,7 +221,7 @@ def apply(book=BOOK):
     finally:
         temp_path.unlink(missing_ok=True)
     readme = README.read_text(encoding="utf-8")
-    old_sha = re.search(r"SHA-256 .([a-f0-9]{64}).", readme)
+    old_sha = re.search(r"SHA-256 operacional: `([a-f0-9]{64})`", readme)
     if old_sha:
         readme = readme.replace(old_sha.group(1), new_sha)
         README.write_text(readme, encoding="utf-8")
