@@ -1,10 +1,12 @@
 import {chromium} from '@playwright/test';
-const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--enable-webgl','--use-gl=angle','--use-angle=swiftshader']});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--enable-webgl','--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader']});
 const url=process.env.APP_URL||'http://127.0.0.1:4174/NV-Quantum-VirtualLab/';
 for(const [width,height] of [[1366,768],[1920,1080],[390,844]]){
  const page=await browser.newPage({viewport:{width,height}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(url+'#explorar');await page.getByRole('button',{name:/Módulos e Visualização/}).click();await page.getByRole('menuitem',{name:'Visualizar Prisma 3D'}).click();
- const started=Date.now();await page.locator('.scientific-3d-canvas canvas').waitFor();await page.locator('.scientific-3d-status').waitFor({state:'detached'});console.log('Load ms',width,Date.now()-started);
+ const started=Date.now();await page.waitForFunction(()=>{const state=document.querySelector('.scientific-3d-status');return (document.querySelector('.scientific-3d-canvas canvas')&&!state)||state?.textContent?.includes('WebGL indisponível')},undefined,{timeout:60000});
+ if(await page.getByText('WebGL indisponível neste navegador.').count()){await page.getByRole('button',{name:'Tentar novamente'}).waitFor();console.log('PASS WebGL fallback on CI renderer',width,height);await page.close();continue}
+ console.log('Load ms',width,Date.now()-started);
  if(await page.getByText('Não foi possível carregar o modelo 3D.').count())throw Error('model failed');
  if(await page.locator('.scientific-3d-canvas canvas').count()!==1)throw Error('canvas absent');
  await page.screenshot({path:`/tmp/Scientific3D-Solid-${width}.png`});

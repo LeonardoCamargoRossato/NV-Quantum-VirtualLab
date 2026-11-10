@@ -43,7 +43,12 @@ jobs:
         env:
           APP_URL: http://127.0.0.1:4173/NV-Quantum-VirtualLab/
           SCREENSHOT_DIR: /tmp/nvlab-evidence
-        run: node scripts/BrowserSmoke.mjs
+        run: |
+          set -o pipefail
+          node scripts/BrowserSmoke.mjs 2>&1 | tee /tmp/nvlab-smoke.log || {
+            echo "::error title=Interface smoke::$(tail -n 16 /tmp/nvlab-smoke.log | tr '\n' ' ' | cut -c 1-1500)"
+            exit 1
+          }
       - name: Evidências de tela
         if: always()
         uses: actions/upload-artifact@v4

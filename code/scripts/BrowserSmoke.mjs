@@ -330,4 +330,4 @@ await import('./BrowserAdaptiveViewerSmoke.mjs');
 await import('./BrowserRfRotationSmoke.mjs');
 
 await import('./BrowserBackFaceSmoke.mjs');
-await import('./BrowserScientific3DSmoke.mjs');
+try { await import('./BrowserScientific3DSmoke.mjs'); } catch(error) { console.error('::error title=Scientific 3D smoke::'+String(error).replaceAll('\n',' ')); throw error; }
