@@ -2,8 +2,8 @@ import {useEffect,useRef,useState,type ReactNode} from 'react';
 import {ImageIcon} from './ImageViewer';
 import {PHOTO_ORIGINAL_URL} from './PhotoRegions';
 function Arrow({up=false}:{up?:boolean}){return <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d={up?'m6 15 6-6 6 6':'m6 9 6 6 6-6'}/></svg>}
-export function ViewerToolbar({children,onScheme,onFullscreen,fullscreen}:{children:ReactNode;onScheme:()=>void;onFullscreen:()=>void;fullscreen:boolean}){
- const [minimized,setMinimized]=useState(()=>{try{return localStorage.getItem('nv-explore-toolbar-minimized')==='true'}catch{return false}});
+export function ViewerToolbar({children,zoomControls,onScheme,onFullscreen,fullscreen}:{children:ReactNode;zoomControls:ReactNode;onScheme:()=>void;onFullscreen:()=>void;fullscreen:boolean}){
+ const [minimized,setMinimized]=useState(false);
  const [expanded,setExpanded]=useState(false),[menu,setMenu]=useState(false),[credits,setCredits]=useState(false);
  const [hint,setHint]=useState(()=>{try{return !localStorage.getItem('nv-explore-toolbar-hint-seen')}catch{return true}});
  const restoreFocus=useRef(false);
@@ -29,7 +29,7 @@ export function ViewerToolbar({children,onScheme,onFullscreen,fullscreen}:{child
     <button type="button" className={'viewer-toolbar-icon'+(hint?' viewer-hint':'')} aria-label={expanded?'Recolher controles de camadas':'Expandir controles de camadas'} aria-expanded={expanded} aria-controls="viewer-layer-controls" title={expanded?'Recolher controles':'Expandir controles'} onClick={()=>{setExpanded(v=>!v);setMenu(false)}}><Arrow up={expanded}/></button>
     <button type="button" className="viewer-toolbar-icon" aria-label="Minimizar barra do visualizador" title="Minimizar barra do visualizador" onClick={()=>{restoreFocus.current=true;setMinimized(true);setExpanded(false);setMenu(false)}}><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 5v14m16-7H9m5-5-5 5 5 5"/></svg></button>
     <span className="viewer-assembly"><i className="live-dot"/> Uncut Gem V1 <small>· montagem oficial</small></span>
-    <div className="viewer-modules"><button type="button" ref={trigger} className="viewer-modules-trigger" aria-haspopup="menu" aria-controls="viewer-modules-menu" aria-expanded={menu} onClick={()=>{setMenu(v=>!v);setExpanded(false)}}>Módulos e Visualização <Arrow up={menu}/></button>
+    <div className="viewer-toolbar-actions">{zoomControls}<div className="viewer-modules"><button type="button" ref={trigger} className="viewer-modules-trigger" aria-haspopup="menu" aria-controls="viewer-modules-menu" aria-expanded={menu} onClick={()=>{setMenu(v=>!v);setExpanded(false)}}>Módulos e Visualização <Arrow up={menu}/></button>
     {menu&&<div ref={menuRef} id="viewer-modules-menu" className="viewer-modules-menu" role="menu" aria-label="Módulos e Visualização" onKeyDown={e=>{
      const entries=Array.from(menuRef.current!.querySelectorAll<HTMLButtonElement>('button:not(:disabled)'));
      const index=entries.indexOf(document.activeElement as HTMLButtonElement);
@@ -41,7 +41,7 @@ export function ViewerToolbar({children,onScheme,onFullscreen,fullscreen}:{child
      <button type="button" role="menuitem" disabled aria-disabled="true">Visualizar prisma 3D <small>Em breve</small></button>
      <button type="button" role="menuitem" onClick={()=>action(()=>setCredits(true))}>Informações e créditos</button>
     </div>}
-    </div>
+    </div></div>
    </div>
    {expanded&&<section id="viewer-layer-controls" className="viewer-layer-popover" aria-label="Controles de camadas" onClick={e=>{if((e.target as Element).closest(".photo-unmapped button,.photo-layer-note button"))setExpanded(false)}}>{children}</section>}
   </>}

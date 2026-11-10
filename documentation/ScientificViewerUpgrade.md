@@ -54,3 +54,7 @@ Outras resoluções e métricas brutas: [evidências](../code/tests/evidence/sci
 O workflow `LCR_INTERFACE_SMOKE.yml` existente chama BrowserSmoke, que passa a incluir o teste adaptativo, sem modificação de infraestrutura. Status dos workflows no commit entregue deve ser consultado nos links da entrega; não confundir testes locais com aprovação independente do Quality & Security Auditor.
 
 **Pendência:** reteste independente e aprovação final humana. A opção 3D é somente uma indicação futura, não uma funcionalidade implementada.
+
+## Ajuste de abertura e zoom
+
+Os menus lateral e superior iniciam abertos em cada carregamento, mesmo quando uma visita anterior deixou a preferência minimizada. Ambos podem ser recolhidos manualmente. Os controles menos, percentual, mais, Redefinir e fullscreen passaram para a barra superior, ao lado de Módulos e Visualização; não há barra de zoom sobreposta à fotografia. Em telas pequenas, a barra usa duas linhas para manter controles legíveis e evitar overflow. Esta regra substitui a restauração automática do modo minimizado descrita acima; a largura do inspetor continua persistida.

@@ -6,12 +6,17 @@ const page=await browser.newPage({viewport:{width:1366,height:768}}),errors=[];p
 const url=process.env.APP_URL||'http://127.0.0.1:4173/NV-Quantum-VirtualLab/';
 const shots=process.env.SCREENSHOT_DIR||'/tmp/nv-adaptive-viewer';mkdirSync(shots,{recursive:true});
 const width=()=>page.getByRole('separator',{name:'Largura do inspetor'}).getAttribute('aria-valuenow').then(Number);
-const zoom=()=>page.locator('.photo-controls output').textContent();
+const zoom=()=>page.locator('.photo-stage').evaluate(el=>{const matrix=new DOMMatrixReadOnly(getComputedStyle(el).transform);return Math.round(Math.hypot(matrix.a,matrix.b)*100)+'%'});
 async function settle(){await page.waitForTimeout(100)}
 async function point(){return page.evaluate(()=>{const area=document.querySelector('.photo-viewport').getBoundingClientRect(),image=document.querySelector('.photo-stage').getBoundingClientRect();return {x:(area.x+area.width/2-image.x)/image.width,y:(area.y+area.height/2-image.y)/image.height}})}
 async function modules(){await page.getByRole('button',{name:'Módulos e Visualização',exact:true}).click()}
 try{
+ await page.addInitScript(()=>{localStorage.setItem('nv-sidebar-collapsed','true');localStorage.setItem('nv-explore-toolbar-minimized','true')});
  await page.goto(url,{waitUntil:'domcontentloaded'});await page.locator('.photo-polygon').nth(8).waitFor();await settle();
+ assert.equal(await page.locator('.menu-collapsed').count(),0,'Sidebar starts open even after a previously collapsed visit');
+ assert.equal(await page.locator('.viewer-restore').count(),0,'Top toolbar starts open');
+ assert.equal(await page.locator('.photo-viewport .photo-controls').count(),0);
+ assert.equal(await page.locator('.viewer-toolbar-actions .photo-controls').count(),1);
  assert.equal(await page.locator('.viewer-toolbar').evaluate(el=>el.offsetHeight),48);assert.equal(await page.locator('.photo-layer-panel').count(),0);
  assert.equal(await page.getByRole('button',{name:'Abrir foto aprimorada',exact:true}).count(),0);assert.equal(await page.locator('.photo-caption,.compact-toolbar').count(),0);
  const initial=await page.locator('.photo-viewport').boundingBox();assert(initial.height>=700);

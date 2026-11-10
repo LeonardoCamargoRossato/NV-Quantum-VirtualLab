@@ -96,7 +96,7 @@ function isLabPage(page:Page){return labPages.includes(page);}
 function isV1Page(page:Page){return v1Pages.includes(page);}
 function App() {
   const [page,setPage]=useState<Page>(currentPage);
-  const [collapsed,setCollapsed]=useState(()=>{try{return window.localStorage.getItem("nv-sidebar-collapsed")==="true"}catch{return false}});
+  const [collapsed,setCollapsed]=useState(false);
   const [mobileMenu,setMobileMenu]=useState(false);
   // Grupos independentes; o laboratório e a Uncut Gem V1 estão abertos por padrão.
   const [labOpen,setLabOpen]=useState(()=>isLabPage(currentPage()));
@@ -370,7 +370,7 @@ function App() {
     <div className="main-column">
       <div className="mobile-bar"><button type="button" onClick={()=>{setCollapsed(false);setMobileMenu(true)}} aria-label="Abrir menu lateral">☰</button><strong>NV Quantum Virtual Lab</strong><span>Laboratório</span></div>
       <div ref={viewerWorkspaceRef} className={page==="explorar"?"scientific-workspace"+(fullFallback?" full-fallback":""):"workspace-shell"}>
-      {page==="explorar"&&<ViewerToolbar onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
+      {page==="explorar"&&<ViewerToolbar zoomControls={<div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button className="reset-button" onClick={leaveSubsystem}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>} onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
         <PhotoLayerControls mode={photoLayer} focus={focusedSubsystem} items={items} onMode={choosePhotoLayer} onBack={leaveSubsystem} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
       </ViewerToolbar>}
       <div ref={workspaceGridRef} className={"workspace-layout"+(selection?" has-inspector":"")+(selection&&inspectorExpanded?" wide-inspector":"")} style={page==="explorar"?{"--explore-inspector-width":actualInspectorWidth+"px"} as React.CSSProperties:undefined}>
@@ -387,7 +387,7 @@ function App() {
                 <img src={originalPhoto} draggable={false} alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
                 <PhotoPolygonOverlay mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
               </div>}
-              <div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button className="reset-button" onClick={leaveSubsystem}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>
+
             </div>
 
           </section>
