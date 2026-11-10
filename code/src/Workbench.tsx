@@ -124,7 +124,7 @@ function App() {
   const [inspectorExpanded,setInspectorExpanded]=useState(false);
   const [schemeOpen,setSchemeOpen]=useState(false);
   const [preview,setPreview]=useState<ImagePreview|null>(null);
-  const [photoLayer,setPhotoLayer]=useState<PhotoLayer>("subsystems");
+  const [photoLayer,setPhotoLayer]=useState<PhotoLayer>("none");
   const [focusedSubsystem,setFocusedSubsystem]=useState<string|null>(null);
   const [rotation,setRotation]=useState(0);
   const [zoom,setZoom]=useState(1);
@@ -389,7 +389,7 @@ function App() {
             <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com camadas poligonais"
               data-image-viewport {...photoNavigation.handlers}>
               {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={PHOTO_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className="photo-stage" data-rotation={rotation} style={{width:imageDimensions.width,height:imageDimensions.height,transform:"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+") rotate("+rotation+"deg)"}}>
-                <img src={originalPhoto} draggable={false} alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
+                <img src={originalPhoto} draggable={false} loading="eager" fetchPriority="high" decoding="async" alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
                 <PhotoPolygonOverlay rotation={rotation} mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
               </div>}
               <button type="button" className="photo-return-to-board" data-no-image-pan

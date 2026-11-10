@@ -10,9 +10,10 @@ const zoom=()=>page.locator('.photo-stage').evaluate(el=>{const matrix=new DOMMa
 async function settle(){await page.waitForTimeout(100)}
 async function point(){return page.evaluate(()=>{const area=document.querySelector('.photo-viewport').getBoundingClientRect(),image=document.querySelector('.photo-stage').getBoundingClientRect();return {x:(area.x+area.width/2-image.x)/image.width,y:(area.y+area.height/2-image.y)/image.height}})}
 async function modules(){await page.getByRole('button',{name:'Módulos e Visualização',exact:true}).click()}
+async function showSubsystems(){await page.getByRole('button',{name:'Subsistemas',exact:true}).click();await page.locator('.photo-polygon').nth(8).waitFor()}
 try{
  await page.addInitScript(()=>{localStorage.setItem('nv-sidebar-collapsed','true');localStorage.setItem('nv-explore-toolbar-minimized','true')});
- await page.goto(url,{waitUntil:'domcontentloaded'});await page.locator('.photo-polygon').nth(8).waitFor();await settle();
+ await page.goto(url,{waitUntil:'domcontentloaded'});await showSubsystems();await settle();
  assert.equal(await page.locator('.menu-collapsed').count(),0,'Sidebar starts open even after a previously collapsed visit');
  assert.equal(await page.locator('.viewer-restore').count(),0,'Top toolbar starts open');
  assert.equal(await page.locator('.photo-viewport .photo-controls').count(),0);
@@ -44,10 +45,10 @@ try{
  await modules();await menu.getByRole('menuitem',{name:'Ver esquema 2D',exact:true}).click();await page.getByRole('dialog',{name:'Esquema 2D — Uncut Gem V1'}).waitFor();await page.keyboard.press('Escape');assert.equal(await zoom(),beforeZoom);
  await modules();await menu.getByRole('menuitem',{name:'Tela cheia',exact:true}).click();await page.waitForFunction(()=>document.fullscreenElement?.classList.contains('scientific-workspace'));assert(await page.getByRole('button',{name:'Módulos e Visualização',exact:true}).isVisible());await page.getByRole('button',{name:'Sair da tela cheia',exact:true}).click();await page.waitForFunction(()=>!document.fullscreenElement);
  await page.screenshot({path:shots+'/AdaptiveInspector1366.png'});
- await page.reload({waitUntil:'domcontentloaded'});await page.locator('.photo-polygon').nth(8).waitFor();await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await page.getByRole('separator',{name:'Largura do inspetor'}).waitFor();assert.equal(await width(),315);
- await page.getByRole('separator',{name:'Largura do inspetor'}).press('ArrowRight');await page.reload({waitUntil:'domcontentloaded'});await page.locator('.photo-polygon').nth(8).waitFor();await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await settle();assert.equal(await width(),325);
+ await page.reload({waitUntil:'domcontentloaded'});await showSubsystems();await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await page.getByRole('separator',{name:'Largura do inspetor'}).waitFor();assert.equal(await width(),315);
+ await page.getByRole('separator',{name:'Largura do inspetor'}).press('ArrowRight');await page.reload({waitUntil:'domcontentloaded'});await showSubsystems();await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await settle();assert.equal(await width(),325);
  await page.getByRole('button',{name:'Fechar inspetor'}).click();assert.equal(await page.getByRole('separator',{name:'Largura do inspetor'}).count(),0);
- await page.evaluate(()=>localStorage.setItem('nv-explore-inspector-width','bad'));await page.reload({waitUntil:'domcontentloaded'});await page.locator('.photo-polygon').nth(8).waitFor();await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await settle();assert.equal(await width(),315);await page.getByRole('button',{name:'Fechar inspetor'}).click();
+ await page.evaluate(()=>localStorage.setItem('nv-explore-inspector-width','bad'));await page.reload({waitUntil:'domcontentloaded'});await showSubsystems();await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await settle();assert.equal(await width(),315);await page.getByRole('button',{name:'Fechar inspetor'}).click();
  await page.evaluate(()=>Object.defineProperty(Element.prototype,'requestFullscreen',{configurable:true,value:undefined}));await page.getByRole('button',{name:'Maximizar foto'}).click();assert(await page.locator('.scientific-workspace.full-fallback').isVisible());await page.keyboard.press('Escape');assert.equal(await page.locator('.full-fallback').count(),0);
  for(const size of [{width:1920,height:1080},{width:768,height:1024},{width:390,height:844}]){
   await page.setViewportSize(size);await settle();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1&&document.documentElement.scrollHeight<=innerHeight+1));

@@ -11,11 +11,19 @@ async function openControls(){if(!await page.locator('.viewer-layer-popover').co
 async function closeControls(){if(await page.getByRole('button',{name:'Recolher controles de camadas'}).isVisible())await page.getByRole('button',{name:'Recolher controles de camadas'}).click()}
 try{
  await page.goto(process.env.APP_URL||'http://127.0.0.1:4173/NV-Quantum-VirtualLab/');
- await page.locator('.photo-polygon').nth(8).waitFor();
+ await page.waitForFunction(()=>document.querySelector('.photo-stage img')?.naturalWidth>0);
  assert.equal(await page.locator('.hotspot').count(),0);
- assert.equal(await page.locator('.photo-polygon').count(),9);
+ assert.equal(await page.locator('.photo-polygon').count(),0,'The photograph must open clean, before overlays');
+ assert.equal(await page.locator('link[rel="preload"][as="image"][fetchpriority="high"]').count(),1);
+ const initialImage=await page.locator('.photo-stage').boundingBox(),initialViewport=await page.locator('.photo-viewport').boundingBox();
+ assert(Math.abs(initialImage.width-initialViewport.width)<2||Math.abs(initialImage.height-initialViewport.height)<2,'The complete image uses the maximum available area');
  await openControls();
  const modes=page.getByRole('group',{name:'Camada da fotografia'});
+ const subsystemButton=modes.getByRole('button',{name:'Subsistemas',exact:true});
+ assert((await subsystemButton.getAttribute('class')).includes('viewer-layer-callout'));
+ await subsystemButton.click();
+ assert.equal(await page.locator('.photo-polygon').count(),9);
+ assert.equal(await subsystemButton.getAttribute('class'),null);
  assert(await modes.getByRole('button',{name:'Componentes',exact:true}).isEnabled());
  await modes.getByRole('button',{name:'Componentes',exact:true}).click();
  assert.equal(await page.locator('.photo-polygon').count(),data.components.length,'All located components must be available from the global layer');
@@ -23,7 +31,7 @@ try{
  assert.equal(await page.locator('.photo-polygon-overlay').count(),0);
  await modes.getByRole('button',{name:'Subsistemas',exact:true}).click();
  const laser=page.locator('.photo-polygon[data-tag="UG-V1-S03"]');
- await laser.locator('polygon').hover();
+ await laser.locator('polygon').hover();await page.waitForTimeout(180);
  assert(+await laser.locator('polygon').evaluate(el=>getComputedStyle(el).fillOpacity)>.08);
  await laser.click();await page.getByRole('complementary',{name:/Excitação óptica/}).waitFor();
  assert.equal(await laser.getAttribute('aria-pressed'),'true');

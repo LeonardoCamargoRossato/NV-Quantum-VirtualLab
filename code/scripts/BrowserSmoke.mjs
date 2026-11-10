@@ -15,6 +15,7 @@ page.on("pageerror", e => errors.push(e.message));
 try {
   await page.goto(process.env.APP_URL || "http://127.0.0.1:5173/NV-Quantum-VirtualLab/", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { name: "Explorar" }).waitFor();
+  await page.getByRole("button", { name: "Subsistemas", exact: true }).click();
   await page.getByRole("button", { name: "Expandir Excitação óptica — laser" }).waitFor();
   // Esquema 2D: PNGs reais, frente inicial, flip, zoom, Escape e foco.
   const schemeTrigger=page.getByRole('button',{name:'Módulos e Visualização',exact:true});
@@ -295,6 +296,7 @@ try {
   await page.getByRole("button", {name:"Laboratório",exact:true}).click();
   await page.getByRole("button", {name:"Uncut Gem V1",exact:true}).click();
   await page.getByRole("button", {name:"Explorar",exact:true}).click();
+  await page.getByRole("button", {name:"Subsistemas",exact:true}).click();
   await page.getByRole("button", {name:"Expandir Excitação óptica — laser"}).click();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).waitFor();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).click();

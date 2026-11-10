@@ -12,7 +12,7 @@ async function checkFocus(){
  const rects=await page.locator('.photo-stage').evaluate(el=>{const image=el.querySelector('img').getBoundingClientRect(),svg=el.querySelector('svg').getBoundingClientRect();return ['x','y','width','height'].map(k=>Math.abs(image[k]-svg[k]))});assert(rects.every(v=>v<1),'Image and polygon layers remain registered');
 }
 try{
- await page.goto(url,{waitUntil:'domcontentloaded'});await page.getByRole('button',{name:'Expandir Amplificação de micro-ondas',exact:true}).click();await settle();
+ await page.goto(url,{waitUntil:'domcontentloaded'});await page.getByRole('button',{name:'Subsistemas',exact:true}).click();await page.getByRole('button',{name:'Expandir Amplificação de micro-ondas',exact:true}).click();await settle();
  assert.equal(await page.locator('.photo-polygon[data-tag="UG-V1-B024"]').count(),0);
  assert.equal(await page.locator('.photo-region-label').getByText('RFIN',{exact:true}).count(),1);assert.equal(await page.locator('.photo-region-label').getByText('RFOUT',{exact:true}).count(),1);
  await checkFocus();const zoom=await page.locator('.photo-controls output').textContent();

@@ -616,7 +616,7 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .viewer-toolbar-row{padding:5px;gap:2px}.viewer-toolbar-icon{width:30px;padding:5px}.viewer-assembly{font-size:11px;margin-left:1px}.viewer-assembly small{display:none}.viewer-modules-trigger{font-size:11px;padding:6px;gap:2px}
  .viewer-layer-popover .photo-layer-legend{display:flex}.viewer-layer-popover .photo-layer-note{display:block}.viewer-modules-menu{width:min(260px,92vw)}
 }
-@media(prefers-reduced-motion:reduce){.viewer-hint{animation:none}}
+@media(prefers-reduced-motion:reduce){.viewer-hint,.viewer-layer-callout{animation:none}}
 
 /* Zoom tools belong to the top toolbar, beside the modules menu. */
 .viewer-toolbar-actions{margin-left:auto;display:flex;align-items:center;gap:8px;min-width:0}
@@ -625,6 +625,8 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 .viewer-toolbar .photo-controls button{height:34px;min-width:30px;padding:5px 7px}
 .viewer-toolbar .photo-controls .reset-button{font-size:11px}
 .viewer-toolbar .photo-controls output{min-width:42px;font-size:11px}
+.viewer-layer-callout{position:relative;color:#302a00!important;background:#fff700!important;border-color:#d8c900!important;box-shadow:0 0 0 2px #fff70066,0 0 14px #ffed00;animation:viewer-layer-neon 1.35s ease-in-out infinite}
+@keyframes viewer-layer-neon{0%,100%{box-shadow:0 0 0 1px #fff70055,0 0 7px #ffed00}50%{box-shadow:0 0 0 3px #fff70088,0 0 18px #ffe600}}
 @media(max-width:640px){
  .viewer-toolbar{height:88px;flex-basis:88px}.viewer-toolbar-row{height:88px;flex-wrap:wrap;align-content:center;row-gap:4px}
  .viewer-toolbar-actions{width:100%;justify-content:space-between;gap:3px}
