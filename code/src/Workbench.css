@@ -631,3 +631,40 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .viewer-toolbar .photo-controls button{min-width:28px;padding:4px 5px;height:32px}.viewer-toolbar .photo-controls output{min-width:36px}.viewer-toolbar .photo-controls .reset-button{font-size:10px}
  .viewer-layer-popover{top:88px}
 }
+
+/* Builder 2: persistent layer selector, independent dropdown, floating board return. */
+.viewer-layer-group{display:flex;align-items:center;position:relative;flex-shrink:0;gap:0}
+.viewer-layer-modes{display:flex;align-items:center;gap:2px;border:1px solid #cbd5e1;border-radius:8px 0 0 8px;padding:2px;background:rgba(241,245,249,.82)}
+.viewer-layer-modes button{border:1px solid transparent;border-radius:5px;padding:5px 7px;min-height:28px;font-size:11px;background:transparent;color:#334155;white-space:nowrap}
+.viewer-layer-modes button:hover,.viewer-layer-modes button:focus-visible{background:rgba(219,234,254,.92);border-color:#93c5fd}
+.viewer-layer-modes button[aria-pressed="true"]{background:#1d4ed8;color:white;border-color:#1e40af}
+.viewer-layer-toggle{display:grid;place-items:center;height:34px;width:31px;padding:5px;border:1px solid #cbd5e1;border-left:0;border-radius:0 8px 8px 0;background:rgba(241,245,249,.82)}
+.viewer-layer-toggle:hover,.viewer-layer-toggle:focus-visible{background:#dbeafe}
+.viewer-layer-popover{top:calc(100% + 6px);left:auto;right:0;width:min(440px,calc(100vw - 20px));max-height:min(56dvh,440px);border-radius:9px;overflow:auto}
+.viewer-layer-popover .photo-layer-panel{background:rgba(255,255,255,.97)}
+.viewer-layer-popover .photo-layer-toolbar{justify-content:flex-start}
+.viewer-layer-popover .photo-subsystem-select{width:100%;justify-content:space-between}
+.viewer-layer-popover .photo-subsystem-select select{flex:1;max-width:300px}
+.photo-viewport{position:relative}
+.photo-return-to-board{position:absolute;right:12px;top:12px;z-index:35;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid rgba(148,163,184,.78);border-radius:8px;background:rgba(255,255,255,.82);color:#0f2547;box-shadow:0 3px 10px #0f172a26;backdrop-filter:blur(6px);font-size:12px;font-weight:650;cursor:pointer}
+.photo-return-to-board:hover,.photo-return-to-board:focus-visible{background:rgba(255,255,255,.98);outline-offset:2px}
+@media(max-width:950px){.viewer-assembly small{display:none}.viewer-toolbar-actions{gap:4px}}
+@media(max-width:800px){.viewer-layer-modes button{font-size:10px;padding:5px}.viewer-layer-toggle{width:27px}.viewer-toolbar-row{gap:3px}}
+@media(max-width:640px){
+ .viewer-toolbar{height:124px;flex-basis:124px}
+ .viewer-toolbar-row{height:124px;display:flex;flex-wrap:wrap;justify-content:flex-start;align-content:center;gap:5px;padding:6px}
+ .viewer-toolbar-actions{display:contents}
+ .viewer-assembly{flex:1;min-width:120px}
+ .viewer-toolbar .photo-controls{order:2}
+ .viewer-layer-group{order:3}
+ .viewer-modules{order:4}
+ .viewer-layer-popover{left:0;right:auto;width:min(420px,calc(100vw - 16px));max-height:50dvh}
+ .viewer-layer-modes button{font-size:10px;padding:5px}
+ .viewer-modules-trigger{font-size:11px}
+ .photo-return-to-board{top:9px;right:9px;padding:7px 8px;font-size:11px}
+}
+@media(max-width:360px){
+ .viewer-toolbar{height:156px;flex-basis:156px}
+ .viewer-toolbar-row{height:156px}
+ .photo-return-to-board span{display:none}
+}
