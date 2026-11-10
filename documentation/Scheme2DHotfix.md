@@ -15,3 +15,11 @@ Repetição do teste específico: com o servidor ativo, executar `node code/scri
 Fechar exibe apenas um X vetorial, com nome acessível. Virar usa ícone vetorial de duas setas circulares. Baixar PNG salva o arquivo original da face atual; frente e verso foram comparados byte a byte no teste de download. O ícone de fullscreen fica imediatamente antes do X e usa a Fullscreen API em uma superfície interna (a API não permite solicitar fullscreen diretamente em um elemento dialog). O mesmo controle permite sair do fullscreen; fechar o visualizador também encerra esse estado. Navegadores sem suporte deixam o controle indisponível, sem simular fullscreen com CSS.
 
 O ajuste inicial considera largura e altura disponíveis para mostrar a imagem inteira, incluindo após entrar/sair do fullscreen. Zoom continua disponível. Teste específico executado contra o build de produção confirmou fullscreen nativo real (document.fullscreenElement), saída, fechamento, os dois downloads, foco, mobile e movimento reduzido.
+
+## Zoom pelo scroll e arraste — atualização
+
+A roda do mouse sobre a imagem amplia/reduz entre 100% e 300%, mantendo como referência o ponto sob o cursor. O listener de wheel é não passivo para impedir rolagem simultânea da página. Botões de zoom usam o mesmo estado e preservam a referência central da área visível.
+
+Após ampliar, o cursor é uma mão aberta (grab). Pressionar o botão esquerdo captura o ponteiro e muda para mão fechada (grabbing); o arraste move a posição de rolagem nos dois eixos, limitado à imagem. Soltar, cancelar ou perder a captura encerra o arraste. Ajustar à tela e virar a face reiniciam zoom/posição. Frente e verso compartilham esse comportamento, inclusive em fullscreen nativo. Os PNGs não foram alterados.
+
+O teste BrowserSchemeSmoke confirma zoom ancorado, entrada/saída pelo scroll, limites, pan após zoom manual e pelo scroll, cursores, reset e funcionamento das duas faces e fullscreen. A integração foi feita após incorporar as atualizações concorrentes do inventário canônico da main, sem modificá-las.

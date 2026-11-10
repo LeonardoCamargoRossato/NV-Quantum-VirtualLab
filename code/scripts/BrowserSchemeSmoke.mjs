@@ -8,6 +8,44 @@ const trigger=page.getByRole('button',{name:'Ver esquema 2D',exact:true});await 
 const modal=page.getByRole('dialog',{name:'Esquema 2D — Uncut Gem V1'});await modal.waitFor();
 await modal.getByRole('status').getByText('Frente da PCB',{exact:true}).waitFor();
 await page.waitForFunction(()=>document.querySelector('.scheme-front img')?.naturalWidth>0);
+async function dragImage(){
+  const area=modal.getByRole('region',{name:'Visualização do esquema 2D'});
+  assert.equal(await area.evaluate(el=>getComputedStyle(el).cursor),'grab');
+  const bounds=await area.boundingBox();
+  const before=await area.evaluate(el=>({x:el.scrollLeft,y:el.scrollTop}));
+  await page.mouse.move(bounds.x+bounds.width*.55,bounds.y+bounds.height*.55);
+  await page.mouse.down();
+  assert.equal(await area.evaluate(el=>getComputedStyle(el).cursor),'grabbing');
+  await page.mouse.move(bounds.x+bounds.width*.55-85,bounds.y+bounds.height*.55-70,{steps:6});
+  const after=await area.evaluate(el=>({x:el.scrollLeft,y:el.scrollTop}));
+  assert(after.x>before.x+30,'Horizontal drag must move the enlarged image');
+  assert(after.y>before.y+30,'Vertical drag must move the enlarged image');
+  await page.mouse.up();
+  assert.equal(await area.evaluate(el=>getComputedStyle(el).cursor),'grab');
+}
+async function testWheelAndDrag(){
+  const area=modal.getByRole('region',{name:'Visualização do esquema 2D'});
+  const image=page.locator('.scheme-stage');
+  const rect=await image.boundingBox();
+  const anchor={x:rect.x+rect.width*.6,y:rect.y+rect.height*.55};
+  await page.mouse.move(anchor.x,anchor.y);
+  await page.mouse.wheel(0,-500);
+  await page.waitForFunction(()=>parseInt(document.querySelector('[aria-label="Zoom do esquema"]').textContent)>100);
+  const enlarged=await image.boundingBox();
+  assert(Math.abs((anchor.x-enlarged.x)/enlarged.width-.6)<.02,'Wheel zoom keeps the point under the mouse');
+  await dragImage();
+  await page.mouse.wheel(0,-4000);await page.mouse.wheel(0,-4000);
+  await page.waitForFunction(()=>document.querySelector('[aria-label="Zoom do esquema"]').textContent==='300%');
+  for(let i=0;i<4;i++)await page.mouse.wheel(0,4000);
+  await page.waitForFunction(()=>document.querySelector('[aria-label="Zoom do esquema"]').textContent==='100%');
+  assert.notEqual(await area.evaluate(el=>getComputedStyle(el).cursor),'grab');
+  await modal.getByRole('button',{name:'Aumentar zoom do esquema'}).click();
+  await dragImage();
+  await modal.getByRole('button',{name:'Ajustar à tela'}).click();
+  assert.equal(await modal.getByLabel('Zoom do esquema',{exact:true}).textContent(),'100%');
+  assert.equal(await area.evaluate(el=>el.scrollLeft+el.scrollTop),0);
+}
+await testWheelAndDrag();
 assert.equal(await modal.getByRole('button',{name:'Fechar esquema 2D'}).textContent(),'');
 const frontDownloadEvent=page.waitForEvent('download');
 await modal.getByRole('link',{name:'Baixar PNG da face frontal'}).click();
@@ -16,12 +54,14 @@ assert.equal(frontDownload.suggestedFilename(),'UncutGemV1FrontScheme.png');
 assert(readFileSync(await frontDownload.path()).equals(readFileSync(new URL('../public/assets/diagrams/UncutGemV1FrontScheme.png',import.meta.url))));
 await modal.getByRole('button',{name:'Expandir esquema em tela cheia'}).click();
 await page.waitForFunction(()=>document.fullscreenElement?.classList.contains('scheme-surface'));
+await testWheelAndDrag();
 await modal.getByRole('button',{name:'Sair da tela cheia do esquema'}).click();
 await page.waitForFunction(()=>!document.fullscreenElement);
 await modal.getByRole('button',{name:'Virar para o verso'}).click();
 await modal.getByRole('status').getByText('Verso da PCB',{exact:true}).waitFor();
 assert((await modal.getByRole('img').getAttribute('src')).endsWith('BackScheme.png'));
 await page.waitForFunction(()=>document.querySelector('.scheme-back img')?.naturalWidth>0);
+await testWheelAndDrag();
 const backDownloadEvent=page.waitForEvent('download');
 await modal.getByRole('link',{name:'Baixar PNG da face traseira'}).click();
 const backDownload=await backDownloadEvent;
@@ -39,4 +79,4 @@ await page.setViewportSize({width:390,height:844});await trigger.click();await m
 assert(await modal.evaluate(el=>el.scrollWidth<=el.clientWidth+1));
 await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.locator('.scheme-card').evaluate(el=>getComputedStyle(el).transitionDuration),'0s');
 await modal.getByRole('button',{name:'Fechar esquema 2D'}).click();assert.equal(errors.length,0);
-await b.close();console.log('PASS: viewer controls, flip, zoom, reset, Escape/focus, mobile and reduced motion. Native fullscreen enter/exit/close and both exact original PNG downloads passed.');
+await b.close();console.log('PASS: viewer controls, flip, zoom, reset, Escape/focus, mobile and reduced motion. Wheel zoom, anchored zoom, grab/grabbing drag on both faces and native fullscreen, limits/reset and original PNG downloads passed.');

@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from "react";
+import {useCallback,useEffect,useLayoutEffect,useRef,useState,type PointerEvent as ReactPointerEvent} from "react";
 import "./SchemeViewer.css";
 
 type Props={base:string;onClose:()=>void};
@@ -18,6 +18,11 @@ export function SchemeViewer({base,onClose}:Props){
   // Fullscreen API explicitly excludes <dialog>; request it on this inner surface.
   const surface=useRef<HTMLDivElement>(null);
   const scrollArea=useRef<HTMLDivElement>(null);
+  const stage=useRef<HTMLDivElement>(null);
+  const zoomRef=useRef(1);
+  const pan=useRef<{id:number;x:number;y:number;left:number;top:number}|null>(null);
+  const zoomAnchor=useRef<{x:number;y:number;viewportX:number;viewportY:number}|null>(null);
+  const [dragging,setDragging]=useState(false);
   const previousFocus=useRef(document.activeElement instanceof HTMLElement?document.activeElement:null);
   const [back,setBack]=useState(false);
   const [zoom,setZoom]=useState(1);
@@ -26,6 +31,65 @@ export function SchemeViewer({base,onClose}:Props){
   const [fullscreenSupported,setFullscreenSupported]=useState(true);
   const [fullscreenError,setFullscreenError]=useState("");
   const [failed,setFailed]=useState({front:false,back:false});
+  const releasePan=useCallback(()=>{
+    const pointer=pan.current;
+    pan.current=null;
+    setDragging(false);
+    if(pointer&&scrollArea.current?.hasPointerCapture(pointer.id))scrollArea.current.releasePointerCapture(pointer.id);
+  },[]);
+  const changeZoom=useCallback((value:number,anchor?:{x:number;y:number})=>{
+    const next=Math.round(Math.min(3,Math.max(1,value))*100)/100;
+    if(next===zoomRef.current)return;
+    if(pan.current)releasePan();
+    const area=scrollArea.current,image=stage.current;
+    if(area&&image){
+      const viewport=area.getBoundingClientRect(),rect=image.getBoundingClientRect();
+      const x=anchor?.x??viewport.left+area.clientLeft+area.clientWidth/2;
+      const y=anchor?.y??viewport.top+area.clientTop+area.clientHeight/2;
+      zoomAnchor.current={x:Math.min(1,Math.max(0,(x-rect.left)/rect.width)),y:Math.min(1,Math.max(0,(y-rect.top)/rect.height)),viewportX:x-viewport.left-area.clientLeft,viewportY:y-viewport.top-area.clientTop};
+    }
+    zoomRef.current=next;
+    setZoom(next);
+  },[releasePan]);
+  useLayoutEffect(()=>{
+    const anchor=zoomAnchor.current,area=scrollArea.current,image=stage.current;
+    if(!anchor||!area||!image)return;
+    zoomAnchor.current=null;
+    const viewport=area.getBoundingClientRect(),rect=image.getBoundingClientRect();
+    area.scrollLeft+=rect.left+rect.width*anchor.x-viewport.left-area.clientLeft-anchor.viewportX;
+    area.scrollTop+=rect.top+rect.height*anchor.y-viewport.top-area.clientTop-anchor.viewportY;
+  },[zoom,fitWidth]);
+  useEffect(()=>{
+    const area=scrollArea.current;
+    if(!area)return;
+    const wheel=(event:WheelEvent)=>{
+      if(!event.deltaY)return;
+      event.preventDefault();
+      const unit=event.deltaMode===1?16:event.deltaMode===2?area.clientHeight:1;
+      const delta=Math.min(500,Math.max(-500,event.deltaY*unit));
+      changeZoom(zoomRef.current*Math.exp(-delta*.0015),{x:event.clientX,y:event.clientY});
+    };
+    area.addEventListener("wheel",wheel,{passive:false});
+    return ()=>area.removeEventListener("wheel",wheel);
+  },[changeZoom]);
+  function resetView(){
+    releasePan();zoomAnchor.current=null;zoomRef.current=1;setZoom(1);
+    if(scrollArea.current){scrollArea.current.scrollLeft=0;scrollArea.current.scrollTop=0}
+  }
+  function startPan(event:ReactPointerEvent<HTMLDivElement>){
+    if(zoomRef.current<=1||event.button!==0||!event.isPrimary)return;
+    const area=event.currentTarget,rect=area.getBoundingClientRect();
+    if(event.clientX>=rect.left+area.clientLeft+area.clientWidth||event.clientY>=rect.top+area.clientTop+area.clientHeight)return;
+    event.preventDefault();
+    pan.current={id:event.pointerId,x:event.clientX,y:event.clientY,left:area.scrollLeft,top:area.scrollTop};
+    area.setPointerCapture(event.pointerId);setDragging(true);
+  }
+  function movePan(event:ReactPointerEvent<HTMLDivElement>){
+    const start=pan.current;
+    if(!start||event.pointerId!==start.id)return;
+    event.currentTarget.scrollLeft=start.left-(event.clientX-start.x);
+    event.currentTarget.scrollTop=start.top-(event.clientY-start.y);
+  }
   useEffect(()=>{
     const element=dialog.current;
     const target=surface.current;
@@ -62,7 +126,7 @@ export function SchemeViewer({base,onClose}:Props){
       else await surface.current?.requestFullscreen();
     }catch{setFullscreenError("O navegador não permitiu ativar a tela cheia. Tente novamente pelo botão.")}
   }
-  const flip=()=>{setBack(v=>!v);setZoom(1)};
+  const flip=()=>{setBack(v=>!v);resetView()};
   const fileName="UncutGemV1"+(back?"Back":"Front")+"Scheme.png";
   const flipLabel=back?"Voltar para a frente":"Virar para o verso";
   const fullLabel=fullscreen?"Sair da tela cheia do esquema":"Expandir esquema em tela cheia";
@@ -73,17 +137,17 @@ export function SchemeViewer({base,onClose}:Props){
       <header className="scheme-heading"><div><h2 id="scheme-title">Esquema 2D — Uncut Gem V1</h2><p role="status">{back?"Verso da PCB":"Frente da PCB"}</p></div>
         <div className="scheme-controls">
           <button type="button" onClick={flip} aria-label={flipLabel} title={flipLabel}><SchemeIcon kind="flip"/><span>Virar</span></button>
-          <button type="button" aria-label="Diminuir zoom do esquema" disabled={zoom<=1} onClick={()=>setZoom(v=>Math.max(1,v-.25))}>−</button>
+          <button type="button" aria-label="Diminuir zoom do esquema" disabled={zoom<=1} onClick={()=>changeZoom(zoomRef.current-.25)}>−</button>
           <output aria-label="Zoom do esquema">{Math.round(zoom*100)}%</output>
-          <button type="button" aria-label="Aumentar zoom do esquema" disabled={zoom>=3} onClick={()=>setZoom(v=>Math.min(3,v+.25))}>+</button>
-          <button type="button" onClick={()=>setZoom(1)}>Ajustar à tela</button>
+          <button type="button" aria-label="Aumentar zoom do esquema" disabled={zoom>=3} onClick={()=>changeZoom(zoomRef.current+.25)}>+</button>
+          <button type="button" onClick={resetView}>Ajustar à tela</button>
           <a className="scheme-action" href={base+"assets/diagrams/"+fileName} download={fileName} aria-label={"Baixar PNG da "+(back?"face traseira":"face frontal")} title="Baixar PNG desta face"><SchemeIcon kind="download"/><span>Baixar PNG</span></a>
           <button type="button" className="scheme-icon-button" aria-label={fullLabel} title={fullscreenSupported?fullLabel:"Tela cheia indisponível neste navegador"} disabled={!fullscreenSupported} onClick={()=>void toggleFullscreen()}><SchemeIcon kind={fullscreen?"collapse":"expand"}/></button>
           <button type="button" className="scheme-icon-button" aria-label="Fechar esquema 2D" title="Fechar esquema 2D" onClick={()=>void closeViewer()}><SchemeIcon kind="close"/></button>
         </div>
       </header>
       {fullscreenError&&<p className="scheme-fullscreen-error" role="alert">{fullscreenError}</p>}
-      <div ref={scrollArea} className="scheme-scroll"><div className="scheme-stage" style={{width:fitWidth?`${fitWidth*zoom}px`:"100%"}}>
+      <div ref={scrollArea} role="region" aria-label="Visualização do esquema 2D" className={"scheme-scroll"+(zoom>1?" scheme-pan-enabled":"")+(dragging?" scheme-dragging":"")} onPointerDown={startPan} onPointerMove={movePan} onPointerUp={releasePan} onPointerCancel={releasePan} onLostPointerCapture={releasePan}><div ref={stage} className="scheme-stage" style={{width:fitWidth?`${fitWidth*zoom}px`:"100%"}}>
         <div className={"scheme-card"+(back?" scheme-card-flipped":"")}>
           {([false,true] as const).map(isBack=>{
             const side=isBack?"back":"front";
@@ -96,7 +160,7 @@ export function SchemeViewer({base,onClose}:Props){
           })}
         </div>
       </div></div>
-      <footer className="scheme-footer">Vire para alternar entre frente e verso. O download salva o PNG original da face atual.</footer>
+      <footer className="scheme-footer">Roda do mouse: zoom. Após ampliar, mantenha o botão esquerdo pressionado e arraste para mover. O download salva o PNG original da face atual.</footer>
     </div>
   </dialog>;
 }
