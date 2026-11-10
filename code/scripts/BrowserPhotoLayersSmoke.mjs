@@ -7,7 +7,7 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const data=JSON.parse(readFileSync(new URL('../source/PhotoPolygons.json',import.meta.url)));
 const inventory=JSON.parse(readFileSync(new URL('../source/InventoryV1.json',import.meta.url))).items;
 const shots=process.env.SCREENSHOT_DIR||'/tmp/nv-polygon-layers';mkdirSync(shots,{recursive:true});
-async function openControls(){if(!await page.getByRole('group',{name:'Camada da fotografia'}).isVisible())await page.getByRole('button',{name:'Expandir controles de camadas'}).click()}
+async function openControls(){if(!await page.locator('.viewer-layer-popover').count())await page.getByRole('button',{name:'Expandir controles de camadas'}).click()}
 async function closeControls(){if(await page.getByRole('button',{name:'Recolher controles de camadas'}).isVisible())await page.getByRole('button',{name:'Recolher controles de camadas'}).click()}
 try{
  await page.goto(process.env.APP_URL||'http://127.0.0.1:4173/NV-Quantum-VirtualLab/');
@@ -16,7 +16,9 @@ try{
  assert.equal(await page.locator('.photo-polygon').count(),9);
  await openControls();
  const modes=page.getByRole('group',{name:'Camada da fotografia'});
- assert(await modes.getByRole('button',{name:'Componentes',exact:true}).isDisabled());
+ assert(await modes.getByRole('button',{name:'Componentes',exact:true}).isEnabled());
+ await modes.getByRole('button',{name:'Componentes',exact:true}).click();
+ assert.equal(await page.locator('.photo-polygon').count(),data.components.length,'All located components must be available from the global layer');
  await modes.getByRole('button',{name:'Nenhuma',exact:true}).click();
  assert.equal(await page.locator('.photo-polygon-overlay').count(),0);
  await modes.getByRole('button',{name:'Subsistemas',exact:true}).click();
@@ -51,7 +53,14 @@ try{
    assert.equal(await page.locator('.photo-polygon.is-selected').count(),0);
    await page.getByRole('button',{name:'Fechar inspetor'}).click();
   }
-  if(region.tag==='UG-V1-S08')await page.screenshot({path:shots+'/SignalComponents.png',fullPage:true});
+  if(region.tag==='UG-V1-S08'){
+   for(const tag of ['UG-V1-B031','UG-V1-B034','UG-V1-B035','UG-V1-B037'])
+    assert.equal(await page.locator('.photo-polygon[data-tag="'+tag+'"]').count(),1,'Missing analog polygon '+tag);
+   await page.screenshot({path:shots+'/SignalComponents.png',fullPage:true});
+   await page.getByRole('button',{name:'Redefinir',exact:true}).click();
+   assert.equal(await page.locator('.photo-controls output').textContent(),'100%');
+   assert.equal(await page.locator('.photo-polygon').count(),expected.length,'Zoom reset must preserve subsystem focus');
+  }
   await openControls();
   await page.getByRole('button',{name:'Voltar à placa inteira',exact:false}).click();
   assert.equal(await page.locator('.photo-controls output').textContent(),'100%');
