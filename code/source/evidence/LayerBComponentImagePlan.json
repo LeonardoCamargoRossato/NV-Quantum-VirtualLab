@@ -1323,10 +1323,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          348,
-          480,
-          454,
-          552
+          198,
+          586,
+          294,
+          615
         ]
       },
       "notes": "R1 com identificação por serigrafia na placa.",
@@ -1352,9 +1352,9 @@
       "region": {
         "px_1453x1080": [
           198,
-          526,
-          310,
-          575
+          557,
+          294,
+          584
         ]
       },
       "notes": "R2 com identificação por serigrafia na placa.",
@@ -1379,10 +1379,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          200,
-          570,
-          310,
-          627
+          371,
+          513,
+          455,
+          540
         ]
       },
       "notes": "R3 com identificação por serigrafia na placa.",
@@ -1407,10 +1407,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          286,
-          529,
-          367,
-          654
+          315,
+          564,
+          348,
+          646
         ]
       },
       "notes": "R4 com identificação por serigrafia na placa.",
@@ -1435,10 +1435,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          431,
-          536,
-          515,
-          658
+          468,
+          571,
+          499,
+          643
         ]
       },
       "notes": "R5 com identificação por serigrafia na placa.",
@@ -1463,10 +1463,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          450,
-          479,
-          520,
-          556
+          477,
+          503,
+          509,
+          550
         ]
       },
       "notes": "Região do capacitor C1; valor/polaridade não inferidos do aspecto.",
@@ -1491,10 +1491,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          285,
-          478,
-          364,
-          556
+          308,
+          518,
+          340,
+          559
         ]
       },
       "notes": "Região do capacitor C2; valor não inferido do aspecto.",
@@ -1519,10 +1519,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          206,
-          486,
-          299,
-          565
+          219,
+          534,
+          273,
+          563
         ]
       },
       "notes": "Região do capacitor C3, próximo a R2; valor não inferido do aspecto.",
@@ -1547,10 +1547,10 @@
       "source_id": "front",
       "region": {
         "px_1453x1080": [
-          210,
-          602,
-          297,
-          662
+          219,
+          611,
+          275,
+          645
         ]
       },
       "notes": "Região do capacitor C4, próximo a R3; identificação da serigrafia pouco nítida.",
