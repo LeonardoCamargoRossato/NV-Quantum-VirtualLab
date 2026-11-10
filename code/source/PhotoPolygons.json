@@ -1,0 +1,1821 @@
+{
+  "schemaVersion": 1,
+  "face": "front",
+  "image": "assets/official/v1/presentation/DeviceV1Aligned.png",
+  "imageSize": [
+    1478,
+    1105
+  ],
+  "coordinateSystem": "percent-aligned-image",
+  "source": "https://github.com/QuantumVillage/UncutGem/blob/main/BuildGuide/images/device-v1.png",
+  "method": "Inspeção visual manual da fotografia alinhada. Áreas aproximadas, não mapa elétrico ou footprint CAD. Regiões internas/ocultas não são delimitadas. Subsistemas distribuídos podem ter múltiplos polígonos.",
+  "classes": {
+    "resistor": {
+      "label": "Resistores",
+      "color": "#fbbf24"
+    },
+    "capacitor": {
+      "label": "Capacitores",
+      "color": "#fb7185"
+    },
+    "connector": {
+      "label": "Conectores / fios",
+      "color": "#38bdf8"
+    },
+    "ic": {
+      "label": "Chips / ICs",
+      "color": "#c084fc"
+    },
+    "module": {
+      "label": "Módulos",
+      "color": "#2dd4bf"
+    },
+    "optical": {
+      "label": "Óptica",
+      "color": "#a3e635"
+    },
+    "rf": {
+      "label": "RF / coaxiais",
+      "color": "#fb923c"
+    },
+    "control": {
+      "label": "Botões / LEDs",
+      "color": "#f472b6"
+    },
+    "structure": {
+      "label": "Estrutura",
+      "color": "#cbd5e1"
+    }
+  },
+  "subsystems": [
+    {
+      "tag": "UG-V1-S10",
+      "color": "#94a3b8",
+      "polygons": [
+        [
+          [
+            4,
+            8
+          ],
+          [
+            64,
+            8
+          ],
+          [
+            68,
+            15
+          ],
+          [
+            69,
+            89
+          ],
+          [
+            63,
+            93
+          ],
+          [
+            5,
+            91
+          ],
+          [
+            2,
+            82
+          ],
+          [
+            3,
+            16
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S01",
+      "color": "#f59e0b",
+      "polygons": [
+        [
+          [
+            6,
+            52
+          ],
+          [
+            11,
+            52
+          ],
+          [
+            12,
+            62
+          ],
+          [
+            10,
+            64
+          ],
+          [
+            6,
+            61
+          ]
+        ],
+        [
+          [
+            0,
+            72
+          ],
+          [
+            12,
+            72
+          ],
+          [
+            13,
+            80
+          ],
+          [
+            9,
+            83
+          ],
+          [
+            0,
+            82
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S02",
+      "color": "#38bdf8",
+      "polygons": [
+        [
+          [
+            9,
+            63
+          ],
+          [
+            43,
+            62
+          ],
+          [
+            46,
+            66
+          ],
+          [
+            46,
+            88
+          ],
+          [
+            42,
+            90
+          ],
+          [
+            9,
+            89
+          ],
+          [
+            7,
+            85
+          ],
+          [
+            8,
+            67
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S03",
+      "color": "#4ade80",
+      "polygons": [
+        [
+          [
+            13,
+            22
+          ],
+          [
+            22,
+            21
+          ],
+          [
+            23,
+            20
+          ],
+          [
+            32,
+            20
+          ],
+          [
+            33,
+            25
+          ],
+          [
+            31,
+            27
+          ],
+          [
+            17,
+            28
+          ],
+          [
+            14,
+            26
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S05",
+      "color": "#c084fc",
+      "polygons": [
+        [
+          [
+            48,
+            44
+          ],
+          [
+            65,
+            43
+          ],
+          [
+            69,
+            49
+          ],
+          [
+            69,
+            61
+          ],
+          [
+            65,
+            64
+          ],
+          [
+            49,
+            64
+          ],
+          [
+            47,
+            60
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S06",
+      "color": "#fb923c",
+      "polygons": [
+        [
+          [
+            49,
+            17
+          ],
+          [
+            53,
+            18
+          ],
+          [
+            56,
+            30
+          ],
+          [
+            62,
+            33
+          ],
+          [
+            69,
+            42
+          ],
+          [
+            73,
+            43
+          ],
+          [
+            72,
+            47
+          ],
+          [
+            67,
+            43
+          ],
+          [
+            61,
+            35
+          ],
+          [
+            55,
+            33
+          ],
+          [
+            49,
+            32
+          ]
+        ],
+        [
+          [
+            69,
+            50
+          ],
+          [
+            77,
+            43
+          ],
+          [
+            85,
+            42
+          ],
+          [
+            93,
+            48
+          ],
+          [
+            98,
+            60
+          ],
+          [
+            98,
+            73
+          ],
+          [
+            93,
+            80
+          ],
+          [
+            85,
+            82
+          ],
+          [
+            78,
+            78
+          ],
+          [
+            73,
+            65
+          ],
+          [
+            69,
+            65
+          ],
+          [
+            69,
+            62
+          ],
+          [
+            75,
+            62
+          ],
+          [
+            79,
+            74
+          ],
+          [
+            85,
+            78
+          ],
+          [
+            91,
+            76
+          ],
+          [
+            95,
+            70
+          ],
+          [
+            94,
+            60
+          ],
+          [
+            90,
+            51
+          ],
+          [
+            84,
+            47
+          ],
+          [
+            78,
+            48
+          ],
+          [
+            72,
+            54
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S07",
+      "color": "#f472b6",
+      "polygons": [
+        [
+          [
+            49,
+            17
+          ],
+          [
+            52,
+            18
+          ],
+          [
+            54,
+            22
+          ],
+          [
+            56,
+            29
+          ],
+          [
+            55,
+            32
+          ],
+          [
+            47,
+            32
+          ],
+          [
+            44,
+            30
+          ],
+          [
+            45,
+            26
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S08",
+      "color": "#facc15",
+      "polygons": [
+        [
+          [
+            15,
+            49
+          ],
+          [
+            25,
+            48
+          ],
+          [
+            30,
+            48
+          ],
+          [
+            34,
+            47
+          ],
+          [
+            37,
+            50
+          ],
+          [
+            38,
+            56
+          ],
+          [
+            35,
+            61
+          ],
+          [
+            16,
+            61
+          ],
+          [
+            14,
+            57
+          ]
+        ]
+      ]
+    },
+    {
+      "tag": "UG-V1-S09",
+      "color": "#22d3ee",
+      "polygons": [
+        [
+          [
+            46,
+            65
+          ],
+          [
+            68,
+            64
+          ],
+          [
+            71,
+            68
+          ],
+          [
+            71,
+            91
+          ],
+          [
+            68,
+            95
+          ],
+          [
+            47,
+            95
+          ],
+          [
+            44,
+            91
+          ],
+          [
+            44,
+            69
+          ]
+        ]
+      ]
+    }
+  ],
+  "components": [
+    {
+      "tag": "UG-V1-0004",
+      "class": "module",
+      "polygons": [
+        [
+          [
+            12.120000000000001,
+            63
+          ],
+          [
+            41.88,
+            63
+          ],
+          [
+            45,
+            66.12
+          ],
+          [
+            45,
+            85.88
+          ],
+          [
+            41.88,
+            89
+          ],
+          [
+            12.120000000000001,
+            89
+          ],
+          [
+            9,
+            85.88
+          ],
+          [
+            9,
+            66.12
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B008",
+      "class": "ic",
+      "polygons": [
+        [
+          [
+            29.247999999999998,
+            67.5
+          ],
+          [
+            39.052,
+            67.5
+          ],
+          [
+            40.6,
+            69.048
+          ],
+          [
+            40.6,
+            82.152
+          ],
+          [
+            39.052,
+            83.7
+          ],
+          [
+            29.247999999999998,
+            83.7
+          ],
+          [
+            27.7,
+            82.152
+          ],
+          [
+            27.7,
+            69.048
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B009",
+      "class": "control",
+      "polygons": [
+        [
+          [
+            10.42,
+            67.5
+          ],
+          [
+            13.08,
+            67.5
+          ],
+          [
+            13.5,
+            67.92
+          ],
+          [
+            13.5,
+            71.08
+          ],
+          [
+            13.08,
+            71.5
+          ],
+          [
+            10.42,
+            71.5
+          ],
+          [
+            10,
+            71.08
+          ],
+          [
+            10,
+            67.92
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B010",
+      "class": "control",
+      "polygons": [
+        [
+          [
+            10.396,
+            81
+          ],
+          [
+            12.904,
+            81
+          ],
+          [
+            13.3,
+            81.396
+          ],
+          [
+            13.3,
+            84.604
+          ],
+          [
+            12.904,
+            85
+          ],
+          [
+            10.396,
+            85
+          ],
+          [
+            10,
+            84.604
+          ],
+          [
+            10,
+            81.396
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B011",
+      "class": "control",
+      "polygons": [
+        [
+          [
+            22.98,
+            68.3
+          ],
+          [
+            26.02,
+            68.3
+          ],
+          [
+            26.5,
+            68.78
+          ],
+          [
+            26.5,
+            73.82
+          ],
+          [
+            26.02,
+            74.3
+          ],
+          [
+            22.98,
+            74.3
+          ],
+          [
+            22.5,
+            73.82
+          ],
+          [
+            22.5,
+            68.78
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B013",
+      "class": "ic",
+      "polygons": [
+        [
+          [
+            17.06,
+            77
+          ],
+          [
+            19.34,
+            77
+          ],
+          [
+            19.7,
+            77.36
+          ],
+          [
+            19.7,
+            81.64
+          ],
+          [
+            19.34,
+            82
+          ],
+          [
+            17.06,
+            82
+          ],
+          [
+            16.7,
+            81.64
+          ],
+          [
+            16.7,
+            77.36
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B001",
+      "class": "connector",
+      "polygons": [
+        [
+          [
+            8.26,
+            73
+          ],
+          [
+            12.44,
+            73
+          ],
+          [
+            13.1,
+            73.66
+          ],
+          [
+            13.1,
+            80.34
+          ],
+          [
+            12.44,
+            81
+          ],
+          [
+            8.26,
+            81
+          ],
+          [
+            7.6,
+            80.34
+          ],
+          [
+            7.6,
+            73.66
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B012",
+      "class": "connector",
+      "polygons": [
+        [
+          [
+            15,
+            63
+          ],
+          [
+            43,
+            63
+          ],
+          [
+            43,
+            67
+          ],
+          [
+            15,
+            67
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0022",
+      "class": "optical",
+      "polygons": [
+        [
+          [
+            22.244,
+            20.2
+          ],
+          [
+            32.256,
+            20.2
+          ],
+          [
+            33.0,
+            20.944
+          ],
+          [
+            33.0,
+            25.656
+          ],
+          [
+            32.256,
+            26.4
+          ],
+          [
+            22.244,
+            26.4
+          ],
+          [
+            21.5,
+            25.656
+          ],
+          [
+            21.5,
+            20.944
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B015",
+      "class": "module",
+      "polygons": [
+        [
+          [
+            15.148,
+            22
+          ],
+          [
+            21.852,
+            22
+          ],
+          [
+            22.5,
+            22.648
+          ],
+          [
+            22.5,
+            26.752
+          ],
+          [
+            21.852,
+            27.4
+          ],
+          [
+            15.148,
+            27.4
+          ],
+          [
+            14.5,
+            26.752
+          ],
+          [
+            14.5,
+            22.648
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B016",
+      "class": "connector",
+      "polygons": [
+        [
+          [
+            7,
+            0
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            16,
+            18
+          ],
+          [
+            17,
+            24
+          ],
+          [
+            15,
+            25
+          ],
+          [
+            13,
+            17
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0023",
+      "class": "optical",
+      "polygons": [
+        [
+          [
+            49,
+            17.3
+          ],
+          [
+            51.7,
+            18.4
+          ],
+          [
+            56,
+            29.6
+          ],
+          [
+            54.9,
+            32
+          ],
+          [
+            45.2,
+            31.1
+          ],
+          [
+            44,
+            29.6
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0019",
+      "class": "module",
+      "polygons": [
+        [
+          [
+            50.52,
+            43
+          ],
+          [
+            66.48,
+            43
+          ],
+          [
+            69,
+            45.52
+          ],
+          [
+            69,
+            61.48
+          ],
+          [
+            66.48,
+            64
+          ],
+          [
+            50.52,
+            64
+          ],
+          [
+            48,
+            61.48
+          ],
+          [
+            48,
+            45.52
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B022",
+      "class": "rf",
+      "polygons": [
+        [
+          [
+            69.636,
+            50.7
+          ],
+          [
+            78.364,
+            50.7
+          ],
+          [
+            79,
+            51.336000000000006
+          ],
+          [
+            79,
+            55.364
+          ],
+          [
+            78.364,
+            56.0
+          ],
+          [
+            69.636,
+            56.0
+          ],
+          [
+            69,
+            55.364
+          ],
+          [
+            69,
+            51.336000000000006
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B023",
+      "class": "rf",
+      "polygons": [
+        [
+          [
+            42.576,
+            52
+          ],
+          [
+            49.424,
+            52
+          ],
+          [
+            50,
+            52.576
+          ],
+          [
+            50,
+            56.224
+          ],
+          [
+            49.424,
+            56.8
+          ],
+          [
+            42.576,
+            56.8
+          ],
+          [
+            42,
+            56.224
+          ],
+          [
+            42,
+            52.576
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B024",
+      "class": "connector",
+      "polygons": [
+        [
+          [
+            45.5,
+            48.8
+          ],
+          [
+            50,
+            44
+          ],
+          [
+            59.5,
+            43
+          ],
+          [
+            61,
+            44.5
+          ],
+          [
+            50,
+            46
+          ],
+          [
+            47,
+            50
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0020",
+      "class": "rf",
+      "polygons": [
+        [
+          [
+            74,
+            48
+          ],
+          [
+            80,
+            43
+          ],
+          [
+            86,
+            42
+          ],
+          [
+            93,
+            47
+          ],
+          [
+            97,
+            56
+          ],
+          [
+            98,
+            65
+          ],
+          [
+            97,
+            73
+          ],
+          [
+            92,
+            80
+          ],
+          [
+            85,
+            82
+          ],
+          [
+            79,
+            77
+          ],
+          [
+            75,
+            66
+          ],
+          [
+            71,
+            65
+          ],
+          [
+            71,
+            62
+          ],
+          [
+            77,
+            62
+          ],
+          [
+            82,
+            75
+          ],
+          [
+            86,
+            78
+          ],
+          [
+            91,
+            76
+          ],
+          [
+            94,
+            70
+          ],
+          [
+            94,
+            61
+          ],
+          [
+            91,
+            52
+          ],
+          [
+            85,
+            47
+          ],
+          [
+            80,
+            48
+          ],
+          [
+            76,
+            52
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0021",
+      "class": "rf",
+      "polygons": [
+        [
+          [
+            49,
+            17
+          ],
+          [
+            51,
+            18
+          ],
+          [
+            53.5,
+            24
+          ],
+          [
+            56,
+            31
+          ],
+          [
+            55.5,
+            32
+          ],
+          [
+            52,
+            26
+          ],
+          [
+            50,
+            20
+          ],
+          [
+            48.5,
+            19
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B027",
+      "class": "rf",
+      "polygons": [
+        [
+          [
+            55,
+            31
+          ],
+          [
+            61,
+            34
+          ],
+          [
+            67,
+            40
+          ],
+          [
+            69,
+            45
+          ],
+          [
+            70,
+            52
+          ],
+          [
+            69,
+            54
+          ],
+          [
+            67.5,
+            45
+          ],
+          [
+            65.5,
+            41
+          ],
+          [
+            60,
+            35
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0030",
+      "class": "module",
+      "polygons": [
+        [
+          [
+            48.0,
+            65
+          ],
+          [
+            67.0,
+            65
+          ],
+          [
+            70,
+            68.0
+          ],
+          [
+            70,
+            92.0
+          ],
+          [
+            67.0,
+            95
+          ],
+          [
+            48.0,
+            95
+          ],
+          [
+            45,
+            92.0
+          ],
+          [
+            45,
+            68.0
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B038",
+      "class": "module",
+      "polygons": [
+        [
+          [
+            49.42,
+            70.5
+          ],
+          [
+            66.58,
+            70.5
+          ],
+          [
+            68.5,
+            72.42
+          ],
+          [
+            68.5,
+            84.58
+          ],
+          [
+            66.58,
+            86.5
+          ],
+          [
+            49.42,
+            86.5
+          ],
+          [
+            47.5,
+            84.58
+          ],
+          [
+            47.5,
+            72.42
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B040",
+      "class": "connector",
+      "polygons": [
+        [
+          [
+            52.48,
+            65
+          ],
+          [
+            62.52,
+            65
+          ],
+          [
+            63,
+            65.48
+          ],
+          [
+            63,
+            68.52
+          ],
+          [
+            62.52,
+            69
+          ],
+          [
+            52.48,
+            69
+          ],
+          [
+            52,
+            68.52
+          ],
+          [
+            52,
+            65.48
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0005",
+      "class": "ic",
+      "polygons": [
+        [
+          [
+            26.0,
+            51.6
+          ],
+          [
+            29.799999999999997,
+            51.6
+          ],
+          [
+            30.4,
+            52.2
+          ],
+          [
+            30.4,
+            59.699999999999996
+          ],
+          [
+            29.799999999999997,
+            60.3
+          ],
+          [
+            26.0,
+            60.3
+          ],
+          [
+            25.4,
+            59.699999999999996
+          ],
+          [
+            25.4,
+            52.2
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0015",
+      "class": "connector",
+      "polygons": [
+        [
+          [
+            36.312,
+            47.8
+          ],
+          [
+            38.688,
+            47.8
+          ],
+          [
+            39,
+            48.111999999999995
+          ],
+          [
+            39,
+            50.088
+          ],
+          [
+            38.688,
+            50.4
+          ],
+          [
+            36.312,
+            50.4
+          ],
+          [
+            36,
+            50.088
+          ],
+          [
+            36,
+            48.111999999999995
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B029",
+      "class": "resistor",
+      "polygons": [
+        [
+          [
+            15.588000000000001,
+            55
+          ],
+          [
+            20.612,
+            55
+          ],
+          [
+            20.9,
+            55.288
+          ],
+          [
+            20.9,
+            57.112
+          ],
+          [
+            20.612,
+            57.4
+          ],
+          [
+            15.588000000000001,
+            57.4
+          ],
+          [
+            15.3,
+            57.112
+          ],
+          [
+            15.3,
+            55.288
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B030",
+      "class": "resistor",
+      "polygons": [
+        [
+          [
+            15.576,
+            52.1
+          ],
+          [
+            20.624,
+            52.1
+          ],
+          [
+            20.9,
+            52.376000000000005
+          ],
+          [
+            20.9,
+            54.123999999999995
+          ],
+          [
+            20.624,
+            54.4
+          ],
+          [
+            15.576,
+            54.4
+          ],
+          [
+            15.3,
+            54.123999999999995
+          ],
+          [
+            15.3,
+            52.376000000000005
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B032",
+      "class": "resistor",
+      "polygons": [
+        [
+          [
+            22.776,
+            53.8
+          ],
+          [
+            24.524,
+            53.8
+          ],
+          [
+            24.8,
+            54.076
+          ],
+          [
+            24.8,
+            60.224
+          ],
+          [
+            24.524,
+            60.5
+          ],
+          [
+            22.776,
+            60.5
+          ],
+          [
+            22.5,
+            60.224
+          ],
+          [
+            22.5,
+            54.076
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B033",
+      "class": "resistor",
+      "polygons": [
+        [
+          [
+            32.74,
+            54
+          ],
+          [
+            34.26,
+            54
+          ],
+          [
+            34.5,
+            54.24
+          ],
+          [
+            34.5,
+            59.559999999999995
+          ],
+          [
+            34.26,
+            59.8
+          ],
+          [
+            32.74,
+            59.8
+          ],
+          [
+            32.5,
+            59.559999999999995
+          ],
+          [
+            32.5,
+            54.24
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-B036",
+      "class": "capacitor",
+      "polygons": [
+        [
+          [
+            16.66,
+            49.5
+          ],
+          [
+            19.14,
+            49.5
+          ],
+          [
+            19.5,
+            49.86
+          ],
+          [
+            19.5,
+            52.14
+          ],
+          [
+            19.14,
+            52.5
+          ],
+          [
+            16.66,
+            52.5
+          ],
+          [
+            16.3,
+            52.14
+          ],
+          [
+            16.3,
+            49.86
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0001",
+      "class": "structure",
+      "polygons": [
+        [
+          [
+            4,
+            8
+          ],
+          [
+            64,
+            8
+          ],
+          [
+            68,
+            15
+          ],
+          [
+            69,
+            89
+          ],
+          [
+            63,
+            93
+          ],
+          [
+            5,
+            91
+          ],
+          [
+            2,
+            82
+          ],
+          [
+            3,
+            16
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    },
+    {
+      "tag": "UG-V1-0033",
+      "class": "structure",
+      "polygons": [
+        [
+          [
+            65.668,
+            43
+          ],
+          [
+            68.632,
+            43
+          ],
+          [
+            69.10000000000001,
+            43.468
+          ],
+          [
+            69.10000000000001,
+            47.032
+          ],
+          [
+            68.632,
+            47.5
+          ],
+          [
+            65.668,
+            47.5
+          ],
+          [
+            65.2,
+            47.032
+          ],
+          [
+            65.2,
+            43.468
+          ]
+        ]
+      ],
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+    }
+  ]
+}

@@ -17,3 +17,17 @@ export const PHOTO_ORIGINAL_URL = "https://github.com/QuantumVillage/UncutGem/bl
 export function cropAspect(region: PhotoRegion): number {
   return (1000 * region.w) / (743 * region.h);
 }
+
+/** Spatial metadata extends the photographic regions; inventory remains authoritative. */
+import polygonData from "../source/PhotoPolygons.json";
+export type PolygonPoint = [number, number];
+export type PolygonRegion = {tag:string;polygons:PolygonPoint[][];color?:string;class?:string;evidence?:string};
+export const PHOTO_POLYGONS = polygonData;
+export const subsystemPolygons = polygonData.subsystems as PolygonRegion[];
+export const componentPolygons = polygonData.components as PolygonRegion[];
+export const findPolygonRegion = (tag:string) => [...subsystemPolygons,...componentPolygons].find(r=>r.tag===tag);
+export function polygonBounds(region:PolygonRegion) {
+ const points=region.polygons.flat();
+ const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
+ return {x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)};
+}

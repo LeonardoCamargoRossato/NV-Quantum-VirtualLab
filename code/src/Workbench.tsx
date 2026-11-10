@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { fields, filterItems, exportCsv, safeUrl, validateSnapshot, type Item, type Snapshot } from "./Inventory";
-import { PHOTO_REGIONS, findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, type PhotoRegion } from "./PhotoRegions";
+import { findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, type PhotoRegion } from "./PhotoRegions";
 import { ENHANCED_CROPS, ENHANCED_OVERVIEW, EXTRA_CROPS } from "./EnhancedPhotoAssets";
 import { Articles, Fundamentals, Guide, References, navigationGroups, pageTitles, Out, type Page } from "./StudyPages";
 import { ScientometricDashboard, PatentReviewPlaceholder } from "./ScientometricDashboard";
@@ -11,7 +11,9 @@ import { SchemeViewer } from "./SchemeViewer";
 import { AboutPage } from "./AboutPage";
 import { LabFuturePage } from "./LabFuturePages";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
-import { imagePresentation, presentedItem, presentedAsset, presentedMarker } from "./ImagePresentation";
+import { imagePresentation, presentedItem, presentedAsset } from "./ImagePresentation";
+import { PhotoLayerControls, PhotoPolygonOverlay, type PhotoLayer } from "./PhotoLayers";
+import { findPolygonRegion, polygonBounds } from "./PhotoRegions";
 import { cardPageSize, pageNumbers } from "./Pagination";
 import inventoryData from "../source/InventoryV1.json";
 import "./Workbench.css";
@@ -132,6 +134,8 @@ function App() {
   const [inspectorExpanded,setInspectorExpanded]=useState(false);
   const [schemeOpen,setSchemeOpen]=useState(false);
   const [preview,setPreview]=useState<ImagePreview|null>(null);
+  const [photoLayer,setPhotoLayer]=useState<PhotoLayer>("subsystems");
+  const [focusedSubsystem,setFocusedSubsystem]=useState<string|null>(null);
   const [zoom,setZoom]=useState(1);
   const [pan,setPan]=useState({x:0,y:0});
   const [fullFallback,setFullFallback]=useState(false);
@@ -206,6 +210,17 @@ function App() {
   },[page,view,snapshot]);
   const fitted=Math.max(0,Math.min(viewSize.width/photoSize.width,viewSize.height/photoSize.height));
   const imageDimensions={width:photoSize.width*fitted,height:photoSize.height*fitted};
+  useEffect(()=>{
+    if(!focusedSubsystem)return;
+    const region=findPolygonRegion(focusedSubsystem);if(!region)return;
+    const b=polygonBounds(region);
+    const z=Math.min(8,Math.max(1,Math.min(viewSize.width/(imageDimensions.width*b.w/100),viewSize.height/(imageDimensions.height*b.h/100))*.82));
+    setZoom(z);setPan({x:(50-b.x-b.w/2)*imageDimensions.width*z/100,y:(50-b.y-b.h/2)*imageDimensions.height*z/100});
+  },[focusedSubsystem,viewSize.width,viewSize.height,imageDimensions.width,imageDimensions.height]);
+  function expandSubsystem(tag:string){setFocusedSubsystem(tag);setPhotoLayer("components");clearSelection();}
+  function leaveSubsystem(){setFocusedSubsystem(null);setPhotoLayer("subsystems");setZoom(1);setPan({x:0,y:0});clearSelection();}
+  function choosePhotoLayer(mode:PhotoLayer){if(mode==="subsystems"){leaveSubsystem();return;}setPhotoLayer(mode);clearSelection();}
+  function selectPolygon(item:Item){if(selected?.tag===item.tag){closeSelection();return;}openItem(item);}
   const selection:InspectorSelection|null = selectedFlow?{kind:"flow",step:selectedFlow}:selectedReference?{kind:"reference",reference:selectedReference}:selected?{kind:"component",item:selected}:null;
   function clearSelection(){setSelected(null);setSelectedFlow(null);setSelectedReference(null);setInspectorExpanded(false);}
   function go(target:Page){
@@ -236,6 +251,9 @@ function App() {
     const item=items.find(row=>row.tag===tag)||null;
     setSelectedFlow(null);setSelectedReference(null);setInspectorExpanded(false);
     setSelected(item);setPendingPcbTag(item?null:tag);
+    const region=findPolygonRegion(tag);
+    if(region&&item?.layer==="B"){setFocusedSubsystem(item.parentTag);setPhotoLayer("components");}
+    else {setFocusedSubsystem(null);setPhotoLayer("subsystems");setZoom(1);setPan({x:0,y:0});}
     setLabOpen(true);setV1Open(true);
     setPage("explorar");window.location.hash="explorar";setMobileMenu(false);
   }
@@ -353,17 +371,17 @@ function App() {
         <div className="compact-toolbar"><div><span className="overline">LABORATÓRIO FOTOGRÁFICO · 2D</span><h1>Explorar</h1></div><div className="toolbar-right"><span className="small-source">Foto real alinhada · Quantum Village</span><button type="button" className="toolbar-button" onClick={()=>setSchemeOpen(true)}>Ver esquema 2D</button><button className="toolbar-button" onClick={()=>setPreview({url:presentedAsset(enhancedPhoto+ENHANCED_OVERVIEW,base),title:"Fotografia do Uncut Gem V1 — visão geral aprimorada"})}>Abrir foto aprimorada</button><button className="toolbar-button" onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Tela cheia da fotografia"}>{isPhotoFull?"↙ Sair da tela cheia":"⛶ Tela cheia"}</button></div></div>
         <div className="work-area">
           <section className={"photo-panel"+(fullFallback?" full-fallback":"")} ref={photoPanelRef} aria-label="Fotografia interativa do Uncut Gem V1">
-            <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>{PHOTO_REGIONS.length} pontos identificados na imagem</span></div>
-            <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com pontos interativos" onWheel={e=>setZoom(z=>Math.min(4,Math.max(1,z+(e.deltaY<0?0.15:-0.15))))}
+            <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>Frente da PCB · camadas A / B</span></div>
+            <PhotoLayerControls mode={photoLayer} focus={focusedSubsystem} items={items} onMode={choosePhotoLayer} onBack={leaveSubsystem} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
+            <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com camadas poligonais" onWheel={e=>setZoom(z=>Math.min(8,Math.max(1,z+(e.deltaY<0?0.15:-0.15))))}
               onPointerDown={e=>{if(e.button!==0)return;drag.current={x:e.clientX,y:e.clientY,px:pan.x,py:pan.y};e.currentTarget.setPointerCapture(e.pointerId)}}
               onPointerMove={e=>{const d=drag.current;if(d)setPan({x:d.px+e.clientX-d.x,y:d.py+e.clientY-d.y})}}
               onPointerUp={()=>{drag.current=null}} onPointerCancel={()=>{drag.current=null}}>
               {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={PHOTO_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className="photo-stage" style={{width:imageDimensions.width,height:imageDimensions.height,transform:"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+")"}}>
                 <img src={originalPhoto} draggable={false} alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
-                {PHOTO_REGIONS.map(r=>{const item=items.find(i=>i.tag===r.tag);if(!item)return null;return <button key={r.tag} type="button" className={"hotspot"+((selected?.tag===r.tag||(selected?.tag==="UG-V1-0028"&&r.tag==="UG-V1-0023"))?" is-selected":"")} style={{left:presentedMarker(r).x+"%",top:presentedMarker(r).y+"%",transform:"translate(-50%,-50%) scale("+(1/zoom)+")"}} title={item.name} aria-label={"Inspecionar "+item.name}
-                  onPointerDown={e=>e.stopPropagation()} onClick={e=>openItem(item,e.currentTarget)}><span className="hotspot-circle" aria-hidden="true">●</span><span className="hotspot-tooltip"><strong>{r.short}</strong><small>{item.tag}</small><span className="hotspot-mini" style={{aspectRatio:String(presentedItem(r.tag).outputSize[0]/presentedItem(r.tag).outputSize[1])}}><img src={presentedAsset(enhancedPhoto+ENHANCED_CROPS[r.tag],base)} alt="" draggable={false} style={{position:"absolute",inset:0,width:"100%",height:"100%",maxWidth:"none",objectFit:"contain",pointerEvents:"none"}}/></span></span></button>})}
+                <PhotoPolygonOverlay mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
               </div>}
-              <div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>setZoom(z=>Math.max(1,z-0.25))} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>setZoom(z=>Math.min(4,z+0.25))} aria-label="Aumentar zoom">+</button><button className="reset-button" onClick={()=>{setZoom(1);setPan({x:0,y:0})}}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{isPhotoFull?"↙":"⛶"}</button></div>
+              <div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>setZoom(z=>Math.max(1,z-0.25))} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>setZoom(z=>Math.min(8,z+0.25))} aria-label="Aumentar zoom">+</button><button className="reset-button" onClick={leaveSubsystem}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{isPhotoFull?"↙":"⛶"}</button></div>
             </div>
             <div className="photo-caption"><span>FOTOGRAFIA OFICIAL · AGPL-3.0</span><span>Arraste para mover · Roda do mouse para aproximar · Selecione um componente</span><Out href={PHOTO_ORIGINAL_URL}>Fonte e créditos</Out></div>
           </section>

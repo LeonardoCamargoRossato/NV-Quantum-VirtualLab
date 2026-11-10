@@ -29,3 +29,7 @@ python code/scripts/consolidate_inventory.py
 ```
 
 Opcional: `CHROMIUM_PATH` seleciona o executável do Chromium. A transformação é geométrica, com margem neutra e interpolação máxima 2×; não recupera detalhes ausentes. A foto principal usa o plano da PCB; recortes do ESP32, OLED e RF usam referências dos seus planos visíveis. Os hotspots continuam definidos na foto original e são remapeados para a apresentação alinhada. Não interpretar a retificação como calibração metrológica. Novas imagens ou mudanças de fonte exigem revisar coordenadas e hashes antes de regenerar.
+
+## Regiões interativas da foto
+
+`PhotoPolygons.json` registra somente geometrias por tag e classes visuais na foto frontal alinhada; os dados e vínculos de inventário permanecem em `InventoryV1.json`. A imagem e seu tamanho devem coincidir com `ImagePresentation.json`. Cobertura e limitações: `documentation/PhotoPolygonLayersUpgrade.md` na raiz do repositório.

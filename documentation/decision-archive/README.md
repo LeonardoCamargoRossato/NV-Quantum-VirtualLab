@@ -31,3 +31,5 @@ Todo prompt de desenvolvimento avalia a relevância de ADR; **nem todo desenvolv
 ## Decisões aprovadas em 09/11/2026
 - [ADR-0008 — Auditoria independente e especialistas opcionais](ADR-0008-gate-de-auditoria-e-especialistas-opcionais.md).
 - [ADR-0009 — Backup central diário no Drive](ADR-0009-backup-diario-drive.md) (complementa ADR-0006).
+
+- [ADR-0012 — Camadas poligonais da foto frontal](ADR-0012-camadas-poligonais-da-foto.md).

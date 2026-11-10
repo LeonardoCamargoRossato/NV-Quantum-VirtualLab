@@ -15,7 +15,7 @@ page.on("pageerror", e => errors.push(e.message));
 try {
   await page.goto(process.env.APP_URL || "http://127.0.0.1:5173/NV-Quantum-VirtualLab/", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { name: "Explorar" }).waitFor();
-  await page.getByRole("button", { name: "Inspecionar Laser verde" }).waitFor();
+  await page.getByRole("button", { name: "Expandir Excitação óptica — laser" }).waitFor();
   // Esquema 2D: PNGs reais, frente inicial, flip, zoom, Escape e foco.
   const schemeTrigger=page.getByRole('button',{name:'Ver esquema 2D',exact:true});
   await schemeTrigger.click();
@@ -93,6 +93,7 @@ try {
   await page.screenshot({ path: join(shots,"NvLabV01SidebarOpen.png"), fullPage: true });
 
   const panelBefore = await page.locator(".photo-panel").evaluate(el => el.getBoundingClientRect().width);
+  await page.getByRole("button", { name: "Expandir Excitação óptica — laser" }).click();
   await page.getByRole("button", { name: "Inspecionar Laser verde" }).click();
   await page.getByRole("complementary", { name: /Painel de informações/ }).waitFor();
   assert(await page.getByText("Recorte de fotografia oficial", { exact: false }).isVisible());
@@ -119,6 +120,7 @@ try {
   await page.screenshot({ path: join(shots,"NvLabV01SidebarClosed.png"), fullPage: true });
   await page.getByRole("button", { name: "Expandir menu lateral" }).click();
 
+  await page.getByRole("button", { name: "Redefinir", exact: true }).click();
   await page.getByRole("button", { name: "Aumentar zoom", exact: true }).click();
   assert.equal(await page.locator(".photo-controls output").textContent(), "125%");
   await page.getByRole("button", { name: "Redefinir" }).click();
@@ -210,7 +212,7 @@ try {
   await page.locator(".context-inspector").getByRole("button", {name:"Ver na PCB"}).click();
   await page.getByRole("heading", {name:"Explorar"}).waitFor();
   assert(await page.getByRole("complementary",{name:/Painel de informações: Laser verde/}).isVisible());
-  assert(await page.locator('.hotspot.is-selected').count()===1,"Laser precisa ficar destacado na PCB");
+  assert(await page.locator('.photo-polygon.is-selected').count()===1,"Laser precisa ficar destacado na PCB");
 
   await page.getByRole("button", { name: "Entenda o Fluxo" }).click();
   await page.locator('[data-flow-step="microondas"] .flow-image-open').click();
@@ -296,6 +298,7 @@ try {
   await page.getByRole("button", {name:"Laboratório",exact:true}).click();
   await page.getByRole("button", {name:"Uncut Gem V1",exact:true}).click();
   await page.getByRole("button", {name:"Explorar",exact:true}).click();
+  await page.getByRole("button", {name:"Expandir Excitação óptica — laser"}).click();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).waitFor();
   await page.getByRole("button", {name:"Inspecionar Laser verde"}).click();
   await page.screenshot({path:join(shots,"NvLabV01MobileInspector.png"),fullPage:true});
