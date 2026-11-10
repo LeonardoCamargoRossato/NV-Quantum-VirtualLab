@@ -330,3 +330,4 @@ await import('./BrowserAdaptiveViewerSmoke.mjs');
 await import('./BrowserRfRotationSmoke.mjs');
 
 await import('./BrowserBackFaceSmoke.mjs');
+await import('./BrowserScientific3DSmoke.mjs');

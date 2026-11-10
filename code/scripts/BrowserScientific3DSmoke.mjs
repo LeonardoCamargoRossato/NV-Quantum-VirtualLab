@@ -1,5 +1,5 @@
 import {chromium} from '@playwright/test';
-const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--enable-webgl','--use-gl=angle','--use-angle=swiftshader']});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--enable-webgl','--use-gl=angle','--use-angle=swiftshader']});
 const url=process.env.APP_URL||'http://127.0.0.1:4174/NV-Quantum-VirtualLab/';
 for(const [width,height] of [[1366,768],[1920,1080],[390,844]]){
  const page=await browser.newPage({viewport:{width,height}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
