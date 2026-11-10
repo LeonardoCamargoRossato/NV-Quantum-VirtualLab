@@ -66,3 +66,18 @@ class ImagePresentationTests(unittest.TestCase):
                 self.data['items'][tag]['sourceBox'],
                 f'{tag}: Layer B crop must match aligned presentation'
             )
+
+    def test_regenerated_analog_layer_b_manifest(self):
+        manifest = json.loads((ROOT/'public/assets/official/v1/components/LayerBImageManifest.json').read_text())
+        entries = {entry['tag']: entry for entry in manifest['items']}
+        for index in range(29, 38):
+            tag = f'UG-V1-B{index:03d}'
+            published = entries[tag]
+            self.assertEqual(
+                published['source_box_px'],
+                self.data['items'][tag]['sourceBox'],
+                f'{tag}: regenerated Layer B image must use corrected crop'
+            )
+            self.assertEqual(published['source_id'], 'front')
+            self.assertEqual(published['status'], 'CHECK')
+            self.assertTrue((ROOT/'public/assets/official/v1/components'/published['image']).is_file())
