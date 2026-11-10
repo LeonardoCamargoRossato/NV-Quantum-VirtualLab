@@ -18,6 +18,10 @@ try{
  assert.equal(await page.locator('.photo-viewport .photo-controls').count(),0);
  assert.equal(await page.locator('.viewer-toolbar-actions .photo-controls').count(),1);
  assert.equal(await page.locator('.viewer-toolbar').evaluate(el=>el.offsetHeight),48);assert.equal(await page.locator('.photo-layer-panel').count(),0);
+ assert(await page.getByRole('group',{name:'Camada da fotografia'}).isVisible(),'Layer modes must always be discoverable');
+ assert.equal(await page.getByRole('button',{name:'Voltar à placa inteira',exact:true}).count(),1,'Return action must be floating and unique');
+ assert(await page.locator('.viewer-layer-group').boundingBox(),'Layer control must occupy toolbar space');
+
  assert.equal(await page.getByRole('button',{name:'Abrir foto aprimorada',exact:true}).count(),0);assert.equal(await page.locator('.photo-caption,.compact-toolbar').count(),0);
  const initial=await page.locator('.photo-viewport').boundingBox();assert(initial.height>=700);
  await page.getByRole('button',{name:'Expandir controles de camadas'}).click();assert(await page.getByRole('group',{name:'Camada da fotografia'}).isVisible());assert.equal((await page.locator('.photo-viewport').boundingBox()).height,initial.height,'Overlay cannot consume image height');
@@ -47,7 +51,7 @@ try{
  await page.evaluate(()=>Object.defineProperty(Element.prototype,'requestFullscreen',{configurable:true,value:undefined}));await page.getByRole('button',{name:'Maximizar foto'}).click();assert(await page.locator('.scientific-workspace.full-fallback').isVisible());await page.keyboard.press('Escape');assert.equal(await page.locator('.full-fallback').count(),0);
  for(const size of [{width:1920,height:1080},{width:768,height:1024},{width:390,height:844}]){
   await page.setViewportSize(size);await settle();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1&&document.documentElement.scrollHeight<=innerHeight+1));
-  await modules();const rect=await menu.boundingBox();assert(rect.x>=0&&rect.x+rect.width<=size.width+1&&rect.y+rect.height<=size.height);await page.keyboard.press('Escape');
+  await modules();const rect=await menu.boundingBox();assert(rect.x>=0&&rect.x+rect.width<=size.width+1&&rect.y+rect.height<=size.height, 'Modules menu overflow at '+JSON.stringify({size,rect}));await page.keyboard.press('Escape');
   if(size.width<=800){await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await settle();assert(!await page.getByRole('separator',{name:'Largura do inspetor'}).isVisible());await page.getByRole('button',{name:'Fechar inspetor'}).click();}
  }
  await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.locator('.viewer-toolbar-icon').first().evaluate(el=>getComputedStyle(el).animationName),'none');

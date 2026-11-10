@@ -58,3 +58,9 @@ O workflow `LCR_INTERFACE_SMOKE.yml` existente chama BrowserSmoke, que passa a i
 ## Ajuste de abertura e zoom
 
 Os menus lateral e superior iniciam abertos em cada carregamento, mesmo quando uma visita anterior deixou a preferência minimizada. Ambos podem ser recolhidos manualmente. Os controles menos, percentual, mais, Redefinir e fullscreen passaram para a barra superior, ao lado de Módulos e Visualização; não há barra de zoom sobreposta à fotografia. Em telas pequenas, a barra usa duas linhas para manter controles legíveis e evitar overflow. Esta regra substitui a restauração automática do modo minimizado descrita acima; a largura do inspetor continua persistida.
+
+## Complemento Builder 2 — camadas persistentes e retorno (09/11/2026)
+
+Modos Subsistemas, Componentes e Nenhuma ficam visíveis ao lado de Módulos e Visualização. A seta acoplada aos modos abre um painel próprio sobreposto de subsistemas, legenda e componentes não mapeados. O botão Voltar à placa inteira é um controle flutuante sobre a fotografia e não depende do menu. Redefinir na toolbar modifica somente zoom/pan, preservando o contexto de subsistema.
+
+Correção incremental da composição aprovada em ADR-0013, sem biblioteca adicional, alteração do mecanismo de imagem ou nova decisão arquitetural. Testes Playwright foram ampliados; a aprovação independente do Auditor Geral permanece um gate posterior.

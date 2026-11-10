@@ -55,3 +55,14 @@ class ImagePresentationTests(unittest.TestCase):
         for item in data['items']:
             if self.data['items'][item['tag']]['lowNativeResolution']:
                 self.assertIn('poucos pixels nativos',item['imageNotes'])
+
+    def test_analog_crop_plan_matches_corrected_presentation(self):
+        plan = json.loads((ROOT/'source/evidence/LayerBComponentImagePlan.json').read_text())
+        entries = {entry['tag']: entry for entry in plan['components']}
+        for index in range(29, 38):
+            tag = f'UG-V1-B{index:03d}'
+            self.assertEqual(
+                entries[tag]['region']['px_1453x1080'],
+                self.data['items'][tag]['sourceBox'],
+                f'{tag}: Layer B crop must match aligned presentation'
+            )
