@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { fields, filterItems, exportCsv, safeUrl, validateSnapshot, type Item, type Snapshot } from "./Inventory";
 import { findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, type PhotoRegion } from "./PhotoRegions";
-import { ENHANCED_CROPS, ENHANCED_OVERVIEW, EXTRA_CROPS } from "./EnhancedPhotoAssets";
+import { ENHANCED_CROPS, ENHANCED_OVERVIEW } from "./EnhancedPhotoAssets";
 import { Articles, Fundamentals, Guide, References, navigationGroups, pageTitles, Out, type Page } from "./StudyPages";
 import { ScientometricDashboard, PatentReviewPlaceholder } from "./ScientometricDashboard";
 import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
@@ -163,6 +163,12 @@ function App() {
     return ()=>window.removeEventListener("hashchange",onHash);
   },[]);
   useEffect(()=>{
+    const target=viewportRef.current;if(!target||page!=="explorar")return;
+    function wheel(e:WheelEvent){e.preventDefault();if(e.deltaY===0)return;setZoom(z=>Math.min(8,Math.max(1,z+(e.deltaY<0?.15:-.15))));}
+    target.addEventListener("wheel",wheel,{passive:false});
+    return ()=>target.removeEventListener("wheel",wheel);
+  },[page]);
+  useEffect(()=>{
     const target=viewportRef.current;
     if(!target)return;
     const observer=new ResizeObserver(entries=>{const rect=entries[0].contentRect;setViewSize({width:rect.width,height:rect.height})});
@@ -283,7 +289,7 @@ function App() {
     }catch{ /* Mantém fullscreen visual em CSS quando a API falha. */ }
   }
   const isPhotoFull=isFull||fullFallback;
-  return <div className={"app-shell"+(collapsed?" menu-collapsed":"")}>
+  return <div className={"app-shell"+(page==="explorar"?" explore-fixed":"")+(collapsed?" menu-collapsed":"")}>
     {mobileMenu&&<button className="mobile-scrim" aria-label="Fechar navegação" onClick={()=>setMobileMenu(false)} />}
     <aside className={"nav-sidebar"+(mobileMenu?" mobile-open":"")} aria-label="Navegação do laboratório">
       <div className="sidebar-top"><div className="identity">
@@ -373,7 +379,7 @@ function App() {
           <section className={"photo-panel"+(fullFallback?" full-fallback":"")} ref={photoPanelRef} aria-label="Fotografia interativa do Uncut Gem V1">
             <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>Frente da PCB · camadas A / B</span></div>
             <PhotoLayerControls mode={photoLayer} focus={focusedSubsystem} items={items} onMode={choosePhotoLayer} onBack={leaveSubsystem} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
-            <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com camadas poligonais" onWheel={e=>setZoom(z=>Math.min(8,Math.max(1,z+(e.deltaY<0?0.15:-0.15))))}
+            <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com camadas poligonais"
               onPointerDown={e=>{if(e.button!==0)return;drag.current={x:e.clientX,y:e.clientY,px:pan.x,py:pan.y};e.currentTarget.setPointerCapture(e.pointerId)}}
               onPointerMove={e=>{const d=drag.current;if(d)setPan({x:d.px+e.clientX-d.x,y:d.py+e.clientY-d.y})}}
               onPointerUp={()=>{drag.current=null}} onPointerCancel={()=>{drag.current=null}}>
@@ -386,16 +392,7 @@ function App() {
             <div className="photo-caption"><span>FOTOGRAFIA OFICIAL · AGPL-3.0</span><span>Arraste para mover · Roda do mouse para aproximar · Selecione um componente</span><Out href={PHOTO_ORIGINAL_URL}>Fonte e créditos</Out></div>
           </section>
         </div>
-        <section className="enhanced-gallery" aria-label="Detalhes fotográficos da montagem Uncut Gem V1">
-          <h2>Detalhes da montagem</h2>
-          <p>Quatro regiões descritivas recortadas da mesma fotografia oficial. O enquadramento foi centralizado e alinhado sem acrescentar componentes ou atribuir identidade técnica incerta.</p>
-          <div className="enhanced-gallery-grid">{EXTRA_CROPS.map(extra=><button key={extra.id} type="button" className="enhanced-gallery-card"
-              onClick={()=>setPreview({url:presentedAsset(enhancedPhoto+extra.file,base),title:extra.title})}>
-              <img loading="lazy" src={presentedAsset(enhancedPhoto+extra.file,base)} alt={"Recorte fotográfico: "+extra.title}/>
-              <strong>{extra.title}</strong><span>{extra.note}</span>
-            </button>)}</div>
-        </section>
-        <div className="below-photo"><strong>Nota de montagem:</strong> o BPW34 está no prisma encapsulado; <code>PHOTODIODE1</code> é apenas seu conector na placa. <button type="button" onClick={()=>go("guia")}>Ver guia de montagem ↗</button></div>
+
       </div> : <div className="content-page">
         {page==="inventario" ? <div className="inventory-page">
           <div className="section-heading"><span className="overline">LABORATÓRIO / DADOS</span><h1>Inventário — Uncut Gem V1</h1><p>Catálogo de subsistemas, componentes, imagens e documentação técnica.</p></div>

@@ -38,3 +38,7 @@ Os polígonos de módulo e suas partes podem se sobrepor; o detalhe menor aparec
 - `python code/scripts/lcr_naming.py --check`.
 
 Evidência de screenshots gerada localmente em `/tmp/nv-polygon-layers/`; não constitui auditoria independente.
+
+## Display fixo do Explorar
+
+A rota Explorar ocupa a altura disponível sem galeria de detalhes, nota adicional ou rodapé. O viewport da fotografia absorve a roda do mouse com listener não passivo e `preventDefault`, aplicando zoom sem rolar o documento. Painéis contextuais mantêm rolagem interna; outras páginas preservam a rolagem normal. A suíte `BrowserPhotoLayersSmoke.mjs` verifica encaixe e zoom por roda em 1440×950, 390×844 e 1680×900, além da saída para o inventário.

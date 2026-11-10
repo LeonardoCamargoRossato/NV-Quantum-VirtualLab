@@ -571,3 +571,18 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 .photo-polygon-expand text{fill:white;font:2.8px sans-serif;pointer-events:none}.photo-polygon-expand:hover rect,.photo-polygon-expand:focus-visible rect{fill:#334155;stroke:white;stroke-width:.35}
 @media(max-width:600px){.photo-layer-panel{padding:9px}.photo-layer-toolbar{align-items:stretch}.photo-subsystem-select{flex-wrap:wrap}.photo-subsystem-select select{max-width:100%;min-height:36px}.photo-layer-toolbar button{min-height:38px}.photo-polygon polygon{stroke-width:2}}
 @media(prefers-reduced-motion:reduce){.photo-polygon polygon{transition:none}}
+
+/* Explore is a fixed image workspace; only contextual panels can scroll. */
+.app-shell.explore-fixed{height:100dvh;min-height:0;overflow:hidden;overscroll-behavior:none}
+.explore-fixed .main-column{height:100%;min-height:0;overflow:hidden}
+.explore-fixed .workspace-layout{min-height:0;overflow:hidden;align-items:stretch}
+.explore-fixed .workspace-primary{height:100%;overflow:hidden}
+.explore-fixed .workbench-page{height:100%;min-height:0;display:flex;flex-direction:column;padding-bottom:12px}
+.explore-fixed .compact-toolbar{flex-shrink:0}
+.explore-fixed .work-area{flex:1;min-height:0}
+.explore-fixed .photo-panel{height:100%;min-height:0}
+.explore-fixed .photo-viewport{height:auto;min-height:0;flex:1;overscroll-behavior:none}
+.explore-fixed .photo-header,.explore-fixed .photo-layer-panel,.explore-fixed .photo-caption{flex-shrink:0}
+.explore-fixed .app-footer{display:none}
+.explore-fixed .photo-unmapped[open]{max-height:110px;overflow-y:auto;overscroll-behavior:contain}
+@media(max-width:800px){.explore-fixed .mobile-bar{flex-shrink:0}.explore-fixed .photo-layer-legend,.explore-fixed .photo-layer-note{display:none}.explore-fixed .compact-toolbar{gap:6px;flex-wrap:wrap}.explore-fixed .photo-caption{display:none}}

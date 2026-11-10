@@ -84,12 +84,8 @@ try {
     const bytes = await response.body();
     assert(bytes.subarray(0, 8).equals(Buffer.from([137,80,78,71,13,10,26,10])), "PNG inválido: " + assetUrl);
   }
-  await page.waitForFunction(
-    () => [...document.querySelectorAll(".enhanced-gallery-card img")].length === 4 &&
-      [...document.querySelectorAll(".enhanced-gallery-card img")].every(i => i.complete && i.naturalWidth > 0),
-    undefined, { timeout: 12000 },
-  );
-  console.log("PASS: 11 arquivos PNG aprimorados acessíveis pelo caminho público e galeria carregada.");
+  assert.equal(await page.locator('.enhanced-gallery').count(),0,'Explorar deve mostrar somente o display principal');
+  console.log("PASS: 11 arquivos PNG aprimorados acessíveis; Explorar sem galeria secundária.");
   await page.screenshot({ path: join(shots,"NvLabV01SidebarOpen.png"), fullPage: true });
 
   const panelBefore = await page.locator(".photo-panel").evaluate(el => el.getBoundingClientRect().width);

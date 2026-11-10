@@ -62,6 +62,23 @@ try{
  await modes.getByRole('button',{name:'Nenhuma',exact:true}).click();
  await page.screenshot({path:shots+'/MobileNoLayer.png',fullPage:true});
  assert.equal(await page.locator('.photo-polygon').count(),0);
+ for(const size of [{width:1440,height:950},{width:390,height:844},{width:1680,height:900}]){
+  await page.setViewportSize(size);
+  await page.waitForTimeout(100);
+  assert(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'Explore must fit the viewport');
+  assert.equal(await page.locator('.enhanced-gallery,.below-photo').count(),0);
+  const photo=page.locator('.photo-viewport');const rect=await photo.boundingBox();assert(rect.height>180,'Main image keeps usable height');
+  await page.mouse.move(rect.x+rect.width/2,rect.y+rect.height/2);
+  const before=parseInt(await page.locator('.photo-controls output').textContent());
+  await page.mouse.wheel(0,-150);await page.waitForTimeout(100);
+  const after=parseInt(await page.locator('.photo-controls output').textContent());assert(after>before,'Wheel zooms in');
+  await page.mouse.wheel(0,150);await page.waitForTimeout(100);
+  assert(parseInt(await page.locator('.photo-controls output').textContent())<after,'Wheel zooms out');
+  assert.equal(await page.evaluate(()=>window.scrollY),0,'Wheel cannot scroll the page');
+ }
+ await page.evaluate(()=>{location.hash='inventario'});
+ await page.getByRole('heading',{name:'Inventário — Uncut Gem V1',exact:true}).waitFor();
+ assert.equal(await page.locator('.explore-fixed').count(),0,'Other pages retain normal document scrolling');
  assert.deepEqual(errors,[]);
  console.log('PASS: no-layer photo, nine subsystem polygons, hover, select/deselect, expansion, all mapped component links, hidden items, return, mouse, keyboard and mobile.');
 }finally{await browser.close();}
