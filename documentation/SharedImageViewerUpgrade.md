@@ -20,3 +20,7 @@ Usar `InteractiveImage` dentro de `ImageOpeningContext`. Fluxos com ações pró
 - `BrowserSmoke.mjs`: navegação e regressões gerais.
 
 Screenshots locais ficam em `/tmp/nv-shared-image-viewer/`. Verificações de implementação não equivalem a auditoria independente.
+
+## Remoção do controle de ajuste manual
+
+O botão/ícone “Ajustar à tela” foi removido do componente compartilhado e, portanto, de todas as imagens e das duas faces do esquema. O enquadramento inicial automático e os controles de zoom, download, fullscreen e fechamento continuam disponíveis. Os testes de imagens e esquema verificam a ausência do botão.

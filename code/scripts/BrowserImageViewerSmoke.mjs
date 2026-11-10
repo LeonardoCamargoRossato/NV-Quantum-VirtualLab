@@ -17,7 +17,7 @@ async function exercise({download=false,fullscreen=false}={}){
  for(const name of ['Baixar imagem','Ampliar imagem em tela cheia','Fechar imagem'])assert.equal((await modal.getByRole('button',{name,exact:true}).textContent()).trim(),'');
  if(download){const src=await img.getAttribute('src');const response=await page.request.get(new URL(src,base).href);const expected=await response.body();const promise=page.waitForEvent('download');await modal.getByRole('button',{name:'Baixar imagem',exact:true}).click();const saved=await promise;assert(readFileSync(await saved.path()).equals(expected));}
  if(fullscreen){await modal.getByRole('button',{name:'Ampliar imagem em tela cheia'}).click();await page.waitForFunction(()=>document.fullscreenElement?.classList.contains('image-viewer-surface'));await modal.getByRole('button',{name:'Sair da tela cheia da imagem'}).click();await page.waitForFunction(()=>!document.fullscreenElement);}
- await modal.getByRole('button',{name:'Ajustar imagem à tela'}).click();assert.equal(await modal.getByLabel('Zoom da imagem',{exact:true}).textContent(),'100%');
+ assert.equal(await modal.getByRole('button',{name:'Ajustar imagem à tela'}).count(),0,'Fit control must be absent on every image');
  await modal.getByRole('button',{name:'Fechar imagem'}).click();assert.equal(await modal.count(),0);
 }
 async function route(hash){await page.goto(base+'#'+hash,{waitUntil:'domcontentloaded'});await page.waitForTimeout(100)}
