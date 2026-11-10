@@ -18,6 +18,10 @@ try{
  assert.equal(await page.locator('.photo-viewport .photo-controls').count(),0);
  assert.equal(await page.locator('.viewer-toolbar-actions .photo-controls').count(),1);
  assert.equal(await page.locator('.viewer-toolbar').evaluate(el=>el.offsetHeight),48);assert.equal(await page.locator('.photo-layer-panel').count(),0);
+ assert(await page.getByRole('group',{name:'Camada da fotografia'}).isVisible(),'Layer modes must always be discoverable');
+ assert.equal(await page.getByRole('button',{name:'Voltar à placa inteira',exact:true}).count(),1,'Return action must be floating and unique');
+ assert(await page.locator('.viewer-layer-group').boundingBox(),'Layer control must occupy toolbar space');
+
  assert.equal(await page.getByRole('button',{name:'Abrir foto aprimorada',exact:true}).count(),0);assert.equal(await page.locator('.photo-caption,.compact-toolbar').count(),0);
  const initial=await page.locator('.photo-viewport').boundingBox();assert(initial.height>=700);
  await page.getByRole('button',{name:'Expandir controles de camadas'}).click();assert(await page.getByRole('group',{name:'Camada da fotografia'}).isVisible());assert.equal((await page.locator('.photo-viewport').boundingBox()).height,initial.height,'Overlay cannot consume image height');
