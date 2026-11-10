@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { fields, filterItems, exportCsv, inventoryImageUrl, safeUrl, validateSnapshot, type Item, type Snapshot } from "./Inventory";
 import { findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, PHOTO_BACK_ORIGINAL_URL, type PhotoFace, type PhotoRegion } from "./PhotoRegions";
@@ -24,6 +24,7 @@ import { findPolygonRegion, subsystemFocusBounds } from "./PhotoRegions";
 import { cardPageSize, pageNumbers } from "./Pagination";
 import inventoryData from "../source/InventoryV1.json";
 import "./Workbench.css";
+const Scientific3DViewer=lazy(()=>import("./Scientific3DViewer").then(module=>({default:module.Scientific3DViewer})));
 
 const base = import.meta.env.BASE_URL;
 const inventorySheet = "https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdWIH2-Tmt_-gU8sO8pz3CvyTpycXU/edit?gid=2026110901#gid=2026110901";
@@ -127,6 +128,7 @@ function App() {
   const [preview,setPreview]=useState<ImagePreview|null>(null);
   const [photoLayer,setPhotoLayer]=useState<PhotoLayer>("none");
   const [photoFace,setPhotoFace]=useState<PhotoFace>("front");
+  const [exploreMode,setExploreMode]=useState<"photo"|"3d">("photo");
   const [photoFlipping,setPhotoFlipping]=useState(false);
   const [focusedSubsystem,setFocusedSubsystem]=useState<string|null>(null);
   const [rotation,setRotation]=useState(0);
@@ -150,7 +152,7 @@ function App() {
   useEffect(()=>{const grid=workspaceGridRef.current;if(!grid)return;const observer=new ResizeObserver(entries=>setWorkspaceWidth(entries[0].contentRect.width));observer.observe(grid);return ()=>observer.disconnect()},[page]);
   const inspectorRef=useRef<HTMLElement>(null);
   const lastSelectionRef=useRef<HTMLElement|null>(null);
-  const photoNavigation=useImageNavigation({viewport:viewportRef,zoom,setZoom,offset:pan,setOffset:setPan,rotation,setRotation,key:page});
+  const photoNavigation=useImageNavigation({viewport:viewportRef,zoom,setZoom,offset:pan,setOffset:setPan,rotation,setRotation,key:page+exploreMode});
   useEffect(()=>{const preload=new Image();preload.src=backPhoto},[]);
   useEffect(()=>{
     try { setSnapshot(validateSnapshot(inventoryData)); } catch { setLoadError("Não foi possível validar o catálogo de referência."); }
@@ -171,7 +173,7 @@ function App() {
     const observer=new ResizeObserver(entries=>{const rect=entries[0].contentRect;setViewSize({width:rect.width,height:rect.height})});
     observer.observe(target);
     return ()=>observer.disconnect();
-  },[page,selected,inspectorExpanded,fullFallback]);
+  },[page,exploreMode,selected,inspectorExpanded,fullFallback]);
   useEffect(()=>{
     const listener=()=>{
       setIsFull(Boolean(document.fullscreenElement));
@@ -388,14 +390,14 @@ function App() {
     <div className="main-column">
       <div className="mobile-bar"><button type="button" onClick={()=>{setCollapsed(false);setMobileMenu(true)}} aria-label="Abrir menu lateral">☰</button><strong>NV Quantum Virtual Lab</strong><span>Laboratório</span></div>
       <div ref={viewerWorkspaceRef} className={page==="explorar"?"scientific-workspace"+(fullFallback?" full-fallback":""):"workspace-shell"}>
-      {page==="explorar"&&<ViewerToolbar layerMode={photoLayer} layerFocus={focusedSubsystem} onLayerChange={choosePhotoLayer} zoomControls={<div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button type="button" aria-label={photoFace==="front"?"Virar fotografia para o verso":"Voltar fotografia para a frente"} title={photoFace==="front"?"Ver verso real":"Ver frente real"} disabled={photoFlipping} onClick={flipPhoto}><ImageIcon kind="flip"/></button><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button type="button" aria-label="Girar imagem 90°" title={"Girar imagem 90° · atual: "+rotation+"°"} onClick={()=>photoNavigation.rotateBy()}><ImageIcon kind="rotate"/></button><button className="reset-button" title="Redefinir apenas o zoom" onClick={photoNavigation.reset}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>} onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
+      {page==="explorar"&&<ViewerToolbar mode={exploreMode} onPhoto={()=>setExploreMode("photo")} on3D={()=>{clearSelection();setExploreMode("3d")}} layerMode={photoLayer} layerFocus={focusedSubsystem} onLayerChange={choosePhotoLayer} zoomControls={<div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button type="button" aria-label={photoFace==="front"?"Virar fotografia para o verso":"Voltar fotografia para a frente"} title={photoFace==="front"?"Ver verso real":"Ver frente real"} disabled={photoFlipping} onClick={flipPhoto}><ImageIcon kind="flip"/></button><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button type="button" aria-label="Girar imagem 90°" title={"Girar imagem 90° · atual: "+rotation+"°"} onClick={()=>photoNavigation.rotateBy()}><ImageIcon kind="rotate"/></button><button className="reset-button" title="Redefinir apenas o zoom" onClick={photoNavigation.reset}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>} onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
         <PhotoLayerControls face={photoFace} mode={photoLayer} focus={focusedSubsystem} items={items} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
       </ViewerToolbar>}
       <div ref={workspaceGridRef} className={"workspace-layout"+(selection?" has-inspector":"")+(selection&&inspectorExpanded?" wide-inspector":"")} style={page==="explorar"?{"--explore-inspector-width":actualInspectorWidth+"px"} as React.CSSProperties:undefined}>
         {selection&&<ContextInspector photoFace={photoFace} selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenItem={tag=>{const item=items.find(i=>i.tag===tag);if(item)openItem(item)}} onChildren={tag=>{const item=items.find(i=>i.tag===tag);if(item){go("inventario");setQuery("");setLayer("B");setSubsystem(item.name);setFace("");setImageType("");}}} items={items} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
         {page==="explorar"&&selection&&<InspectorResizeHandle value={actualInspectorWidth} min={widthLimits.min} max={widthLimits.max} onChange={resizeInspector}/>}
         <div className="workspace-primary">
-      {page==="explorar" ? <div className="workbench-page">
+      {page==="explorar"&&exploreMode==="3d" ? <Suspense fallback={<div role="status">Iniciando visualizador 3D…</div>}><Scientific3DViewer/></Suspense> : page==="explorar" ? <div className="workbench-page">
         <h1 className="viewer-sr-only">Explorar</h1>
         <div className="work-area">
           <section className="photo-panel" aria-label="Fotografia interativa do Uncut Gem V1">
