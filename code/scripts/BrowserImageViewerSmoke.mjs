@@ -22,7 +22,7 @@ async function exercise({download=false,fullscreen=false}={}){
 }
 async function route(hash){await page.goto(base+'#'+hash,{waitUntil:'domcontentloaded'});await page.waitForTimeout(100)}
 try{
- await route('explorar');await page.getByRole('button',{name:'Abrir foto aprimorada'}).click();await exercise({download:true,fullscreen:true});
+ await route('referencias');await page.locator('.real-photo .image-trigger').click();await exercise({download:true,fullscreen:true});
  // Every currently visible thumbnail in cards uses the shared viewer, including crop images.
  console.log('PASS: main photo viewer');await route('inventario');const images=page.locator('.catalog-image button');await images.first().waitFor();const count=await images.count();
  for(let i=0;i<count;i++){await images.nth(i).click();await exercise({download:i===0});}

@@ -1,0 +1,46 @@
+[
+  {
+    "viewport": [
+      1366,
+      768
+    ],
+    "photoHeight": 720,
+    "photoWidth": 1102,
+    "photoWidthWithInspector": 777,
+    "headerAndControlsHeight": 48,
+    "minimizedPhotoHeight": 768
+  },
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "photoHeight": 1032,
+    "photoWidth": 1656,
+    "photoWidthWithInspector": 1331,
+    "headerAndControlsHeight": 48,
+    "minimizedPhotoHeight": 1080
+  },
+  {
+    "viewport": [
+      768,
+      1024
+    ],
+    "photoHeight": 912,
+    "photoWidth": 768,
+    "photoWidthWithInspector": 768,
+    "headerAndControlsHeight": 48,
+    "minimizedPhotoHeight": 960
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "photoHeight": 732,
+    "photoWidth": 390,
+    "photoWidthWithInspector": 390,
+    "headerAndControlsHeight": 48,
+    "minimizedPhotoHeight": 780
+  }
+]

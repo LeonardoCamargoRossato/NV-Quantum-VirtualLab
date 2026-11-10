@@ -17,8 +17,9 @@ try {
   await page.getByRole("heading", { name: "Explorar" }).waitFor();
   await page.getByRole("button", { name: "Expandir Excitação óptica — laser" }).waitFor();
   // Esquema 2D: PNGs reais, frente inicial, flip, zoom, Escape e foco.
-  const schemeTrigger=page.getByRole('button',{name:'Ver esquema 2D',exact:true});
+  const schemeTrigger=page.getByRole('button',{name:'Módulos e Visualização',exact:true});
   await schemeTrigger.click();
+  await page.getByRole('menuitem',{name:'Ver esquema 2D',exact:true}).click();
   const scheme=page.getByRole('dialog',{name:'Esquema 2D — Uncut Gem V1'});
   await scheme.getByRole('status').getByText('Frente da PCB',{exact:true}).waitFor();
   await page.waitForFunction(()=>document.querySelector('.image-viewer-viewport img')?.naturalWidth===1672);
@@ -124,7 +125,7 @@ try {
   // Chromium headless manipula a top-layer nativa de modo diferente do navegador interativo;
   // testar aqui o fallback CSS para ambientes sem Fullscreen API, sem falsear a saída.
   await page.evaluate(() => Object.defineProperty(Element.prototype, "requestFullscreen", {configurable:true, value:undefined}));
-  await page.getByRole("button", { name: "Tela cheia da fotografia" }).click();
+  await page.getByRole("button", { name: "Maximizar foto" }).click();
   assert(await page.evaluate(() => Boolean(document.fullscreenElement) || Boolean(document.querySelector(".full-fallback"))));
   await page.keyboard.press("Escape");
   await page.waitForFunction(() => !document.fullscreenElement && !document.querySelector(".full-fallback"), undefined, {timeout: 8000});
@@ -319,3 +320,6 @@ try {
 } finally {
   await browser.close();
 }
+
+// Included in the existing interface CI workflow without changing deployment infrastructure.
+await import('./BrowserAdaptiveViewerSmoke.mjs');

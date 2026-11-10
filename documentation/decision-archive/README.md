@@ -33,3 +33,5 @@ Todo prompt de desenvolvimento avalia a relevância de ADR; **nem todo desenvolv
 - [ADR-0009 — Backup central diário no Drive](ADR-0009-backup-diario-drive.md) (complementa ADR-0006).
 
 - [ADR-0012 — Camadas poligonais da foto frontal](ADR-0012-camadas-poligonais-da-foto.md).
+
+- [ADR-0013 — Workspace científico adaptativo](ADR-0013-workspace-cientifico-adaptativo.md).

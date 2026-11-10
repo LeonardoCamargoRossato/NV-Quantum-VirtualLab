@@ -7,11 +7,14 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const data=JSON.parse(readFileSync(new URL('../source/PhotoPolygons.json',import.meta.url)));
 const inventory=JSON.parse(readFileSync(new URL('../source/InventoryV1.json',import.meta.url))).items;
 const shots=process.env.SCREENSHOT_DIR||'/tmp/nv-polygon-layers';mkdirSync(shots,{recursive:true});
+async function openControls(){if(!await page.getByRole('group',{name:'Camada da fotografia'}).isVisible())await page.getByRole('button',{name:'Expandir controles de camadas'}).click()}
+async function closeControls(){if(await page.getByRole('button',{name:'Recolher controles de camadas'}).isVisible())await page.getByRole('button',{name:'Recolher controles de camadas'}).click()}
 try{
  await page.goto(process.env.APP_URL||'http://127.0.0.1:4173/NV-Quantum-VirtualLab/');
  await page.locator('.photo-polygon').nth(8).waitFor();
  assert.equal(await page.locator('.hotspot').count(),0);
  assert.equal(await page.locator('.photo-polygon').count(),9);
+ await openControls();
  const modes=page.getByRole('group',{name:'Camada da fotografia'});
  assert(await modes.getByRole('button',{name:'Componentes',exact:true}).isDisabled());
  await modes.getByRole('button',{name:'Nenhuma',exact:true}).click();
@@ -26,6 +29,7 @@ try{
  await page.screenshot({path:shots+'/Subsystems.png',fullPage:true});
  for(const region of data.subsystems){
   const parent=inventory.find(i=>i.tag===region.tag);
+  await openControls();
   await page.getByLabel('Expandir subsistema',{exact:true}).selectOption(region.tag);
   const expected=data.components.filter(r=>inventory.find(i=>i.tag===r.tag).parentTag===region.tag);
   assert.equal(await page.locator('.photo-polygon').count(),expected.length,parent.name);
@@ -41,16 +45,19 @@ try{
    await polygon.press('Space');assert.equal(await polygon.getAttribute('aria-pressed'),'false');
   }
   if(region.tag==='UG-V1-S07'){
+   await openControls();
    await page.locator('.photo-unmapped summary').click();
    await page.locator('.photo-unmapped').getByRole('button',{name:'Fotodiodo BPW34',exact:true}).click();
    assert.equal(await page.locator('.photo-polygon.is-selected').count(),0);
    await page.getByRole('button',{name:'Fechar inspetor'}).click();
   }
   if(region.tag==='UG-V1-S08')await page.screenshot({path:shots+'/SignalComponents.png',fullPage:true});
+  await openControls();
   await page.getByRole('button',{name:'Voltar à placa inteira',exact:false}).click();
   assert.equal(await page.locator('.photo-controls output').textContent(),'100%');
  }
  // Actual expand icon and pointer component clicks, not only the accessible select.
+ await closeControls();
  await page.getByRole('button',{name:'Expandir Excitação óptica — laser',exact:true}).click();
  const component=page.getByRole('button',{name:'Inspecionar Laser verde',exact:true});
  await component.click();await page.getByRole('complementary',{name:'Painel de informações: Laser verde',exact:true}).waitFor();
@@ -58,8 +65,11 @@ try{
  await page.setViewportSize({width:390,height:844});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
  await page.screenshot({path:shots+'/MobileComponents.png',fullPage:true});
+ await openControls();
  await page.getByRole('button',{name:'Voltar à placa inteira',exact:false}).click();
+ await openControls();
  await modes.getByRole('button',{name:'Nenhuma',exact:true}).click();
+ await closeControls();
  await page.screenshot({path:shots+'/MobileNoLayer.png',fullPage:true});
  assert.equal(await page.locator('.photo-polygon').count(),0);
  for(const size of [{width:1440,height:950},{width:390,height:844},{width:1680,height:900}]){

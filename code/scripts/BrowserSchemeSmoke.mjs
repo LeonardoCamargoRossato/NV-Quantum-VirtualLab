@@ -6,7 +6,8 @@ const page=await browser.newPage({viewport:{width:1440,height:950},acceptDownloa
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const url=process.env.APP_URL||'http://127.0.0.1:4173/NV-Quantum-VirtualLab/';
 await page.goto(url);
-const trigger=page.getByRole('button',{name:'Ver esquema 2D',exact:true});
+const trigger=page.getByRole('button',{name:'Módulos e Visualização',exact:true});
+async function openScheme(){await trigger.click();await page.getByRole('menuitem',{name:'Ver esquema 2D',exact:true}).click()}
 const modal=page.getByRole('dialog');
 async function loaded(){await page.waitForFunction(()=>document.querySelector('.image-viewer-viewport img')?.naturalWidth>0)}
 async function exercise(){
@@ -36,7 +37,7 @@ async function exercise(){
  for(const name of ['Baixar imagem','Ampliar imagem em tela cheia','Fechar imagem']){const button=modal.getByRole('button',{name,exact:true});assert.equal((await button.textContent()).trim(),'');assert.equal(await button.locator('svg').count(),1);}
 }
 try{
- await trigger.click();await exercise();
+ await openScheme();await exercise();
  for(const side of ['Front','Back']){
   if(side==='Back')await modal.getByRole('button',{name:'Virar para o verso'}).click();
   await loaded();assert((await modal.getByRole('img').getAttribute('src')).endsWith(side+'Scheme.png'));
@@ -47,7 +48,7 @@ try{
  await modal.getByRole('button',{name:'Ampliar imagem em tela cheia'}).click();await page.waitForFunction(()=>document.fullscreenElement?.classList.contains('image-viewer-surface'));
  await modal.getByRole('button',{name:'Sair da tela cheia da imagem'}).click();await page.waitForFunction(()=>!document.fullscreenElement);
  await page.keyboard.press('Escape');assert.equal(await modal.count(),0);assert(await trigger.evaluate(el=>el===document.activeElement));
- await page.setViewportSize({width:390,height:844});await trigger.click();await loaded();assert(await modal.evaluate(el=>el.scrollWidth<=el.clientWidth+1));
+ await page.setViewportSize({width:390,height:844});await openScheme();await loaded();assert(await modal.evaluate(el=>el.scrollWidth<=el.clientWidth+1));
  await page.emulateMedia({reducedMotion:'reduce'});await modal.getByRole('button',{name:'Virar para o verso'}).click();await loaded();
  await modal.getByRole('button',{name:'Ampliar imagem em tela cheia'}).click();await page.waitForFunction(()=>Boolean(document.fullscreenElement));
  await modal.getByRole('button',{name:'Fechar imagem'}).click();await page.waitForFunction(()=>!document.fullscreenElement&&!document.querySelector('.image-viewer'));
