@@ -1050,16 +1050,16 @@
       "image": "UgV1B029.png",
       "source_id": "front",
       "source_box_px": [
-        348,
-        480,
-        454,
-        552
+        198,
+        586,
+        294,
+        615
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 212,
-      "height": 144,
-      "bytes": 38256
+      "width": 192,
+      "height": 58,
+      "bytes": 16378
     },
     {
       "tag": "UG-V1-B030",
@@ -1073,15 +1073,15 @@
       "source_id": "front",
       "source_box_px": [
         198,
-        526,
-        310,
-        575
+        557,
+        294,
+        584
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 224,
-      "height": 98,
-      "bytes": 28765
+      "width": 192,
+      "height": 54,
+      "bytes": 15163
     },
     {
       "tag": "UG-V1-B031",
@@ -1094,16 +1094,16 @@
       "image": "UgV1B031.png",
       "source_id": "front",
       "source_box_px": [
-        200,
-        570,
-        310,
-        627
+        371,
+        513,
+        455,
+        540
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 220,
-      "height": 114,
-      "bytes": 33461
+      "width": 168,
+      "height": 54,
+      "bytes": 14015
     },
     {
       "tag": "UG-V1-B032",
@@ -1116,16 +1116,16 @@
       "image": "UgV1B032.png",
       "source_id": "front",
       "source_box_px": [
-        286,
-        529,
-        367,
-        654
+        315,
+        564,
+        348,
+        646
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 162,
-      "height": 250,
-      "bytes": 51177
+      "width": 66,
+      "height": 164,
+      "bytes": 15379
     },
     {
       "tag": "UG-V1-B033",
@@ -1138,16 +1138,16 @@
       "image": "UgV1B033.png",
       "source_id": "front",
       "source_box_px": [
-        431,
-        536,
-        515,
-        658
+        468,
+        571,
+        499,
+        643
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 168,
-      "height": 244,
-      "bytes": 57032
+      "width": 62,
+      "height": 144,
+      "bytes": 14144
     },
     {
       "tag": "UG-V1-B034",
@@ -1160,16 +1160,16 @@
       "image": "UgV1B034.png",
       "source_id": "front",
       "source_box_px": [
-        450,
-        479,
-        520,
-        556
+        477,
+        503,
+        509,
+        550
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 140,
-      "height": 154,
-      "bytes": 29798
+      "width": 64,
+      "height": 94,
+      "bytes": 8626
     },
     {
       "tag": "UG-V1-B035",
@@ -1182,16 +1182,16 @@
       "image": "UgV1B035.png",
       "source_id": "front",
       "source_box_px": [
-        285,
-        478,
-        364,
-        556
+        308,
+        518,
+        340,
+        559
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 158,
-      "height": 156,
-      "bytes": 25236
+      "width": 64,
+      "height": 82,
+      "bytes": 7421
     },
     {
       "tag": "UG-V1-B036",
@@ -1204,16 +1204,16 @@
       "image": "UgV1B036.png",
       "source_id": "front",
       "source_box_px": [
-        206,
-        486,
-        299,
-        565
+        219,
+        534,
+        273,
+        563
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 186,
-      "height": 158,
-      "bytes": 32359
+      "width": 108,
+      "height": 58,
+      "bytes": 8386
     },
     {
       "tag": "UG-V1-B037",
@@ -1226,16 +1226,16 @@
       "image": "UgV1B037.png",
       "source_id": "front",
       "source_box_px": [
-        210,
-        602,
-        297,
-        662
+        219,
+        611,
+        275,
+        645
       ],
       "image_type": "Foto real / recorte físico da montagem oficial V1 (A)",
       "source_hash": "d29720f611b3ae76caed31a220f715148a0e9a4fb485152fcbfbeeb2bb396516",
-      "width": 174,
-      "height": 120,
-      "bytes": 25553
+      "width": 112,
+      "height": 68,
+      "bytes": 10072
     },
     {
       "tag": "UG-V1-0030",

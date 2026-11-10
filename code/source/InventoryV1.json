@@ -9,7 +9,7 @@
   "snapshotDateNote": "Data de recebimento do arquivo; horário de sincronização online não verificado.",
   "sourceSha256": "13339c68d4fcb0a44134faf0a9fff29b39859904bc9b5f44078bf2f0a6413445",
   "evidenceSha256": {
-    "ComponentImageCheckpoint.json": "9cb03db22158271bace3aab11df73f6fd294b123b8174cd5dcc3807ad5259aaa",
+    "ComponentImageCheckpoint.json": "ecd4253ce8cc68922516a1a8677f93112563a81f2f7bc95cb67451dc23d7e0d3",
     "ImageFraming.json": "94f66221b81c1bdd736d1e9f5e5a479006ed2f8bf8759b4be7e3c171fb87cff2",
     "LayerBBoardFaceIndex.json": "deea5a1d18ca6fc5cbfb72eb636b4896746d8f45f0de47a90bdcb8b54b214928",
     "LayerBComponentImagePlan.json": "14d86c779925edeac8207960e1a5f1050cbab482406993b0b0d231df614396df",
