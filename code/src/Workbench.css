@@ -678,3 +678,8 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .viewer-layer-group{order:3}
  .viewer-modules{order:4}
 }
+
+/* Anchor Modules dropdown inward when its trigger wraps to the left on tablet/mobile. */
+@media(max-width:1000px){
+ .viewer-modules-menu{right:auto;left:0;max-width:calc(100vw - 16px)}
+}
