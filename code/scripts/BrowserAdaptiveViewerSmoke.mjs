@@ -1,7 +1,7 @@
 import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';
 import {mkdirSync} from 'node:fs';
-const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox']});
 const page=await browser.newPage({viewport:{width:1366,height:768}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
 const url=process.env.APP_URL||'http://127.0.0.1:4173/NV-Quantum-VirtualLab/';
 const shots=process.env.SCREENSHOT_DIR||'/tmp/nv-adaptive-viewer';mkdirSync(shots,{recursive:true});
