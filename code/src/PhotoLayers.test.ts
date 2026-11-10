@@ -1,7 +1,7 @@
 import {describe,it,expect} from 'vitest';
 import inventory from '../source/InventoryV1.json';
 import {imagePresentation} from './ImagePresentation';
-import {PHOTO_POLYGONS,subsystemPolygons,componentPolygons,polygonBounds,findPolygonRegion} from './PhotoRegions';
+import {PHOTO_POLYGONS,subsystemPolygons,componentPolygons,backSubsystemPolygons,backComponentPolygons,photoOmission,polygonBounds,findPolygonRegion} from './PhotoRegions';
 import presentation from '../source/ImagePresentation.json';
 import cropPlan from '../source/evidence/LayerBComponentImagePlan.json';
 describe('frontal spatial inventory contract',()=>{
@@ -55,4 +55,18 @@ it('prioritizes RF input/output without drawing the supply wire',()=>{
  expect(findPolygonRegion('UG-V1-B023')?.label).toBe('RFOUT');
  expect(findPolygonRegion('UG-V1-B024')).toBeUndefined();
  expect(inventory.items.some(i=>i.tag==='UG-V1-B024')).toBe(true);
+});
+
+it('maps only evidence-backed regions on the official rear photograph',()=>{
+ expect(backSubsystemPolygons.map(region=>region.tag)).toEqual(['UG-V1-S04']);
+ expect(backComponentPolygons.map(region=>region.tag)).toEqual(['UG-V1-B042','UG-V1-0018']);
+ for(const region of [...backSubsystemPolygons,...backComponentPolygons]){
+  const item=inventory.items.find(candidate=>candidate.tag===region.tag)!;
+  expect(item.face).toBe('Verso');
+  expect(findPolygonRegion(region.tag,'back')).toBe(region);
+ }
+ for(const tag of ['UG-V1-0017','UG-V1-B018','UG-V1-B019','UG-V1-B020']){
+  expect(findPolygonRegion(tag,'back')).toBeUndefined();
+  expect(photoOmission(tag,'back')?.reason).toBeTruthy();
+ }
 });

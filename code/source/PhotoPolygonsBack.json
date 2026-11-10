@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "sourceImage": "assets/official/v1/subsystems/sources/DeviceBackV1.jpeg",
+  "sourceUrl": "https://quantumvillage.org/images/device-back.jpeg",
+  "coordinateSystem": "percent",
+  "classes": {
+    "pcb": { "label": "Placa-base e estrutura", "color": "#22d3ee" },
+    "rf": { "label": "Geração de micro-ondas", "color": "#facc15" }
+  },
+  "subsystems": [
+    {
+      "tag": "UG-V1-S04",
+      "color": "#facc15",
+      "polygons": [[[28.4, 50.2], [29.8, 47.7], [60.8, 47.7], [62.1, 49.4], [62.1, 91.7], [60.5, 94.1], [29.4, 94.1], [28.4, 91.5]]],
+      "evidence": "Módulo preto montado no verso, confirmado pelo Build Guide; identidade contextual porque a marcação do CI não é legível."
+    }
+  ],
+  "components": [
+    {
+      "tag": "UG-V1-B042",
+      "class": "pcb",
+      "polygons": [[[30.2, 9.4], [95.8, 9.4], [96.5, 10.8], [96.5, 98.7], [95.2, 99.5], [31.4, 99.5], [30.2, 97.8]]],
+      "evidence": "Contorno da placa-base visível na fotografia traseira oficial."
+    },
+    {
+      "tag": "UG-V1-0018",
+      "class": "rf",
+      "polygons": [[[28.4, 50.2], [29.8, 47.7], [60.8, 47.7], [62.1, 49.4], [62.1, 91.7], [60.5, 94.1], [29.4, 94.1], [28.4, 91.5]]],
+      "evidence": "Placa geradora RF completa visível no verso; componentes internos não são individualizados."
+    }
+  ],
+  "omissions": [
+    { "tag": "UG-V1-0017", "reason": "O header SIGGEN1 não é confirmável na fotografia traseira real." },
+    { "tag": "UG-V1-B018", "reason": "O circuito sintetizador não está individualmente visível na face fotografada do módulo." },
+    { "tag": "UG-V1-B019", "reason": "Os pinos SPI/LE não podem ser localizados individualmente nesta fotografia." },
+    { "tag": "UG-V1-B020", "reason": "Há conectores SMA visíveis, mas a função de saída não é confirmável apenas pela fotografia." }
+  ]
+}

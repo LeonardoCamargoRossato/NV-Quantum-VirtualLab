@@ -1,4 +1,4 @@
-import {useEffect,useLayoutEffect,useRef,useState} from 'react';
+import {useEffect,useLayoutEffect,useRef,useState,type CSSProperties} from 'react';
 import {useImageNavigation} from './ImageNavigation';
 import {orientedSize} from './ImageGeometry';
 import './ImageViewer.css';
@@ -10,14 +10,17 @@ export function ImageIcon({kind}:{kind:'close'|'expand'|'collapse'|'download'|'f
 function filename(image:ViewerImage){try{return image.filename||decodeURIComponent(new URL(image.url,location.href).pathname.split('/').pop()||'Imagem.png')}catch{return 'Imagem.png'}}
 export function ImageViewer({images,initialIndex=0,onClose,title,flip=false}:{images:ViewerImage[];initialIndex?:number;onClose:()=>void;title?:string;flip?:boolean}){
  const [index,setIndex]=useState(initialIndex);const image=images[index];
+ const [flipping,setFlipping]=useState(false);
  const [rotation,setRotation]=useState(0);
  const [zoom,setZoom]=useState(1),[offset,setOffset]=useState({x:0,y:0});
  const [natural,setNatural]=useState({width:0,height:0}),[size,setSize]=useState({width:0,height:0});
  const [error,setError]=useState(''),[failed,setFailed]=useState(false),[fullscreen,setFullscreen]=useState(false),[downloading,setDownloading]=useState(false);
  const dialog=useRef<HTMLDialogElement>(null),surface=useRef<HTMLDivElement>(null),viewport=useRef<HTMLDivElement>(null);
  const previousFocus=useRef(document.activeElement as HTMLElement|null);
+ const flipSources=images.map(entry=>entry.url).join('|');
  const navigation=useImageNavigation({viewport,zoom,setZoom,offset,setOffset,rotation,setRotation,key:image.url});
- useEffect(()=>{setRotation(0);setZoom(1);setOffset({x:0,y:0});setNatural({width:0,height:0});setFailed(false);setError('')},[image.url]);
+ useEffect(()=>{setRotation(0);setZoom(1);setOffset({x:0,y:0});if(!flip)setNatural({width:0,height:0});setFailed(false);setError('')},[image.url,flip]);
+ useEffect(()=>{if(!flip)return;for(const url of flipSources.split('|')){const preload=new Image();preload.src=url}},[flip,flipSources]);
  useEffect(()=>{
   const overflow=document.body.style.overflow;document.body.style.overflow='hidden';dialog.current?.showModal();
   const observer=new ResizeObserver(entries=>{const {width,height}=entries[0].contentRect;setSize({width,height})});
@@ -41,10 +44,16 @@ export function ImageViewer({images,initialIndex=0,onClose,title,flip=false}:{im
  useLayoutEffect(()=>{const old=previousFit.current;previousFit.current=fit;if(old>0&&fit>0&&Math.abs(old-fit)>.00001)setOffset(p=>({x:p.x*fit/old,y:p.y*fit/old}))},[fit]);
  const fullLabel=fullscreen?'Sair da tela cheia da imagem':'Ampliar imagem em tela cheia';
  const move=(delta:number)=>{navigation.reset();setIndex(i=>(i+delta+images.length)%images.length)};
- return <dialog ref={dialog} className="image-viewer" aria-label={title||image.title} onCancel={e=>{e.preventDefault();void close()}} onKeyDown={e=>{if(images.length>1&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){e.preventDefault();move(e.key==='ArrowLeft'?-1:1)}}}>
+ const flipToOtherFace=()=>{
+  if(flipping)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){move(1);return}
+  setFlipping(true);window.setTimeout(()=>move(1),260);window.setTimeout(()=>setFlipping(false),540);
+ };
+ const imageTransform=`translate(-50%,-50%) translate(${offset.x}px,${offset.y}px) scale(${zoom}) rotate(${rotation}deg)`;
+ return <dialog ref={dialog} className="image-viewer" aria-label={title||image.title} onCancel={e=>{e.preventDefault();void close()}} onKeyDown={e=>{if(images.length>1&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){e.preventDefault();if(flip)flipToOtherFace();else move(e.key==='ArrowLeft'?-1:1)}}}>
  <div ref={surface} className="image-viewer-surface">
   <header className="image-viewer-heading"><div><h2>{title||image.title}</h2>{title&&<p role="status">{image.title}</p>}</div><div className="image-viewer-controls">
-   {flip&&<button type="button" aria-label={index?'Voltar para a frente':'Virar para o verso'} title="Virar" onClick={()=>move(1)}><ImageIcon kind="flip"/></button>}
+   {flip&&<button type="button" aria-label={index?'Voltar para a frente':'Virar para o verso'} title="Virar" disabled={flipping} onClick={flipToOtherFace}><ImageIcon kind="flip"/></button>}
    <button type="button" aria-label="Diminuir zoom da imagem" title="Diminuir zoom" disabled={zoom<=.25} onClick={()=>navigation.changeZoom(zoom-.25)}><ImageIcon kind="minus"/></button>
    <output aria-label="Zoom da imagem">{Math.round(zoom*100)}%</output>
    <button type="button" aria-label="Aumentar zoom da imagem" title="Aumentar zoom" disabled={zoom>=8} onClick={()=>navigation.changeZoom(zoom+.25)}><ImageIcon kind="plus"/></button>
@@ -54,8 +63,8 @@ export function ImageViewer({images,initialIndex=0,onClose,title,flip=false}:{im
    <button type="button" aria-label="Fechar imagem" title="Fechar imagem" onClick={()=>void close()}><ImageIcon kind="close"/></button>
   </div></header>
   {error&&<p className="image-viewer-error" role="alert">{error}</p>}
-  <div ref={viewport} className="image-viewer-viewport" role="region" aria-label="Visualização da imagem" data-image-viewport {...navigation.handlers}>
-   {failed?<p role="alert">Não foi possível carregar esta imagem.</p>:<img key={image.url} data-rotation={rotation} src={image.url} alt={image.title} draggable={false} onLoad={e=>setNatural({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})} onError={()=>setFailed(true)} style={{width:natural.width*fit,height:natural.height*fit,visibility:fit?'visible':'hidden',transform:`translate(-50%,-50%) translate(${offset.x}px,${offset.y}px) scale(${zoom}) rotate(${rotation}deg)`}}/>}
+  <div ref={viewport} className={'image-viewer-viewport'+(flipping?' is-flipping':'')} role="region" aria-label="Visualização da imagem" data-image-viewport {...navigation.handlers}>
+   {failed?<p role="alert">Não foi possível carregar esta imagem.</p>:<img data-rotation={rotation} src={image.url} alt={image.title} draggable={false} onLoad={e=>setNatural({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})} onError={()=>setFailed(true)} style={{width:natural.width*fit,height:natural.height*fit,visibility:fit?'visible':'hidden','--image-transform':imageTransform} as CSSProperties}/>}
   </div>
   {!flip&&images.length>1&&<nav className="gallery-navigation" aria-label="Navegação das imagens do fluxo"><button type="button" aria-label="Imagem anterior" onClick={()=>move(-1)}>←</button><span>{index+1} / {images.length}</span><button type="button" aria-label="Próxima imagem" onClick={()=>move(1)}>→</button></nav>}
   <footer className="image-viewer-footer">{image.caption||'Roda do mouse: zoom · Clique e arraste para mover.'} {image.source&&<a href={image.source} target="_blank" rel="noopener noreferrer">Fonte original ↗</a>}</footer>

@@ -20,22 +20,30 @@ export function cropAspect(region: PhotoRegion): number {
 
 /** Spatial metadata extends the photographic regions; inventory remains authoritative. */
 import polygonData from "../source/PhotoPolygons.json";
+import backPolygonData from "../source/PhotoPolygonsBack.json";
+export type PhotoFace = "front" | "back";
 export type PolygonPoint = [number, number];
 export type PolygonRegion = {tag:string;polygons:PolygonPoint[][];color?:string;class?:string;evidence?:string;label?:string};
 export const PHOTO_POLYGONS = polygonData;
 export const subsystemPolygons = polygonData.subsystems as PolygonRegion[];
 export const componentPolygons = polygonData.components as PolygonRegion[];
-export const findPolygonRegion = (tag:string) => [...subsystemPolygons,...componentPolygons].find(r=>r.tag===tag);
+export const backSubsystemPolygons = backPolygonData.subsystems as PolygonRegion[];
+export const backComponentPolygons = backPolygonData.components as PolygonRegion[];
+export const photoPolygonData = (face:PhotoFace) => face === "front" ? polygonData : backPolygonData;
+export const subsystemPolygonsFor = (face:PhotoFace) => face === "front" ? subsystemPolygons : backSubsystemPolygons;
+export const componentPolygonsFor = (face:PhotoFace) => face === "front" ? componentPolygons : backComponentPolygons;
+export const findPolygonRegion = (tag:string,face:PhotoFace="front") => [...subsystemPolygonsFor(face),...componentPolygonsFor(face)].find(r=>r.tag===tag);
 export function polygonBounds(region:PolygonRegion) {
  const points=region.polygons.flat();
  const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
  return {x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)};
 }
 /** Include the two external RF connectors when framing the amplifier subsystem. */
-export function subsystemFocusBounds(tag:string){
- const region=findPolygonRegion(tag);if(!region)return undefined;
- const ports=tag==='UG-V1-S05'?['UG-V1-B022','UG-V1-B023'].flatMap(t=>findPolygonRegion(t)?.polygons||[]):[];
+export function subsystemFocusBounds(tag:string,face:PhotoFace="front"){
+ const region=findPolygonRegion(tag,face);if(!region)return undefined;
+ const ports=face==='front'&&tag==='UG-V1-S05'?['UG-V1-B022','UG-V1-B023'].flatMap(t=>findPolygonRegion(t,face)?.polygons||[]):[];
  return polygonBounds({...region,polygons:[...region.polygons,...ports]});
 }
 
-export const photoOmission=(tag:string)=>polygonData.omissions.find(item=>item.tag===tag);
+export const photoOmission=(tag:string,face:PhotoFace="front")=>photoPolygonData(face).omissions.find(item=>item.tag===tag);
+export const PHOTO_BACK_ORIGINAL_URL = "https://quantumvillage.org/images/device-back.jpeg";

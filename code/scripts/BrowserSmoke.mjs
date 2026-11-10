@@ -32,6 +32,7 @@ try {
   await scheme.getByRole('button',{name:'Aumentar zoom da imagem'}).click();
   assert.equal(await scheme.getByLabel('Zoom da imagem',{exact:true}).textContent(),'125%');
   await scheme.getByRole('button',{name:'Voltar para a frente'}).click();
+  await page.waitForFunction(()=>!document.querySelector('.image-viewer-viewport')?.classList.contains('is-flipping'));
   assert.equal(await scheme.getByLabel('Zoom da imagem',{exact:true}).textContent(),'100%');
   await page.keyboard.press('Escape');
   assert.equal(await scheme.count(),0);
@@ -327,3 +328,5 @@ try {
 await import('./BrowserAdaptiveViewerSmoke.mjs');
 
 await import('./BrowserRfRotationSmoke.mjs');
+
+await import('./BrowserBackFaceSmoke.mjs');

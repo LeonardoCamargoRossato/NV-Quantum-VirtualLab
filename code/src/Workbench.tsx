@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { fields, filterItems, exportCsv, inventoryImageUrl, safeUrl, validateSnapshot, type Item, type Snapshot } from "./Inventory";
-import { findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, type PhotoRegion } from "./PhotoRegions";
+import { findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, PHOTO_BACK_ORIGINAL_URL, type PhotoFace, type PhotoRegion } from "./PhotoRegions";
 import { ENHANCED_CROPS } from "./EnhancedPhotoAssets";
 import { Articles, Fundamentals, Guide, References, navigationGroups, pageTitles, Out, type Page } from "./StudyPages";
 import { ScientometricDashboard, PatentReviewPlaceholder } from "./ScientometricDashboard";
@@ -30,6 +30,7 @@ const inventorySheet = "https://docs.google.com/spreadsheets/d/158OGccBdF5Hf6qdW
 const project = "https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab";
 const logo = "https://pgfis.ita.br/static/core/uploads/Post/ITA-logo_606c9f4c450c8e7bd0b4b118.jpg_606c9f4c450c8e7bd0b4b118.jpg.jpg";
 const originalPhoto = base + imagePresentation.main.image;
+const backPhoto = base + "assets/official/v1/subsystems/sources/DeviceBackV1.jpeg";
 const enhancedPhoto = base + "assets/official/v1/enhanced/";
 const isPage = (v: string): v is Page => Object.prototype.hasOwnProperty.call(pageTitles, v);
 function currentPage(): Page {
@@ -125,6 +126,8 @@ function App() {
   const [schemeOpen,setSchemeOpen]=useState(false);
   const [preview,setPreview]=useState<ImagePreview|null>(null);
   const [photoLayer,setPhotoLayer]=useState<PhotoLayer>("none");
+  const [photoFace,setPhotoFace]=useState<PhotoFace>("front");
+  const [photoFlipping,setPhotoFlipping]=useState(false);
   const [focusedSubsystem,setFocusedSubsystem]=useState<string|null>(null);
   const [rotation,setRotation]=useState(0);
   const [zoom,setZoom]=useState(1);
@@ -148,6 +151,7 @@ function App() {
   const inspectorRef=useRef<HTMLElement>(null);
   const lastSelectionRef=useRef<HTMLElement|null>(null);
   const photoNavigation=useImageNavigation({viewport:viewportRef,zoom,setZoom,offset:pan,setOffset:setPan,rotation,setRotation,key:page});
+  useEffect(()=>{const preload=new Image();preload.src=backPhoto},[]);
   useEffect(()=>{
     try { setSnapshot(validateSnapshot(inventoryData)); } catch { setLoadError("Não foi possível validar o catálogo de referência."); }
   },[]);
@@ -212,12 +216,12 @@ function App() {
   const imageDimensions={width:photoSize.width*fitted,height:photoSize.height*fitted};
   useEffect(()=>{
     if(!focusedSubsystem)return;
-    const region=findPolygonRegion(focusedSubsystem);if(!region)return;
-    const b=subsystemFocusBounds(focusedSubsystem)!;
+    const region=findPolygonRegion(focusedSubsystem,photoFace);if(!region)return;
+    const b=subsystemFocusBounds(focusedSubsystem,photoFace)!;
     const target=orientedSize({width:imageDimensions.width*b.w/100,height:imageDimensions.height*b.h/100},rotation);
     const z=Math.min(8,Math.max(1,Math.min(viewSize.width/target.width,viewSize.height/target.height)*.82));
     setZoom(z);setPan(rotateOffset({x:(50-b.x-b.w/2)*imageDimensions.width*z/100,y:(50-b.y-b.h/2)*imageDimensions.height*z/100},rotation));
-  },[focusedSubsystem]);
+  },[focusedSubsystem,photoFace]);
   const previousImageSize=useRef({width:0,height:0});
   useLayoutEffect(()=>{
     const previous=previousImageSize.current;
@@ -230,6 +234,13 @@ function App() {
   function expandSubsystem(tag:string){setFocusedSubsystem(tag);setPhotoLayer("components");clearSelection();}
   function leaveSubsystem(){setFocusedSubsystem(null);setPhotoLayer("subsystems");setZoom(1);setPan({x:0,y:0});clearSelection();}
   function choosePhotoLayer(mode:PhotoLayer){if(mode==="subsystems"){leaveSubsystem();return;}setPhotoLayer(mode);clearSelection();}
+  function flipPhoto(){
+    if(photoFlipping)return;
+    const next:PhotoFace=photoFace==="front"?"back":"front";
+    const apply=()=>{setPhotoFace(next);setFocusedSubsystem(null);clearSelection();setZoom(1);setPan({x:0,y:0});setRotation(0);setPhotoFailed(false);setPhotoSize(next==="front"?{width:1478,height:1105}:{width:2025,height:1632})};
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches){apply();return}
+    setPhotoFlipping(true);window.setTimeout(apply,260);window.setTimeout(()=>setPhotoFlipping(false),540);
+  }
   function selectPolygon(item:Item){if(selected?.tag===item.tag){closeSelection();return;}openItem(item);}
   const selection:InspectorSelection|null = selectedFlow?{kind:"flow",step:selectedFlow}:selectedReference?{kind:"reference",reference:selectedReference}:selected?{kind:"component",item:selected}:null;
   function clearSelection(){setSelected(null);setSelectedFlow(null);setSelectedReference(null);setInspectorExpanded(false);}
@@ -261,7 +272,9 @@ function App() {
     const item=items.find(row=>row.tag===tag)||null;
     setSelectedFlow(null);setSelectedReference(null);setInspectorExpanded(false);
     setSelected(item);setPendingPcbTag(item?null:tag);
-    const region=findPolygonRegion(tag);
+    const targetFace:PhotoFace=item?.face==="Verso"?"back":"front";
+    if(targetFace!==photoFace){setPhotoFace(targetFace);setPhotoSize(targetFace==="front"?{width:1478,height:1105}:{width:2025,height:1632});}
+    const region=findPolygonRegion(tag,targetFace);
     if(region&&item?.layer==="B"){setFocusedSubsystem(item.parentTag);setPhotoLayer("components");}
     else {setFocusedSubsystem(null);setPhotoLayer("subsystems");setZoom(1);setPan({x:0,y:0});}
     setLabOpen(true);setV1Open(true);
@@ -375,11 +388,11 @@ function App() {
     <div className="main-column">
       <div className="mobile-bar"><button type="button" onClick={()=>{setCollapsed(false);setMobileMenu(true)}} aria-label="Abrir menu lateral">☰</button><strong>NV Quantum Virtual Lab</strong><span>Laboratório</span></div>
       <div ref={viewerWorkspaceRef} className={page==="explorar"?"scientific-workspace"+(fullFallback?" full-fallback":""):"workspace-shell"}>
-      {page==="explorar"&&<ViewerToolbar layerMode={photoLayer} layerFocus={focusedSubsystem} onLayerChange={choosePhotoLayer} zoomControls={<div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button type="button" aria-label="Girar imagem 90°" title={"Girar imagem 90° · atual: "+rotation+"°"} onClick={()=>photoNavigation.rotateBy()}><ImageIcon kind="rotate"/></button><button className="reset-button" title="Redefinir apenas o zoom" onClick={photoNavigation.reset}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>} onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
-        <PhotoLayerControls mode={photoLayer} focus={focusedSubsystem} items={items} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
+      {page==="explorar"&&<ViewerToolbar layerMode={photoLayer} layerFocus={focusedSubsystem} onLayerChange={choosePhotoLayer} zoomControls={<div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button type="button" aria-label={photoFace==="front"?"Virar fotografia para o verso":"Voltar fotografia para a frente"} title={photoFace==="front"?"Ver verso real":"Ver frente real"} disabled={photoFlipping} onClick={flipPhoto}><ImageIcon kind="flip"/></button><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button type="button" aria-label="Girar imagem 90°" title={"Girar imagem 90° · atual: "+rotation+"°"} onClick={()=>photoNavigation.rotateBy()}><ImageIcon kind="rotate"/></button><button className="reset-button" title="Redefinir apenas o zoom" onClick={photoNavigation.reset}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>} onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
+        <PhotoLayerControls face={photoFace} mode={photoLayer} focus={focusedSubsystem} items={items} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
       </ViewerToolbar>}
       <div ref={workspaceGridRef} className={"workspace-layout"+(selection?" has-inspector":"")+(selection&&inspectorExpanded?" wide-inspector":"")} style={page==="explorar"?{"--explore-inspector-width":actualInspectorWidth+"px"} as React.CSSProperties:undefined}>
-        {selection&&<ContextInspector selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenItem={tag=>{const item=items.find(i=>i.tag===tag);if(item)openItem(item)}} onChildren={tag=>{const item=items.find(i=>i.tag===tag);if(item){go("inventario");setQuery("");setLayer("B");setSubsystem(item.name);setFace("");setImageType("");}}} items={items} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
+        {selection&&<ContextInspector photoFace={photoFace} selection={selection} expanded={inspectorExpanded} onExpand={()=>setInspectorExpanded(x=>!x)} onClose={closeSelection} onSeePcb={seePcb} renderComponent={item=><ComponentImage item={item} onOpen={setPreview}/>} onOpenItem={tag=>{const item=items.find(i=>i.tag===tag);if(item)openItem(item)}} onChildren={tag=>{const item=items.find(i=>i.tag===tag);if(item){go("inventario");setQuery("");setLayer("B");setSubsystem(item.name);setFace("");setImageType("");}}} items={items} onOpenFlowImage={step=>openFlowGallery(step.number-1)} refTarget={inspectorRef} base={base}/>}
         {page==="explorar"&&selection&&<InspectorResizeHandle value={actualInspectorWidth} min={widthLimits.min} max={widthLimits.max} onChange={resizeInspector}/>}
         <div className="workspace-primary">
       {page==="explorar" ? <div className="workbench-page">
@@ -388,9 +401,9 @@ function App() {
           <section className="photo-panel" aria-label="Fotografia interativa do Uncut Gem V1">
             <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com camadas poligonais"
               data-image-viewport {...photoNavigation.handlers}>
-              {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={PHOTO_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className="photo-stage" data-rotation={rotation} style={{width:imageDimensions.width,height:imageDimensions.height,transform:"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+") rotate("+rotation+"deg)"}}>
-                <img src={originalPhoto} draggable={false} loading="eager" fetchPriority="high" decoding="async" alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
-                <PhotoPolygonOverlay rotation={rotation} mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
+              {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={photoFace==="front"?PHOTO_ORIGINAL_URL:PHOTO_BACK_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className={"photo-stage"+(photoFlipping?" is-flipping":"")} data-face={photoFace} data-rotation={rotation} style={{width:imageDimensions.width,height:imageDimensions.height,"--photo-transform":"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+") rotate("+rotation+"deg)"} as React.CSSProperties}>
+                <img src={photoFace==="front"?originalPhoto:backPhoto} draggable={false} loading="eager" fetchPriority="high" decoding="async" alt={photoFace==="front"?"Fotografia oficial da frente da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED":"Fotografia oficial do verso da montagem Uncut Gem V1 com placa geradora RF ADF4351"} onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
+                <PhotoPolygonOverlay face={photoFace} rotation={rotation} mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
               </div>}
               <button type="button" className="photo-return-to-board" data-no-image-pan
                 title="Voltar à placa inteira e redefinir enquadramento" aria-label="Voltar à placa inteira"

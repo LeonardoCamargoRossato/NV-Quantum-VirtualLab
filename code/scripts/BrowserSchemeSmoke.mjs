@@ -10,7 +10,8 @@ const trigger=page.getByRole('button',{name:'Módulos e Visualização',exact:tr
 async function openScheme(){await trigger.click();await page.getByRole('menuitem',{name:'Ver esquema 2D',exact:true}).click()}
 const modal=page.getByRole('dialog');
 async function loaded(){await page.waitForFunction(()=>document.querySelector('.image-viewer-viewport img')?.naturalWidth>0)}
-async function resetByFlip(){for(let i=0;i<2;i++){await modal.getByRole('button',{name:/^(Virar para o verso|Voltar para a frente)$/}).click();await loaded()}assert.equal(await modal.getByLabel('Zoom da imagem',{exact:true}).textContent(),'100%')}
+async function flipAndWait(){await modal.getByRole('button',{name:/^(Virar para o verso|Voltar para a frente)$/}).click();if(!await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches))assert(await page.locator('.image-viewer-viewport.is-flipping').count());await page.waitForFunction(()=>!document.querySelector('.image-viewer-viewport')?.classList.contains('is-flipping'));await loaded()}
+async function resetByFlip(){for(let i=0;i<2;i++)await flipAndWait();assert.equal(await modal.getByLabel('Zoom da imagem',{exact:true}).textContent(),'100%')}
 async function exercise(){
  await loaded();assert.equal(await modal.getByRole('button',{name:'Ajustar imagem à tela'}).count(),0);const area=modal.getByRole('region',{name:'Visualização da imagem'});const image=area.getByRole('img');
  const rect=await image.boundingBox(),anchor={x:rect.x+rect.width*.6,y:rect.y+rect.height*.55};
@@ -40,7 +41,7 @@ async function exercise(){
 try{
  await openScheme();await exercise();
  for(const side of ['Front','Back']){
-  if(side==='Back')await modal.getByRole('button',{name:'Virar para o verso'}).click();
+  if(side==='Back')await flipAndWait();
   await loaded();assert((await modal.getByRole('img').getAttribute('src')).endsWith(side+'Scheme.png'));
   if(side==='Back')await exercise();
   const downloadEvent=page.waitForEvent('download');await modal.getByRole('button',{name:'Baixar imagem',exact:true}).click();const download=await downloadEvent;
@@ -50,7 +51,7 @@ try{
  await modal.getByRole('button',{name:'Sair da tela cheia da imagem'}).click();await page.waitForFunction(()=>!document.fullscreenElement);
  await page.keyboard.press('Escape');assert.equal(await modal.count(),0);assert(await trigger.evaluate(el=>el===document.activeElement));
  await page.setViewportSize({width:390,height:844});await openScheme();await loaded();assert(await modal.evaluate(el=>el.scrollWidth<=el.clientWidth+1));
- await page.emulateMedia({reducedMotion:'reduce'});await modal.getByRole('button',{name:'Virar para o verso'}).click();await loaded();
+ await page.emulateMedia({reducedMotion:'reduce'});await flipAndWait();
  await modal.getByRole('button',{name:'Ampliar imagem em tela cheia'}).click();await page.waitForFunction(()=>Boolean(document.fullscreenElement));
  await modal.getByRole('button',{name:'Fechar imagem'}).click();await page.waitForFunction(()=>!document.fullscreenElement&&!document.querySelector('.image-viewer'));
  assert.deepEqual(errors,[]);console.log('PASS: shared viewer, both faces, pointer anchored wheel zoom, drag above/below 100%, original downloads, fullscreen, icon-only controls, Escape/focus, mobile and reduced motion.');

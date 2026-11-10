@@ -45,8 +45,10 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 .photo-header{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;padding:12px 16px;color:#65728A;border-bottom:1px solid var(--line)}
 .photo-header span:first-child{color:var(--ita-blue);font-weight:750}.live-dot{display:inline-block;vertical-align:middle;width:8px;height:8px;background:var(--ita-red);border-radius:50%;margin-right:7px}
 .photo-viewport{position:relative;display:flex;align-items:center;justify-content:center;min-height:440px;height:min(74dvh,770px);overflow:hidden;background:#E5E7E9;touch-action:none;cursor:grab;isolation:isolate}
-.photo-viewport:active{cursor:grabbing}.photo-stage{flex:none;position:relative;transform-origin:center center;user-select:none}
+.photo-viewport:active{cursor:grabbing}.photo-viewport{perspective:1400px}.photo-stage{flex:none;position:relative;transform-origin:center center;user-select:none;transform:var(--photo-transform)}
 .photo-stage>img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.photo-stage.is-flipping{animation:photo-face-flip .52s cubic-bezier(.22,.72,.22,1)}
+@keyframes photo-face-flip{0%{transform:var(--photo-transform) rotateY(0)}50%{transform:var(--photo-transform) rotateY(90deg)}50.01%{transform:var(--photo-transform) rotateY(-90deg)}100%{transform:var(--photo-transform) rotateY(0)}}
 .photo-controls{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;background:#fffF;border:1px solid #CDD4DD;box-shadow:0 5px 20px #0004;border-radius:11px;padding:5px;gap:2px;cursor:default;white-space:nowrap}
 .photo-controls button{border:0;border-radius:7px;background:transparent;min-width:34px;font-size:16px;padding:7px 9px}
 .photo-controls button:hover{background:#F2F4F7}.photo-controls output{font-size:12px;min-width:44px;text-align:center;font-weight:700;tab-size:2}
@@ -617,6 +619,7 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .viewer-layer-popover .photo-layer-legend{display:flex}.viewer-layer-popover .photo-layer-note{display:block}.viewer-modules-menu{width:min(260px,92vw)}
 }
 @media(prefers-reduced-motion:reduce){.viewer-hint,.viewer-layer-callout{animation:none}}
+@media(prefers-reduced-motion:reduce){.photo-stage.is-flipping{animation:none}}
 
 /* Zoom tools belong to the top toolbar, beside the modules menu. */
 .viewer-toolbar-actions{margin-left:auto;display:flex;align-items:center;gap:8px;min-width:0}
@@ -653,8 +656,8 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 @media(max-width:950px){.viewer-assembly small{display:none}.viewer-toolbar-actions{gap:4px}}
 @media(max-width:800px){.viewer-layer-modes button{font-size:10px;padding:5px}.viewer-layer-toggle{width:27px}.viewer-toolbar-row{gap:3px}}
 @media(max-width:640px){
- .viewer-toolbar{height:124px;flex-basis:124px}
- .viewer-toolbar-row{height:124px;display:flex;flex-wrap:wrap;justify-content:flex-start;align-content:center;gap:5px;padding:6px}
+ .viewer-toolbar{height:156px;flex-basis:156px}
+ .viewer-toolbar-row{height:156px;display:flex;flex-wrap:wrap;justify-content:flex-start;align-content:center;gap:5px;padding:6px}
  .viewer-toolbar-actions{display:contents}
  .viewer-assembly{flex:1;min-width:120px}
  .viewer-toolbar .photo-controls{order:2}
@@ -666,8 +669,8 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .photo-return-to-board{top:9px;right:9px;padding:7px 8px;font-size:11px}
 }
 @media(max-width:360px){
- .viewer-toolbar{height:156px;flex-basis:156px}
- .viewer-toolbar-row{height:156px}
+ .viewer-toolbar{height:188px;flex-basis:188px}
+ .viewer-toolbar-row{height:188px}
  .photo-return-to-board span{display:none}
 }
 

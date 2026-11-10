@@ -28,3 +28,11 @@ O botão/ícone “Ajustar à tela” foi removido do componente compartilhado e
 ## Rotação da visualização
 
 O ícone Girar imagem 90° está disponível na fotografia interativa e em todo ImageViewer, inclusive esquema frente/verso. ImageGeometry.ts calcula orientação e deslocamento para preservar o ponto observado; a mudança de proporção considera largura/altura rotacionadas. Imagem e polígonos compartilham a mesma transformação. Cada nova imagem da galeria inicia em 0° e o download continua salvando os bytes originais. BrowserRfRotationSmoke.mjs cobre quatro orientações, alinhamento, foco, portas RF, cliques/arraste e mobile e é chamado pelo smoke de interface existente.
+
+## Frente e verso reais
+
+O esquema 2D e a fotografia interativa usam uma inversão horizontal de 520 ms com perspectiva. A troca do arquivo ocorre quando a placa está de perfil, sem manter textos espelhados; `prefers-reduced-motion` faz a troca imediata. Zoom, pan, rotação, download e fullscreen permanecem no visualizador compartilhado.
+
+A fotografia traseira é `code/public/assets/official/v1/subsystems/sources/DeviceBackV1.jpeg`, proveniente de `https://quantumvillage.org/images/device-back.jpeg`. Ela não é um espelhamento da frente. `PhotoPolygonsBack.json` registra um subsistema traseiro e dois componentes com evidência visual: o módulo ADF4351 completo e a face traseira da PCB. Quatro itens permanecem sem contorno: SIGGEN1, circuito sintetizador, pinos SPI/LE e saída RF, porque a fotografia não confirma sua localização ou função individual.
+
+`BrowserBackFaceSmoke.mjs` verifica as duas faces, camadas específicas, inspetores, omissões, alinhamento após zoom/pan/fullscreen, mobile e movimento reduzido. A identificação técnica final permanece sujeita ao reteste independente do Auditor.
