@@ -51,7 +51,7 @@ try{
  await page.evaluate(()=>Object.defineProperty(Element.prototype,'requestFullscreen',{configurable:true,value:undefined}));await page.getByRole('button',{name:'Maximizar foto'}).click();assert(await page.locator('.scientific-workspace.full-fallback').isVisible());await page.keyboard.press('Escape');assert.equal(await page.locator('.full-fallback').count(),0);
  for(const size of [{width:1920,height:1080},{width:768,height:1024},{width:390,height:844}]){
   await page.setViewportSize(size);await settle();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1&&document.documentElement.scrollHeight<=innerHeight+1));
-  await modules();const rect=await menu.boundingBox();assert(rect.x>=0&&rect.x+rect.width<=size.width+1&&rect.y+rect.height<=size.height);await page.keyboard.press('Escape');
+  await modules();const rect=await menu.boundingBox();assert(rect.x>=0&&rect.x+rect.width<=size.width+1&&rect.y+rect.height<=size.height, 'Modules menu overflow at '+JSON.stringify({size,rect}));await page.keyboard.press('Escape');
   if(size.width<=800){await page.locator('.photo-polygon[data-tag="UG-V1-S03"]').press('Enter');await settle();assert(!await page.getByRole('separator',{name:'Largura do inspetor'}).isVisible());await page.getByRole('button',{name:'Fechar inspetor'}).click();}
  }
  await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.locator('.viewer-toolbar-icon').first().evaluate(el=>getComputedStyle(el).animationName),'none');
