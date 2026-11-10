@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   exportCsv,
   filterItems,
+  inventoryImageUrl,
   safeUrl,
   validateSnapshot,
   type Item,
@@ -23,6 +24,11 @@ const item: Item = {
   datasheet: "",
   notes: '=HYPERLINK("https://example.com")',
 };
+it("corrects the crossed RF input and output inventory crops", () => {
+  expect(inventoryImageUrl({...item, tag:"UG-V1-B022", imageUrl:"https://example.test/UgV1B022.png"})).toBe("https://example.test/UgV1B023.png");
+  expect(inventoryImageUrl({...item, tag:"UG-V1-B023", imageUrl:"https://example.test/UgV1B023.png"})).toBe("https://example.test/UgV1B022.png");
+  expect(inventoryImageUrl(item)).toBe(item.imageUrl);
+});
 describe("inventário V1", () => {
   it("busca sem acentos e combina filtros", () => {
     expect(filterItems([item], "optica", "", "")).toHaveLength(1);

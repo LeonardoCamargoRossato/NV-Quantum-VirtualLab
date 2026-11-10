@@ -35,6 +35,15 @@ export type Snapshot = {
   sourceSha256: string | null;
   items: Item[];
 };
+const correctedImageTags: Record<string, string> = {
+  "UG-V1-B022": "UgV1B023.png",
+  "UG-V1-B023": "UgV1B022.png",
+};
+export function inventoryImageUrl(item: Item): string {
+  const corrected = correctedImageTags[item.tag];
+  if (!corrected) return item.imageUrl;
+  return item.imageUrl.replace(/UgV1B02[23]\.png$/, corrected);
+}
 export function safeUrl(url: string): string | undefined {
   try {
     const value = new URL(url);

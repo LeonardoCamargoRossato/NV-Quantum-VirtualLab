@@ -1,5 +1,5 @@
 import React from "react";
-import { fields, safeUrl, type Item } from "./Inventory";
+import { fields, inventoryImageUrl, safeUrl, type Item } from "./Inventory";
 import { findPhotoRegion, findPolygonRegion, photoOmission } from "./PhotoRegions";
 import { flowImageUrl, type FlowStep } from "./FlowData";
 
@@ -47,7 +47,7 @@ export function ContextInspector({selection,expanded,onExpand,onClose,onSeePcb,r
         <div className="item-meta"><span className="tag-pill">{selection.item.tag}</span><span>{(findPhotoRegion(selection.item.tag)||findPolygonRegion(selection.item.tag))?"Localizado na fotografia oficial":photoOmission(selection.item.tag)?"Contorno ocultado nesta visualização":"Sem localização individual confirmada na foto"}</span></div>
         {renderComponent(selection.item)}
         <dl className="field-list">{(Object.keys(fields) as (keyof Item)[]).filter(k=>!["tag","name","imageUrl","source","datasheet"].includes(k)).map(k=><div key={k}><dt>{fields[k]}</dt><dd>{selection.item[k]||"Não documentado"}</dd></div>)}</dl>
-        <p className="visual-note">{selection.item.source}</p><div className="source-line"><Link href={selection.item.source}>Fonte técnica</Link><Link href={selection.item.datasheet}>Datasheet</Link><Link href={selection.item.imageUrl}>Imagem do inventário</Link></div>
+        <p className="visual-note">{selection.item.source}</p><div className="source-line"><Link href={selection.item.source}>Fonte técnica</Link><Link href={selection.item.datasheet}>Datasheet</Link><Link href={inventoryImageUrl(selection.item)}>Imagem do inventário</Link></div>
         <div className="hierarchy-navigation">{selection.item.tag==="UG-V1-0001"&&items.filter(i=>["UG-V1-B041","UG-V1-B042"].includes(i.tag)).map(i=><button key={i.tag} onClick={()=>onOpenItem(i.tag)}>{i.tag} · {i.name} (vista canônica da PCB)</button>)}{selection.item.parentTag&&<button onClick={()=>onOpenItem(selection.item.parentTag)}>Ver subsistema responsável</button>}{selection.item.layer==="A"&&<><button onClick={()=>onChildren(selection.item.tag)}>Ver componentes deste subsistema</button>{items.filter(i=>i.parentTag===selection.item.tag).map(i=><button key={i.tag} onClick={()=>onOpenItem(i.tag)}>{i.tag} · {i.name}</button>)}</>}</div>
         <p className="price-disclaimer">Os preços do inventário são referências históricas, não cotações atuais.</p>
         <button type="button" className="inspector-pcb-link" onClick={()=>onSeePcb(selection.item.tag)}>

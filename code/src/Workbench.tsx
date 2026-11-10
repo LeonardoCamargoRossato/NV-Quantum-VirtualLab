@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { fields, filterItems, exportCsv, safeUrl, validateSnapshot, type Item, type Snapshot } from "./Inventory";
+import { fields, filterItems, exportCsv, inventoryImageUrl, safeUrl, validateSnapshot, type Item, type Snapshot } from "./Inventory";
 import { findPhotoRegion, cropAspect, PHOTO_ORIGINAL_URL, type PhotoRegion } from "./PhotoRegions";
 import { ENHANCED_CROPS } from "./EnhancedPhotoAssets";
 import { Articles, Fundamentals, Guide, References, navigationGroups, pageTitles, Out, type Page } from "./StudyPages";
@@ -59,8 +59,9 @@ function Picture({url,label,onClick}: {url: string; label: string; onClick: (pre
   return <button type="button" className="image-button" onClick={() => onClick({url:safe,title:label})} aria-label={"Ampliar " + label}><img src={safe.startsWith("https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/")?base+safe.split("/main/code/public/")[1]:safe} alt={label} loading="lazy" onError={() => setFailed(true)} /></button>;
 }
 function ComponentImage({item,onOpen}: {item: Item; onOpen: (preview: ImagePreview) => void}) {
+  const imageUrl=inventoryImageUrl(item);
   if (item.imageStatus && !findPhotoRegion(item.tag)) return <div className="component-visual">
-    <Picture url={item.imageUrl} label={item.name} onClick={onOpen}/>
+    <Picture url={imageUrl} label={item.name} onClick={onOpen}/>
     <p className="image-provenance"><strong>{item.imageType}</strong> · {item.imageStatus}</p>
     <p className="visual-note">{item.imageNotes}</p>
   </div>;
@@ -73,17 +74,17 @@ function ComponentImage({item,onOpen}: {item: Item; onOpen: (preview: ImagePrevi
   </div>;
   const type = item.imageType.toLocaleLowerCase("pt-BR");
   if (type.includes("gerada por ia")) return <div className="component-visual">
-    <Picture url={item.imageUrl} label={"Ilustração por IA — "+item.name} onClick={onOpen} />
+    <Picture url={imageUrl} label={"Ilustração por IA — "+item.name} onClick={onOpen} />
     <p className="image-provenance"><strong>Imagem ilustrativa por IA</strong> · pode não corresponder ao modelo original</p>
   </div>;
-  if (type.includes("fotografia real")) return <div className="component-visual"><Picture url={item.imageUrl} label={item.name} onClick={onOpen}/><p className="image-provenance">{item.imageType}</p><p className="visual-note">{item.notes}</p><Out href={item.source}>Fonte técnica</Out></div>;
+  if (type.includes("fotografia real")) return <div className="component-visual"><Picture url={imageUrl} label={item.name} onClick={onOpen}/><p className="image-provenance">{item.imageType}</p><p className="visual-note">{item.notes}</p><Out href={item.source}>Fonte técnica</Out></div>;
   if (type.includes("diagrama") || type.includes("render")) return <div className="component-visual">
-    <Picture url={item.imageUrl} label={(type.includes("render")?"Render":"Diagrama")+" — "+item.name} onClick={onOpen} />
+    <Picture url={imageUrl} label={(type.includes("render")?"Render":"Diagrama")+" — "+item.name} onClick={onOpen} />
     <p className="image-provenance"><strong>{type.includes("render") ? "Render oficial de placa" : "Diagrama técnico"}</strong> · não é fotografia individual da peça</p>
   </div>;
   return <div className="component-visual">
     <div className="no-individual-photo"><span aria-hidden="true">▧</span><strong>Sem fotografia individual confirmada</strong><p>O inventário referencia a montagem completa; não será usada como se fosse uma foto isolada deste item.</p></div>
-    {safeUrl(item.imageUrl) && <Out href={item.imageUrl}>Ver imagem de conjunto / contexto</Out>}
+    {safeUrl(imageUrl) && <Out href={imageUrl}>Ver imagem de conjunto / contexto</Out>}
   </div>;
 }
 function Lightbox({preview,onClose}: {preview:ImagePreview;onClose:()=>void}) {
