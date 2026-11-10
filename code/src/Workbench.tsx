@@ -9,6 +9,7 @@ import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
 import { FlowPage } from "./FlowPage";
 import { ImageViewer,ImageIcon } from "./ImageViewer";
 import { ImageOpeningContext } from "./InteractiveImage";
+import {orientedSize,rotateOffset} from "./ImageGeometry";
 import { useImageNavigation } from "./ImageNavigation";
 import {ViewerToolbar} from "./ViewerToolbar";
 import {InspectorResizeHandle} from "./InspectorResizeHandle";
@@ -19,7 +20,7 @@ import { LabFuturePage } from "./LabFuturePages";
 import { ContextInspector, type InspectorSelection, type ReferenceContext } from "./ContextInspector";
 import { imagePresentation, presentedItem, presentedAsset } from "./ImagePresentation";
 import { PhotoLayerControls, PhotoPolygonOverlay, type PhotoLayer } from "./PhotoLayers";
-import { findPolygonRegion, polygonBounds } from "./PhotoRegions";
+import { findPolygonRegion, subsystemFocusBounds } from "./PhotoRegions";
 import { cardPageSize, pageNumbers } from "./Pagination";
 import inventoryData from "../source/InventoryV1.json";
 import "./Workbench.css";
@@ -124,6 +125,7 @@ function App() {
   const [preview,setPreview]=useState<ImagePreview|null>(null);
   const [photoLayer,setPhotoLayer]=useState<PhotoLayer>("subsystems");
   const [focusedSubsystem,setFocusedSubsystem]=useState<string|null>(null);
+  const [rotation,setRotation]=useState(0);
   const [zoom,setZoom]=useState(1);
   const [pan,setPan]=useState({x:0,y:0});
   const [fullFallback,setFullFallback]=useState(false);
@@ -144,7 +146,7 @@ function App() {
   useEffect(()=>{const grid=workspaceGridRef.current;if(!grid)return;const observer=new ResizeObserver(entries=>setWorkspaceWidth(entries[0].contentRect.width));observer.observe(grid);return ()=>observer.disconnect()},[page]);
   const inspectorRef=useRef<HTMLElement>(null);
   const lastSelectionRef=useRef<HTMLElement|null>(null);
-  const photoNavigation=useImageNavigation({viewport:viewportRef,zoom,setZoom,offset:pan,setOffset:setPan,key:page});
+  const photoNavigation=useImageNavigation({viewport:viewportRef,zoom,setZoom,offset:pan,setOffset:setPan,rotation,setRotation,key:page});
   useEffect(()=>{
     try { setSnapshot(validateSnapshot(inventoryData)); } catch { setLoadError("Não foi possível validar o catálogo de referência."); }
   },[]);
@@ -204,14 +206,16 @@ function App() {
     observer.observe(grid);
     return ()=>observer.disconnect();
   },[page,view,snapshot]);
-  const fitted=Math.max(0,Math.min(viewSize.width/photoSize.width,viewSize.height/photoSize.height));
+  const orientedPhoto=orientedSize(photoSize,rotation);
+  const fitted=Math.max(0,Math.min(viewSize.width/orientedPhoto.width,viewSize.height/orientedPhoto.height));
   const imageDimensions={width:photoSize.width*fitted,height:photoSize.height*fitted};
   useEffect(()=>{
     if(!focusedSubsystem)return;
     const region=findPolygonRegion(focusedSubsystem);if(!region)return;
-    const b=polygonBounds(region);
-    const z=Math.min(8,Math.max(1,Math.min(viewSize.width/(imageDimensions.width*b.w/100),viewSize.height/(imageDimensions.height*b.h/100))*.82));
-    setZoom(z);setPan({x:(50-b.x-b.w/2)*imageDimensions.width*z/100,y:(50-b.y-b.h/2)*imageDimensions.height*z/100});
+    const b=subsystemFocusBounds(focusedSubsystem)!;
+    const target=orientedSize({width:imageDimensions.width*b.w/100,height:imageDimensions.height*b.h/100},rotation);
+    const z=Math.min(8,Math.max(1,Math.min(viewSize.width/target.width,viewSize.height/target.height)*.82));
+    setZoom(z);setPan(rotateOffset({x:(50-b.x-b.w/2)*imageDimensions.width*z/100,y:(50-b.y-b.h/2)*imageDimensions.height*z/100},rotation));
   },[focusedSubsystem]);
   const previousImageSize=useRef({width:0,height:0});
   useLayoutEffect(()=>{
@@ -370,7 +374,7 @@ function App() {
     <div className="main-column">
       <div className="mobile-bar"><button type="button" onClick={()=>{setCollapsed(false);setMobileMenu(true)}} aria-label="Abrir menu lateral">☰</button><strong>NV Quantum Virtual Lab</strong><span>Laboratório</span></div>
       <div ref={viewerWorkspaceRef} className={page==="explorar"?"scientific-workspace"+(fullFallback?" full-fallback":""):"workspace-shell"}>
-      {page==="explorar"&&<ViewerToolbar layerMode={photoLayer} layerFocus={focusedSubsystem} onLayerChange={choosePhotoLayer} zoomControls={<div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button className="reset-button" title="Redefinir apenas o zoom" onClick={photoNavigation.reset}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>} onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
+      {page==="explorar"&&<ViewerToolbar layerMode={photoLayer} layerFocus={focusedSubsystem} onLayerChange={choosePhotoLayer} zoomControls={<div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button type="button" aria-label="Girar imagem 90°" title={"Girar imagem 90° · atual: "+rotation+"°"} onClick={()=>photoNavigation.rotateBy()}><ImageIcon kind="rotate"/></button><button className="reset-button" title="Redefinir apenas o zoom" onClick={photoNavigation.reset}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{<ImageIcon kind={isPhotoFull?"collapse":"expand"}/>}</button></div>} onScheme={()=>setSchemeOpen(true)} onFullscreen={()=>void fullscreen()} fullscreen={isPhotoFull}>
         <PhotoLayerControls mode={photoLayer} focus={focusedSubsystem} items={items} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
       </ViewerToolbar>}
       <div ref={workspaceGridRef} className={"workspace-layout"+(selection?" has-inspector":"")+(selection&&inspectorExpanded?" wide-inspector":"")} style={page==="explorar"?{"--explore-inspector-width":actualInspectorWidth+"px"} as React.CSSProperties:undefined}>
@@ -383,9 +387,9 @@ function App() {
           <section className="photo-panel" aria-label="Fotografia interativa do Uncut Gem V1">
             <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com camadas poligonais"
               data-image-viewport {...photoNavigation.handlers}>
-              {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={PHOTO_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className="photo-stage" style={{width:imageDimensions.width,height:imageDimensions.height,transform:"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+")"}}>
+              {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={PHOTO_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className="photo-stage" data-rotation={rotation} style={{width:imageDimensions.width,height:imageDimensions.height,transform:"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+") rotate("+rotation+"deg)"}}>
                 <img src={originalPhoto} draggable={false} alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
-                <PhotoPolygonOverlay mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
+                <PhotoPolygonOverlay rotation={rotation} mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
               </div>}
               <button type="button" className="photo-return-to-board" data-no-image-pan
                 title="Voltar à placa inteira e redefinir enquadramento" aria-label="Voltar à placa inteira"

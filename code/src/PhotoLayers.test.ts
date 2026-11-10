@@ -24,7 +24,7 @@ describe('frontal spatial inventory contract',()=>{
   expect(subsystemPolygons).toHaveLength(9);
  });
  it('adds R3 C1 C2 C4 at the original corrected crop coordinates',()=>{
-  expect(componentPolygons).toHaveLength(35);
+  expect(componentPolygons).toHaveLength(34);
   const tags=['UG-V1-B031','UG-V1-B034','UG-V1-B035','UG-V1-B037'];
   const images=presentation.items as Record<string,{sourceBox:number[]}>;
   const transform=presentation.main.sourceToOutput;
@@ -48,4 +48,11 @@ describe('frontal spatial inventory contract',()=>{
    expect((planEntry.region as {px_1453x1080?:number[]}).px_1453x1080).toEqual(images[tag].sourceBox);
   }
  });
+});
+
+it('prioritizes RF input/output without drawing the supply wire',()=>{
+ expect(findPolygonRegion('UG-V1-B022')?.label).toBe('RFIN');
+ expect(findPolygonRegion('UG-V1-B023')?.label).toBe('RFOUT');
+ expect(findPolygonRegion('UG-V1-B024')).toBeUndefined();
+ expect(inventory.items.some(i=>i.tag==='UG-V1-B024')).toBe(true);
 });

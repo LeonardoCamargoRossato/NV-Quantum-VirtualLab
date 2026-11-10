@@ -8,7 +8,7 @@
 
 ## Cobertura
 
-9 dos 10 subsistemas possuem regiões frontais; 35 dos 69 componentes possuem contornos. Áreas são aproximações manuais da foto, não footprints CAD nem mapas de trilhas. ADF4351/S04 é traseiro e não foi projetado ficticiamente sobre a frente.
+9 dos 10 subsistemas possuem regiões frontais; 34 dos 69 componentes possuem contornos. Áreas são aproximações manuais da foto, não footprints CAD nem mapas de trilhas. ADF4351/S04 é traseiro e não foi projetado ficticiamente sobre a frente.
 
 | Subsistema | Componentes com contorno | Sem contorno frontal |
 |---|---|---|
@@ -16,7 +16,7 @@
 | UG-V1-S02 · Controle e aquisição — ESP32 | UG-V1-0004 · ESP32 DOIT DevKit V1<br>UG-V1-B008 · Módulo metálico ESP32<br>UG-V1-B009 · Botão EN<br>UG-V1-B010 · Botão BOOT<br>UG-V1-B011 · LEDs do DevKit<br>UG-V1-B012 · Fileiras de pinos / headers<br>UG-V1-B013 · Conversor USB–serial | UG-V1-B014 · ADC interno do ESP32 |
 | UG-V1-S03 · Excitação óptica — laser | UG-V1-0022 · Laser verde<br>UG-V1-B015 · Driver / placa do laser<br>UG-V1-B016 · Fios de alimentação do laser | UG-V1-B017 · Suporte e alinhamento do laser |
 | UG-V1-S04 · Geração de micro-ondas — ADF4351 | Nenhum | UG-V1-0018 · Placa geradora RF ADF4351<br>UG-V1-0017 · Conector gerador RF<br>UG-V1-B018 · Circuito sintetizador ADF4351<br>UG-V1-B019 · Pinos de comando SPI/LE<br>UG-V1-B020 · Saída RF do ADF4351 |
-| UG-V1-S05 · Amplificação de micro-ondas | UG-V1-0019 · Amplificador RF 40 dB<br>UG-V1-B022 · Conector SMA de entrada RF<br>UG-V1-B023 · Conector SMA de saída RF<br>UG-V1-B024 · Fios de alimentação do módulo RF | UG-V1-B021 · Circuito ativo do amplificador RF<br>UG-V1-B025 · Componentes SMD do módulo RF |
+| UG-V1-S05 · Amplificação de micro-ondas | UG-V1-0019 · Amplificador RF 40 dB<br>UG-V1-B022 · Conector SMA de entrada RF<br>UG-V1-B023 · Conector SMA de saída RF | UG-V1-B024 · Fios de alimentação do módulo RF (contorno ocultado)<br>UG-V1-B021 · Circuito ativo do amplificador RF<br>UG-V1-B025 · Componentes SMD do módulo RF |
 | UG-V1-S06 · Conexões RF e antena | UG-V1-0020 · Cabo SMA curto<br>UG-V1-0021 · Antena em laço<br>UG-V1-B027 · Ligação do amplificador à antena | UG-V1-B026 · Adaptadores e terminais SMA |
 | UG-V1-S07 · Prisma e detecção óptica | UG-V1-0023 · Conjunto do prisma NV | UG-V1-0024 · Diamante com centros NV<br>UG-V1-0027 · Filtro gel vermelho<br>UG-V1-0028 · Fotodiodo BPW34<br>UG-V1-0025 · Resina transparente UV<br>UG-V1-0026 · Molde de silicone<br>UG-V1-0016 · Conector do fotodiodo<br>UG-V1-B028 · Fios de saída do BPW34 |
 | UG-V1-S08 · Condicionamento eletrônico de sinal | UG-V1-0005 · TL082 amplificador operacional<br>UG-V1-0015 · Ponto de osciloscópio<br>UG-V1-B029 · R1 — Resistor<br>UG-V1-B030 · R2 — Resistor<br>UG-V1-B031 · R3 — Resistor<br>UG-V1-B032 · R4 — Resistor<br>UG-V1-B033 · R5 — Resistor<br>UG-V1-B034 · C1 — Capacitor<br>UG-V1-B035 · C2 — Capacitor<br>UG-V1-B036 · C3 — Capacitor<br>UG-V1-B037 · C4 — Capacitor | Nenhum |
@@ -50,3 +50,9 @@ Quatro regiões antes sem contorno (UG-V1-B031, B034, B035, B037) passam a refle
 As nove caixas da região analógica (R1–R5 e C1–C4) foram reconciliadas em LayerBComponentImagePlan.json com os recortes da apresentação. A geração de PNGs do plano é feita por LCR_LAYER_B_COMPONENT_IMAGES.yml; confirmar a geração no CI antes de declarar o asset atualizado.
 
 A interface agora permite escolher todos os contornos frontais diretamente no modo Componentes, com opção de filtrar por subsistema. Os modos permanecem visíveis na toolbar; o dropdown associado mostra legenda e itens não mapeados. Um botão flutuante volta à placa inteira; Redefinir atua apenas no zoom/pan. Contornos são aproximações visuais, não validação CAD/KiCad ou metrológica.
+
+## Amplificador RF e rotação
+
+O mapa agora identifica RFIN (B022, entrada) e RFOUT (B023, saída) e inclui os dois conectores no enquadramento do subsistema. O contorno de alimentação B024 foi retirado por preferência visual; a omissão fica registrada em PhotoPolygons.json e o item continua no inventário. Valores/modelos dos pequenos componentes SMD não são inferidos desta fotografia. VCC e GND são as marcações visíveis de alimentação.
+
+A foto e seus polígonos giram juntos em passos de 90°. Os rótulos RFIN/RFOUT continuam legíveis. Zoom, foco e arraste são preservados e os arquivos originais não são alterados. O botão de rotação também está disponível no visualizador comum e nas duas faces do esquema.

@@ -1062,7 +1062,8 @@
           ]
         ]
       ],
-      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD.",
+      "label": "RFIN"
     },
     {
       "tag": "UG-V1-B023",
@@ -1103,40 +1104,8 @@
           ]
         ]
       ],
-      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
-    },
-    {
-      "tag": "UG-V1-B024",
-      "class": "connector",
-      "polygons": [
-        [
-          [
-            45.5,
-            48.8
-          ],
-          [
-            50,
-            44
-          ],
-          [
-            59.5,
-            43
-          ],
-          [
-            61,
-            44.5
-          ],
-          [
-            50,
-            46
-          ],
-          [
-            47,
-            50
-          ]
-        ]
-      ],
-      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD."
+      "evidence": "Contorno visual aproximado na fotografia frontal alinhada; não representa footprint CAD.",
+      "label": "RFOUT"
     },
     {
       "tag": "UG-V1-0020",
@@ -1980,6 +1949,12 @@
         ]
       ],
       "evidence": "SourceBox corrigido no ImagePresentation.json; contorno visual aproximado, sem equivalência a CAD."
+    }
+  ],
+  "omissions": [
+    {
+      "tag": "UG-V1-B024",
+      "reason": "Contorno de fios de alimentação ocultado por preferência visual; item preservado no inventário."
     }
   ]
 }

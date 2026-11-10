@@ -1,6 +1,7 @@
+import {normalizeRotation,rotateOffset} from "./ImageGeometry";
 import {useEffect,useRef,type RefObject,type PointerEvent as ReactPointerEvent,type MouseEvent as ReactMouseEvent} from 'react';
 export type ImageOffset={x:number;y:number};
-type NavigationOptions={viewport:RefObject<HTMLDivElement|null>;zoom:number;setZoom:(value:number)=>void;offset:ImageOffset;setOffset:(value:ImageOffset)=>void;key?:string;min?:number;max?:number};
+type NavigationOptions={viewport:RefObject<HTMLDivElement|null>;zoom:number;setZoom:(value:number)=>void;offset:ImageOffset;setOffset:(value:ImageOffset)=>void;key?:string;min?:number;max?:number;rotation?:number;setRotation?:(value:number)=>void};
 /** Shared gestures for the PCB and every image dialog, independent of image type. */
 export function useImageNavigation(options:NavigationOptions){
  const current=useRef(options);current.current=options;
@@ -46,5 +47,9 @@ export function useImageNavigation(options:NavigationOptions){
   onLostPointerCapture:()=>{pointer.current=null;options.viewport.current?.classList.remove('image-is-dragging')},
   onClickCapture:(e:ReactMouseEvent<HTMLDivElement>)=>{if(suppressClick.current){e.preventDefault();e.stopPropagation();suppressClick.current=false}},
  };
- return {changeZoom,handlers,reset:()=>{options.setZoom(1);options.setOffset({x:0,y:0})}};
+ function rotateBy(degrees=90){
+  const {rotation=0,setRotation,offset,setOffset}=current.current;if(!setRotation)return;
+  setRotation(normalizeRotation(rotation+degrees));setOffset(rotateOffset(offset,degrees));
+ }
+ return {changeZoom,rotateBy,handlers,reset:()=>{options.setZoom(1);options.setOffset({x:0,y:0})}};
 }

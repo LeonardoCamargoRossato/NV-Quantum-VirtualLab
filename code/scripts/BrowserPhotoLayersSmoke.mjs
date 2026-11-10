@@ -61,7 +61,7 @@ try{
    assert.equal(await page.locator('.photo-controls output').textContent(),'100%');
    assert.equal(await page.locator('.photo-polygon').count(),expected.length,'Zoom reset must preserve subsystem focus');
   }
-  await openControls();
+  await closeControls();
   await page.getByRole('button',{name:'Voltar à placa inteira',exact:false}).click();
   assert.equal(await page.locator('.photo-controls output').textContent(),'100%');
  }
@@ -74,7 +74,7 @@ try{
  await page.setViewportSize({width:390,height:844});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
  await page.screenshot({path:shots+'/MobileComponents.png',fullPage:true});
- await openControls();
+ await closeControls();
  await page.getByRole('button',{name:'Voltar à placa inteira',exact:false}).click();
  await openControls();
  await modes.getByRole('button',{name:'Nenhuma',exact:true}).click();

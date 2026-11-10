@@ -21,7 +21,7 @@ export function cropAspect(region: PhotoRegion): number {
 /** Spatial metadata extends the photographic regions; inventory remains authoritative. */
 import polygonData from "../source/PhotoPolygons.json";
 export type PolygonPoint = [number, number];
-export type PolygonRegion = {tag:string;polygons:PolygonPoint[][];color?:string;class?:string;evidence?:string};
+export type PolygonRegion = {tag:string;polygons:PolygonPoint[][];color?:string;class?:string;evidence?:string;label?:string};
 export const PHOTO_POLYGONS = polygonData;
 export const subsystemPolygons = polygonData.subsystems as PolygonRegion[];
 export const componentPolygons = polygonData.components as PolygonRegion[];
@@ -31,3 +31,11 @@ export function polygonBounds(region:PolygonRegion) {
  const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
  return {x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)};
 }
+/** Include the two external RF connectors when framing the amplifier subsystem. */
+export function subsystemFocusBounds(tag:string){
+ const region=findPolygonRegion(tag);if(!region)return undefined;
+ const ports=tag==='UG-V1-S05'?['UG-V1-B022','UG-V1-B023'].flatMap(t=>findPolygonRegion(t)?.polygons||[]):[];
+ return polygonBounds({...region,polygons:[...region.polygons,...ports]});
+}
+
+export const photoOmission=(tag:string)=>polygonData.omissions.find(item=>item.tag===tag);

@@ -1,6 +1,6 @@
 import React from "react";
 import { fields, safeUrl, type Item } from "./Inventory";
-import { findPhotoRegion, findPolygonRegion } from "./PhotoRegions";
+import { findPhotoRegion, findPolygonRegion, photoOmission } from "./PhotoRegions";
 import { flowImageUrl, type FlowStep } from "./FlowData";
 
 export type ReferenceContext = {
@@ -44,7 +44,7 @@ export function ContextInspector({selection,expanded,onExpand,onClose,onSeePcb,r
     </div><button type="button" className="close-icon" onClick={onClose} aria-label="Fechar inspetor">×</button></div>
     <div className="inspector-scroll">
       {selection.kind==="component"?<>
-        <div className="item-meta"><span className="tag-pill">{selection.item.tag}</span><span>{(findPhotoRegion(selection.item.tag)||findPolygonRegion(selection.item.tag))?"Localizado na fotografia oficial":"Sem localização individual confirmada na foto"}</span></div>
+        <div className="item-meta"><span className="tag-pill">{selection.item.tag}</span><span>{(findPhotoRegion(selection.item.tag)||findPolygonRegion(selection.item.tag))?"Localizado na fotografia oficial":photoOmission(selection.item.tag)?"Contorno ocultado nesta visualização":"Sem localização individual confirmada na foto"}</span></div>
         {renderComponent(selection.item)}
         <dl className="field-list">{(Object.keys(fields) as (keyof Item)[]).filter(k=>!["tag","name","imageUrl","source","datasheet"].includes(k)).map(k=><div key={k}><dt>{fields[k]}</dt><dd>{selection.item[k]||"Não documentado"}</dd></div>)}</dl>
         <p className="visual-note">{selection.item.source}</p><div className="source-line"><Link href={selection.item.source}>Fonte técnica</Link><Link href={selection.item.datasheet}>Datasheet</Link><Link href={selection.item.imageUrl}>Imagem do inventário</Link></div>
@@ -53,7 +53,7 @@ export function ContextInspector({selection,expanded,onExpand,onClose,onSeePcb,r
         <button type="button" className="inspector-pcb-link" onClick={()=>onSeePcb(selection.item.tag)}>
           Ver na PCB
         </button>
-        {!findPhotoRegion(selection.item.tag)&&!findPolygonRegion(selection.item.tag)&&<p className="visual-note">O item não tem contorno frontal próprio identificado; a foto geral será mostrada com a ficha, sem localização inventada.</p>}
+        {!findPhotoRegion(selection.item.tag)&&!findPolygonRegion(selection.item.tag)&&<p className="visual-note">{photoOmission(selection.item.tag)?"Contorno ocultado por preferência visual; o registro permanece no inventário.":"O item não tem contorno frontal próprio identificado; a foto geral será mostrada com a ficha, sem localização inventada."}</p>}
       </>:selection.kind==="flow"?<>
         <div className="item-meta"><span className="tag-pill">ETAPA {String(selection.step.number).padStart(2,"0")}</span><span>{selection.step.imageKind}</span></div>
         <button type="button" className="context-photo-button" onClick={()=>onOpenFlowImage(selection.step)} aria-label={"Ampliar imagem da etapa "+selection.step.number}>

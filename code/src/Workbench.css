@@ -683,3 +683,5 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 @media(max-width:1000px){
  .viewer-modules-menu{right:auto;left:0;max-width:calc(100vw - 16px)}
 }
+.photo-region-label{font:700 1.2px Arial,sans-serif;fill:white;stroke:#0f172a;stroke-width:.25px;paint-order:stroke;pointer-events:none}
+@media(max-width:640px){.viewer-assembly{min-width:100px}}

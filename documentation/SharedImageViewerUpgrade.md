@@ -24,3 +24,7 @@ Screenshots locais ficam em `/tmp/nv-shared-image-viewer/`. Verificações de im
 ## Remoção do controle de ajuste manual
 
 O botão/ícone “Ajustar à tela” foi removido do componente compartilhado e, portanto, de todas as imagens e das duas faces do esquema. O enquadramento inicial automático e os controles de zoom, download, fullscreen e fechamento continuam disponíveis. Os testes de imagens e esquema verificam a ausência do botão.
+
+## Rotação da visualização
+
+O ícone Girar imagem 90° está disponível na fotografia interativa e em todo ImageViewer, inclusive esquema frente/verso. ImageGeometry.ts calcula orientação e deslocamento para preservar o ponto observado; a mudança de proporção considera largura/altura rotacionadas. Imagem e polígonos compartilham a mesma transformação. Cada nova imagem da galeria inicia em 0° e o download continua salvando os bytes originais. BrowserRfRotationSmoke.mjs cobre quatro orientações, alinhamento, foco, portas RF, cliques/arraste e mobile e é chamado pelo smoke de interface existente.

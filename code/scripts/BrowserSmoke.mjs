@@ -323,3 +323,5 @@ try {
 
 // Included in the existing interface CI workflow without changing deployment infrastructure.
 await import('./BrowserAdaptiveViewerSmoke.mjs');
+
+await import('./BrowserRfRotationSmoke.mjs');
