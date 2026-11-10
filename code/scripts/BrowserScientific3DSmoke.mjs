@@ -14,7 +14,7 @@ for(const [width,height] of [[1366,768],[1920,1080],[390,844]]){
  await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+80,box.y+box.height/2+40,{steps:5});await page.mouse.up();
  await page.mouse.wheel(0,-160);await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down({button:'right'});await page.mouse.move(box.x+box.width/2+30,box.y+box.height/2+30,{steps:5});await page.mouse.up({button:'right'});
  await page.getByLabel('Vista').selectOption('Superior');await page.getByLabel('Exibição').selectOption('Malha');await page.getByRole('button',{name:'Aproximar modelo'}).click();await page.getByRole('button',{name:'Afastar modelo'}).click();await page.getByRole('button',{name:'Centralizar modelo'}).click();
- await page.getByRole('button',{name:'Tela cheia 3D'}).click();if(!(await page.evaluate(()=>Boolean(document.fullscreenElement))))throw Error('fullscreen failed');await page.getByRole('button',{name:'Sair da tela cheia 3D'}).click();
+ await page.getByRole('button',{name:'Tela cheia 3D'}).click();await page.waitForFunction(()=>Boolean(document.fullscreenElement));await page.getByRole('button',{name:'Sair da tela cheia 3D'}).click();await page.waitForFunction(()=>!document.fullscreenElement);
  await page.screenshot({path:`/tmp/Scientific3D-${width}.png`});
  await page.getByRole('button',{name:/Módulos e Visualização/}).click();await page.getByRole('menuitem',{name:'Ver fotografia 2D'}).click();await page.locator('.photo-viewport img').waitFor();
  await page.getByRole('button',{name:/Módulos e Visualização/}).click();await page.getByRole('menuitem',{name:'Visualizar Prisma 3D'}).click();await page.locator('.scientific-3d-canvas canvas').waitFor();
