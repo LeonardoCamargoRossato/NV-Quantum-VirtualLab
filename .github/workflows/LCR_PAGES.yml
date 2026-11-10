@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       publishable: ${{ steps.inventory.outputs.publishable }}
+      artifact_name: ${{ steps.pages-package.outputs.name }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -71,9 +72,13 @@ jobs:
               raise SystemExit('Erro de publicação de imagens: ' + '; '.join(errors))
           print(f'CHECK: {len(expected)} PNGs presentes e íntegros em code/dist')
           PY
+      - name: Identificar pacote exclusivo desta execução
+        id: pages-package
+        run: echo "name=github-pages-${{ github.run_id }}-${{ github.run_attempt }}" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v3
         if: steps.inventory.outputs.publishable == 'true' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
+          name: ${{ steps.pages-package.outputs.name }}
           path: code/dist
   deploy:
     needs: build
@@ -86,8 +91,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Verificar configuração do GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: false
       - uses: actions/deploy-pages@v4
         id: deployment
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact_name }}
 
   verify-public-assets:
     needs: deploy
