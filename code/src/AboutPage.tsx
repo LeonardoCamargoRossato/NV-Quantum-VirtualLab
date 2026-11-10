@@ -1,3 +1,4 @@
+import {InteractiveImage} from "./InteractiveImage";
 import React from "react";
 import { SectionHeading, Out } from "./StudyPages";
 
@@ -9,7 +10,7 @@ export function AboutPage(){
         <p>O laboratório virtual reúne fotografia, componentes, documentos e explicações para estudar como o sistema aberto <strong>Uncut Gem V1</strong> combina excitação óptica, micro-ondas, leitura de fluorescência e eletrônica de aquisição.</p>
         <p>Seu foco atual é explicar o funcionamento e a montagem real, com rastreabilidade às fontes originais e ao inventário. Os diagramas e recortes não substituem documentação técnica ou medições laboratoriais.</p>
       </div>
-      <figure><img src={import.meta.env.BASE_URL+"assets/official/DeviceV1.png"} alt="Foto real do hardware Uncut Gem V1, Quantum Village"/><figcaption>Fotografia oficial da montagem · Quantum Village, AGPL-3.0</figcaption></figure>
+      <figure><InteractiveImage src={import.meta.env.BASE_URL+"assets/official/DeviceV1.png"} alt="Foto real do hardware Uncut Gem V1, Quantum Village"/><figcaption>Fotografia oficial da montagem · Quantum Village, AGPL-3.0</figcaption></figure>
     </section>
     <div className="about-grid">
       <section><span className="step-no">01</span><h3>Contexto acadêmico</h3><p>Iniciativa de estudo ligada à formação e à pesquisa de doutorado em engenharia, com interesse em sensores quânticos, instrumentação e métodos de pesquisa. Projeto independente, sem declaração de endosso institucional do ITA.</p></section>

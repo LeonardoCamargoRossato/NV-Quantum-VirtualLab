@@ -145,14 +145,6 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
 .inventory-inspector{position:fixed;right:22px;bottom:20px;top:12vh;width:min(390px,calc(100vw - 44px));z-index:50;box-shadow:0 10px 45px #131D3040}
 .inventory-inspector .inspector{height:100%;max-height:none}
 .app-footer{display:flex;align-items:center;justify-content:space-between;gap:10px 25px;flex-wrap:wrap;padding:15px clamp(16px,3vw,42px);font-size:10px;color:#8490A2;border-top:1px solid var(--line);background:#fff}
-.lightbox-backdrop{position:fixed;inset:0;z-index:100;background:#0F1927D9;padding:3vh 3vw;display:grid;place-items:center}
-.lightbox-dialog{display:flex;flex-direction:column;width:min(1050px,96vw);height:min(90vh,950px);background:white;border-radius:12px;overflow:hidden;box-shadow:0 12px 90px #0008}
-.lightbox-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}.lightbox-heading strong{font-size:13px}
-.lightbox-buttons{display:flex;align-items:center;gap:4px}.lightbox-buttons button{padding:5px 10px}.lightbox-buttons output{font-size:11px;min-width:40px;text-align:center}
-.lightbox-content{flex:1;overflow:auto;min-height:0;display:grid;place-items:center;padding:30px;background:#E9ECF0}
-.lightbox-zoom{max-width:90%;max-height:100%;width:min(800px,95%);transform-origin:center center}
-.lightbox-zoom>img{display:block;max-width:100%;max-height:70vh;object-fit:contain;margin:auto}
-.lightbox-caption{padding:12px 18px;font-size:11px;color:#6C7890;display:flex;gap:14px;justify-content:space-between;border-top:1px solid var(--line)}
 .mobile-bar,.mobile-scrim{display:none}
 @media(max-width:1280px){
  .work-area.with-inspector{grid-template-columns:minmax(240px,300px) minmax(0,1fr)}

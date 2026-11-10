@@ -23,3 +23,6 @@ A roda do mouse sobre a imagem amplia/reduz entre 100% e 300%, mantendo como ref
 Após ampliar, o cursor é uma mão aberta (grab). Pressionar o botão esquerdo captura o ponteiro e muda para mão fechada (grabbing); o arraste move a posição de rolagem nos dois eixos, limitado à imagem. Soltar, cancelar ou perder a captura encerra o arraste. Ajustar à tela e virar a face reiniciam zoom/posição. Frente e verso compartilham esse comportamento, inclusive em fullscreen nativo. Os PNGs não foram alterados.
 
 O teste BrowserSchemeSmoke confirma zoom ancorado, entrada/saída pelo scroll, limites, pan após zoom manual e pelo scroll, cursores, reset e funcionamento das duas faces e fullscreen. A integração foi feita após incorporar as atualizações concorrentes do inventário canônico da main, sem modificá-las.
+
+## Visualizador comum — 2026-11-09
+O mecanismo acima foi substituído pelo componente comum `ImageViewer` e hook `ImageNavigation`, também utilizados nas demais imagens. Limites atuais: 25–800%, arraste em qualquer zoom e ações somente por ícones. Consultar `SharedImageViewerUpgrade.md`; as duas imagens originais permanecem intactas.

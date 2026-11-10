@@ -26,7 +26,7 @@ export function PhotoPolygonOverlay({mode,focus,items,selected,onSelect,onExpand
  return <svg className="photo-polygon-overlay" viewBox="0 0 100 100" preserveAspectRatio="none" aria-label={mode==='subsystems'?'Polígonos dos subsistemas':'Polígonos dos componentes'}>
  {regions.map(region=>{const item=items.find(i=>i.tag===region.tag);if(!item)return null;const b=polygonBounds(region);const color=region.color||classes[region.class!].color;
  return <g key={region.tag} style={{'--region-color':color} as React.CSSProperties}>
-  <g className={'photo-polygon'+(selected===item.tag?' is-selected':'')} data-tag={item.tag} role="button" tabIndex={0} aria-label={'Inspecionar '+item.name} aria-pressed={selected===item.tag} onPointerDown={e=>e.stopPropagation()} onClick={e=>{e.stopPropagation();onSelect(item)}} onKeyDown={e=>keyAction(e,()=>onSelect(item))}>
+  <g className={'photo-polygon'+(selected===item.tag?' is-selected':'')} data-tag={item.tag} role="button" tabIndex={0} aria-label={'Inspecionar '+item.name} aria-pressed={selected===item.tag} onClick={e=>{e.stopPropagation();onSelect(item)}} onKeyDown={e=>keyAction(e,()=>onSelect(item))}>
    <title>{item.name+' · '+item.tag}</title>{region.polygons.map((points,index)=><polygon key={index} points={points.map(p=>p.join(',')).join(' ')} vectorEffect="non-scaling-stroke"/>)}
   </g>
   {mode==='subsystems'&&<g className="photo-polygon-expand" role="button" tabIndex={0} aria-label={'Expandir '+item.name} onPointerDown={e=>e.stopPropagation()} onClick={e=>{e.stopPropagation();onExpand(item.tag)}} onKeyDown={e=>keyAction(e,()=>onExpand(item.tag))}>

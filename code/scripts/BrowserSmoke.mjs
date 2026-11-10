@@ -21,16 +21,16 @@ try {
   await schemeTrigger.click();
   const scheme=page.getByRole('dialog',{name:'Esquema 2D — Uncut Gem V1'});
   await scheme.getByRole('status').getByText('Frente da PCB',{exact:true}).waitFor();
-  await page.waitForFunction(()=>document.querySelector('.scheme-front img')?.naturalWidth===1672);
+  await page.waitForFunction(()=>document.querySelector('.image-viewer-viewport img')?.naturalWidth===1672);
   assert((await scheme.getByRole('img').getAttribute('src')).endsWith('FrontScheme.png'));
   await scheme.getByRole('button',{name:'Virar para o verso'}).click();
   await scheme.getByRole('status').getByText('Verso da PCB',{exact:true}).waitFor();
-  await page.waitForFunction(()=>document.querySelector('.scheme-back img')?.naturalWidth===1672);
+  await page.waitForFunction(()=>document.querySelector('.image-viewer-viewport img')?.naturalWidth===1672);
   assert((await scheme.getByRole('img').getAttribute('src')).endsWith('BackScheme.png'));
-  await scheme.getByRole('button',{name:'Aumentar zoom do esquema'}).click();
-  assert.equal(await scheme.getByLabel('Zoom do esquema',{exact:true}).textContent(),'125%');
+  await scheme.getByRole('button',{name:'Aumentar zoom da imagem'}).click();
+  assert.equal(await scheme.getByLabel('Zoom da imagem',{exact:true}).textContent(),'125%');
   await scheme.getByRole('button',{name:'Voltar para a frente'}).click();
-  assert.equal(await scheme.getByLabel('Zoom do esquema',{exact:true}).textContent(),'100%');
+  assert.equal(await scheme.getByLabel('Zoom da imagem',{exact:true}).textContent(),'100%');
   await page.keyboard.press('Escape');
   assert.equal(await scheme.count(),0);
   assert(await schemeTrigger.evaluate(el=>el===document.activeElement));
@@ -100,7 +100,7 @@ try {
   // Recorte ampliado deve exibir a imagem do laser, não uma área cinza/alt quebrado.
   await page.getByRole("button", { name: "Ampliar recorte real: Laser verde" }).click();
   await page.getByRole("dialog", { name: /Recorte aprimorado do Uncut Gem V1/ }).waitFor();
-  assert(await page.locator(".lightbox-dialog .crop-shell img").evaluate(i => i.complete && i.naturalWidth > 0));
+  assert(await page.locator(".image-viewer-viewport img").evaluate(i => i.complete && i.naturalWidth > 0));
   await page.getByRole("button", { name: "Fechar imagem" }).click();
   await page.getByRole("button", { name: "Expandir painel" }).click();
   assert(await page.locator(".workspace-layout.wide-inspector").isVisible());

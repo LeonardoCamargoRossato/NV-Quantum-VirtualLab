@@ -7,6 +7,9 @@ import { Articles, Fundamentals, Guide, References, navigationGroups, pageTitles
 import { ScientometricDashboard, PatentReviewPlaceholder } from "./ScientometricDashboard";
 import { FLOW_STEPS, flowImageUrl, type FlowStep } from "./FlowData";
 import { FlowPage } from "./FlowPage";
+import { ImageViewer } from "./ImageViewer";
+import { ImageOpeningContext } from "./InteractiveImage";
+import { useImageNavigation } from "./ImageNavigation";
 import { SchemeViewer } from "./SchemeViewer";
 import { AboutPage } from "./AboutPage";
 import { LabFuturePage } from "./LabFuturePages";
@@ -36,12 +39,13 @@ function Crop({region, title, onClick, interactive = true}: {region: PhotoRegion
   const visual=presentedItem(region.tag);
   const style: React.CSSProperties = { aspectRatio: String(visual?visual.outputSize[0]/visual.outputSize[1]:cropAspect(region)) };
   const file = ENHANCED_CROPS[region.tag];
-  return <div className="crop-shell" style={style}>
+  const Element=interactive&&onClick?"button":"div";
+  return <Element className="crop-shell" style={style} onClick={interactive?onClick:undefined} {...(interactive&&onClick?{type:"button" as const,"aria-label":"Ampliar recorte real: "+title}:{})}>
     <img src={presentedAsset(enhancedPhoto + file,base)} draggable={false} loading="lazy"
       alt={"Recorte da fotografia do Uncut Gem V1: " + title}
       style={{width:"100%",height:"100%",position:"absolute",inset:0,objectFit:"contain"}} />
-    {interactive && onClick && <button type="button" className="crop-overlay" onClick={onClick} aria-label={"Ampliar recorte real: " + title}>Ampliar recorte <span aria-hidden="true">↗</span></button>}
-  </div>;
+    {interactive && onClick && <span className="crop-overlay">Ampliar recorte <span aria-hidden="true">↗</span></span>}
+  </Element>;
 }
 function Picture({url,label,onClick}: {url: string; label: string; onClick: (preview: ImagePreview) => void}) {
   const [failed,setFailed] = useState(false);
@@ -79,28 +83,9 @@ function ComponentImage({item,onOpen}: {item: Item; onOpen: (preview: ImagePrevi
   </div>;
 }
 function Lightbox({preview,onClose}: {preview:ImagePreview;onClose:()=>void}) {
-  const [zoom,setZoom]=useState(1);
-  const [slide,setSlide]=useState(preview.index??0);
-  const ref=useRef<HTMLDivElement>(null);
-  const active=preview.gallery?.[slide];
-  useEffect(()=>{ref.current?.focus();},[]);
-  useEffect(()=>{
-    if(!preview.gallery)return;
-    function handle(e:KeyboardEvent){
-      if(e.key==="ArrowRight"){e.preventDefault();setSlide(v=>(v+1)%(preview.gallery?.length||1));setZoom(1);}
-      if(e.key==="ArrowLeft"){e.preventDefault();setSlide(v=>(v+(preview.gallery?.length||1)-1)%(preview.gallery?.length||1));setZoom(1);}
-    }
-    document.addEventListener("keydown",handle);
-    return ()=>document.removeEventListener("keydown",handle);
-  },[preview.gallery]);
-  return <div role="dialog" aria-modal="true" aria-label={active ? "Etapa "+active.number+": "+active.title : preview.title} className="lightbox-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}>
-    <div className="lightbox-dialog" ref={ref} tabIndex={-1}>
-      <div className="lightbox-heading"><strong>{active?"Etapa "+active.number+" · "+active.title:preview.title}</strong><div className="lightbox-buttons"><button onClick={()=>setZoom(z=>Math.max(1,z-0.25))} aria-label="Diminuir zoom da imagem">−</button><output>{Math.round(zoom*100)}%</output><button onClick={()=>setZoom(z=>Math.min(4,z+0.25))} aria-label="Aumentar zoom da imagem">+</button><button onClick={()=>setZoom(1)}>Redefinir</button><button onClick={onClose} aria-label="Fechar imagem">×</button></div></div>
-      <div className="lightbox-content"><div className="lightbox-zoom" style={{transform:"scale("+zoom+")"}}>{preview.region&&!active?<Crop region={preview.region} title={preview.title} interactive={false}/>:<img src={active?.url||preview.url} alt={active?.title||preview.title}/>}</div></div>
-      {preview.gallery&&<nav className="gallery-navigation" aria-label="Navegação das imagens do fluxo"><button type="button" onClick={()=>{setSlide(v=>(v+preview.gallery!.length-1)%preview.gallery!.length);setZoom(1)}} aria-label="Imagem anterior">← Anterior</button><span>{slide+1} / {preview.gallery.length}</span><button type="button" onClick={()=>{setSlide(v=>(v+1)%preview.gallery!.length);setZoom(1)}} aria-label="Próxima imagem">Próxima →</button></nav>}
-      <div className="lightbox-caption">{active?<span><strong>Etapa {active.number} · {active.caption}</strong> — fonte: Quantum Village, {active.source}</span>:<span>{preview.region?"Recorte oficial centralizado e alinhado geometricamente; sem reconstrução generativa.":"Imagem do inventário ou dos arquivos oficiais."}</span>} <Out href={active?.source|| (preview.region?PHOTO_ORIGINAL_URL:preview.url)}>Abrir fonte original</Out></div>
-    </div>
-  </div>;
+ const local=(url:string)=>url.startsWith("https://raw.githubusercontent.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/main/code/public/")?base+url.split("/main/code/public/")[1]:url;
+ const images=preview.gallery?preview.gallery.map(slide=>({url:local(slide.url),title:"Etapa "+slide.number+": "+slide.title,caption:slide.caption,source:slide.source})):[{url:local(preview.url),title:preview.title,source:preview.region?PHOTO_ORIGINAL_URL:undefined}];
+ return <ImageViewer images={images} initialIndex={preview.index||0} onClose={onClose}/>;
 }
 const v1Pages: Page[] = ["explorar", "inventario", "fluxo", "guia"];
 const labPages: Page[] = [...v1Pages, "uncut-v2", "modelo3d"];
@@ -148,7 +133,7 @@ function App() {
   const photoPanelRef=useRef<HTMLElement>(null);
   const inspectorRef=useRef<HTMLElement>(null);
   const lastSelectionRef=useRef<HTMLElement|null>(null);
-  const drag=useRef<{x:number;y:number;px:number;py:number}|null>(null);
+  const photoNavigation=useImageNavigation({viewport:viewportRef,zoom,setZoom,offset:pan,setOffset:setPan,key:page});
   useEffect(()=>{
     try { setSnapshot(validateSnapshot(inventoryData)); } catch { setLoadError("Não foi possível validar o catálogo de referência."); }
   },[]);
@@ -162,12 +147,6 @@ function App() {
     window.addEventListener("hashchange",onHash);
     return ()=>window.removeEventListener("hashchange",onHash);
   },[]);
-  useEffect(()=>{
-    const target=viewportRef.current;if(!target||page!=="explorar")return;
-    function wheel(e:WheelEvent){e.preventDefault();if(e.deltaY===0)return;setZoom(z=>Math.min(8,Math.max(1,z+(e.deltaY<0?.15:-.15))));}
-    target.addEventListener("wheel",wheel,{passive:false});
-    return ()=>target.removeEventListener("wheel",wheel);
-  },[page]);
   useEffect(()=>{
     const target=viewportRef.current;
     if(!target)return;
@@ -289,14 +268,14 @@ function App() {
     }catch{ /* Mantém fullscreen visual em CSS quando a API falha. */ }
   }
   const isPhotoFull=isFull||fullFallback;
-  return <div className={"app-shell"+(page==="explorar"?" explore-fixed":"")+(collapsed?" menu-collapsed":"")}>
+  return <ImageOpeningContext.Provider value={image=>setPreview({url:image.url,title:image.title})}><div className={"app-shell"+(page==="explorar"?" explore-fixed":"")+(collapsed?" menu-collapsed":"")}>
     {mobileMenu&&<button className="mobile-scrim" aria-label="Fechar navegação" onClick={()=>setMobileMenu(false)} />}
     <aside className={"nav-sidebar"+(mobileMenu?" mobile-open":"")} aria-label="Navegação do laboratório">
       <div className="sidebar-top"><div className="identity">
         <div className="identity-icon" aria-hidden="true">NV</div>
         {!collapsed&&<div className="identity-text"><strong>NV Quantum<br/>Virtual Lab</strong><small>AMBIENTE DE PESQUISA</small></div>}
       </div><button className="sidebar-toggle" type="button" title={collapsed?"Expandir menu":"Recolher menu"} aria-label={collapsed?"Expandir menu lateral":"Recolher menu lateral"} onClick={toggleCollapsed}>{collapsed?"»":"«"}</button></div>
-      <div className="sidebar-ita"><a href="https://www.ita.br/" target="_blank" rel="noopener noreferrer" aria-label="Site institucional do ITA" title="ITA — Instituto Tecnológico de Aeronáutica">{logoFailed?<strong>ITA</strong>:<img src={logo} alt="Logomarca do ITA, exibida a partir de site institucional" onError={()=>setLogoFailed(true)}/>}</a>{!collapsed&&<small>Identidade institucional de referência<br/>Projeto acadêmico independente</small>}</div>
+      <div className="sidebar-ita"><button type="button" className="logo-image-button" onClick={()=>setPreview({url:logo,title:"Logomarca do ITA"})} aria-label="Ampliar logomarca do ITA" title="ITA — Instituto Tecnológico de Aeronáutica">{logoFailed?<strong>ITA</strong>:<img src={logo} alt="Logomarca do ITA, exibida a partir de site institucional" onError={()=>setLogoFailed(true)}/>}</button>{!collapsed&&<small>Identidade institucional de referência<br/>Projeto acadêmico independente</small>}</div>
       <nav className="side-navigation nav-tree" aria-label="Seções">
         <section className="nav-tree-group">
           <button type="button" className={"nav-group-toggle"+(isLabPage(page)?" group-current":"")}
@@ -380,14 +359,12 @@ function App() {
             <div className="photo-header"><span><i className="live-dot" /> Uncut Gem V1 · montagem oficial</span><span>Frente da PCB · camadas A / B</span></div>
             <PhotoLayerControls mode={photoLayer} focus={focusedSubsystem} items={items} onMode={choosePhotoLayer} onBack={leaveSubsystem} onExpand={expandSubsystem} onItem={item=>selectPolygon(item)}/>
             <div className="photo-viewport" ref={viewportRef} aria-label="Imagem da montagem Uncut Gem V1 com camadas poligonais"
-              onPointerDown={e=>{if(e.button!==0)return;drag.current={x:e.clientX,y:e.clientY,px:pan.x,py:pan.y};e.currentTarget.setPointerCapture(e.pointerId)}}
-              onPointerMove={e=>{const d=drag.current;if(d)setPan({x:d.px+e.clientX-d.x,y:d.py+e.clientY-d.y})}}
-              onPointerUp={()=>{drag.current=null}} onPointerCancel={()=>{drag.current=null}}>
+              data-image-viewport {...photoNavigation.handlers}>
               {photoFailed?<div className="no-individual-photo">Fotografia indisponível. <Out href={PHOTO_ORIGINAL_URL}>Ver fonte original</Out></div>:<div className="photo-stage" style={{width:imageDimensions.width,height:imageDimensions.height,transform:"translate("+pan.x+"px, "+pan.y+"px) scale("+zoom+")"}}>
                 <img src={originalPhoto} draggable={false} alt="Fotografia oficial da montagem Uncut Gem V1 com laser, prisma óptico, amplificador RF, ESP32 e OLED" onError={()=>setPhotoFailed(true)} onLoad={e=>setPhotoSize({width:e.currentTarget.naturalWidth,height:e.currentTarget.naturalHeight})}/>
                 <PhotoPolygonOverlay mode={photoLayer} focus={focusedSubsystem} items={items} selected={selected?.tag} onSelect={selectPolygon} onExpand={expandSubsystem}/>
               </div>}
-              <div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>setZoom(z=>Math.max(1,z-0.25))} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>setZoom(z=>Math.min(8,z+0.25))} aria-label="Aumentar zoom">+</button><button className="reset-button" onClick={leaveSubsystem}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{isPhotoFull?"↙":"⛶"}</button></div>
+              <div className="photo-controls" onPointerDown={e=>e.stopPropagation()}><button onClick={()=>photoNavigation.changeZoom(zoom-.25)} aria-label="Diminuir zoom">−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button onClick={()=>photoNavigation.changeZoom(zoom+.25)} aria-label="Aumentar zoom">+</button><button className="reset-button" onClick={leaveSubsystem}>Redefinir</button><button onClick={fullscreen} aria-label={isPhotoFull?"Sair da tela cheia":"Maximizar foto"}>{isPhotoFull?"↙":"⛶"}</button></div>
             </div>
             <div className="photo-caption"><span>FOTOGRAFIA OFICIAL · AGPL-3.0</span><span>Arraste para mover · Roda do mouse para aproximar · Selecione um componente</span><Out href={PHOTO_ORIGINAL_URL}>Fonte e créditos</Out></div>
           </section>
@@ -413,6 +390,6 @@ function App() {
     </div>
     {schemeOpen&&<SchemeViewer base={base} onClose={()=>setSchemeOpen(false)}/>}
     {preview&&<Lightbox preview={preview} onClose={()=>setPreview(null)}/>}
-  </div>;
+  </div></ImageOpeningContext.Provider>;
 }
 createRoot(document.getElementById("root")!).render(<React.StrictMode><App/></React.StrictMode>);

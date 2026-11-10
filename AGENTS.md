@@ -36,3 +36,9 @@ O Planner recomenda um especialista quando **risco alto OU (especialização alt
 ## Preferências operacionais do responsável
 - Neste projeto, o responsável autorizou entrega das alterações na `main` e acionamento da publicação; preservar alterações concorrentes e verificar testes antes do envio.
 - Ao finalizar, informar o tempo decorrido desde a leitura do pedido até a conclusão, medido por relógio. Não inventar duração se a medição estiver indisponível.
+
+## Interação obrigatória de imagens
+- Toda nova imagem de conteúdo deve abrir `ImageViewer.tsx`, preferencialmente via `InteractiveImage.tsx` e `ImageOpeningContext`; não criar lightboxes independentes.
+- Reutilizar `useImageNavigation` para zoom pela roda (ancorado no cursor), zoom pelos controles e arraste nos dois eixos, inclusive abaixo de 100%. Bloquear rolagem simultânea da página.
+- Menus do visualizador usam ícones SVG com nomes acessíveis: download do original, fullscreen nativo e fechar. Preservar teclado, Escape, retorno de foco, mobile e erros explícitos.
+- `ImagePolicy.test.ts` impede imagens novas sem acionador acessível/viewport interativo. Rodar também `BrowserImageViewerSmoke.mjs` e `BrowserSchemeSmoke.mjs` ao alterar a experiência de imagens.
