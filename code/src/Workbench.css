@@ -668,3 +668,13 @@ h1,h2,h3,p{overflow-wrap:break-word}button{border:1px solid var(--line);backgrou
  .viewer-toolbar-row{height:156px}
  .photo-return-to-board span{display:none}
 }
+
+/* Tablet: allow second toolbar row so Modules menu remains inside the viewport. */
+@media(min-width:641px) and (max-width:1000px){
+ .viewer-toolbar{height:86px;flex-basis:86px}
+ .viewer-toolbar-row{height:86px;flex-wrap:wrap;align-content:center;row-gap:4px}
+ .viewer-toolbar-actions{display:contents}
+ .viewer-toolbar .photo-controls{order:2}
+ .viewer-layer-group{order:3}
+ .viewer-modules{order:4}
+}
