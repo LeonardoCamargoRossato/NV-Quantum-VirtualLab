@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 730" width="760" height="730" role="img" aria-labelledby="title desc">
+<title id="title">LCR Product Structure Mapping</title><desc id="desc">Four conceptual layers connected through a canonical manifest and validated in CI. Shared resources and auxiliary routes are documented exceptions.</desc>
+<rect width="760" height="730" rx="16" fill="#fff"/>
+<g font-family="Arial, sans-serif" fill="#172b43" text-anchor="middle">
+<text x="380" y="42" font-size="25" font-weight="bold">LCR · Product Structure Mapping</text>
+<text x="380" y="66" font-size="14" fill="#52677d">Conceptual alignment — not a rigid directory hierarchy</text>
+<g fill="#f4f7fb" stroke="#91a5bd" stroke-width="1.5"><rect x="100" y="94" width="560" height="90" rx="9"/><rect x="100" y="213" width="560" height="90" rx="9"/><rect x="100" y="332" width="560" height="90" rx="9"/><rect x="100" y="451" width="560" height="90" rx="9"/></g>
+<g font-size="19" font-weight="bold"><text x="380" y="121">01 — Navigation Menu</text><text x="380" y="240">02 — Route Map</text><text x="380" y="359">03 — Page Structure</text><text x="380" y="478">04 — Asset Structure</text></g>
+<g font-size="15"><text x="380" y="146">User-facing labels and navigation hierarchy</text><text x="380" y="265">Stable page IDs, canonical URLs and aliases</text><text x="380" y="384">Navigable mirror and implementation references</text><text x="380" y="503">Resources grouped by page or shared purpose</text></g>
+<g font-size="13" fill="#52677d"><text x="380" y="166">Example: Research</text><text x="380" y="285">/research · research</text><text x="380" y="404">src/pages/04-research/</text><text x="380" y="523">public/assets/04-research/</text></g>
+<g stroke="#607890" stroke-width="2" fill="none"><path d="M380 184V211m-6-7 6 7 6-7"/><path d="M380 303V330m-6-7 6 7 6-7"/><path d="M380 422V449m-6-7 6 7 6-7"/><path d="M380 541V568m-6-7 6 7 6-7"/></g>
+<rect x="100" y="570" width="560" height="70" rx="9" fill="#edf5f0" stroke="#589476"/>
+<text x="380" y="596" font-size="18" font-weight="bold">Canonical mapping + CI validation</text><text x="380" y="619" font-size="14">Unique IDs · valid references · documented exceptions</text>
+<text x="380" y="670" font-size="13" fill="#52677d">Shared assets, auxiliary routes and dynamic content may use separate paths.</text><text x="380" y="690" font-size="13" fill="#52677d">Menu order is presentation metadata, never a logical identifier.</text><text x="380" y="714" font-size="11" fill="#52677d">LCR Framework · 2026-11-24 · Reference diagram</text></g></svg>
