@@ -23,6 +23,6 @@ Esta decisão revisa o ADR-0008 quanto à obrigatoriedade universal do fluxo de 
 Planner classifica risco e complexidade; Builder executa CI e registra SHA e evidências; Auditor revisa quando indicado; responsável humano decide questões de alto impacto. Chats distintos sob a mesma identidade não demonstram independência técnica. Verificar qualidade dos PRs e decisões de risco sem criar aprovações fictícias nem remover regras de proteção existentes sem avaliação e autorização específica.
 
 ## Referências
-- `LCR_GUARDRAILS.md`, `LCR_WORKFLOW.md`, `LCR_CICD_STANDARD`, `QUALITY_SECURITY_AUDITOR_README.md`.
+- `LCR_GUARDRAILS.md`, `LCR_WORKFLOW.md`, `LCR_CICD_STANDARD`, `LCR_QUALITY_SECURITY_AUDITOR_README.md`.
 - [ADR-0008](https://github.com/LeonardoCamargoRossato/NV-Quantum-VirtualLab/blob/main/documentation/decision-archive/ADR-0008-gate-de-auditoria-e-especialistas-opcionais.md).
 - [ADR-0014](ADR-0014-governanca-eficiencia-operacional.md).

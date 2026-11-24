@@ -21,7 +21,7 @@ Manter o Framework conciso e sem fontes normativas concorrentes; preservar respo
 | Normas especializadas, referenciadas por um Auditor existente | Responsabilidades claras e critérios verificáveis | Exige manutenção de referências e adoção gradual |
 
 ## Decisão e justificativa
-Adotar a terceira alternativa. Criar quatro normas complementares: LCR_TESTING_STANDARD (isolamento), LCR_CICD_STANDARD (orquestração), LCR_PERFORMANCE_STANDARD (carregamento e cache) e LCR_RESOURCE_GOVERNANCE_STANDARD (quotas e custos). Evoluir no próprio documento LCR_ASSET_ORGANIZATION_STANDARD para v1.1 (hospedagem estática/dinâmica, inventário e migração) e QUALITY_SECURITY_AUDITOR_README para v1.1 (fiscalização por referência), sem criar auditoria concorrente. Atualizar o índice existente. O ADR-0008 continua válido: não substituir a auditoria independente por autoverificação do Builder.
+Adotar a terceira alternativa. Criar quatro normas complementares: LCR_TESTING_STANDARD (isolamento), LCR_CICD_STANDARD (orquestração), LCR_PERFORMANCE_STANDARD (carregamento e cache) e LCR_RESOURCE_GOVERNANCE_STANDARD (quotas e custos). Evoluir no próprio documento LCR_ASSET_ORGANIZATION_STANDARD para v1.1 (hospedagem estática/dinâmica, inventário e migração) e LCR_QUALITY_SECURITY_AUDITOR_README para v1.1 (fiscalização por referência), sem criar auditoria concorrente. Atualizar o índice existente. O ADR-0008 continua válido: não substituir a auditoria independente por autoverificação do Builder.
 
 ## Consequências e trade-offs
 - Ganhos esperados: prevenção de egress e custos não autorizados, testes mais reproduzíveis, melhor rastreabilidade e menor retrabalho.

@@ -13,7 +13,7 @@ Revisão documental: 2026-11-24. GitHub é a fonte versionada; Drive é acervo e
 | [LCR_TESTING_STANDARD](LCR_TESTING_STANDARD.md) | Isolamento de testes |
 | [LCR_PERFORMANCE_STANDARD](LCR_PERFORMANCE_STANDARD.md) | Carregamento e cache |
 | [LCR_RESOURCE_GOVERNANCE_STANDARD](LCR_RESOURCE_GOVERNANCE_STANDARD.md) | Quotas e custos |
-| [QUALITY_SECURITY_AUDITOR_README](QUALITY_SECURITY_AUDITOR_README.md) | Fiscalização proporcional (v1.2) |
+| [LCR_QUALITY_SECURITY_AUDITOR_README](LCR_QUALITY_SECURITY_AUDITOR_README.md) | Fiscalização proporcional (v1.2) |
 
 [SEO](seo/LCR_SEO_STANDARD.md) · [Decision Archive](decision-archive/README.md) · [Product Structure Mapping](assets/ProductStructureMapping.svg) · [Auditoria proporcional](assets/ProportionalAuditGate20261124.svg)
 

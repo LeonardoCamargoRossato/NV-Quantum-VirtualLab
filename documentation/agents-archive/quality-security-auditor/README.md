@@ -3,7 +3,7 @@
 Relatórios independentes de testes, segurança, SEO e riscos. Criar arquivos somente após avaliações efetivas. Não há obrigação do trio `LCR_DAY` comum aos demais especialistas.
 
 ## Quality Gate e auditoria proporcional (ADR-0008, ADR-0015)
-O Quality Gate automatizado é obrigatório em todos os PRs. Exigir sucesso das verificações aplicáveis antes do merge. A avaliação independente é proporcional ao risco e à complexidade; baixo risco admite revisão ordinária, alto impacto exige avaliação independente e aprovação humana. O gate técnico adicional do Auditor é opcional conforme maturidade e infraestrutura. Chats distintos na mesma identidade GitHub não demonstram segregação técnica. Não contornar controles existentes; registrar evidências, SHA e limitações. Aplicar LCR_CICD_STANDARD.md e QUALITY_SECURITY_AUDITOR_README.md.
+O Quality Gate automatizado é obrigatório em todos os PRs. Exigir sucesso das verificações aplicáveis antes do merge. A avaliação independente é proporcional ao risco e à complexidade; baixo risco admite revisão ordinária, alto impacto exige avaliação independente e aprovação humana. O gate técnico adicional do Auditor é opcional conforme maturidade e infraestrutura. Chats distintos na mesma identidade GitHub não demonstram segregação técnica. Não contornar controles existentes; registrar evidências, SHA e limitações. Aplicar LCR_CICD_STANDARD.md e LCR_QUALITY_SECURITY_AUDITOR_README.md.
 
 O Auditor verifica nomenclatura, conformidade, testes, build, GitHub Actions, segurança básica, SEO e documentação em commit **estável**. Pode inspecionar em paralelo ao Builder (somente leitura), mas somente emite parecer final quando a implementação terminar. Codex/Builder executa correções; o Auditor retesta independentemente. Estados: **aprovado, atenção, reprovado, não verificado**; todo achado precisa de evidência.
 
@@ -11,4 +11,4 @@ O Planner recomenda um especialista quando **risco alto OU (especialização alt
 
 Relatórios seguem `AuditReport.md` e requerem evidência e commit estável. Auditor não corrige o produto como padrão; Codex/Builder modifica e Auditor retesta.
 
-Norma transversal atual: [QUALITY_SECURITY_AUDITOR_README.md](../../QUALITY_SECURITY_AUDITOR_README.md). A revisão de baixo risco não exige Auditor separado.
+Norma transversal atual: [LCR_QUALITY_SECURITY_AUDITOR_README.md](../../LCR_QUALITY_SECURITY_AUDITOR_README.md). A revisão de baixo risco não exige Auditor separado.
