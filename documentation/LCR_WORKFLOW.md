@@ -13,7 +13,7 @@ Padronizar criação, desenvolvimento, revisão, documentação, evolução e ra
 | Research | Pesquisa bibliográfica, estado da técnica, patentes, fontes e validação de fundamentos. |
 | Drawer | UX/UI, diagramas e recursos visuais. Somente os registros textuais ficam em `documentation/agents-archive/drawer/`; imagens ficam em `code/public/assets/` ou storage externo. |
 | Audio Designer (opcional) | Identidade sonora, efeitos, áudio e trilhas originais. Recursos em `code/public/assets/audio/`. |
-| Quality & Security Auditor (geral) | Gate independente de qualidade e conformidade: testes, build, GitHub Actions, naming, segurança básica, SEO e riscos; recomenda especialistas opcionais e emite parecer. |
+| Quality & Security Auditor (geral) | Avaliação independente proporcional de qualidade e conformidade: testes, build, GitHub Actions, naming, segurança básica, SEO e riscos; recomenda especialistas opcionais e emite parecer. |
 
 O **Organizador não é um chat**: é a função de consolidação documental do próprio LCR Workflow. O usuário decide prioridades, autoriza publicações e aprova decisões importantes.
 
@@ -97,8 +97,8 @@ Ao produzir um prompt de **desenvolvimento/upgrade**, o Planner sempre executa u
 - **Backups sem chat:** GitHub Actions `LCR_BACKUP.yml` executa quando habilitado com o Secret de autenticação Google e variables de ativação/destino. O OAuth do plugin ChatGPT **não é herdado pelo GitHub Actions**. O workflow espelha arquivos e preserva snapshots datados; se não configurado, jobs ficam desabilitados.
 - **Verificação:** confirmar links, SHA do commit, caminhos e erros. A geração de prompt/ADR não significa que o Builder executou seu conteúdo.
 
-## Gate de qualidade e especialistas opcionais (ADR-0008)
-Fluxo aprovado: **Planner → decisão humana → Auditor geral + especialista opcional → parecer consolidado → Codex/Builder → retestes do Auditor → aprovação final humana**.
+## Quality Gate e auditoria proporcional (ADR-0008, ADR-0015)
+O Quality Gate automatizado é obrigatório em todos os PRs. Exigir sucesso das verificações aplicáveis antes do merge. A avaliação independente é proporcional ao risco e à complexidade; baixo risco admite revisão ordinária, alto impacto exige avaliação independente e aprovação humana. O gate técnico adicional do Auditor é opcional conforme maturidade e infraestrutura. Chats distintos na mesma identidade GitHub não demonstram segregação técnica. Não contornar controles existentes; registrar evidências, SHA e limitações. Aplicar LCR_CICD_STANDARD.md e QUALITY_SECURITY_AUDITOR_README.md.
 
 O Auditor verifica nomenclatura, conformidade, testes, build, GitHub Actions, segurança básica, SEO e documentação em commit **estável**. Pode inspecionar em paralelo ao Builder (somente leitura), mas somente emite parecer final quando a implementação terminar. Codex/Builder executa correções; o Auditor retesta independentemente. Estados: **aprovado, atenção, reprovado, não verificado**; todo achado precisa de evidência.
 
@@ -106,3 +106,6 @@ O Planner recomenda um especialista quando **risco alto OU (especialização alt
 
 ## Política de backup ao final do dia (ADR-0009)
 **GitHub é a fonte de verdade e o histórico contínuo. Google Drive recebe uma única rodada automática diária**: 23h55 Brasília (02h55 UTC do dia seguinte), via `LCR_BACKUP.yml`, ou `workflow_dispatch` excepcional autorizado. Não realizar upload por arquivo, ADR, relatório ou push durante o desenvolvimento. O `rclone copy` atualiza incrementalmente o espelho navegável e salva ZIP + `git bundle` por data/commit; **não apagar históricos sem política de retenção aprovada**. Status Drive é **pendente** até verificar job `success`, SHA e snapshot. OAuth do GitHub Actions é independente do plugin Drive deste chat. Em 09/11/2026, a última falha observada foi HTTP 401; não declarar corrigida sem novo teste.
+
+## Product Structure Mapping (ADR-0016)
+Em produtos com navegação, manter manifesto canônico relacionando Navigation Menu, Route Map, Page Structure e Asset Structure por IDs estáveis, com exceções explícitas e validação PSM-01 a PSM-04 no Quality Gate existente (CI-06). Consultar `LCR_FRAMEWORK_DOCUMENTATION_STANDARD.md`, `LCR_ASSET_ORGANIZATION_STANDARD.md` e `LCR_CICD_STANDARD.md`. Não duplicar catálogos, workflows ou recursos por simetria; preservar originais e aliases.

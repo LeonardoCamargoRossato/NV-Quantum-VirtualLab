@@ -35,3 +35,8 @@ Todo prompt de desenvolvimento avalia a relevância de ADR; **nem todo desenvolv
 - [ADR-0012 — Camadas poligonais da foto frontal](ADR-0012-camadas-poligonais-da-foto.md).
 
 - [ADR-0013 — Workspace científico adaptativo](ADR-0013-workspace-cientifico-adaptativo.md).
+
+## Decisões aprovadas em 24/11/2026
+- [ADR-0014 — Governança da eficiência operacional](ADR-0014-governanca-eficiencia-operacional.md).
+- [ADR-0015 — Auditoria proporcional](ADR-0015-proportional-audit-gate.md): revisa a obrigatoriedade universal do gate independente, preservando o histórico do ADR-0008.
+- [ADR-0016 — Product Structure Mapping](ADR-0016-product-structure-mapping.md).

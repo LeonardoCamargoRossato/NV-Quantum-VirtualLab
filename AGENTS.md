@@ -23,8 +23,8 @@ Ao gerar um prompt de desenvolvimento/upgrade, avaliar obrigatoriamente se exist
 ## Salvamento operacional do ADR
 Para uma **decisão real** com ADR, registrar no GitHub no próprio turno e deixar a cópia Drive para o backup diário, sem envio por arquivo. Mostrar links e status verificados; não persistir exemplos hipotéticos ou conteúdo privado. Se ferramenta não estiver disponível, indicar pendência e entregar arquivo. A configuração de backups por GitHub Actions é independente dos conectores do ChatGPT.
 
-## Gate de qualidade e especialistas opcionais (ADR-0008)
-Fluxo aprovado: **Planner → decisão humana → Auditor geral + especialista opcional → parecer consolidado → Codex/Builder → retestes do Auditor → aprovação final humana**.
+## Quality Gate e auditoria proporcional (ADR-0008, ADR-0015)
+O Quality Gate automatizado é obrigatório em todos os PRs. Exigir sucesso das verificações aplicáveis antes do merge. A avaliação independente é proporcional ao risco e à complexidade; baixo risco admite revisão ordinária, alto impacto exige avaliação independente e aprovação humana. O gate técnico adicional do Auditor é opcional conforme maturidade e infraestrutura. Chats distintos na mesma identidade GitHub não demonstram segregação técnica. Não contornar controles existentes; registrar evidências, SHA e limitações. Aplicar LCR_CICD_STANDARD.md e QUALITY_SECURITY_AUDITOR_README.md.
 
 O Auditor verifica nomenclatura, conformidade, testes, build, GitHub Actions, segurança básica, SEO e documentação em commit **estável**. Pode inspecionar em paralelo ao Builder (somente leitura), mas somente emite parecer final quando a implementação terminar. Codex/Builder executa correções; o Auditor retesta independentemente. Estados: **aprovado, atenção, reprovado, não verificado**; todo achado precisa de evidência.
 
@@ -42,3 +42,6 @@ O Planner recomenda um especialista quando **risco alto OU (especialização alt
 - Reutilizar `useImageNavigation` para zoom pela roda (ancorado no cursor), zoom pelos controles e arraste nos dois eixos, inclusive abaixo de 100%. Bloquear rolagem simultânea da página.
 - Menus do visualizador usam ícones SVG com nomes acessíveis: download do original, fullscreen nativo e fechar. Preservar teclado, Escape, retorno de foco, mobile e erros explícitos.
 - `ImagePolicy.test.ts` impede imagens novas sem acionador acessível/viewport interativo. Rodar também `BrowserImageViewerSmoke.mjs` e `BrowserSchemeSmoke.mjs` ao alterar a experiência de imagens.
+
+## Product Structure Mapping (ADR-0016)
+Em produtos com navegação, manter manifesto canônico relacionando Navigation Menu, Route Map, Page Structure e Asset Structure por IDs estáveis, com exceções explícitas e validação PSM-01 a PSM-04 no Quality Gate existente (CI-06). Consultar `documentation/LCR_FRAMEWORK_DOCUMENTATION_STANDARD.md`, `documentation/LCR_ASSET_ORGANIZATION_STANDARD.md` e `documentation/LCR_CICD_STANDARD.md`. Não duplicar catálogos, workflows ou recursos por simetria; preservar originais e aliases.
